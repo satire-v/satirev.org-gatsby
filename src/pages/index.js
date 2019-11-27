@@ -1,3 +1,4 @@
-import React from "react"
+// @flow
+const React = require("react");
 
-export default () => <div>Hello world!</div>
+export default (): React.Node => <div>Hello world!</div>;

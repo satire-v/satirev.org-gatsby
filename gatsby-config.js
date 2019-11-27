@@ -6,7 +6,14 @@
 
 module.exports = {
   plugins: [
-    `gatsby-plugin-sass`,
+    "gatsby-plugin-flow",
+    "gatsby-plugin-emotion",
+    {
+      resolve: "gatsby-plugin-alias-imports",
+      options: {
+        extensions: ["", ".js", ".jsx", ".react.js"],
+      },
+    },
     {
       resolve: "gatsby-source-directus-cms",
       options: {
@@ -17,8 +24,8 @@ module.exports = {
         },
         targetStatuses: null,
         downloadFiles: false,
-        typePrefix: "d",
+        typePrefix: "data",
       },
     },
   ],
-}
+};
