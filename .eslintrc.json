@@ -56,7 +56,7 @@
     "react/no-unused-prop-types": "off",
     "react/require-default-props": "off",
     "react/destructuring-assignment": "off",
-    "react/default-props-match-prop-types": "off",
+    "react/default-props-match-prop-types": ["error", {"allowRequiredDefaults": true}],
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
     "no-unused-vars": "warn",

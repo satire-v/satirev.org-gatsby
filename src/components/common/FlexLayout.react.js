@@ -1,31 +1,20 @@
 // @flow
 
 import * as React from "react";
-import { css } from "emotion";
+import { css, cx } from "emotion";
+import { getFlexProp } from "@utils/flex";
 
 type Props = {
   direction: "horizontal" | "vertical",
   wrap: "nowrap" | "wrap",
   justify: "start" | "end" | "center" | "all",
-  alignItems: "start" | "end" | "center",
+  align: "start" | "end" | "center",
   alignContent: "start" | "end" | "center" | "all",
   children: React.Node,
+  tag: string,
+  className?: string,
+  style?: Object,
 };
-
-function getFlexProp(prop: string): string {
-  switch (prop) {
-    case "start":
-      return "flex-start";
-    case "end":
-      return "flex-end";
-    case "center":
-      return "center";
-    case "all":
-      return "space-between";
-    default:
-      return "auto";
-  }
-}
 
 function getStyle(props: Props): string {
   return `
@@ -33,22 +22,29 @@ function getStyle(props: Props): string {
   flex-direction: ${props.direction === "horizontal" ? "row" : "column"};
   flex-wrap: ${props.wrap};
   justify-content: ${getFlexProp(props.justify)};
-  align-items: ${getFlexProp(props.alignItems)};
+  align-items: ${getFlexProp(props.align)};
   align-content: ${getFlexProp(props.alignContent)};
+  overflow: hidden;
 `;
 }
 
 const FlexLayout = (props: Props): React.Node => {
   const style = getStyle(props);
-  return <div css={css(style)}>{props.children}</div>;
+  const Tag = `${props.tag}`;
+  return (
+    <Tag style={props.style} className={cx(css(style), props.className || "")}>
+      {props.children}
+    </Tag>
+  );
 };
 
 FlexLayout.defaultProps = {
   direction: "horizontal",
-  wrap: "wrap",
+  wrap: "nowrap",
   justify: "start",
-  alignItems: "start",
+  align: "center",
   alignContent: "start",
+  tag: "div",
 };
 
 export default FlexLayout;

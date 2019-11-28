@@ -12,7 +12,14 @@ module.exports = {
       resolve: "gatsby-plugin-alias-imports",
       options: {
         extensions: [".js", ".jsx", ".react.js"],
-        alias: { "@styles": "src/styles", "@utils": "src/components/utils" },
+        alias: {
+          "@styles": "src/styles",
+          "@utils": "src/utils",
+          "@common": "src/components/common",
+          "@layouts": "src/layouts",
+          "@img": "src/assets/img",
+          "@assets": "src/assets",
+        },
       },
     },
     {
