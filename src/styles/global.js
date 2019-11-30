@@ -25,6 +25,10 @@ const global = css`
     img {
       object-fit: contain;
     }
+    & a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 `;
 
