@@ -20,8 +20,6 @@ function getStyle(props: Props): string {
   ${props.align ? `align-self:${getFlexProp(props.align)};` : ""}
   max-height: 100%;
   max-width: 100%;
-  min-width: 0;
-  min-height: 0;
   overflow: hidden;
 `;
 }

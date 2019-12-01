@@ -1,13 +1,15 @@
 // @flow
 import * as React from "react";
-import { colors, fonts } from "@styles/global";
+import { colors, fonts, margins } from "@styles/global";
 import { css } from "@emotion/core";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
 
 const breakingBarStyle = css`
-  border-bottom: 1px solid black;
-  padding: 6px 0px;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  margin: 0px 0px 12px;
+  padding: 12px 0px;
   font-weight: 700;
   font-family: ${fonts.sansSerif};
 `;
@@ -15,7 +17,7 @@ const breakingBarStyle = css`
 const breakingTitleStyle = css`
   color: black;
   text-transform: uppercase;
-  padding: 0px 16px 0px 30px;
+  padding: 0px 16px 0px 0;
   font-size: 16px;
 `;
 
@@ -28,8 +30,8 @@ const breakingItemStyle = css`
 
 function BreakingNewsBar(): React.Node {
   return (
-    <FlexLayout direction="horizontal" css={breakingBarStyle}>
-      <FlexLayoutItem css={breakingTitleStyle}>Breaking News</FlexLayoutItem>
+    <FlexLayout direction="horizontal" css={breakingBarStyle} justify="start">
+      <FlexLayoutItem css={breakingTitleStyle}>Breaking</FlexLayoutItem>
       <FlexLayoutItem css={breakingItemStyle}>Placeholder</FlexLayoutItem>
     </FlexLayout>
   );

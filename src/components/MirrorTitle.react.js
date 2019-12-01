@@ -8,40 +8,40 @@ import FlexLayoutItem from "@common/FlexLayoutItem";
 import anime from "animejs/lib/anime.es";
 import logo from "@img/logo.png";
 
-const BASELINE = 56;
+const BASELINE = 42;
 
-const rootStyle = css``;
+const logoSize = 66;
 
 const logoStyle = css`
-  height: 96px;
+  height: ${logoSize}px;
   width: auto;
-  padding: 8px 8px 0px;
 `;
 
 const titleWrapper = css`
-  padding: 8px;
+  padding: 0px 8px;
 `;
 
 const titleStyle = css`
-  font-family: ${fonts.title};
+  font-family: ${fonts.siteTitle};
   font-size: ${BASELINE}px;
 `;
 
 const subtitleStyle = css`
   text-indent: 1em;
   margin-top: -10px;
+  font-size: 12px;
 `;
 
 const clickable = css`
   cursor: pointer;
-  white-space: nowrap;
+  height: ${logoSize}px;
 `;
 
 const FADE_IN_DUR = 2000;
 const VERITAS_START_DELAY = 4000;
 const VERITAS_START_TS = FADE_IN_DUR + VERITAS_START_DELAY;
 const FLIP_DUR = 2500;
-const FLIP_DELAY = 60;
+const FLIP_DELAY = 200;
 const VERITAS_START_TO_FLIP_S_START_DUR = 6 * FLIP_DELAY;
 const FLIP_S_START_TS = VERITAS_START_TS + VERITAS_START_TO_FLIP_S_START_DUR;
 const END_DELAY = 1250;
@@ -66,10 +66,10 @@ const mirroredContainer = css`
       }
       &.scale {
         transform-origin: bottom right;
-        max-height: 56px;
+        max-height: ${BASELINE}px;
         &.uppercase {
           opacity: 1;
-          margin-right: -23px;
+          margin-right: -0.4em;
         }
         &.lowercase {
           opacity: 1;
@@ -87,7 +87,7 @@ const fadeIn = {
 
 const moveV = {
   targets: `.mirroredContainer span.vMover`,
-  translateX: [0, -22],
+  translateX: [0, "-.4em"],
   duration: FLIP_DUR, // so will finish as V finished flipping
   easing: FLIP_EASING,
 };
@@ -140,42 +140,53 @@ function MirrorTitle(): React.Node {
       });
   }, []);
   return (
-    <FlexLayout css={rootStyle}>
-      <FlexLayoutItem style={{ height: "100%" }}>
-        <span css={clickable} onClick={timeline.restart}>
-          <img alt="Satire V logo" src={logo} css={logoStyle} />
-        </span>
-      </FlexLayoutItem>
-      <FlexLayoutItem css={titleWrapper}>
-        <Link css={clickable} to="/">
-          <div css={titleStyle}>Satire V</div>
-          <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-        </Link>
-      </FlexLayoutItem>
-      <FlexLayoutItem
+    <FlexLayout align="center" justify="center">
+      <FlexLayout align="center" justify="center">
+        <FlexLayoutItem style={{ height: "100%" }}>
+          <div css={clickable} onClick={timeline.restart}>
+            <img alt="Satire V logo" src={logo} css={logoStyle} />
+          </div>
+        </FlexLayoutItem>
+        <FlexLayoutItem css={titleWrapper}>
+          <Link css={clickable} to="/">
+            <div css={titleStyle}>Satire V</div>
+            <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
+          </Link>
+        </FlexLayoutItem>
+      </FlexLayout>
+      <FlexLayout
+        align="center"
+        justify="center"
         css={mirroredContainer}
         className="mirroredContainer"
         style={{ flex: "0 1 auto" }}
       >
-        <div css={titleStyle}>
-          <span className="uppercase s scale">
-            <span className="uppercase s flip">S</span>
-          </span>
-          <span className="lowercase s scale">
-            <span className="lowercase s flip">s</span>
-          </span>
-          <span>a</span>
-          <span>t</span>
-          <span>i</span>
-          <span>r</span>
-          <span>e</span>
-          <span className="space"> </span>
-          <span className="vMover">
-            <span>V</span>
-          </span>
-        </div>
-        <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-      </FlexLayoutItem>
+        <FlexLayoutItem style={{ height: "100%" }}>
+          <div css={clickable} onClick={timeline.restart}>
+            <img alt="Satire V logo" src={logo} css={logoStyle} />
+          </div>
+        </FlexLayoutItem>
+        <FlexLayoutItem>
+          <div css={titleStyle}>
+            <span className="uppercase s scale">
+              <span className="uppercase s flip">S</span>
+            </span>
+            <span className="lowercase s scale">
+              <span className="lowercase s flip">s</span>
+            </span>
+            <span>a</span>
+            <span>t</span>
+            <span>i</span>
+            <span>r</span>
+            <span>e</span>
+            <span className="space"> </span>
+            <span className="vMover">
+              <span>V</span>
+            </span>
+          </div>
+          <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
+        </FlexLayoutItem>
+      </FlexLayout>
     </FlexLayout>
   );
 }

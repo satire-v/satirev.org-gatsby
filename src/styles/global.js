@@ -6,10 +6,31 @@ const colors = {
   gray: "gray",
 };
 
+const sansSerif = "Lato Light, Lucida Sans Unicode, sans-serif";
+
+const margins = {
+  pageBody: 40,
+};
+
 const fonts = {
   serif: "Georgia, serif",
-  sansSerif: "Lato Light, Lucida Sans Unicode, sans-serif",
-  title: "Cardinal, Georgia, serif",
+  sansSerif,
+  siteTitle: "Cardinal, Georgia, serif",
+  preview: {
+    big: {
+      titleSize: 24,
+      textSize: 14,
+    },
+    small: {
+      titleSize: 16,
+    },
+  },
+  titleClass: "postTitle",
+  headerStyle: css`
+    font-family: ${sansSerif};
+    text-transform: uppercase;
+    font-weight: 300;
+  `,
 };
 
 const global = css`
@@ -18,7 +39,7 @@ const global = css`
     font-family: ${fonts.serif};
     font-weight: normal;
     font-stretch: normal;
-    font-size: 1em;
+    font-size: 16px;
     &,
     & * {
       margin: 0;
@@ -32,11 +53,15 @@ const global = css`
       color: inherit;
       text-decoration: none;
     }
+    & .${fonts.titleClass} {
+      color: black;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        color: ${colors.crimson};
+      }
+    }
   }
 `;
 
-const test: Object = {
-  body: { fontSize: 40 },
-};
-
-export { colors, fonts, global, test };
+export { colors, fonts, global, margins };

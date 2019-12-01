@@ -11,9 +11,16 @@ const headerStyle = css`
   color: white;
 `;
 
+const titleWrapper = css`
+  padding: 10px 10px 12px;
+`;
+
 const Header = (): React.Node => (
   <header css={headerStyle}>
-    <MirrorTitle />
+    <div css={titleWrapper}>
+      <MirrorTitle />
+    </div>
+
     <Navbar />
   </header>
 );

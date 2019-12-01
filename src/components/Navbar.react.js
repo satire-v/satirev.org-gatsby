@@ -6,22 +6,21 @@ import { graphql, useStaticQuery } from "gatsby";
 import FlexLayout from "@common/FlexLayout";
 
 const navStyle = css`
-  background: ${colors.crimson};
-  font-family: ${fonts.sansSerif};
-  font-size: 16px;
-  border-top: white 2px solid;
+  background: white;
 `;
 
 const buttonStyle = css`
-  padding: 8px 12px;
+  padding: 8px 20px 10px;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
   text-align: center;
-  text-transform: uppercase;
-  font-weight: 300;
   cursor: pointer;
   transition: all 0.5s;
+  color: ${colors.crimson};
+  ${fonts.headerStyle}
   &:hover {
-    background: white;
-    color: ${colors.crimson};
+    color: white;
+    background: ${colors.crimson};
   }
 `;
 

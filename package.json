@@ -27,6 +27,7 @@
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-twitter-embed": "^3.0.3",
     "typescript": "^3.7.2"
   },
   "devDependencies": {
