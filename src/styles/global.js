@@ -6,11 +6,12 @@ const colors = {
 };
 const fonts = {
   serif: "Georgia, serif",
-  sansSerif: "Lucida Sans Unicode, sans-serif",
+  sansSerif: "Lato Light, Lucida Sans Unicode, sans-serif",
   title: "Cardinal, Georgia, serif",
 };
 
 const global = css`
+  @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
   body {
     font-family: ${fonts.serif};
     font-weight: normal;

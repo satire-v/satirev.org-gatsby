@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import Header from "@common/Header";
+import Header from "@components/Header";
 import Page from "@layouts/Page";
 
 export default (): React.Node => (

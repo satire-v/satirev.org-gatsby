@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
 import { Link } from "gatsby";
-import { colors, fonts } from "@styles/global";
 import { css } from "@emotion/core";
+import { fonts } from "@styles/global";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
 import anime from "animejs/lib/anime.es";
@@ -10,18 +10,16 @@ import logo from "@img/logo.png";
 
 const BASELINE = 56;
 
-const headerStyle = css`
-  background: ${colors.crimson};
-  width: 100%;
-  height: 130px;
-  overflow: hidden;
-  color: white;
-`;
+const rootStyle = css``;
 
 const logoStyle = css`
-  height: 100%;
+  height: 96px;
   width: auto;
-  padding: 16px;
+  padding: 8px 8px 0px;
+`;
+
+const titleWrapper = css`
+  padding: 8px;
 `;
 
 const titleStyle = css`
@@ -54,7 +52,7 @@ const mirroredContainer = css`
   &.mirroredContainer {
     transform: scaleX(-1);
     opacity: 1;
-    padding: 0px 10px;
+    ${titleWrapper}
     mask-image: linear-gradient(
       to left,
       rgba(255, 255, 255, 0.4),
@@ -127,7 +125,7 @@ const timeline = anime.timeline({
   easing: "linear",
 });
 
-const Header = (): React.Node => {
+function MirrorTitle(): React.Node {
   React.useEffect(() => {
     timeline
       .add(fadeIn)
@@ -142,46 +140,44 @@ const Header = (): React.Node => {
       });
   }, []);
   return (
-    <header css={headerStyle}>
-      <FlexLayout style={{ height: "100%" }}>
-        <FlexLayoutItem style={{ height: "100%" }}>
-          <span css={clickable} onClick={timeline.restart}>
-            <img alt="Satire V logo" src={logo} css={logoStyle} />
-          </span>
-        </FlexLayoutItem>
-        <FlexLayoutItem>
-          <Link css={clickable} to="/">
-            <div css={titleStyle}>Satire V</div>
-            <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-          </Link>
-        </FlexLayoutItem>
-        <FlexLayoutItem
-          css={mirroredContainer}
-          className="mirroredContainer"
-          style={{ flex: "0 1 auto" }}
-        >
-          <div css={titleStyle}>
-            <span className="uppercase s scale">
-              <span className="uppercase s flip">S</span>
-            </span>
-            <span className="lowercase s scale">
-              <span className="lowercase s flip">s</span>
-            </span>
-            <span>a</span>
-            <span>t</span>
-            <span>i</span>
-            <span>r</span>
-            <span>e</span>
-            <span className="space"> </span>
-            <span className="vMover">
-              <span>V</span>
-            </span>
-          </div>
+    <FlexLayout css={rootStyle}>
+      <FlexLayoutItem style={{ height: "100%" }}>
+        <span css={clickable} onClick={timeline.restart}>
+          <img alt="Satire V logo" src={logo} css={logoStyle} />
+        </span>
+      </FlexLayoutItem>
+      <FlexLayoutItem css={titleWrapper}>
+        <Link css={clickable} to="/">
+          <div css={titleStyle}>Satire V</div>
           <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-        </FlexLayoutItem>
-      </FlexLayout>
-    </header>
+        </Link>
+      </FlexLayoutItem>
+      <FlexLayoutItem
+        css={mirroredContainer}
+        className="mirroredContainer"
+        style={{ flex: "0 1 auto" }}
+      >
+        <div css={titleStyle}>
+          <span className="uppercase s scale">
+            <span className="uppercase s flip">S</span>
+          </span>
+          <span className="lowercase s scale">
+            <span className="lowercase s flip">s</span>
+          </span>
+          <span>a</span>
+          <span>t</span>
+          <span>i</span>
+          <span>r</span>
+          <span>e</span>
+          <span className="space"> </span>
+          <span className="vMover">
+            <span>V</span>
+          </span>
+        </div>
+        <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
+      </FlexLayoutItem>
+    </FlexLayout>
   );
-};
+}
 
-export default Header;
+export default MirrorTitle;

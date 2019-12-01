@@ -16,6 +16,7 @@ module.exports = {
           "@styles": "src/styles",
           "@utils": "src/utils",
           "@common": "src/components/common",
+          "@components": "src/components",
           "@layouts": "src/layouts",
           "@img": "src/assets/img",
           "@assets": "src/assets",
