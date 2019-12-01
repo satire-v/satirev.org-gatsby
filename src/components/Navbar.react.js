@@ -39,7 +39,7 @@ function Navbar(): React.Node {
   return (
     <nav css={navStyle}>
       <FlexLayout justify="center" align="center" direction="horizontal">
-        {allDataCategory.nodes.map((node, i) => (
+        {allDataCategory.nodes.map(node => (
           <div key={node.id} css={buttonStyle}>
             {node.name}
           </div>

@@ -3,7 +3,9 @@ import { css } from "@emotion/core";
 
 const colors = {
   crimson: "#A51C30",
+  gray: "gray",
 };
+
 const fonts = {
   serif: "Georgia, serif",
   sansSerif: "Lato Light, Lucida Sans Unicode, sans-serif",
