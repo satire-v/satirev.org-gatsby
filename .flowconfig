@@ -14,6 +14,7 @@ module.name_mapper='^@common' ->'<PROJECT_ROOT>/src/components/common'
 module.name_mapper='^@layouts' ->'<PROJECT_ROOT>/src/layouts'
 module.name_mapper='^@img' ->'<PROJECT_ROOT>/src/assets/img'
 module.name_mapper='^@assets' ->'<PROJECT_ROOT>/src/assets'
+module.name_mapper='^@queries' ->'<PROJECT_ROOT>/src/queries'
 
 module.file_ext=.js
 module.file_ext=.jsx

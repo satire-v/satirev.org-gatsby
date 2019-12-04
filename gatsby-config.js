@@ -20,6 +20,7 @@ module.exports = {
           "@layouts": "src/layouts",
           "@img": "src/assets/img",
           "@assets": "src/assets",
+          "@queries": "src/queries",
         },
       },
     },

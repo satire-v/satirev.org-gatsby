@@ -35,7 +35,7 @@ const FlexLayoutItem = (props: Props): React.Node => {
 
 FlexLayoutItem.defaultProps = {
   order: 0,
-  grow: 0,
+  grow: 1,
   shrink: 1,
 };
 

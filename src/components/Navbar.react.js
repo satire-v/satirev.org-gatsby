@@ -10,8 +10,8 @@ const navStyle = css`
 `;
 
 const buttonStyle = css`
-  padding: 8px 20px 10px;
-  border-radius: 0 0 8px 8px;
+  padding: 8px 16px 8px;
+  margin: 4px;
   font-size: 14px;
   text-align: center;
   cursor: pointer;

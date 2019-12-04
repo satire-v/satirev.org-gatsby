@@ -1,5 +1,6 @@
 // @flow
 import { css } from "@emotion/core";
+import type { ImageSize } from "@utils/image";
 
 const colors = {
   crimson: "#A51C30",
@@ -16,14 +17,20 @@ const fonts = {
   serif: "Georgia, serif",
   sansSerif,
   siteTitle: "Cardinal, Georgia, serif",
-  preview: {
-    big: {
-      titleSize: 24,
-      textSize: 14,
-    },
-    small: {
-      titleSize: 16,
-    },
+  preview(size: ImageSize) {
+    switch (size) {
+      case "large":
+        return {
+          titleSize: 24,
+          textSize: 14,
+        };
+      case "medium":
+      case "small":
+      default:
+        return {
+          titleSize: 16,
+        };
+    }
   },
   titleClass: "postTitle",
   headerStyle: css`

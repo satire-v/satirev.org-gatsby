@@ -30,8 +30,15 @@ const breakingItemStyle = css`
 
 function BreakingNewsBar(): React.Node {
   return (
-    <FlexLayout direction="horizontal" css={breakingBarStyle} justify="start">
-      <FlexLayoutItem css={breakingTitleStyle}>Breaking</FlexLayoutItem>
+    <FlexLayout
+      direction="horizontal"
+      css={breakingBarStyle}
+      justify="start"
+      align="center"
+    >
+      <FlexLayoutItem css={breakingTitleStyle} grow={0}>
+        Breaking
+      </FlexLayoutItem>
       <FlexLayoutItem css={breakingItemStyle}>Placeholder</FlexLayoutItem>
     </FlexLayout>
   );
