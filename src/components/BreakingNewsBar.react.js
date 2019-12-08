@@ -3,7 +3,6 @@ import * as React from "react";
 import { colors, fonts, margins } from "@styles/global";
 import { css } from "@emotion/core";
 import FlexLayout from "@common/FlexLayout";
-import FlexLayoutItem from "@common/FlexLayoutItem";
 
 const breakingBarRootStyle = css`
   border-bottom: 1px solid lightgray;
@@ -11,20 +10,19 @@ const breakingBarRootStyle = css`
   padding: 12px ${margins.pageBody}px;
   font-weight: 700;
   font-family: ${fonts.sansSerif};
+  font-size: 1.1em;
 `;
 
 const breakingTitleStyle = css`
   color: black;
   text-transform: uppercase;
-  padding: 0px 16px 0px 0;
-  font-size: 16px;
+  padding-right: 1em;
+  border-right: 1px solid gray;
 `;
 
 const breakingItemStyle = css`
   color: ${colors.gray};
-  font-size: 16px;
-  padding-left: 16px;
-  border-left: 1px solid gray;
+  padding-left: 1em;
 `;
 
 function BreakingNewsBar(): React.Node {
@@ -35,10 +33,10 @@ function BreakingNewsBar(): React.Node {
       justify="start"
       align="center"
     >
-      <FlexLayoutItem css={breakingTitleStyle} grow={0}>
+      <div css={breakingTitleStyle} grow={0}>
         Breaking
-      </FlexLayoutItem>
-      <FlexLayoutItem css={breakingItemStyle}>Placeholder</FlexLayoutItem>
+      </div>
+      <div css={breakingItemStyle}>Placeholder</div>
     </FlexLayout>
   );
 }

@@ -16,7 +16,7 @@ const buttonStyle = css`
   font-size: 1em;
   text-align: center;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.2s;
   color: ${colors.crimson};
   ${fonts.headerStyle}
   &:hover {

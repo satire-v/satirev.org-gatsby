@@ -3,8 +3,6 @@ import * as React from "react";
 import { type ImageSize, imgMaxWidth } from "@utils/image";
 import { css } from "@emotion/core";
 import { fonts } from "@styles/global";
-import FlexLayout from "@common/FlexLayout";
-import FlexLayoutItem from "@common/FlexLayoutItem";
 import RatioImage from "@common/RatioImage";
 import type { ArticlePreview } from "@utils/types";
 
@@ -13,42 +11,44 @@ type Props = {
   article: ArticlePreview,
 };
 
-const rootStyles = css`
+const rootStyles = size => css`
   box-sizing: content-box;
   background: lightgray;
-  max-width: ${imgMaxWidth("large")}px;
+  max-width: ${imgMaxWidth(size)}px;
 `;
 
 const titleStyles = size => css`
   text-align: left;
-  padding: 8px 0px;
   font-size: ${fonts.preview(size).title.size};
+  line-height: ${fonts.preview(size).title.lineHeight};
 `;
 
 const textStyles = size => css`
   text-align: left;
   font-size: ${fonts.preview(size).text.size};
-  line-height: ${fonts.preview(size).title.lineHeight};
+  line-height: ${fonts.preview(size).text.lineHeight};
 `;
 
-function PostPreview(props: Props): React.Node {
+const contentWrapper = css`
+  padding: 10px; /* change to grid? */
+`;
+
+function PostCard(props: Props): React.Node {
   return (
-    <FlexLayout direction="vertical" css={rootStyles}>
+    <div css={rootStyles(props.size)}>
       <RatioImage src={props.article.imgUrl} alt="" size={props.size} />
-      <FlexLayoutItem align="center">
+      <div css={contentWrapper}>
         <div css={titleStyles(props.size)} className={fonts.titleClass}>
           {props.article.title}
         </div>
-      </FlexLayoutItem>
-      <FlexLayoutItem align="start">
         <div css={textStyles(props.size)}>{props.article.excerpt}</div>
-      </FlexLayoutItem>
-    </FlexLayout>
+      </div>
+    </div>
   );
 }
 
-PostPreview.defaultProps = {
+PostCard.defaultProps = {
   size: "small",
 };
 
-export default PostPreview;
+export default PostCard;

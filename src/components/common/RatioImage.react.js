@@ -1,17 +1,23 @@
 // @flow
 import * as React from "react";
-import { type ImageSize, imgMaxWidth, imgRatio } from "@utils/image";
+import {
+  type ImageSize,
+  imgMaxWidth,
+  imgRatio,
+  type imgRatioType,
+} from "@utils/image";
 import { css } from "@emotion/core";
 
 type Props = {
   src: string,
   alt: string,
   size: ImageSize,
+  ratio: 1 | imgRatioType,
 };
 
-const aspectRatioBox = css`
+const aspectRatioBox = ratio => css`
   width: 100%;
-  padding-top: ${imgRatio * 100}%;
+  padding-top: ${ratio * 100}%;
   height: 0;
   overflow: hidden;
   background: none;
@@ -26,6 +32,7 @@ const maxWidthBox = (size: ImageSize) => css`
 
 const innerAbsBox = css`
   position: absolute;
+  display: flex;
   top: 0;
   left: 0;
   height: 100%;
@@ -41,7 +48,7 @@ const imgStyles = css`
 function RatioImage(props: Props): React.Node {
   return (
     <div css={maxWidthBox(props.size)}>
-      <div css={aspectRatioBox}>
+      <div css={aspectRatioBox(props.ratio)}>
         <div css={innerAbsBox}>
           <img css={imgStyles} alt={props.alt} src={props.src} />
         </div>
@@ -49,5 +56,9 @@ function RatioImage(props: Props): React.Node {
     </div>
   );
 }
+
+RatioImage.defaultProps = {
+  ratio: imgRatio,
+};
 
 export default RatioImage;

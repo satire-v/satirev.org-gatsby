@@ -60,7 +60,7 @@ const global = css`
     font-family: ${fonts.serif};
     font-weight: normal;
     font-stretch: normal;
-    font-size: 0.9em;
+    font-size: 0.9em; /* .9 base, i.e. 14px */
     line-height: 1.3em;
     &,
     & * {
