@@ -11,9 +11,10 @@ import Page from "@layouts/Page";
 
 export default (): React.Node => (
   <Page>
+    <BreakingNewsBar />
     <FlexLayout direction="horizontal" align="start">
       <FlexLayoutItem grow={1}>
-        <FlexLayout direction="vertical">
+        <FlexLayout direction="vertical" style={{ alignItems: "stretch" }}>
           <FlexLayoutItem>
             <TwitterTimelineEmbed
               sourceType="profile"
@@ -23,19 +24,16 @@ export default (): React.Node => (
           </FlexLayoutItem>
         </FlexLayout>
       </FlexLayoutItem>
-      <FlexLayoutItem grow={2}>
+      <FlexLayoutItem grow={1}>
+        {/*  TODO: picture max width */}
         <FlexLayout direction="vertical" align="center">
-          <FlexLayoutItem>
-            <BreakingNewsBar />
-          </FlexLayoutItem>
           <FlexLayoutItem>
             <MainRecent />
           </FlexLayoutItem>
-          <FlexLayoutItem />
         </FlexLayout>
       </FlexLayoutItem>
       <FlexLayoutItem grow={1}>
-        <FlexLayout direction="vertical">
+        <FlexLayout direction="vertical" style={{ alignItems: "stretch" }}>
           <FlexLayoutItem>
             <TwitterTimelineEmbed
               sourceType="profile"

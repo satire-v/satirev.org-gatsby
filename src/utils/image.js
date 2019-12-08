@@ -1,7 +1,9 @@
 // @flow
 export type ImageSize = "small" | "medium" | "large";
 
-const imgMaxHeight = (size: Size) => (size === "large" ? 300 : 170);
-const imgMaxWidth = (size: Size) => (size === "large" ? 560 : 170);
+const imgMaxWidth = (size: ImageSize) =>
+  size === "large" ? 580 : size === "medium" ? 340 : 170;
 
-export { imgMaxHeight, imgMaxWidth };
+const imgRatio = 0.75;
+
+export { imgMaxWidth, imgRatio };

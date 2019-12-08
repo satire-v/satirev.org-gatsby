@@ -10,7 +10,7 @@ const colors = {
 const sansSerif = "Lato Light, Lucida Sans Unicode, sans-serif";
 
 const margins = {
-  pageBody: 40,
+  pageBody: 60,
 };
 
 const fonts = {
@@ -21,14 +21,27 @@ const fonts = {
     switch (size) {
       case "large":
         return {
-          titleSize: 24,
-          textSize: 14,
+          title: {
+            size: "1.7em",
+            lineHeight: "0.95em",
+          },
+          text: {
+            size: "0.9em",
+            lineHeight: "1.3em",
+          },
         };
       case "medium":
       case "small":
       default:
         return {
-          titleSize: 16,
+          title: {
+            size: "1.2em",
+            lineHeight: "0.95em",
+          },
+          text: {
+            size: "0.9em",
+            lineHeight: "1.3em",
+          },
         };
     }
   },
@@ -37,6 +50,7 @@ const fonts = {
     font-family: ${sansSerif};
     text-transform: uppercase;
     font-weight: 300;
+    font-size: 1.1em;
   `,
 };
 
@@ -46,7 +60,8 @@ const global = css`
     font-family: ${fonts.serif};
     font-weight: normal;
     font-stretch: normal;
-    font-size: 16px;
+    font-size: 0.9em;
+    line-height: 1.3em;
     &,
     & * {
       margin: 0;
@@ -64,6 +79,7 @@ const global = css`
       color: black;
       transition: all 0.3s;
       cursor: pointer;
+      line-height: 0.95em;
       &:hover {
         color: ${colors.crimson};
       }

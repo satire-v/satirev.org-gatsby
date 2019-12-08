@@ -5,12 +5,13 @@ import { css } from "@emotion/core";
 import { fonts } from "@styles/global";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
+import Navbar from "@components/Navbar";
 import anime from "animejs/lib/anime.es";
 import logo from "@img/logo.png";
 
-const BASELINE = 42;
+const BASELINE = 56;
 
-const logoSize = 66;
+const logoSize = BASELINE * 1.5; // get this better responsive
 
 const logoStyle = css`
   height: ${logoSize}px;
@@ -18,18 +19,24 @@ const logoStyle = css`
 `;
 
 const titleWrapper = css`
-  padding: 0px 8px;
+  text-align: start;
+  display: inline-block;
+  white-space: nowrap;
+  & > div {
+    display: inline-block;
+  }
 `;
 
 const titleStyle = css`
   font-family: ${fonts.siteTitle};
   font-size: ${BASELINE}px;
+  line-height: normal;
 `;
 
 const subtitleStyle = css`
   text-indent: 1em;
-  margin-top: -10px;
-  font-size: 12px;
+  margin-top: -0.8em;
+  font-size: ${BASELINE * 0.25}px;
 `;
 
 const clickable = css`
@@ -50,12 +57,14 @@ const FLIP_EASING = "cubicBezier(.75,.25,.25,.75)";
 
 const mirroredContainer = css`
   &.mirroredContainer {
+    grid-column-end: -1;
     transform: scaleX(-1);
     opacity: 1;
     ${titleWrapper}
     mask-image: linear-gradient(
       to left,
-      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.4) 30%,
       rgba(255, 255, 255, 0.05)
     );
     span {
@@ -81,7 +90,7 @@ const mirroredContainer = css`
 
 const fadeIn = {
   targets: `.mirroredContainer`,
-  opacity: [0, 1],
+  opacity: [1, 1],
   duration: FADE_IN_DUR,
 };
 
@@ -125,6 +134,23 @@ const timeline = anime.timeline({
   easing: "linear",
 });
 
+const gridStyle = css`
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr) minmax(320px, 1fr)
+  );
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  grid-auto-flow: row dense;
+  grid-gap: 2px;
+`;
+
+const navbarWrapper = css`
+  white-space: nowrap;
+  grid-column: span 2;
+`;
+
 function MirrorTitle(): React.Node {
   React.useEffect(() => {
     timeline
@@ -140,26 +166,26 @@ function MirrorTitle(): React.Node {
       });
   }, []);
   return (
-    <FlexLayout align="center" justify="center">
-      <FlexLayout align="center" justify="center">
+    <div css={gridStyle}>
+      <div css={titleWrapper}>
         <FlexLayoutItem style={{ height: "100%" }}>
           <div css={clickable} onClick={timeline.restart}>
             <img alt="Satire V logo" src={logo} css={logoStyle} />
           </div>
         </FlexLayoutItem>
-        <FlexLayoutItem css={titleWrapper}>
+        <FlexLayoutItem>
           <Link css={clickable} to="/">
             <div css={titleStyle}>Satire V</div>
             <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
           </Link>
         </FlexLayoutItem>
-      </FlexLayout>
-      <FlexLayout
+      </div>
+
+      <div
         align="center"
         justify="center"
         css={mirroredContainer}
         className="mirroredContainer"
-        style={{ flex: "0 1 auto" }}
       >
         <FlexLayoutItem style={{ height: "100%" }}>
           <div css={clickable} onClick={timeline.restart}>
@@ -186,8 +212,12 @@ function MirrorTitle(): React.Node {
           </div>
           <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
         </FlexLayoutItem>
-      </FlexLayout>
-    </FlexLayout>
+      </div>
+
+      <div css={navbarWrapper}>
+        <Navbar />
+      </div>
+    </div>
   );
 }
 

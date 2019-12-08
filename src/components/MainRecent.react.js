@@ -5,11 +5,7 @@ import PostPreview from "@components/PostPreview";
 
 function MainRecent(): React.Node {
   const article = MostRecentArticle();
-  return (
-    <div>
-      <PostPreview article={article} />
-    </div>
-  );
+  return <PostPreview article={article} size="large" />;
 }
 
 export default MainRecent;

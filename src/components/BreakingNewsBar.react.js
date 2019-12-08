@@ -5,11 +5,10 @@ import { css } from "@emotion/core";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
 
-const breakingBarStyle = css`
+const breakingBarRootStyle = css`
   border-bottom: 1px solid lightgray;
-  border-top: 1px solid lightgray;
-  margin: 0px 0px 12px;
-  padding: 12px 0px;
+  margin: 0px -${margins.pageBody}px 24px;
+  padding: 12px ${margins.pageBody}px;
   font-weight: 700;
   font-family: ${fonts.sansSerif};
 `;
@@ -32,7 +31,7 @@ function BreakingNewsBar(): React.Node {
   return (
     <FlexLayout
       direction="horizontal"
-      css={breakingBarStyle}
+      css={breakingBarRootStyle}
       justify="start"
       align="center"
     >

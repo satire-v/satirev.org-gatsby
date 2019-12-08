@@ -18,8 +18,6 @@ function getStyle(props: Props): string {
   return `
   flex: ${props.grow} ${props.shrink} auto;
   ${props.align ? `align-self:${getFlexProp(props.align)};` : ""}
-  max-height: 100%;
-  max-width: 100%;
   overflow: hidden;
 `;
 }

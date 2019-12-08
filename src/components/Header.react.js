@@ -3,16 +3,16 @@ import * as React from "react";
 import { colors } from "@styles/global";
 import { css } from "@emotion/core";
 import MirrorTitle from "@components/MirrorTitle";
-import Navbar from "@components/Navbar";
 
 const headerStyle = css`
-  background: ${colors.crimson};
+  background: white;
   width: 100%;
-  color: white;
+  color: ${colors.crimson};
+  border-bottom: 12px ${colors.crimson} solid;
 `;
 
 const titleWrapper = css`
-  padding: 10px 10px 12px;
+  padding: 10px;
 `;
 
 const Header = (): React.Node => (
@@ -20,8 +20,6 @@ const Header = (): React.Node => (
     <div css={titleWrapper}>
       <MirrorTitle />
     </div>
-
-    <Navbar />
   </header>
 );
 

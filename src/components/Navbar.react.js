@@ -3,16 +3,17 @@ import * as React from "react";
 import { colors, fonts } from "@styles/global";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
-import FlexLayout from "@common/FlexLayout";
 
-const navStyle = css`
+const navRootStyle = css`
   background: white;
+  text-align: center;
 `;
 
 const buttonStyle = css`
-  padding: 8px 16px 8px;
-  margin: 4px;
-  font-size: 14px;
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 4px;
+  font-size: 1em;
   text-align: center;
   cursor: pointer;
   transition: all 0.5s;
@@ -36,14 +37,12 @@ function Navbar(): React.Node {
     }
   `);
   return (
-    <nav css={navStyle}>
-      <FlexLayout justify="center" align="center" direction="horizontal">
-        {allDataCategory.nodes.map(node => (
-          <div key={node.id} css={buttonStyle}>
-            {node.name}
-          </div>
-        ))}
-      </FlexLayout>
+    <nav css={navRootStyle}>
+      {allDataCategory.nodes.map(node => (
+        <div key={node.id} css={buttonStyle}>
+          {node.name}
+        </div>
+      ))}
     </nav>
   );
 }

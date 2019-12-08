@@ -25,7 +25,7 @@ const mostRecentArticle = (): ArticlePreview => {
       }
     }
   `);
-  const article = data.allDataArticle[0];
+  const article = data.allDataArticle.nodes[0];
   const previewObj: ArticlePreview = {
     id: article.id,
     slug: `${article.category.slug}/${article.slug}`,

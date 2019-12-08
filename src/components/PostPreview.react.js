@@ -1,10 +1,11 @@
 // @flow
 import * as React from "react";
-import { type ImageSize } from "@utils/image";
+import { type ImageSize, imgMaxWidth } from "@utils/image";
 import { css } from "@emotion/core";
 import { fonts } from "@styles/global";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
+import RatioImage from "@common/RatioImage";
 import type { ArticlePreview } from "@utils/types";
 
 type Props = {
@@ -14,33 +15,33 @@ type Props = {
 
 const rootStyles = css`
   box-sizing: content-box;
+  background: lightgray;
+  max-width: ${imgMaxWidth("large")}px;
 `;
-
-const imageWrapper = css`
-  background: gray;
-`;
-
-const imgStyles = size => css``;
 
 const titleStyles = size => css`
   text-align: left;
-  padding: 16px 0px;
-  font-size: ${fonts.preview(size).titleSize}px;
+  padding: 8px 0px;
+  font-size: ${fonts.preview(size).title.size};
+`;
+
+const textStyles = size => css`
+  text-align: left;
+  font-size: ${fonts.preview(size).text.size};
+  line-height: ${fonts.preview(size).title.lineHeight};
 `;
 
 function PostPreview(props: Props): React.Node {
   return (
     <FlexLayout direction="vertical" css={rootStyles}>
-      <FlexLayoutItem css={imageWrapper}>
-        <img alt="" src={props.article.imgUrl} css={imgStyles} />
-      </FlexLayoutItem>
-      <FlexLayoutItem align="start">
+      <RatioImage src={props.article.imgUrl} alt="" size={props.size} />
+      <FlexLayoutItem align="center">
         <div css={titleStyles(props.size)} className={fonts.titleClass}>
           {props.article.title}
         </div>
       </FlexLayoutItem>
       <FlexLayoutItem align="start">
-        <div>{props.article.excerpt}</div>
+        <div css={textStyles(props.size)}>{props.article.excerpt}</div>
       </FlexLayoutItem>
     </FlexLayout>
   );
