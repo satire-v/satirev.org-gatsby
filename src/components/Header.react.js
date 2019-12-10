@@ -32,6 +32,8 @@ const titleWrapper = css`
   & > a {
     display: inline-block;
   }
+  flex: 1 1 auto;
+  order: 0;
 `;
 
 const titleStyle = css`
@@ -143,19 +145,10 @@ const timeline = anime.timeline({
 
 const gridStyle = css`
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr) minmax(300px, 1fr)
-  );
-  grid-template-rows: 1fr auto;
+  grid-template-columns: repeat(3, minmax(min-content, auto));
   align-items: end;
   grid-auto-flow: row dense;
   grid-gap: 2px;
-`;
-
-const navbarWrapper = css`
-  white-space: nowrap;
-  grid-column: span 2;
 `;
 
 function Header(): React.Node {
@@ -217,9 +210,7 @@ function Header(): React.Node {
           </div>
         </div>
 
-        <div css={navbarWrapper}>
-          <Navbar />
-        </div>
+        <Navbar />
       </div>
     </header>
   );

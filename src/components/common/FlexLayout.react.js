@@ -16,23 +16,22 @@ type Props = {
   style?: Object,
 };
 
-function getStyle(props: Props): string {
-  return `
-  display: flex;
-  flex-direction: ${props.direction === "horizontal" ? "row" : "column"};
-  flex-wrap: ${props.wrap};
-  justify-content: ${getFlexProp(props.justify)};
-  align-items: ${getFlexProp(props.align)};
-  align-content: ${getFlexProp(props.alignContent)};
-  overflow: hidden;
-`;
-}
-
 const FlexLayout = (props: Props): React.Node => {
-  const style = getStyle(props);
+  const FlexLayoutRootStyle = css`
+    display: flex;
+    flex-direction: ${props.direction === "horizontal" ? "row" : "column"};
+    flex-wrap: ${props.wrap};
+    justify-content: ${getFlexProp(props.justify)};
+    align-items: ${getFlexProp(props.align)};
+    align-content: ${getFlexProp(props.alignContent)};
+    overflow: hidden;
+  `;
   const Tag = `${props.tag}`;
   return (
-    <Tag style={props.style} className={cx(css(style), props.className || "")}>
+    <Tag
+      style={props.style}
+      className={cx(FlexLayoutRootStyle, props.className || "")}
+    >
       {props.children}
     </Tag>
   );

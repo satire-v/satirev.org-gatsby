@@ -1,9 +1,9 @@
 // @flow
 
 import { graphql, useStaticQuery } from "gatsby";
-import type { ArticlePreview } from "@utils/types";
+import type { ArticleCard } from "@utils/types";
 
-const mostRecentInEachCategory = (): Array<ArticlePreview> => {
+const mostRecentInEachCategory = (): Array<ArticleCard> => {
   const data = useStaticQuery(graphql`
     query MostRecentInEachCategory {
       allDataArticle(sort: { fields: modified_on, order: DESC }) {
@@ -30,10 +30,10 @@ const mostRecentInEachCategory = (): Array<ArticlePreview> => {
       }
     }
   `);
-  const articles: Array<ArticlePreview> = [];
-  data.allDataArticle.group.map(group => {
+  const articles: Array<ArticleCard> = [];
+  data.allDataArticle.group.forEach(group => {
     const article = group.edges[0].node;
-    const previewObj: ArticlePreview = {
+    const previewObj: ArticleCard = {
       id: article.id,
       slug: `${article.category.slug}/${article.slug}`,
       title: article.title,

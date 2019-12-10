@@ -1,6 +1,6 @@
 // @flow
 
-export type ArticlePreview = {
+export type ArticleCard = {
   id: number,
   slug: string,
   title: string,
@@ -10,7 +10,7 @@ export type ArticlePreview = {
 };
 
 export type Article = {
-  ...ArticlePreview,
+  ...ArticleCard,
   body: string,
   tags: Array<string>,
   published: Date,

@@ -17,7 +17,7 @@ const fonts = {
   serif: "Georgia, serif",
   sansSerif,
   siteTitle: "Cardinal, Georgia, serif",
-  preview(size: ImageSize) {
+  card(size: ImageSize) {
     switch (size) {
       case "large":
         return {
@@ -31,11 +31,21 @@ const fonts = {
           },
         };
       case "medium":
+        return {
+          title: {
+            size: "1.5em",
+            lineHeight: "0.95em",
+          },
+          text: {
+            size: "0.9em",
+            lineHeight: "1.3em",
+          },
+        };
       case "small":
       default:
         return {
           title: {
-            size: "1.2em",
+            size: "1.1em",
             lineHeight: "0.95em",
           },
           text: {

@@ -5,7 +5,7 @@ import PostCard from "@components/PostCard";
 
 function MainRecent(): React.Node {
   const article = MostRecentArticle();
-  return <PostCard article={article} size="large" />;
+  return <PostCard article={article} size="large" direction="vertical" />;
 }
 
 export default MainRecent;
