@@ -5,12 +5,12 @@ import { type ArticleCard as ArticleCardQueryType } from "./graphql/ArticleCard"
 
 export type ArticleCard = {
   id: string,
-  slug: ?string,
-  title: ?string,
-  excerpt: ?string,
-  imgUrl: ?string,
-  imgFluid: ?any,
-  category: ?string,
+  slug: string,
+  title: string,
+  excerpt: string,
+  imgUrl: string,
+  imgFluid: any,
+  category: string,
 };
 
 export const articleCardFragment = graphql`
@@ -43,12 +43,12 @@ export const processArticleCardQuery = (
 ): ArticleCard => {
   return {
     id: article.id,
-    slug: `${article.category.slug}/${article.slug}`,
+    slug: `${article.category?.slug}/${article.slug}`,
     title: article.title,
     excerpt: article.excerpt,
-    imgUrl: article.featured_image.data.full_url,
-    imgFluid: article.featured_image.localFile.childImageSharp.fluid,
-    category: article.category.name,
+    imgUrl: article.featured_image?.data?.full_url,
+    imgFluid: article.featured_image?.localFile?.childImageSharp?.fluid,
+    category: article.category?.name,
   };
 };
 

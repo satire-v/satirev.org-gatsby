@@ -48,7 +48,7 @@ export type ArticleCard = {
   __typename: "DataArticle",
   id: string,
   slug: ?string,
-  title: ?string,
+  title: string,
   excerpt: ?string,
   featured_image: ?ArticleCard_featured_image,
   category: ?ArticleCard_category,

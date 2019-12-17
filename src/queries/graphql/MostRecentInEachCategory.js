@@ -48,7 +48,7 @@ export type MostRecentInEachCategory_allDataArticle_group_edges_node = {
   __typename: "DataArticle",
   id: string,
   slug: ?string,
-  title: ?string,
+  title: string,
   excerpt: ?string,
   featured_image: ?MostRecentInEachCategory_allDataArticle_group_edges_node_featured_image,
   category: ?MostRecentInEachCategory_allDataArticle_group_edges_node_category,

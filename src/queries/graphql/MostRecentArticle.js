@@ -48,7 +48,7 @@ export type MostRecentArticle_allDataArticle_nodes = {
   __typename: "DataArticle",
   id: string,
   slug: ?string,
-  title: ?string,
+  title: string,
   excerpt: ?string,
   featured_image: ?MostRecentArticle_allDataArticle_nodes_featured_image,
   category: ?MostRecentArticle_allDataArticle_nodes_category,
