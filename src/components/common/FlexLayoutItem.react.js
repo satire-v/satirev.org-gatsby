@@ -13,6 +13,7 @@ type Props = {
   children: React.Node,
   className?: string,
   style?: Object,
+  tag: string,
 };
 
 const FlexLayoutItem = (props: Props): React.Node => {
@@ -21,15 +22,16 @@ const FlexLayoutItem = (props: Props): React.Node => {
     ${props.align ? `align-self:${getFlexProp(props.align)};` : ""}
     overflow: hidden;
   `;
+  const Tag = `${props.tag}`;
 
   return (
-    <div
+    <Tag
       className={props.className}
       style={props.style}
       css={FlexLayoutItemRootStyle}
     >
       {props.children}
-    </div>
+    </Tag>
   );
 };
 
@@ -38,6 +40,7 @@ FlexLayoutItem.defaultProps = {
   grow: 1,
   shrink: 1,
   basis: "auto",
+  tag: "div",
 };
 
 export default FlexLayoutItem;

@@ -1,9 +1,9 @@
 // @flow
 import * as React from "react";
-import { type ImageSize, getImgMaxHeight, getImgMaxWidth } from "@utils/image";
 import { css } from "@emotion/core";
 import PostCard from "@components/PostCard";
-import type { ArticleCard } from "@utils/types";
+import image, { type ImageSize } from "@utils/image";
+import type { ArticleCard } from "@queries/article";
 
 type Props = {
   articles: Array<ArticleCard>,
@@ -22,12 +22,12 @@ function PostCardGrid(props: Props): React.Node {
     ${props.gridDirection === "horizontal"
       ? `grid-template-columns: repeat(
       auto-fit,
-      minmax(${getImgMaxWidth("small")}px, 1fr)
+      minmax(${image.sizes.small.width}px, 1fr)
     );
     grid-auto-rows: 1fr;`
       : `grid-template-rows: repeat(
       auto-fit,
-      minmax(${getImgMaxHeight("small", "default")}px, 1fr)
+      minmax(${image.sizes.small.height("default")}px, 1fr)
     );
     grid-auto-columns: 1fr;`}
     grid-gap: 2em;

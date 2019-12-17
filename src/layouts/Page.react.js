@@ -12,7 +12,7 @@ type Props = {
 };
 
 const bodyMargins = css`
-  margin: 0px ${margins.pageBody}px;
+  margin: 0px ${margins.pageContent};
 `;
 
 function Page(props: Props) {

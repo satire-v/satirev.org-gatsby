@@ -8,7 +8,7 @@
     "prettier/flowtype",
     "prettier/react"
   ],
-  "plugins": ["flowtype", "prettier", "react", "filenames", "sort-imports-es6-autofix"],
+  "plugins": ["flowtype", "prettier", "react", "filenames", "sort-imports-es6-autofix", "graphql"],
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",

@@ -1,16 +1,17 @@
 // @flow
 import * as React from "react";
-import { colors, fonts, margins } from "@styles/global";
+import { colors, margins, text } from "@styles/global";
 import { css } from "@emotion/core";
 import FlexLayout from "@common/FlexLayout";
 
 function BreakingNewsBar(): React.Node {
   const breakingBarRootStyle = css`
     border-bottom: 1px solid lightgray;
-    margin: 0px -${margins.pageBody}px 24px;
-    padding: 12px ${margins.pageBody}px;
+    border-top: 1px solid lightgray;
+    margin: 0px -${margins.pageContent} 24px;
+    padding: 12px ${margins.pageContent};
     font-weight: 700;
-    font-family: ${fonts.sansSerif};
+    font-family: ${text.fonts.sansSerif};
     font-size: 1.1em;
   `;
 

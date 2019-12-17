@@ -1,13 +1,14 @@
 // @flow
 import * as React from "react";
-import { type ImageRatio, type ImageSize, getImgMaxWidth } from "@utils/image";
 import { css } from "@emotion/core";
-import { fonts } from "@styles/global";
+import { text } from "@styles/global";
 import { useTheme } from "emotion-theming";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
 import ImageBox from "@common/ImageBox";
-import type { ArticleCard } from "@utils/types";
+import Img from "gatsby-image";
+import image, { type ImageRatio, type ImageSize } from "@utils/image";
+import type { ArticleCard } from "@queries/article";
 
 type Props = {
   size: ImageSize,
@@ -25,13 +26,14 @@ function PostCard(props: Props): React.Node {
     display: grid;
     max-width: ${
       props.direction === "horizontal"
-        ? getImgMaxWidth(props.size) * 1.6
-        : getImgMaxWidth(props.size)
+        ? image.sizes[props.size].width * 1.6
+        : image.sizes[props.size].width
     }px;
+    min-width: ${image.sizes.small.width}px;
     /* max-height: ${
       props.direction === "horizontal"
         ? "100%"
-        : getImgMaxWidth(props.size) * 1.6
+        : image.sizes[props.size].width * 1.6
     }px;  may not be necessary */
     grid-template: ${
       props.direction === "horizontal"
@@ -41,16 +43,13 @@ function PostCard(props: Props): React.Node {
   `;
 
   const titleStyles = css`
+    ${text.link}
     text-align: left;
-    font-size: ${fonts.card(props.size).title.size};
-    line-height: ${fonts.card(props.size).title.lineHeight};
     padding-bottom: 10px;
   `;
 
   const textStyles = css`
     text-align: left;
-    font-size: ${fonts.card(props.size).text.size};
-    line-height: ${fonts.card(props.size).text.lineHeight};
     width: 100%;
   `;
 
@@ -73,17 +72,15 @@ function PostCard(props: Props): React.Node {
 
   return (
     <div css={rootStyles}>
-      {props.img ? (
-        <ImageBox
-          src={props.article.imgUrl}
-          alt=""
-          size={props.size}
-          css={imageWrapper}
-        />
-      ) : null}
+      {props.img ? <Img fluid={props.article.imgFluid} /> : null}
 
-      <FlexLayout direction="vertical" css={contentWrapper}>
-        <FlexLayoutItem css={titleStyles} className={fonts.titleClass} grow={0}>
+      <FlexLayout direction="vertical" css={contentWrapper} align="start">
+        <FlexLayoutItem
+          css={titleStyles}
+          grow={0}
+          tag={image.sizes[props.size].titleTag}
+        >
+          {/*  make dependent on size */}
           {props.article.title}
         </FlexLayoutItem>
 

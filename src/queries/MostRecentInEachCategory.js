@@ -1,7 +1,7 @@
 // @flow
 
 import { graphql, useStaticQuery } from "gatsby";
-import type { ArticleCard } from "@utils/types";
+import type { ArticleCard } from "@queries/article";
 
 const mostRecentInEachCategory = (): Array<ArticleCard> => {
   const data = useStaticQuery(graphql`
@@ -10,19 +10,7 @@ const mostRecentInEachCategory = (): Array<ArticleCard> => {
         group(field: category___name, limit: 1) {
           edges {
             node {
-              title
-              excerpt
-              slug
-              id
-              featured_image {
-                data {
-                  full_url
-                }
-              }
-              category {
-                name
-                slug
-              }
+              ...ArticleCard
             }
           }
           fieldValue
@@ -39,6 +27,7 @@ const mostRecentInEachCategory = (): Array<ArticleCard> => {
       title: article.title,
       excerpt: article.excerpt,
       imgUrl: article.featured_image.data.full_url,
+      imgFluid: article.featured_image.localFile.childImageSharp.fluid,
       category: article.category.name,
     };
     articles.push(previewObj);

@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { colors, fonts } from "@styles/global";
+import { colors, text } from "@styles/global";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -17,7 +17,7 @@ const buttonStyle = css`
   cursor: pointer;
   transition: all 0.2s;
   color: ${colors.crimson};
-  ${fonts.headerStyle}
+  ${text.meta.headers}
   font-size: ${FONT_SIZE};
   &:hover {
     color: white;
@@ -27,7 +27,7 @@ const buttonStyle = css`
 
 function Navbar(): React.Node {
   const { allDataCategory } = useStaticQuery(graphql`
-    query NavQuery {
+    query NavBarQuery {
       allDataCategory {
         nodes {
           name
@@ -59,7 +59,7 @@ function Navbar(): React.Node {
     text-align: center;
     white-space: nowrap;
     @media (max-width: calc(
-      ${marginLength}px + (290px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
+      ${marginLength}px + (205px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
     + ${MARGIN_OF_ERROR})) {
       grid-column: span 3; /* this is just for the header....might want to idk, factor out */
     }

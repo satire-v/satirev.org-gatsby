@@ -1,6 +1,5 @@
 // @flow
 import { css } from "@emotion/core";
-import type { ImageSize } from "@utils/image";
 
 const colors = {
   crimson: "#A51C30",
@@ -10,73 +9,48 @@ const colors = {
 const sansSerif = "Lato Light, Lucida Sans Unicode, sans-serif";
 
 const margins = {
-  pageBody: 60,
+  pageContent: "80px",
+  layoutColumns: "16px",
 };
 
-const fonts = {
-  serif: "Georgia, serif",
-  sansSerif,
-  siteTitle: "Cardinal, Georgia, serif",
-  card(size: ImageSize) {
-    switch (size) {
-      case "large":
-        return {
-          title: {
-            size: "1.7em",
-            lineHeight: "0.95em",
-          },
-          text: {
-            size: "0.9em",
-            lineHeight: "1.3em",
-          },
-        };
-      case "medium":
-        return {
-          title: {
-            size: "1.5em",
-            lineHeight: "0.95em",
-          },
-          text: {
-            size: "0.9em",
-            lineHeight: "1.3em",
-          },
-        };
-      case "small":
-      default:
-        return {
-          title: {
-            size: "1.1em",
-            lineHeight: "0.95em",
-          },
-          text: {
-            size: "0.9em",
-            lineHeight: "1.3em",
-          },
-        };
-    }
+const text = {
+  fonts: {
+    serif: "Georgia, serif",
+    sansSerif,
   },
-  titleClass: "postTitle",
-  headerStyle: css`
-    font-family: ${sansSerif};
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 1.1em;
+  meta: {
+    title: css`
+      font-family: Cardinal, Georgia, serif;
+    `,
+    headers: css`
+      text-transform: uppercase;
+      font-weight: 300;
+      font-family: ${sansSerif};
+    `,
+  },
+  link: css`
+    color: black;
+    transition: all 0.1s;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      color: ${colors.crimson};
+    }
   `,
 };
 
 const global = css`
   @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
   body {
-    font-family: ${fonts.serif};
+    font-family: ${text.fonts.serif};
     font-weight: normal;
     font-stretch: normal;
-    font-size: 0.9em; /* .9 base, i.e. 14px */
+    font-size: 14px;
     line-height: 1.3em;
     &,
     & * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
     img {
       object-fit: contain;
@@ -85,16 +59,37 @@ const global = css`
       color: inherit;
       text-decoration: none;
     }
-    & .${fonts.titleClass} {
-      color: black;
-      transition: all 0.3s;
-      cursor: pointer;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       line-height: 0.95em;
-      &:hover {
-        color: ${colors.crimson};
-      }
+      font-weight: normal;
+      margin: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    h5 {
+      font-size: 16px;
+    }
+    h6 {
+      font-size: 14px;
     }
   }
 `;
 
-export { colors, fonts, global, margins };
+export { colors, text, global, margins };

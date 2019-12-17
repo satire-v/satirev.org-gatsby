@@ -9,6 +9,36 @@ module.exports = {
     "gatsby-plugin-flow",
     "gatsby-plugin-emotion",
     {
+      resolve: "gatsby-plugin-codegen",
+      options: {
+        addTypename: true,
+        target: "flow",
+        output: "graphql",
+        includes: [
+          "./src/**/*.js",
+          "./node_modules/gatsby-source-directus-cms/src/*.js",
+          "./node_modules/gatsby-transformer-sharp/src/*.js",
+          "./node_modules/gatsby-image/src/*.js",
+          // "./node_modules/gatsby-*/**/*.js" Direct includes prefered, because of performance reasons
+        ],
+      },
+    },
+    {
+      resolve: "gatsby-source-directus-cms",
+      options: {
+        url: "http://api.satirev.org",
+        project: "satire-v",
+        auth: {
+          token: "letmeinyoubitch",
+        },
+        targetStatuses: null,
+        downloadFiles: true,
+        typePrefix: "data",
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
       resolve: "gatsby-plugin-alias-imports",
       options: {
         extensions: [".js", ".jsx", ".react.js"],
@@ -22,19 +52,6 @@ module.exports = {
           "@assets": "src/assets",
           "@queries": "src/queries",
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-directus-cms",
-      options: {
-        url: "http://api.satirev.org",
-        project: "satire-v",
-        auth: {
-          token: "letmeinyoubitch",
-        },
-        targetStatuses: null,
-        downloadFiles: false,
-        typePrefix: "data",
       },
     },
   ],

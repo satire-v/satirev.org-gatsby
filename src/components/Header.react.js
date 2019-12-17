@@ -1,27 +1,30 @@
 // @flow
 import * as React from "react";
-import { Link } from "gatsby";
-import { colors, fonts } from "@styles/global";
+import { Link, graphql, useStaticQuery } from "gatsby";
+import { colors, text } from "@styles/global";
 import { css } from "@emotion/core";
-import Navbar from "@components/Navbar";
 import anime from "animejs/lib/anime.es";
 import logo from "@img/logo.png";
 
-const BASELINE = 56;
+const BASELINE = 40;
 
 const logoSize = BASELINE * 1.5; // get this better responsive
 
+const baseColor = "white";
+const accentColor = colors.crimson;
+
 const headerRootStyle = css`
-  background: white;
-  width: 100%;
-  color: ${colors.crimson};
-  border-bottom: 12px ${colors.crimson} solid;
+  background: ${baseColor};
+  color: ${accentColor};
+  border-top: 24px ${accentColor} solid;
   padding: 10px;
 `;
 
 const logoStyle = css`
   height: ${logoSize}px;
   width: auto;
+  display: inline-block;
+  vertical-align: bottom;
 `;
 
 const titleWrapper = css`
@@ -34,23 +37,24 @@ const titleWrapper = css`
   }
   flex: 1 1 auto;
   order: 0;
+  align-self: center;
 `;
 
 const titleStyle = css`
-  font-family: ${fonts.siteTitle};
+  ${text.meta.title}
   font-size: ${BASELINE}px;
   line-height: normal;
 `;
 
 const subtitleStyle = css`
   text-indent: 1em;
-  margin-top: -0.8em;
+  margin-top: -1.2em;
   font-size: ${BASELINE * 0.25}px;
 `;
 
 const clickable = css`
   cursor: pointer;
-  height: ${logoSize}px;
+  height: 100%;
 `;
 
 const FADE_IN_DUR = 2000;
@@ -145,11 +149,84 @@ const timeline = anime.timeline({
 
 const gridStyle = css`
   display: grid;
-  grid-template-columns: repeat(3, minmax(min-content, auto));
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
   align-items: end;
   grid-auto-flow: row dense;
-  grid-gap: 2px;
+  grid-gap: 12px;
 `;
+
+const PADDING_HORIZONTAL = 16;
+const MARGIN_HORIZONTAL = 4;
+const FONT_SIZE = "16px";
+const MARGIN_OF_ERROR = "40px";
+
+const buttonStyle = css`
+  display: inline-block;
+  padding: 8px ${PADDING_HORIZONTAL}px;
+  margin: 0 ${MARGIN_HORIZONTAL}px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: ${baseColor};
+  color: ${accentColor};
+  ${text.meta.headers}
+  font-size: ${FONT_SIZE};
+  &:hover {
+    color: ${baseColor};
+    background: ${accentColor};
+  }
+`;
+
+function Navbar(): React.Node {
+  const { allDataCategory } = useStaticQuery(graphql`
+    query NavQuery {
+      allDataCategory {
+        nodes {
+          name
+          id
+        }
+      }
+    }
+  `);
+
+  function reducer(total, node) {
+    let counter = 0;
+    node.name.split("").forEach(el => {
+      if (el.match(/(?![i])[a-z0-9]/gi)) {
+        counter += 1;
+      } else {
+        counter += 0.4;
+      }
+    });
+    return total + counter;
+  }
+
+  const letterCount = allDataCategory.nodes.reduce(reducer, 0);
+  const marginLength =
+    +allDataCategory.nodes.length *
+    ((MARGIN_HORIZONTAL + PADDING_HORIZONTAL) * 2);
+
+  const navRootStyle = css`
+    background: ${baseColor};
+    text-align: center;
+    white-space: nowrap;
+    @media (max-width: calc(
+      ${marginLength}px + (205px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
+    + ${MARGIN_OF_ERROR})) {
+      grid-column: span 3; /* this is just for the header....might want to idk, factor out */
+    }
+  `;
+
+  return (
+    <nav css={navRootStyle}>
+      {allDataCategory.nodes.map(node => (
+        <div key={node.id} css={buttonStyle}>
+          {node.name}
+        </div>
+      ))}
+    </nav>
+  );
+}
 
 function Header(): React.Node {
   React.useEffect(() => {

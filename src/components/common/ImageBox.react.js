@@ -1,11 +1,7 @@
 // @flow
 import * as React from "react";
-import {
-  type ImageRatio,
-  type ImageSize,
-  getImgRatioValue,
-} from "@utils/image";
 import { css } from "@emotion/core";
+import image, { type ImageRatio, type ImageSize } from "@utils/image";
 
 type Props = {
   src: string,
@@ -20,7 +16,7 @@ type Props = {
 function ImageBox(props: Props): React.Node {
   const aspectRatioBox = css`
     width: 100%;
-    padding-top: ${getImgRatioValue(props.ratio) * 100}%;
+    padding-top: ${image.ratios[props.ratio] * 100}%;
     height: 0;
     overflow: hidden;
     background: none;
