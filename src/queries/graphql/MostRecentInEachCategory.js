@@ -8,7 +8,7 @@
 
 export type MostRecentInEachCategory_allDataArticle_group_edges_node_featured_image_data = {
   __typename: "DataFileData",
-  full_url: ?string,
+  full_url: string,
 };
 
 export type MostRecentInEachCategory_allDataArticle_group_edges_node_featured_image_localFile_childImageSharp_fluid = {
@@ -40,18 +40,19 @@ export type MostRecentInEachCategory_allDataArticle_group_edges_node_featured_im
 
 export type MostRecentInEachCategory_allDataArticle_group_edges_node_category = {
   __typename: "DataCategory",
-  name: ?string,
-  slug: ?string,
+  name: string,
+  slug: string,
 };
 
 export type MostRecentInEachCategory_allDataArticle_group_edges_node = {
   __typename: "DataArticle",
   id: string,
-  slug: ?string,
+  slug: string,
   title: string,
   excerpt: ?string,
+  body: string,
   featured_image: ?MostRecentInEachCategory_allDataArticle_group_edges_node_featured_image,
-  category: ?MostRecentInEachCategory_allDataArticle_group_edges_node_category,
+  category: MostRecentInEachCategory_allDataArticle_group_edges_node_category,
 };
 
 export type MostRecentInEachCategory_allDataArticle_group_edges = {

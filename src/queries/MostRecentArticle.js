@@ -1,29 +1,21 @@
 // @flow
-
+import { type ArticleCard, processArticleCardQuery } from "@queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
-import type { ArticleCard } from "@queries/Article";
+
+import { type MostRecentArticle } from "./graphql/MostRecentArticle";
 
 const mostRecentArticle = (): ArticleCard => {
-  const data = useStaticQuery(graphql`
+  const data: MostRecentArticle = useStaticQuery(graphql`
     query MostRecentArticle {
       allDataArticle(limit: 1, sort: { fields: modified_on, order: DESC }) {
         nodes {
-          ...ArticleCard
+          ...ArticleCardFragment
         }
       }
     }
   `);
   const article = data.allDataArticle.nodes[0];
-  const previewObj: ArticleCard = {
-    id: article.id,
-    slug: `${article.category.slug}/${article.slug}`,
-    title: article.title,
-    excerpt: article.excerpt,
-    imgUrl: article.featured_image.data.full_url,
-    imgFluid: article.featured_image.localFile.childImageSharp.fluid,
-    category: article.category.name,
-  };
-  return previewObj;
+  return processArticleCardQuery(article);
 };
 
 export default mostRecentArticle;

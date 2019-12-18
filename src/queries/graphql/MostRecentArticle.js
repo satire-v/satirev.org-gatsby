@@ -8,7 +8,7 @@
 
 export type MostRecentArticle_allDataArticle_nodes_featured_image_data = {
   __typename: "DataFileData",
-  full_url: ?string,
+  full_url: string,
 };
 
 export type MostRecentArticle_allDataArticle_nodes_featured_image_localFile_childImageSharp_fluid = {
@@ -40,18 +40,19 @@ export type MostRecentArticle_allDataArticle_nodes_featured_image = {
 
 export type MostRecentArticle_allDataArticle_nodes_category = {
   __typename: "DataCategory",
-  name: ?string,
-  slug: ?string,
+  name: string,
+  slug: string,
 };
 
 export type MostRecentArticle_allDataArticle_nodes = {
   __typename: "DataArticle",
   id: string,
-  slug: ?string,
+  slug: string,
   title: string,
   excerpt: ?string,
+  body: string,
   featured_image: ?MostRecentArticle_allDataArticle_nodes_featured_image,
-  category: ?MostRecentArticle_allDataArticle_nodes_category,
+  category: MostRecentArticle_allDataArticle_nodes_category,
 };
 
 export type MostRecentArticle_allDataArticle = {

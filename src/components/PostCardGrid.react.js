@@ -3,7 +3,7 @@ import * as React from "react";
 import { css } from "@emotion/core";
 import PostCard from "@components/PostCard";
 import image, { type ImageSize } from "@utils/image";
-import type { ArticleCard } from "@queries/article";
+import type { ArticleCard } from "@queries/Article";
 
 type Props = {
   articles: Array<ArticleCard>,

@@ -8,7 +8,7 @@
 
 export type NavBarQuery_allDataCategory_nodes = {
   __typename: "DataCategory",
-  name: ?string,
+  name: string,
   id: string,
 };
 

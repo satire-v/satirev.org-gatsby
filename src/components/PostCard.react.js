@@ -1,14 +1,14 @@
 // @flow
 import * as React from "react";
+import { type ArticleCard } from "@queries/Article";
 import { css } from "@emotion/core";
 import { text } from "@styles/global";
 import { useTheme } from "emotion-theming";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
-import ImageBox from "@common/ImageBox";
 import Img from "gatsby-image";
+import analyze from "rgbaster";
 import image, { type ImageRatio, type ImageSize } from "@utils/image";
-import type { ArticleCard } from "@queries/article";
 
 type Props = {
   size: ImageSize,
@@ -19,8 +19,33 @@ type Props = {
   img: boolean,
 };
 
+function genWhites() {
+  const whites = [];
+  for (let i = 250; i < 256; i += 1) {
+    for (let j = 250; j < 256; j += 1) {
+      for (let k = 250; k < 256; k += 1) {
+        whites.push(`rgb(${i},${j},${k})`);
+      }
+    }
+  }
+  return whites;
+}
+
 function PostCard(props: Props): React.Node {
   const theme = useTheme();
+  const [background, setBackground] = React.useState(null);
+
+  React.useEffect(() => {
+    async function getBackgroundColor() {
+      const result = await analyze(props.article.imgFluid?.base64, {
+        ignore: genWhites(),
+        scale: 0.2,
+      });
+      setBackground(result[0].color);
+    }
+    getBackgroundColor();
+  }, []);
+
   const rootStyles = css`
     background: ${theme.testing ? "lightgray" : "none"};
     display: grid;
@@ -72,7 +97,15 @@ function PostCard(props: Props): React.Node {
 
   return (
     <div css={rootStyles}>
-      {props.img ? <Img fluid={props.article.imgFluid} /> : null}
+      {props.img ? (
+        <Img
+          fluid={props.article.imgFluid}
+          css={css`
+            ${imageWrapper}
+            background: ${background};
+          `}
+        />
+      ) : null}
 
       <FlexLayout direction="vertical" css={contentWrapper} align="start">
         <FlexLayoutItem
@@ -89,7 +122,7 @@ function PostCard(props: Props): React.Node {
             css={textStyles}
             basis={props.direction === "horizontal" ? 0 : "auto"}
           >
-            {props.article.excerpt}
+            {props.article.fullExcerpt}
           </FlexLayoutItem>
         ) : null}
       </FlexLayout>
