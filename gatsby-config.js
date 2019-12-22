@@ -7,7 +7,12 @@
 module.exports = {
   plugins: [
     "gatsby-plugin-flow",
-    "gatsby-plugin-emotion",
+    {
+      resolve: "gatsby-plugin-emotion",
+      options: {
+        labelFormat: "[filename][local]",
+      },
+    },
     {
       resolve: "gatsby-plugin-codegen",
       options: {
