@@ -21292,6 +21292,16 @@
           "fields": null,
           "inputFields": [
             {
+              "name": "labelFormat",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "addTypename",
               "description": "",
               "type": {
@@ -21973,6 +21983,18 @@
           "name": "SitePluginPluginOptions",
           "description": null,
           "fields": [
+            {
+              "name": "labelFormat",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
             {
               "name": "addTypename",
               "description": null,
@@ -23211,6 +23233,12 @@
             },
             {
               "name": "version",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___labelFormat",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -24946,6 +24974,12 @@
             },
             {
               "name": "pluginCreator___version",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___labelFormat",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
