@@ -14,23 +14,19 @@ const sizes: {
   [ImageSize]: {
     width: number,
     height: (ratio: ImageRatio) => number,
-    titleTag: string,
   },
 } = {
   large: {
     width: 640,
     height: (ratio: ImageRatio) => 640 * ratios[ratio],
-    titleTag: "h2",
   },
   medium: {
     width: 480,
     height: (ratio: ImageRatio) => 480 * ratios[ratio],
-    titleTag: "h5",
   },
   small: {
-    width: 160,
-    height: (ratio: ImageRatio) => 160 * ratios[ratio],
-    titleTag: "h5",
+    width: 180,
+    height: (ratio: ImageRatio) => 180 * ratios[ratio],
   },
 };
 

@@ -2,7 +2,6 @@
 import * as React from "react";
 import { type ArticleCard } from "@queries/Article";
 import { css } from "@emotion/core";
-import { text } from "@styles/global";
 import { useTheme } from "emotion-theming";
 import FlexLayout from "@common/FlexLayout";
 import FlexLayoutItem from "@common/FlexLayoutItem";
@@ -68,7 +67,6 @@ function PostCard(props: Props): React.Node {
   `;
 
   const titleStyles = css`
-    ${text.link}
     text-align: left;
     padding-bottom: 10px;
   `;
@@ -108,11 +106,7 @@ function PostCard(props: Props): React.Node {
       ) : null}
 
       <FlexLayout direction="vertical" css={contentWrapper} align="start">
-        <FlexLayoutItem
-          css={titleStyles}
-          grow={0}
-          tag={image.sizes[props.size].titleTag}
-        >
+        <FlexLayoutItem css={titleStyles} grow={0} tag="h3">
           {/*  make dependent on size */}
           {props.article.title}
         </FlexLayoutItem>

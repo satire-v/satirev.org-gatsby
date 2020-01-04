@@ -8,9 +8,29 @@ module.exports = {
   plugins: [
     "gatsby-plugin-flow",
     {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
       resolve: "gatsby-plugin-emotion",
       options: {
-        labelFormat: "[filename][local]",
+        labelFormat: "[filename]-[local]",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Lato", "Merriweather"],
+        },
+        custom: {
+          families: ["Cardinal"],
+          urls: ["/src/assets/fonts/cardinal/stylesheet.css"],
+        },
       },
     },
     {

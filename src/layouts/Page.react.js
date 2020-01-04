@@ -1,26 +1,29 @@
 // @flow
-
 import "@assets/fonts/cardinal/stylesheet.css";
 import * as React from "react";
-import { Global, css } from "@emotion/core";
-import { ThemeProvider } from "emotion-theming";
-import { global, margins } from "@styles/global";
+import { CssBaseline } from "@material-ui/core";
+import { Global } from "@emotion/core";
+import { ThemeProvider } from "@material-ui/core/styles";
 import Header from "@components/header";
+import theme, { global } from "@styles/theme";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 type Props = {
   children?: React.Node,
 };
 
-const bodyMargins = css`
-  margin: 0px ${margins.pageContent};
-`;
-
 function Page(props: Props) {
+  const responsiveTheme = {
+    type: useMediaQuery("(prefers-color-scheme: dark)"),
+    ...theme,
+  };
   return (
-    <ThemeProvider theme={{ testing: false }}>
-      <Global styles={global} />
-      <Header />
-      <div css={bodyMargins}>{props.children}</div>
+    <ThemeProvider theme={responsiveTheme}>
+      <CssBaseline>
+        <Global styles={global} />
+        <Header />
+        {props.children}
+      </CssBaseline>
     </ThemeProvider>
   );
 }

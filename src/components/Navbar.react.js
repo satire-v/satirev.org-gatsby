@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
-import { colors, text } from "@styles/global";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
+import theme from "@styles/theme";
 
 const PADDING_HORIZONTAL = 16;
 const MARGIN_HORIZONTAL = 4;
@@ -16,12 +16,11 @@ const buttonStyle = css`
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
-  color: ${colors.crimson};
-  ${text.meta.headers}
+  color: ${theme.palette.primary.main};
   font-size: ${FONT_SIZE};
   &:hover {
     color: white;
-    background: ${colors.crimson};
+    background: ${theme.palette.primary.main};
   }
 `;
 

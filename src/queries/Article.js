@@ -51,6 +51,7 @@ export const articleCardFragment = graphql`
   }
 `;
 
+const EXCERPT_WORD_LIMIT = 40;
 export const processArticleCardQuery = (
   article: ArticleCardFragment
 ): ArticleCard => {
@@ -58,23 +59,23 @@ export const processArticleCardQuery = (
   if (fullExcerpt === "") {
     const $ = cheerio.load(article.body);
     const texts = $("p, div");
-    texts.each(() => {
-      if (cheerio.text($(this)).match(/by/gi)) {
-        $(this).remove();
+    texts.toArray().every(el => {
+      if (cheerio.text($(el)).match(/by/gi)) {
+        $(el).remove();
       }
-      if (!/^\s+$/.test(cheerio.text($(this)))) {
-        fullExcerpt = cheerio.text($(this));
+      if (!/^\s+$/.test(cheerio.text($(el)))) {
+        fullExcerpt = cheerio.text($(el));
         return false;
       }
       return true;
     });
   }
   let shortExcerpt = fullExcerpt;
-  if (fullExcerpt.split(" ").length > 50) {
-    shortExcerpt = fullExcerpt
+  if (fullExcerpt.split(" ").length > EXCERPT_WORD_LIMIT) {
+    shortExcerpt = `${fullExcerpt
       .split(" ")
-      .slice(0, 50)
-      .join(" ");
+      .slice(0, EXCERPT_WORD_LIMIT)
+      .join(" ")}...`;
   }
   return {
     id: article.id,

@@ -1,17 +1,18 @@
 // @flow
 import * as React from "react";
+import { Button, Typography } from "@material-ui/core";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import { colors, text } from "@styles/global";
 import { css } from "@emotion/core";
 import anime from "animejs/lib/anime.es";
 import logo from "@img/logo.png";
+import theme, { titleFont } from "@styles/theme";
 
 const BASELINE = 40;
 
 const logoSize = BASELINE * 1.5; // get this better responsive
 
 const baseColor = "white";
-const accentColor = colors.crimson;
+const accentColor = theme.palette.primary.main;
 
 const headerRootStyle = css`
   background: ${baseColor};
@@ -41,9 +42,9 @@ const titleWrapper = css`
 `;
 
 const titleStyle = css`
-  ${text.meta.title}
   font-size: ${BASELINE}px;
   line-height: normal;
+  font-family: ${titleFont};
 `;
 
 const subtitleStyle = css`
@@ -141,12 +142,6 @@ const fadeInLowercaseS = {
   duration: FADE_S_DUR,
 };
 
-const timeline = anime.timeline({
-  autoplay: false,
-  direction: "alternate",
-  easing: "linear",
-});
-
 const gridStyle = css`
   display: grid;
   grid-template-columns: repeat(3, minmax(min-content, max-content));
@@ -161,19 +156,12 @@ const FONT_SIZE = "16px";
 const MARGIN_OF_ERROR = "40px";
 
 const buttonStyle = css`
-  display: inline-block;
-  padding: 8px ${PADDING_HORIZONTAL}px;
   margin: 0 ${MARGIN_HORIZONTAL}px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: ${baseColor};
+  background: none;
   color: ${accentColor};
-  ${text.meta.headers}
-  font-size: ${FONT_SIZE};
   &:hover {
-    color: ${baseColor};
     background: ${accentColor};
+    color: ${theme.palette.primary.contrastText};
   }
 `;
 
@@ -220,15 +208,27 @@ function Navbar(): React.Node {
   return (
     <nav css={navRootStyle}>
       {allDataCategory.nodes.map(node => (
-        <div key={node.id} css={buttonStyle}>
+        <Button
+          key={node.id}
+          variant="contained"
+          color="primary"
+          css={buttonStyle}
+          disableElevation
+        >
           {node.name}
-        </div>
+        </Button>
       ))}
     </nav>
   );
 }
 
 function Header(): React.Node {
+  const timeline = anime.timeline({
+    autoplay: false,
+    direction: "alternate",
+    easing: "linear",
+  });
+
   React.useEffect(() => {
     timeline
       .add(fadeIn)
