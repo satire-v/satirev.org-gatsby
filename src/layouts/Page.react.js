@@ -4,6 +4,7 @@ import * as React from "react";
 import { CssBaseline } from "@material-ui/core";
 import { Global } from "@emotion/core";
 import { ThemeProvider } from "@material-ui/core/styles";
+import Footer from "@components/Footer";
 import Header from "@components/header";
 import theme, { global } from "@styles/theme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -23,6 +24,7 @@ function Page(props: Props) {
         <Global styles={global} />
         <Header />
         {props.children}
+        <Footer />
       </CssBaseline>
     </ThemeProvider>
   );

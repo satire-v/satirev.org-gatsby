@@ -1,21 +1,22 @@
+/* eslint-disable camelcase */
 // @flow
 import { graphql } from "gatsby";
 
 import {
   type ArticleCardFragment,
-  type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase
+  type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
 } from "./graphql/ArticleCardFragment";
 import { type ArticleFullFragment } from "./graphql/ArticleFullFragment";
 import { type ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
 
 const cheerio = require("cheerio");
 
-export type ArticleLink = {
+export type ArticleLink = {|
   id: string,
   slug: string,
   title: string,
   category: string,
-};
+|};
 
 export const articleLinkFragment = graphql`
   fragment ArticleLinkFragment on DataArticle {
@@ -34,20 +35,21 @@ export const processArticleLinkQuery = (
 ): ArticleLink => {
   return {
     id: article.id,
-    slug: `${article.category.slug}/${article.slug}`,
+    slug: `/${article.category.slug}/${article.slug}`,
     title: article.title,
     category: article.category.name,
   };
 };
 
-export type ArticleCard = {
+export type ArticleCard = {|
   ...ArticleLink,
   fullExcerpt: string,
   shortExcerpt: string,
   imgUrl: ?string,
+  imgTitle: ?string,
   imgFluid: ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase
   category: string,
-};
+|};
 
 export const articleCardFragment = graphql`
   fragment ArticleCardFragment on DataArticle {
@@ -55,6 +57,7 @@ export const articleCardFragment = graphql`
     excerpt
     body
     featured_image {
+      title
       data {
         full_url
       }
@@ -101,12 +104,11 @@ export const processArticleCardQuery = (
       .join(" ")}...`;
   }
   return {
-    id: article.id,
-    slug: `${article.category.slug}/${article.slug}`,
-    title: article.title,
+    ...processArticleLinkQuery(article),
     fullExcerpt,
     shortExcerpt,
-    imgUrl: article?.featured_image?.data?.full_url, // eslint-disable-line camelcase
+    imgUrl: article?.featured_image?.data?.full_url,
+    imgTitle: article?.featured_image?.title,
     imgFluid: article.featured_image?.localFile?.childImageSharp?.fluid,
     category: article.category.name,
   };
@@ -123,13 +125,14 @@ export const articleFullFragment = graphql`
   }
 `;
 
-export type ArticleFull = {
+export type ArticleFull = {|
   ...ArticleCard,
+  body: string,
   tags: Array<string>,
   published: Date,
   imageCaption: ?string,
   legacySlug: ?string,
-};
+|};
 
 export const processArticleQuery = (
   article: ArticleFullFragment
@@ -137,6 +140,7 @@ export const processArticleQuery = (
   const articleCardObj = processArticleCardQuery(article);
   return {
     ...articleCardObj,
+    body: article.body,
     tags:
       (article.tags &&
         article.tags

@@ -32,7 +32,7 @@ function Link(props: Props): React.Node {
       {...rest}
       css={linkRoot}
       color="textPrimary"
-      underline="never"
+      underline="none"
       component={LinkBehavior}
     >
       {children}

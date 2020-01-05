@@ -3,21 +3,21 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: ArticleCardFragment
+// GraphQL query operation: FullArticle
 // ====================================================
 
-export type ArticleCardFragment_category = {
+export type FullArticle_dataArticle_category = {
   __typename: "DataCategory",
   name: string,
   slug: string,
 };
 
-export type ArticleCardFragment_featured_image_data = {
+export type FullArticle_dataArticle_featured_image_data = {
   __typename: "DataFileData",
   full_url: string,
 };
 
-export type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid = {
+export type FullArticle_dataArticle_featured_image_localFile_childImageSharp_fluid = {
   __typename: "ImageSharpFluid",
   base64: ?string,
   aspectRatio: ?number,
@@ -28,32 +28,45 @@ export type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid =
   sizes: ?string,
 };
 
-export type ArticleCardFragment_featured_image_localFile_childImageSharp = {
+export type FullArticle_dataArticle_featured_image_localFile_childImageSharp = {
   __typename: "ImageSharp",
-  fluid: ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
+  fluid: ?FullArticle_dataArticle_featured_image_localFile_childImageSharp_fluid,
 };
 
-export type ArticleCardFragment_featured_image_localFile = {
+export type FullArticle_dataArticle_featured_image_localFile = {
   __typename: "File",
-  childImageSharp: ?ArticleCardFragment_featured_image_localFile_childImageSharp,
+  childImageSharp: ?FullArticle_dataArticle_featured_image_localFile_childImageSharp,
 };
 
-export type ArticleCardFragment_featured_image = {
+export type FullArticle_dataArticle_featured_image = {
   __typename: "DataFile",
   title: ?string,
-  data: ?ArticleCardFragment_featured_image_data,
-  localFile: ?ArticleCardFragment_featured_image_localFile,
+  data: ?FullArticle_dataArticle_featured_image_data,
+  localFile: ?FullArticle_dataArticle_featured_image_localFile,
 };
 
-export type ArticleCardFragment = {
+export type FullArticle_dataArticle = {
   __typename: "DataArticle",
   id: string,
   slug: string,
   title: string,
-  category: ArticleCardFragment_category,
+  category: FullArticle_dataArticle_category,
   excerpt: ?string,
   body: string,
-  featured_image: ?ArticleCardFragment_featured_image,
+  featured_image: ?FullArticle_dataArticle_featured_image,
+  tags: ?Array<?string>,
+  modified_on: any,
+  created_on: any,
+  featured_image_caption: ?string,
+  legacy_slug: ?string,
+};
+
+export type FullArticle = {
+  dataArticle: ?FullArticle_dataArticle
+};
+
+export type FullArticleVariables = {
+  dataId: number
 };/* @flow */
 /* eslint-disable */
 // This file was automatically generated and should not be edited.

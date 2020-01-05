@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Skeleton } from "@material-ui/core";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import { css } from "@emotion/core";
 import ArticleList from "@components/ArticleList";
@@ -22,26 +22,25 @@ const gridRoot = css`
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: ${theme.spacing(2)}px;
+    grid-template-rows: min-content;
   }
   .column-1 {
-    background: ${theme.palette.primary.light};
     ${theme.breakpoints.up("xs")} {
       grid-column: span 12;
-    }
-    ${theme.breakpoints.up("sm")} {
-      grid-column: 1 / span 6;
     }
     ${theme.breakpoints.up("md")} {
       grid-column: 1 / span 6;
     }
+    ${theme.breakpoints.up("lg")} {
+      grid-column: 1 / span 6;
+    }
   }
   .column-2 {
-    background: ${theme.palette.secondary.light};
     ${theme.breakpoints.up("xs")} {
       grid-column: span 12;
       grid-row: span 1;
     }
-    ${theme.breakpoints.up("sm")} {
+    ${theme.breakpoints.up("md")} {
       grid-column: 7 / span 6;
       grid-row: 1 / span 2;
     }
@@ -51,14 +50,13 @@ const gridRoot = css`
     }
   }
   .column-3 {
-    background: ${theme.palette.primary.light};
     ${theme.breakpoints.up("xs")} {
       grid-column: span 12;
     }
-    ${theme.breakpoints.up("sm")} {
+    ${theme.breakpoints.up("md")} {
       grid-column: 1 / span 6;
     }
-    ${theme.breakpoints.up("md")} {
+    ${theme.breakpoints.up("lg")} {
       grid-column: 10 / span 3;
     }
   }
@@ -77,11 +75,14 @@ export default (): React.Node => (
           <ArticleList title="Latest" articles={latestArticlesLinks()} />
         </div>
         <div className="column column-3">
-          <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="therealsatirev"
-            options={{ height: 600 }}
-          />
+          {/* TODO: make skeleton/placeholder actually do that, not makeshift */}
+          <div style={{ height: 600, background: theme.palette.grey["300"] }}>
+            <TwitterTimelineEmbed
+              sourceType="profile"
+              screenName="therealsatirev"
+              options={{ height: 600 }}
+            />
+          </div>
         </div>
       </div>
     </Container>

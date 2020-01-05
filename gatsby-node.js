@@ -29,3 +29,33 @@ exports.createSchemaCustomization = ({ actions }) => {
   `;
   createTypes(typeDefs);
 };
+
+exports.createPages = async function({ actions, graphql }) {
+  const { data } = await graphql(`
+    query {
+      allDataArticle {
+        nodes {
+          dataId
+          legacy_slug
+          slug
+          category {
+            slug
+          }
+        }
+      }
+    }
+  `);
+  data.allDataArticle.nodes.forEach(node => {
+    const slug = `/${node.category.slug}/${node.slug}`;
+    actions.createRedirect({
+      fromPath: node.legacy_slug,
+      toPath: slug,
+      isPermanent: true,
+    });
+    actions.createPage({
+      path: slug,
+      component: require.resolve(`./src/templates/Post.react.js`),
+      context: { dataId: node.dataId },
+    });
+  });
+};

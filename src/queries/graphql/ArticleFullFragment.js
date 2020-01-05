@@ -40,6 +40,7 @@ export type ArticleFullFragment_featured_image_localFile = {
 
 export type ArticleFullFragment_featured_image = {
   __typename: "DataFile",
+  title: ?string,
   data: ?ArticleFullFragment_featured_image_data,
   localFile: ?ArticleFullFragment_featured_image_localFile,
 };

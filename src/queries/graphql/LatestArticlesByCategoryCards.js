@@ -40,6 +40,7 @@ export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featur
 
 export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image = {
   __typename: "DataFile",
+  title: ?string,
   data: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_data,
   localFile: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile,
 };

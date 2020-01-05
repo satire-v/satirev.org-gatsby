@@ -2217,6 +2217,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "context",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "SitePageContextFilterInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "pluginCreator",
                   "description": "",
                   "type": {
@@ -21669,6 +21679,16 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "_queryTypes",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -22567,6 +22587,18 @@
             },
             {
               "name": "_queries",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "_queryTypes",
               "description": null,
               "args": [],
               "type": {
@@ -23684,6 +23716,12 @@
               "deprecationReason": null
             },
             {
+              "name": "pluginOptions___alias____queryTypes",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginOptions___path",
               "description": null,
               "isDeprecated": false,
@@ -24172,6 +24210,27 @@
           "possibleTypes": null
         },
         {
+          "kind": "INPUT_OBJECT",
+          "name": "SitePageContextFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "dataId",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "IntQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
           "name": "SitePage",
           "description": null,
@@ -24305,6 +24364,18 @@
               "deprecationReason": null
             },
             {
+              "name": "context",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SitePageContext",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginCreator",
               "description": null,
               "args": [],
@@ -24349,6 +24420,29 @@
               "ofType": null
             }
           ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SitePageContext",
+          "description": null,
+          "fields": [
+            {
+              "name": "dataId",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
           "enumValues": null,
           "possibleTypes": null
         },
@@ -24444,6 +24538,16 @@
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "context",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "SitePageContextFilterInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -25077,6 +25181,12 @@
               "deprecationReason": null
             },
             {
+              "name": "context___dataId",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginCreator___id",
               "description": null,
               "isDeprecated": false,
@@ -25456,6 +25566,12 @@
             },
             {
               "name": "pluginCreator___pluginOptions___alias____queries",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___alias____queryTypes",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

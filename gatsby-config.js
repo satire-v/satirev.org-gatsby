@@ -76,6 +76,7 @@ module.exports = {
           "@img": "src/assets/img",
           "@assets": "src/assets",
           "@queries": "src/queries",
+          "@queryTypes": "src/queries/graphql",
         },
       },
     },

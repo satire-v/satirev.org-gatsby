@@ -48,9 +48,9 @@ const theme = createMuiTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 768,
-      md: 960,
-      lg: 1280,
+      sm: 600,
+      md: 768,
+      lg: 960,
       xl: 1400,
     },
   },
@@ -66,6 +66,11 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: sansSerif,
+    h2: {
+      // Article Title
+      fontFamily: serif,
+      fontSize: "2rem",
+    },
     h3: {
       // Article Card Title
       fontFamily: serif,
@@ -98,6 +103,13 @@ const theme = createMuiTheme({
       fontFamily: serif,
       fontSize: "0.9rem",
       lineHeight: 1.3,
+    },
+    subtitle1: {
+      fontFamily: serif,
+    },
+    caption: {
+      fontSize: "0.9rem",
+      fontWeight: 700,
     },
   },
   shape: {

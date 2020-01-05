@@ -9,9 +9,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { css } from "@emotion/core";
-import Img from "gatsby-image";
+import ImageFluid from "@common/ImageFluid";
 import Link from "@common/Link";
-import analyze from "rgbaster";
 import theme from "@styles/theme";
 
 type Props = {|
@@ -19,20 +18,7 @@ type Props = {|
   isFeatured: boolean,
 |};
 
-const genWhites = (() => {
-  const whites = [];
-  for (let i = 250; i < 256; i += 1) {
-    for (let j = 250; j < 256; j += 1) {
-      for (let k = 250; k < 256; k += 1) {
-        whites.push(`rgb(${i},${j},${k})`);
-      }
-    }
-  }
-  return whites;
-})();
-
 function ArticleVCard(props: Props): React.Node {
-  const [background, setBackground] = React.useState(null);
   let hasExcerpt = false;
   let hasHeader = true;
   let titleTag = "h4";
@@ -47,17 +33,6 @@ function ArticleVCard(props: Props): React.Node {
     min-width: 160px;
   `;
 
-  React.useEffect(() => {
-    async function getBackgroundColor() {
-      const result = await analyze(props.article.imgFluid?.base64, {
-        ignore: genWhites,
-        scale: 0.2,
-      });
-      setBackground(result[0].color);
-    }
-    getBackgroundColor();
-  }, []);
-
   return (
     <Card css={cardRoot} component="article">
       {hasHeader ? (
@@ -71,12 +46,7 @@ function ArticleVCard(props: Props): React.Node {
         />
       ) : null}
       <CardMedia title={props.article.title}>
-        <Img
-          fluid={props.article.imgFluid}
-          css={css`
-            background: ${background};
-          `}
-        />
+        <ImageFluid fluid={props.article.imgFluid} />
       </CardMedia>
       <CardContent>
         <Link

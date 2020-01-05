@@ -40,6 +40,7 @@ export type LatestArticlesLinks_allDataArticle_nodes_featured_image_localFile = 
 
 export type LatestArticlesLinks_allDataArticle_nodes_featured_image = {
   __typename: "DataFile",
+  title: ?string,
   data: ?LatestArticlesLinks_allDataArticle_nodes_featured_image_data,
   localFile: ?LatestArticlesLinks_allDataArticle_nodes_featured_image_localFile,
 };

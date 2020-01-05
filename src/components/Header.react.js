@@ -1,6 +1,7 @@
 // @flow
 import * as React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
+import { Paper } from "@material-ui/core";
 import { css } from "@emotion/core";
 import Button from "@common/Button";
 import anime from "animejs/lib/anime.es";
@@ -210,7 +211,7 @@ function Navbar(): React.Node {
     <nav css={navRootStyle}>
       {allDataCategory.nodes.map(node => (
         <Button
-          to={node.slug.toLowerCase()}
+          to={`/${node.slug}`}
           key={node.id}
           variant="contained"
           color="primary"
@@ -225,13 +226,13 @@ function Navbar(): React.Node {
 }
 
 function Header(): React.Node {
-  const timeline = anime.timeline({
-    autoplay: false,
-    direction: "alternate",
-    easing: "linear",
-  });
-
+  const [tl, setTl] = React.useState(null);
   React.useEffect(() => {
+    const timeline = anime.timeline({
+      autoplay: false,
+      direction: "alternate",
+      easing: "linear",
+    });
     timeline
       .add(fadeIn)
       .add(moveV, VERITAS_START_TS)
@@ -243,55 +244,58 @@ function Header(): React.Node {
         opacity: [1, 1],
         endDelay: END_DELAY,
       });
+    setTl(timeline);
   }, []);
   return (
-    <header css={headerRootStyle}>
-      <div css={gridStyle}>
-        <div css={titleWrapper}>
-          <div css={clickable} onClick={timeline.restart}>
-            <img alt="Satire V logo" src={logo} css={logoStyle} />
-          </div>
-          <Link css={clickable} to="/">
-            <div css={titleStyle}>Satire V</div>
-            <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-          </Link>
-        </div>
-
-        <div
-          align="center"
-          justify="center"
-          css={mirroredContainer}
-          className="mirroredContainer"
-        >
-          <div>
-            <img alt="Satire V logo" src={logo} css={logoStyle} />
-          </div>
-
-          <div>
-            <div css={titleStyle}>
-              <span className="uppercase s scale">
-                <span className="uppercase s flip">S</span>
-              </span>
-              <span className="lowercase s scale">
-                <span className="lowercase s flip">s</span>
-              </span>
-              <span>a</span>
-              <span>t</span>
-              <span>i</span>
-              <span>r</span>
-              <span>e</span>
-              <span className="space"> </span>
-              <span className="vMover">
-                <span>V</span>
-              </span>
+    <Paper>
+      <header css={headerRootStyle}>
+        <div css={gridStyle}>
+          <div css={titleWrapper}>
+            <div css={clickable} onClick={tl?.restart}>
+              <img alt="Satire V logo" src={logo} css={logoStyle} />
             </div>
-            <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
+            <Link css={clickable} to="/">
+              <div css={titleStyle}>Satire V</div>
+              <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
+            </Link>
           </div>
-        </div>
 
-        <Navbar />
-      </div>
-    </header>
+          <div
+            align="center"
+            justify="center"
+            css={mirroredContainer}
+            className="mirroredContainer"
+          >
+            <div>
+              <img alt="Satire V logo" src={logo} css={logoStyle} />
+            </div>
+
+            <div>
+              <div css={titleStyle}>
+                <span className="uppercase s scale">
+                  <span className="uppercase s flip">S</span>
+                </span>
+                <span className="lowercase s scale">
+                  <span className="lowercase s flip">s</span>
+                </span>
+                <span>a</span>
+                <span>t</span>
+                <span>i</span>
+                <span>r</span>
+                <span>e</span>
+                <span className="space"> </span>
+                <span className="vMover">
+                  <span>V</span>
+                </span>
+              </div>
+              <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
+            </div>
+          </div>
+
+          <Navbar />
+        </div>
+      </header>
+    </Paper>
   );
 }
 
