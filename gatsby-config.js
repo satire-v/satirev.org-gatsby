@@ -25,7 +25,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Lato", "Merriweather"],
+          families: ["Lato", "Merriweather", "Crimson Text"],
         },
         custom: {
           families: ["Cardinal"],

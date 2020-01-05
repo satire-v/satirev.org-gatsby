@@ -10,21 +10,8 @@ const colors = {
 
 const titleFont = "Cardinal, Georgia, serif";
 
-const link = css`
-  color: black;
-  transition: all 0.1s;
-  cursor: pointer;
-  &:hover,
-  &:active {
-    color: ${colors.crimson};
-  }
-`;
-
 const global = css`
   body {
-    img {
-      object-fit: contain;
-    }
     & a {
       color: inherit;
       text-decoration: none;
@@ -43,7 +30,7 @@ const sansSerif = [
   '"Segoe UI Symbol"',
 ].join(",");
 const serif = [
-  "Merriweather",
+  // "Merriweather",
   "Georgia",
   "serif",
   '"Apple Color Emoji"',
@@ -58,35 +45,45 @@ const theme = createMuiTheme({
     error: { main: red.A700 },
     warning: { main: yellow["500"] },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 960,
+      lg: 1280,
+      xl: 1400,
+    },
+  },
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        html: {
+          WebkitFontSmoothing: "subpixel-antialiased",
+          MozOsxFontSmoothing: "none",
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: sansSerif,
-    h2: {
-      // Article Card Title
-      fontFamily: serif,
-      fontSize: "1.7rem",
-      lineHeight: 0.95,
-      letterSpacing: "-0.00833em",
-      fontWeight: 400,
-    },
     h3: {
       // Article Card Title
       fontFamily: serif,
-      fontSize: "1.3rem",
-      lineHeight: 1,
-      letterSpacing: "-0.00833em",
+      fontSize: "1.6rem",
+      lineHeight: 0.95,
+      // letterSpacing: "-0.00833em",
       fontWeight: 400,
     },
     h4: {
       // Article Card Title
       fontFamily: serif,
-      fontSize: "1.1rem",
-      lineHeight: 1.2,
-      letterSpacing: "-0.00833em",
+      fontSize: "1.05rem",
+      lineHeight: 1.1,
+      // letterSpacing: "-0.00833em",
       fontWeight: 400,
     },
     h5: {
       // Default for card headers
-      fontSize: "1.4rem",
     },
     h6: {
       // Breaking news header
@@ -99,7 +96,7 @@ const theme = createMuiTheme({
     },
     body2: {
       fontFamily: serif,
-      fontSize: "0.8rem",
+      fontSize: "0.9rem",
       lineHeight: 1.3,
     },
   },
@@ -110,5 +107,5 @@ const theme = createMuiTheme({
 
 export default responsiveFontSizes(theme, {
   factor: 2,
-  variants: ["h1", "h2", "h3"],
+  variants: ["h1", "h2", "h5"],
 });

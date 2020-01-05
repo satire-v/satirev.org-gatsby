@@ -3,23 +3,21 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: NavQuery
+// GraphQL fragment: ArticleLinkFragment
 // ====================================================
 
-export type NavQuery_allDataCategory_nodes = {
+export type ArticleLinkFragment_category = {
   __typename: "DataCategory",
   name: string,
   slug: string,
+};
+
+export type ArticleLinkFragment = {
+  __typename: "DataArticle",
   id: string,
-};
-
-export type NavQuery_allDataCategory = {
-  __typename: "DataCategoryConnection",
-  nodes: Array<NavQuery_allDataCategory_nodes>,
-};
-
-export type NavQuery = {
-  allDataCategory: NavQuery_allDataCategory
+  slug: string,
+  title: string,
+  category: ArticleLinkFragment_category,
 };/* @flow */
 /* eslint-disable */
 // This file was automatically generated and should not be edited.

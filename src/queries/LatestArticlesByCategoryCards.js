@@ -3,11 +3,11 @@
 import { type ArticleCard, processArticleCardQuery } from "@queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
-import { type MostRecentInEachCategory } from "./graphql/MostRecentInEachCategory";
+import { type LatestArticlesByCategoryCards } from "./graphql/LatestArticlesByCategoryCards";
 
-const mostRecentInEachCategory = (): Array<ArticleCard> => {
-  const data: MostRecentInEachCategory = useStaticQuery(graphql`
-    query MostRecentInEachCategory {
+const latestArticlesByCategoryCards = (): Array<ArticleCard> => {
+  const data: LatestArticlesByCategoryCards = useStaticQuery(graphql`
+    query LatestArticlesByCategoryCards {
       allDataArticle(sort: { fields: modified_on, order: DESC }) {
         group(field: category___name, limit: 1) {
           edges {
@@ -28,4 +28,4 @@ const mostRecentInEachCategory = (): Array<ArticleCard> => {
   return articles;
 };
 
-export default mostRecentInEachCategory;
+export default latestArticlesByCategoryCards;

@@ -12,6 +12,12 @@ exports.createSchemaCustomization = ({ actions }) => {
         difference: String
         locale: String
       ): Date!
+      created_on(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+      ): Date!
     }
     type DataFileData {
       full_url: String!

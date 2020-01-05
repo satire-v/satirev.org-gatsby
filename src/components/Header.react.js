@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
-import { Button, Typography } from "@material-ui/core";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
+import Button from "@common/Button";
 import anime from "animejs/lib/anime.es";
 import logo from "@img/logo.png";
 import theme, { titleFont } from "@styles/theme";
@@ -171,6 +171,7 @@ function Navbar(): React.Node {
       allDataCategory {
         nodes {
           name
+          slug
           id
         }
       }
@@ -209,6 +210,7 @@ function Navbar(): React.Node {
     <nav css={navRootStyle}>
       {allDataCategory.nodes.map(node => (
         <Button
+          to={node.slug.toLowerCase()}
           key={node.id}
           variant="contained"
           color="primary"

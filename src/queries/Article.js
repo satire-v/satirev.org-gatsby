@@ -5,14 +5,43 @@ import {
   type ArticleCardFragment,
   type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase
 } from "./graphql/ArticleCardFragment";
-import { type ArticleFragment } from "./graphql/ArticleFragment";
+import { type ArticleFullFragment } from "./graphql/ArticleFullFragment";
+import { type ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
 
 const cheerio = require("cheerio");
 
-export type ArticleCard = {
+export type ArticleLink = {
   id: string,
   slug: string,
   title: string,
+  category: string,
+};
+
+export const articleLinkFragment = graphql`
+  fragment ArticleLinkFragment on DataArticle {
+    id
+    slug
+    title
+    category {
+      name
+      slug
+    }
+  }
+`;
+
+export const processArticleLinkQuery = (
+  article: ArticleLinkFragment
+): ArticleLink => {
+  return {
+    id: article.id,
+    slug: `${article.category.slug}/${article.slug}`,
+    title: article.title,
+    category: article.category.name,
+  };
+};
+
+export type ArticleCard = {
+  ...ArticleLink,
   fullExcerpt: string,
   shortExcerpt: string,
   imgUrl: ?string,
@@ -22,9 +51,7 @@ export type ArticleCard = {
 
 export const articleCardFragment = graphql`
   fragment ArticleCardFragment on DataArticle {
-    id
-    slug
-    title
+    ...ArticleLinkFragment
     excerpt
     body
     featured_image {
@@ -43,10 +70,6 @@ export const articleCardFragment = graphql`
           }
         }
       }
-    }
-    category {
-      name
-      slug
     }
   }
 `;
@@ -89,17 +112,18 @@ export const processArticleCardQuery = (
   };
 };
 
-export const articleFragment = graphql`
-  fragment ArticleFragment on DataArticle {
+export const articleFullFragment = graphql`
+  fragment ArticleFullFragment on DataArticle {
     ...ArticleCardFragment
     tags
     modified_on
+    created_on
     featured_image_caption
     legacy_slug
   }
 `;
 
-export type Article = {
+export type ArticleFull = {
   ...ArticleCard,
   tags: Array<string>,
   published: Date,
@@ -107,7 +131,9 @@ export type Article = {
   legacySlug: ?string,
 };
 
-export const processArticleQuery = (article: ArticleFragment): Article => {
+export const processArticleQuery = (
+  article: ArticleFullFragment
+): ArticleFull => {
   const articleCardObj = processArticleCardQuery(article);
   return {
     ...articleCardObj,
@@ -117,7 +143,7 @@ export const processArticleQuery = (article: ArticleFragment): Article => {
           .filter(Boolean)
           .filter(val => val != null || val !== "")) ??
       [],
-    published: article.modified_on,
+    published: article.created_on,
     imageCaption: article.featured_image_caption ?? "",
     legacySlug: article.legacy_slug,
   };

@@ -3,15 +3,21 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: ArticleFragment
+// GraphQL fragment: ArticleFullFragment
 // ====================================================
 
-export type ArticleFragment_featured_image_data = {
+export type ArticleFullFragment_category = {
+  __typename: "DataCategory",
+  name: string,
+  slug: string,
+};
+
+export type ArticleFullFragment_featured_image_data = {
   __typename: "DataFileData",
   full_url: string,
 };
 
-export type ArticleFragment_featured_image_localFile_childImageSharp_fluid = {
+export type ArticleFullFragment_featured_image_localFile_childImageSharp_fluid = {
   __typename: "ImageSharpFluid",
   base64: ?string,
   aspectRatio: ?number,
@@ -22,39 +28,34 @@ export type ArticleFragment_featured_image_localFile_childImageSharp_fluid = {
   sizes: ?string,
 };
 
-export type ArticleFragment_featured_image_localFile_childImageSharp = {
+export type ArticleFullFragment_featured_image_localFile_childImageSharp = {
   __typename: "ImageSharp",
-  fluid: ?ArticleFragment_featured_image_localFile_childImageSharp_fluid,
+  fluid: ?ArticleFullFragment_featured_image_localFile_childImageSharp_fluid,
 };
 
-export type ArticleFragment_featured_image_localFile = {
+export type ArticleFullFragment_featured_image_localFile = {
   __typename: "File",
-  childImageSharp: ?ArticleFragment_featured_image_localFile_childImageSharp,
+  childImageSharp: ?ArticleFullFragment_featured_image_localFile_childImageSharp,
 };
 
-export type ArticleFragment_featured_image = {
+export type ArticleFullFragment_featured_image = {
   __typename: "DataFile",
-  data: ?ArticleFragment_featured_image_data,
-  localFile: ?ArticleFragment_featured_image_localFile,
+  data: ?ArticleFullFragment_featured_image_data,
+  localFile: ?ArticleFullFragment_featured_image_localFile,
 };
 
-export type ArticleFragment_category = {
-  __typename: "DataCategory",
-  name: string,
-  slug: string,
-};
-
-export type ArticleFragment = {
+export type ArticleFullFragment = {
   __typename: "DataArticle",
   id: string,
   slug: string,
   title: string,
+  category: ArticleFullFragment_category,
   excerpt: ?string,
   body: string,
-  featured_image: ?ArticleFragment_featured_image,
-  category: ArticleFragment_category,
+  featured_image: ?ArticleFullFragment_featured_image,
   tags: ?Array<?string>,
   modified_on: any,
+  created_on: any,
   featured_image_caption: ?string,
   legacy_slug: ?string,
 };/* @flow */

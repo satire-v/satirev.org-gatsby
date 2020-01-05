@@ -4,10 +4,12 @@ import * as React from "react";
 import { Container } from "@material-ui/core";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import { css } from "@emotion/core";
+import ArticleList from "@components/ArticleList";
 import ArticleVCardGrid from "@components/ArticleVCardGrid.react";
 import BreakingNewsBar from "@components/BreakingNewsBar";
 import MainRecent from "@components/MainRecent";
-import mostRecentInEachCategory from "@queries/MostRecentInEachCategory";
+import latestArticlesByCategoryCards from "@queries/LatestArticlesByCategoryCards";
+import latestArticlesLinks from "@queries/latestArticlesLinks";
 import theme from "@styles/theme";
 
 // TODO: make a generic column number layout
@@ -15,12 +17,13 @@ import theme from "@styles/theme";
 const gridRoot = css`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-columns: repeat(auto, 1fr);
   grid-gap: ${theme.spacing(3)}px;
-  .column-1 {
+  .column {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: ${theme.spacing(2)}px;
+  }
+  .column-1 {
     background: ${theme.palette.primary.light};
     ${theme.breakpoints.up("xs")} {
       grid-column: span 12;
@@ -64,14 +67,16 @@ const gridRoot = css`
 export default (): React.Node => (
   <>
     <BreakingNewsBar />
-    <Container maxWidth="1400px">
+    <Container maxWidth="xl">
       <div css={gridRoot}>
-        <div className="column-1">
+        <div className="column column-1">
           <MainRecent />
-          <ArticleVCardGrid articles={mostRecentInEachCategory()} />
+          <ArticleVCardGrid articles={latestArticlesByCategoryCards()} />
         </div>
-        <div className="column-2" />
-        <div className="column-3">
+        <div className="column column-2">
+          <ArticleList title="Latest" articles={latestArticlesLinks()} />
+        </div>
+        <div className="column column-3">
           <TwitterTimelineEmbed
             sourceType="profile"
             screenName="therealsatirev"

@@ -10,15 +10,13 @@ import {
 } from "@material-ui/core";
 import { css } from "@emotion/core";
 import Img from "gatsby-image";
+import Link from "@common/Link";
 import analyze from "rgbaster";
-import image, { type ImageRatio, type ImageSize } from "@utils/image";
+import theme from "@styles/theme";
 
 type Props = {|
-  maxSize: ImageSize,
   article: ArticleCard,
-  imgRatio: ImageRatio,
-  hasExcerpt: boolean,
-  hasHeader: boolean,
+  isFeatured: boolean,
 |};
 
 const genWhites = (() => {
@@ -33,18 +31,20 @@ const genWhites = (() => {
   return whites;
 })();
 
-const headerMapping = {
-  small: "h4",
-  medium: "h3",
-  large: "h2",
-};
-
 function ArticleVCard(props: Props): React.Node {
   const [background, setBackground] = React.useState(null);
+  let hasExcerpt = false;
+  let hasHeader = true;
+  let titleTag = "h4";
+
+  if (props.isFeatured) {
+    hasExcerpt = true;
+    hasHeader = false;
+    titleTag = "h3";
+  }
 
   const cardRoot = css`
-    max-width: ${image.sizes[props.maxSize].width}px;
-    min-width: ${image.sizes.small.width}px;
+    min-width: 160px;
   `;
 
   React.useEffect(() => {
@@ -60,7 +60,16 @@ function ArticleVCard(props: Props): React.Node {
 
   return (
     <Card css={cardRoot} component="article">
-      {props.hasHeader ? <CardHeader title={props.article.category} /> : null}
+      {hasHeader ? (
+        <CardHeader
+          css={css`
+            padding: ${theme.spacing(1)}px ${theme.spacing(2)}px;
+            color: ${theme.palette.primary.main};
+          `}
+          titleTypographyProps={{ variant: "h6" }}
+          title={props.article.category}
+        />
+      ) : null}
       <CardMedia title={props.article.title}>
         <Img
           fluid={props.article.imgFluid}
@@ -70,17 +79,17 @@ function ArticleVCard(props: Props): React.Node {
         />
       </CardMedia>
       <CardContent>
-        <Typography
-          variant={headerMapping[props.maxSize]}
+        <Link
+          to={props.article.slug}
+          variant={titleTag}
           gutterBottom
           css={css`
             word-break: break-word;
-            color: black;
           `}
         >
           {props.article.title}
-        </Typography>
-        {props.hasExcerpt ? (
+        </Link>
+        {hasExcerpt ? (
           <Typography variant="body2" component="p">
             {props.article.shortExcerpt}
           </Typography>
@@ -91,10 +100,7 @@ function ArticleVCard(props: Props): React.Node {
 }
 
 ArticleVCard.defaultProps = {
-  maxSize: "small",
-  imgRatio: "default",
-  hasExcerpt: true,
-  hasHeader: true,
+  isFeatured: false,
 };
 
 export default ArticleVCard;

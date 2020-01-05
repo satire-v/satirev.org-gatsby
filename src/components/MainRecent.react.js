@@ -1,11 +1,11 @@
 // @flow
 import * as React from "react";
 import ArticleVCard from "@components/ArticleVCard";
-import MostRecentArticle from "@queries/MostRecentArticle";
+import LatestArticleCard from "@queries/LatestArticleCard";
 
 function MainRecent(): React.Node {
-  const article = MostRecentArticle();
-  return <ArticleVCard article={article} maxSize="large" hasHeader={false} />;
+  const article = LatestArticleCard();
+  return <ArticleVCard article={article} isFeatured />;
 }
 
 export default MainRecent;

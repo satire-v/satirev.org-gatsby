@@ -11,8 +11,8 @@ function BreakingNewsBar(): React.Node {
   const breakingBarRootStyle = css`
     border-bottom: 1px solid ${theme.palette.grey["300"]};
     border-top: 1px solid ${theme.palette.grey["300"]};
-    margin: 0px 0px 24px;
-    padding: 12px min(10%, 80px);
+    margin: 0px 0px ${theme.spacing(3)}px;
+    padding: 6px min(10%, 80px);
   `;
 
   const breakingTitleStyle = css`

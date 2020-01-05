@@ -6,6 +6,12 @@
 // GraphQL fragment: ArticleCardFragment
 // ====================================================
 
+export type ArticleCardFragment_category = {
+  __typename: "DataCategory",
+  name: string,
+  slug: string,
+};
+
 export type ArticleCardFragment_featured_image_data = {
   __typename: "DataFileData",
   full_url: string,
@@ -38,21 +44,15 @@ export type ArticleCardFragment_featured_image = {
   localFile: ?ArticleCardFragment_featured_image_localFile,
 };
 
-export type ArticleCardFragment_category = {
-  __typename: "DataCategory",
-  name: string,
-  slug: string,
-};
-
 export type ArticleCardFragment = {
   __typename: "DataArticle",
   id: string,
   slug: string,
   title: string,
+  category: ArticleCardFragment_category,
   excerpt: ?string,
   body: string,
   featured_image: ?ArticleCardFragment_featured_image,
-  category: ArticleCardFragment_category,
 };/* @flow */
 /* eslint-disable */
 // This file was automatically generated and should not be edited.

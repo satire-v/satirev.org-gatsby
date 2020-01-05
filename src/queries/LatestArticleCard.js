@@ -2,11 +2,11 @@
 import { type ArticleCard, processArticleCardQuery } from "@queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
-import { type MostRecentArticle } from "./graphql/MostRecentArticle";
+import { type LatestArticleCard } from "./graphql/LatestArticleCard";
 
-const mostRecentArticle = (): ArticleCard => {
-  const data: MostRecentArticle = useStaticQuery(graphql`
-    query MostRecentArticle {
+const latestArticleCard = (): ArticleCard => {
+  const data: LatestArticleCard = useStaticQuery(graphql`
+    query LatestArticleCard {
       allDataArticle(limit: 1, sort: { fields: modified_on, order: DESC }) {
         nodes {
           ...ArticleCardFragment
@@ -18,4 +18,4 @@ const mostRecentArticle = (): ArticleCard => {
   return processArticleCardQuery(article);
 };
 
-export default mostRecentArticle;
+export default latestArticleCard;

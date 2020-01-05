@@ -1,12 +1,11 @@
 // @flow
 import * as React from "react";
 import { css } from "@emotion/core";
-import image, { type ImageRatio, type ImageSize } from "@utils/image";
+import image, { type ImageRatio } from "@utils/image";
 
 type Props = {
   src: string,
   alt: string,
-  size: ImageSize,
   ratio: ImageRatio,
   className?: string,
 };
