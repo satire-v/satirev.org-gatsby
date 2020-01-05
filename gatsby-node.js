@@ -6,18 +6,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String!
       category: DataCategory!
       body: String!
-      modified_on(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-      ): Date!
-      created_on(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-      ): Date!
+     
     }
     type DataFileData {
       full_url: String!
@@ -30,6 +19,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
+// eslint-disable-next-line func-names
 exports.createPages = async function({ actions, graphql }) {
   const { data } = await graphql(`
     query {
@@ -57,5 +47,36 @@ exports.createPages = async function({ actions, graphql }) {
       component: require.resolve(`./src/templates/Post.react.js`),
       context: { dataId: node.dataId },
     });
+  });
+};
+
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    DataArticle: {
+      created_on: {
+        type: `Date!`,
+        resolve: async (source, args, context, info) => {
+          const dateString = `${source.created_on.replace(" ", "T")}Z`;
+          return info.originalResolver(
+            { ...source, created_on: dateString },
+            args,
+            context,
+            info
+          );
+        },
+      },
+      modified_on: {
+        type: `Date!`,
+        resolve: async (source, args, context, info) => {
+          const dateString = `${source.modified_on.replace(" ", "T")}Z`;
+          return info.originalResolver(
+            { ...source, modified_on: dateString },
+            args,
+            context,
+            info
+          );
+        },
+      },
+    },
   });
 };

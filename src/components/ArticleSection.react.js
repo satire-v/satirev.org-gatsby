@@ -72,7 +72,7 @@ function ArticleSection(props: Props): React.Node {
         ))}
       </div>
       <Typography variant="button" color="textSecondary">
-        &#169; {article.published.toString().slice(0, 4)}
+        &#169; {article.year}
       </Typography>
     </article>
   );

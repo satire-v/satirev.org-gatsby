@@ -56,7 +56,8 @@ export type FullArticle_dataArticle = {
   featured_image: ?FullArticle_dataArticle_featured_image,
   tags: ?Array<?string>,
   modified_on: any,
-  created_on: any,
+  published: any,
+  year: any,
   featured_image_caption: ?string,
   legacy_slug: ?string,
 };

@@ -118,8 +118,9 @@ export const articleFullFragment = graphql`
   fragment ArticleFullFragment on DataArticle {
     ...ArticleCardFragment
     tags
-    modified_on
-    created_on
+    modified_on(formatString: "MMM D, YYYY [at] h:mm a")
+    published: created_on(formatString: "MMM D, YYYY [at] h:mm a")
+    year: created_on(formatString: "YYYY")
     featured_image_caption
     legacy_slug
   }
@@ -129,7 +130,8 @@ export type ArticleFull = {|
   ...ArticleCard,
   body: string,
   tags: Array<string>,
-  published: Date,
+  published: string,
+  year: string,
   imageCaption: ?string,
   legacySlug: ?string,
 |};
@@ -147,7 +149,8 @@ export const processArticleQuery = (
           .filter(Boolean)
           .filter(val => val != null || val !== "")) ??
       [],
-    published: article.created_on,
+    published: article.published,
+    year: article.year,
     imageCaption: article.featured_image_caption ?? "",
     legacySlug: article.legacy_slug,
   };
