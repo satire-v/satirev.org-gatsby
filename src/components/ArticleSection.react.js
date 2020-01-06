@@ -8,7 +8,7 @@ import {
   Chip,
   Typography,
 } from "@material-ui/core";
-import { Label, LabelImportant, LocalOffer } from "@material-ui/icons";
+import { LabelImportant, LocalOffer } from "@material-ui/icons";
 import { css } from "@emotion/core";
 import ImageFluid from "@common/ImageFluid";
 import theme from "@styles/theme";
