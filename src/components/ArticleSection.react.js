@@ -8,7 +8,7 @@ import {
   Chip,
   Typography,
 } from "@material-ui/core";
-import { LocalOffer } from "@material-ui/icons";
+import { Label, LabelImportant, LocalOffer } from "@material-ui/icons";
 import { css } from "@emotion/core";
 import ImageFluid from "@common/ImageFluid";
 import theme from "@styles/theme";
@@ -30,6 +30,20 @@ const cardRoot = css`
 
 const bodyText = css`
   display: inline;
+  & > *:last-child {
+    margin-block-end: 1em;
+    margin-block-start: 1em;
+  }
+`;
+
+const categoryRoot = css`
+  display: flex;
+  flexwrap: wrap;
+  align-items: center;
+`;
+
+const category = css`
+  padding-left: ${theme.spacing(1)}px;
 `;
 
 const tagsRoot = css`
@@ -64,6 +78,12 @@ function ArticleSection(props: Props): React.Node {
           variant="body1"
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
+      </div>
+      <div css={categoryRoot}>
+        <LabelImportant color="primary" fontSize="large" />
+        <Typography css={category} variant="h6">
+          {article.category}
+        </Typography>
       </div>
       <div css={tagsRoot}>
         <LocalOffer fontSize="large" />

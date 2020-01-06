@@ -3,6 +3,7 @@ import * as React from "react";
 import { type ArticleCard } from "@queries/Article";
 import {
   Card,
+  CardActionArea,
   CardContent,
   CardHeader,
   CardMedia,
@@ -31,6 +32,12 @@ function ArticleVCard(props: Props): React.Node {
 
   const cardRoot = css`
     min-width: 160px;
+    display: flex;
+    flex-direction: column;
+  `;
+
+  const cardActionArea = css`
+    flex: 1;
   `;
 
   return (
@@ -45,26 +52,26 @@ function ArticleVCard(props: Props): React.Node {
           title={props.article.category}
         />
       ) : null}
-      <CardMedia title={props.article.title}>
-        <ImageFluid fluid={props.article.imgFluid} />
-      </CardMedia>
-      <CardContent>
+      <CardActionArea component="div" css={cardActionArea}>
         <Link
           to={props.article.slug}
-          variant={titleTag}
-          gutterBottom
           css={css`
             word-break: break-word;
           `}
         >
-          {props.article.title}
+          <CardMedia title={props.article.title}>
+            <ImageFluid fluid={props.article.imgFluid} />
+          </CardMedia>
+          <CardContent>
+            <Typography variant={titleTag}>{props.article.title}</Typography>
+            {hasExcerpt ? (
+              <Typography variant="body2" component="p">
+                {props.article.shortExcerpt}
+              </Typography>
+            ) : null}
+          </CardContent>
         </Link>
-        {hasExcerpt ? (
-          <Typography variant="body2" component="p">
-            {props.article.shortExcerpt}
-          </Typography>
-        ) : null}
-      </CardContent>
+      </CardActionArea>
     </Card>
   );
 }

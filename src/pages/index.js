@@ -44,7 +44,7 @@ const gridRoot = css`
       grid-column: 7 / span 6;
       grid-row: 1 / span 2;
     }
-    ${theme.breakpoints.up("md")} {
+    ${theme.breakpoints.up("lg")} {
       grid-column: 7 / span 3;
       grid-row: span 1;
     }
