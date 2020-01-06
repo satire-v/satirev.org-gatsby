@@ -2,18 +2,15 @@
 
 import * as React from "react";
 import { type ArticleFullFragment } from "@queryTypes/ArticleFullFragment";
-import { Container } from "@material-ui/core";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
-import { css } from "@emotion/core";
 import { graphql } from "gatsby";
 import { processArticleQuery } from "@queries/Article";
-import ArticleList from "@components/ArticleList";
+import ArticleListBox from "@components/ArticleListBox";
 import ArticleSection from "@components/ArticleSection";
 import ArticleVCardGrid from "@components/ArticleVCardGrid.react";
 import Columns from "@layouts/Columns";
 import latestArticlesByCategoryCards from "@queries/LatestArticlesByCategoryCards";
 import latestArticlesLinks from "@queries/latestArticlesLinks";
-import theme from "@styles/theme";
 
 // TODO: make a generic column number layout
 
@@ -28,7 +25,7 @@ const PageTemplate = (props: Props): React.Node => (
       <ArticleVCardGrid articles={latestArticlesByCategoryCards()} />
     </>
     <>
-      <ArticleList title="Latest" articles={latestArticlesLinks()} />
+      <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
       <TwitterTimelineEmbed
         sourceType="profile"
         screenName="therealsatirev"

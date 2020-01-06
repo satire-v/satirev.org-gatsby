@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
-import ArticleList from "@components/ArticleList";
+import ArticleListBox from "@components/ArticleListBox";
 import ArticleVCardGrid from "@components/ArticleVCardGrid.react";
 import BreakingNewsBar from "@components/BreakingNewsBar";
 import Columns from "@layouts/Columns";
@@ -20,7 +20,7 @@ export default (): React.Node => (
         <ArticleVCardGrid articles={latestArticlesByCategoryCards()} />
       </>
       <>
-        <ArticleList title="Latest" articles={latestArticlesLinks()} />
+        <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
       </>
       <>
         {/* TODO: make skeleton/placeholder actually do that, not makeshift */}

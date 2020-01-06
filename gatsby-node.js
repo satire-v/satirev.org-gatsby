@@ -33,9 +33,22 @@ exports.createPages = async function({ actions, graphql }) {
           }
         }
       }
+      byCategory: allDataArticle {
+        group(field: category___slug, limit: 1) {
+          fieldValue
+          totalCount
+          field
+          nodes {
+            category {
+              name
+            }
+          }
+        }
+      }
     }
   `);
-  data.allDataArticle.nodes.forEach(node => {
+  const posts = data.allDataArticle.nodes;
+  posts.forEach(node => {
     const slug = `/${node.category.slug}/${node.slug}`;
     actions.createRedirect({
       fromPath: node.legacy_slug,
@@ -46,6 +59,30 @@ exports.createPages = async function({ actions, graphql }) {
       path: slug,
       component: require.resolve(`./src/templates/Post.react.js`),
       context: { dataId: node.dataId },
+    });
+  });
+
+  const categories = data.byCategory.group;
+  const postsPerPage = 10;
+
+  categories.forEach(category => {
+    const numPages = Math.ceil(category.totalCount / postsPerPage);
+    Array.from({ length: numPages }).forEach((_, i) => {
+      actions.createPage({
+        path:
+          i === 0
+            ? `/${category.fieldValue}`
+            : `/${category.fieldValue}/${i + 1}`,
+        component: require.resolve("./src/templates/PostList.react.js"),
+        context: {
+          category: category.nodes[0].category.name,
+          categorySlug: category.fieldValue,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      });
     });
   });
 };

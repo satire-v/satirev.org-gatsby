@@ -7,6 +7,7 @@ import theme from "@styles/theme";
 
 type Props = {
   children: ?React.Node,
+  colorChange: boolean,
 };
 
 const LinkBehavior = React.forwardRef((props, ref) => (
@@ -25,12 +26,12 @@ const linkRoot = css`
 `;
 
 function Link(props: Props): React.Node {
-  const { children, ...rest } = props;
+  const { children, colorChange, ...rest } = props;
   return (
     <MuiLink
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
-      css={linkRoot}
+      css={props.colorChange ? linkRoot : null}
       color="textPrimary"
       underline="none"
       component={LinkBehavior}
@@ -39,5 +40,9 @@ function Link(props: Props): React.Node {
     </MuiLink>
   );
 }
+
+Link.defaultProps = {
+  colorChange: true,
+};
 
 export default Link;

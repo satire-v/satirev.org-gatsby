@@ -48,6 +48,8 @@ export type ArticleCard = {|
   imgUrl: ?string,
   imgTitle: ?string,
   imgFluid: ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase
+  published: string,
+  tags: Array<string>,
   category: string,
 |};
 
@@ -56,6 +58,8 @@ export const articleCardFragment = graphql`
     ...ArticleLinkFragment
     excerpt
     body
+    published: created_on(formatString: "MMM D, YYYY [at] h:mm a")
+    tags
     featured_image {
       title
       data {
@@ -110,6 +114,13 @@ export const processArticleCardQuery = (
     imgUrl: article?.featured_image?.data?.full_url,
     imgTitle: article?.featured_image?.title,
     imgFluid: article.featured_image?.localFile?.childImageSharp?.fluid,
+    published: article.published,
+    tags:
+      (article.tags &&
+        article.tags
+          .filter(Boolean)
+          .filter(val => val != null || val !== "")) ??
+      [],
     category: article.category.name,
   };
 };
@@ -119,7 +130,7 @@ export const articleFullFragment = graphql`
     ...ArticleCardFragment
     tags
     modified_on(formatString: "MMM D, YYYY [at] h:mm a")
-    published: created_on(formatString: "MMM D, YYYY [at] h:mm a")
+
     year: created_on(formatString: "YYYY")
     featured_image_caption
     legacy_slug
@@ -129,7 +140,6 @@ export const articleFullFragment = graphql`
 export type ArticleFull = {|
   ...ArticleCard,
   body: string,
-  tags: Array<string>,
   published: string,
   year: string,
   imageCaption: ?string,
@@ -143,12 +153,6 @@ export const processArticleQuery = (
   return {
     ...articleCardObj,
     body: article.body,
-    tags:
-      (article.tags &&
-        article.tags
-          .filter(Boolean)
-          .filter(val => val != null || val !== "")) ??
-      [],
     published: article.published,
     year: article.year,
     imageCaption: article.featured_image_caption ?? "",

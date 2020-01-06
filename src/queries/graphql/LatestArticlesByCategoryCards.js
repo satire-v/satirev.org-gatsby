@@ -6,18 +6,18 @@
 // GraphQL query operation: LatestArticlesByCategoryCards
 // ====================================================
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_category = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_category = {
   __typename: "DataCategory",
   name: string,
   slug: string,
 };
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_data = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_data = {
   __typename: "DataFileData",
   full_url: string,
 };
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile_childImageSharp_fluid = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile_childImageSharp_fluid = {
   __typename: "ImageSharpFluid",
   base64: ?string,
   aspectRatio: ?number,
@@ -28,43 +28,40 @@ export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featur
   sizes: ?string,
 };
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile_childImageSharp = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile_childImageSharp = {
   __typename: "ImageSharp",
-  fluid: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile_childImageSharp_fluid,
+  fluid: ?LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile_childImageSharp_fluid,
 };
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile = {
   __typename: "File",
-  childImageSharp: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile_childImageSharp,
+  childImageSharp: ?LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile_childImageSharp,
 };
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image = {
   __typename: "DataFile",
   title: ?string,
-  data: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_data,
-  localFile: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image_localFile,
+  data: ?LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_data,
+  localFile: ?LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile,
 };
 
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges_node = {
+export type LatestArticlesByCategoryCards_allDataArticle_group_nodes = {
   __typename: "DataArticle",
   id: string,
   slug: string,
   title: string,
-  category: LatestArticlesByCategoryCards_allDataArticle_group_edges_node_category,
+  category: LatestArticlesByCategoryCards_allDataArticle_group_nodes_category,
   excerpt: ?string,
   body: string,
-  featured_image: ?LatestArticlesByCategoryCards_allDataArticle_group_edges_node_featured_image,
-};
-
-export type LatestArticlesByCategoryCards_allDataArticle_group_edges = {
-  __typename: "DataArticleEdge",
-  node: LatestArticlesByCategoryCards_allDataArticle_group_edges_node,
+  published: any,
+  tags: ?Array<?string>,
+  featured_image: ?LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image,
 };
 
 export type LatestArticlesByCategoryCards_allDataArticle_group = {
   __typename: "DataArticleGroupConnection",
-  edges: Array<LatestArticlesByCategoryCards_allDataArticle_group_edges>,
   fieldValue: ?string,
+  nodes: Array<LatestArticlesByCategoryCards_allDataArticle_group_nodes>,
 };
 
 export type LatestArticlesByCategoryCards_allDataArticle = {

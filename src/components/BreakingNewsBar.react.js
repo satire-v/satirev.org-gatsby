@@ -3,12 +3,15 @@ import * as React from "react";
 import { Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
 import { useTheme } from "@material-ui/core/styles";
-import FlexLayout from "@common/FlexLayout";
 
 function BreakingNewsBar(): React.Node {
   const theme = useTheme();
 
   const breakingBarRootStyle = css`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     border-bottom: 1px solid ${theme.palette.grey["300"]};
     border-top: 1px solid ${theme.palette.grey["300"]};
     margin: 0px 0px ${theme.spacing(3)}px;
@@ -25,19 +28,14 @@ function BreakingNewsBar(): React.Node {
   `;
 
   return (
-    <FlexLayout
-      direction="horizontal"
-      css={breakingBarRootStyle}
-      justify="start"
-      align="center"
-    >
+    <div css={breakingBarRootStyle}>
       <Typography css={breakingTitleStyle} variant="h6" grow={0}>
         Breaking
       </Typography>
       <Typography css={breakingItemStyle} color="textSecondary" variant="h6">
         Placeholder
       </Typography>
-    </FlexLayout>
+    </div>
   );
 }
 

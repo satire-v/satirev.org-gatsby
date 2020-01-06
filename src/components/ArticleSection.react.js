@@ -1,16 +1,11 @@
 // @flow
 import * as React from "react";
 import { type ArticleFull } from "@queries/Article";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Chip,
-  Typography,
-} from "@material-ui/core";
-import { LabelImportant, LocalOffer } from "@material-ui/icons";
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
+import CategorySection from "@components/CategorySection";
 import ImageFluid from "@common/ImageFluid";
+import TagSection from "@components/TagSection";
 import theme from "@styles/theme";
 
 type Props = {
@@ -29,36 +24,21 @@ const cardRoot = css`
 `;
 
 const bodyText = css`
-  display: inline;
   & > *:last-child {
     margin-block-end: 1em;
     margin-block-start: 1em;
   }
 `;
 
-const categoryRoot = css`
-  display: flex;
-  flexwrap: wrap;
-  align-items: center;
-`;
-
-const category = css`
-  padding-left: ${theme.spacing(1)}px;
-`;
-
-const tagsRoot = css`
-  display: flex;
-  flexwrap: wrap;
-  margin-bottom: ${theme.spacing(2)}px;
-  & > * {
-    margin: ${theme.spacing(0.5)}px;
-  }
+const articleRoot = css`
+  padding-left: ${theme.spacing(6)}px;
+  padding-right: ${theme.spacing(6)}px;
 `;
 
 function ArticleSection(props: Props): React.Node {
   const { article } = props;
   return (
-    <article>
+    <article css={articleRoot}>
       <Typography variant="h2">{article.title}</Typography>
       <Typography color="textSecondary" variant="subtitle1" gutterBottom>
         {article.published}
@@ -79,18 +59,8 @@ function ArticleSection(props: Props): React.Node {
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
       </div>
-      <div css={categoryRoot}>
-        <LabelImportant color="primary" fontSize="large" />
-        <Typography css={category} variant="h6">
-          {article.category}
-        </Typography>
-      </div>
-      <div css={tagsRoot}>
-        <LocalOffer fontSize="large" />
-        {article.tags.map((tag, i) => (
-          <Chip key={i.toString()} color="primary" label={tag} />
-        ))}
-      </div>
+      <CategorySection category={article.category} />
+      <TagSection tags={article.tags} />
       <Typography variant="button" color="textSecondary">
         &#169; {article.year}
       </Typography>

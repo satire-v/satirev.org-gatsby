@@ -156,13 +156,17 @@ const MARGIN_HORIZONTAL = 4;
 const FONT_SIZE = "16px";
 const MARGIN_OF_ERROR = "40px";
 
+const buttonHoverStyle = {
+  background: accentColor,
+  color: theme.palette.primary.contrastText,
+};
+
 const buttonStyle = css`
   margin: 0 ${MARGIN_HORIZONTAL}px;
   background: none;
   color: ${accentColor};
   &:hover {
-    background: ${accentColor};
-    color: ${theme.palette.primary.contrastText};
+    ${css(buttonHoverStyle)}
   }
 `;
 
@@ -216,6 +220,8 @@ function Navbar(): React.Node {
           variant="contained"
           color="primary"
           css={buttonStyle}
+          activeStyle={buttonHoverStyle}
+          partiallyActive
           disableElevation
         >
           {node.name}

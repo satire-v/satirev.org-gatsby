@@ -66,6 +66,10 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: sansSerif,
+    h1: {
+      // Section Title
+      fontSize: "4rem",
+    },
     h2: {
       // Article Title
       fontFamily: serif,

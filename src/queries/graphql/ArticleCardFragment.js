@@ -53,6 +53,8 @@ export type ArticleCardFragment = {
   category: ArticleCardFragment_category,
   excerpt: ?string,
   body: string,
+  published: any,
+  tags: ?Array<?string>,
   featured_image: ?ArticleCardFragment_featured_image,
 };/* @flow */
 /* eslint-disable */

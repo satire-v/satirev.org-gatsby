@@ -53,6 +53,8 @@ export type LatestArticleCard_allDataArticle_nodes = {
   category: LatestArticleCard_allDataArticle_nodes_category,
   excerpt: ?string,
   body: string,
+  published: any,
+  tags: ?Array<?string>,
   featured_image: ?LatestArticleCard_allDataArticle_nodes_featured_image,
 };
 
