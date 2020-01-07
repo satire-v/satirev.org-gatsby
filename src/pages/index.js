@@ -8,8 +8,8 @@ import BreakingNewsBar from "@components/BreakingNewsBar";
 import Columns from "@layouts/Columns";
 import MainRecent from "@components/MainRecent";
 import latestArticlesByCategoryCards from "@queries/LatestArticlesByCategoryCards";
-import latestArticlesLinks from "@queries/latestArticlesLinks";
 import theme from "@styles/theme";
+import topArticlesLinks from "@queries/TopArticlesLinks";
 
 export default (): React.Node => (
   <>
@@ -20,7 +20,7 @@ export default (): React.Node => (
         <ArticleVCardGrid articles={latestArticlesByCategoryCards()} />
       </>
       <>
-        <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
+        <ArticleListBox title="Top Stories" articles={topArticlesLinks()} />
       </>
       <>
         {/* TODO: make skeleton/placeholder actually do that, not makeshift */}

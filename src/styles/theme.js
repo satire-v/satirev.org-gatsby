@@ -76,7 +76,7 @@ const theme = createMuiTheme({
       fontSize: "2rem",
     },
     h3: {
-      // Article Card Title
+      // Featured Article Card Title
       fontFamily: serif,
       fontSize: "1.6rem",
       lineHeight: 0.95,
@@ -86,7 +86,7 @@ const theme = createMuiTheme({
     h4: {
       // Article Card Title
       fontFamily: serif,
-      fontSize: "1.05rem",
+      fontSize: "1rem",
       lineHeight: 1.1,
       // letterSpacing: "-0.00833em",
       fontWeight: 400,

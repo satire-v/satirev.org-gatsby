@@ -3,30 +3,30 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: LatestArticlesLinks
+// GraphQL query operation: TopArticlesLinks
 // ====================================================
 
-export type LatestArticlesLinks_allDataArticle_nodes_category = {
+export type TopArticlesLinks_allDataArticle_nodes_category = {
   __typename: "DataCategory",
   name: string,
   slug: string,
 };
 
-export type LatestArticlesLinks_allDataArticle_nodes = {
+export type TopArticlesLinks_allDataArticle_nodes = {
   __typename: "DataArticle",
   id: string,
   slug: string,
   title: string,
-  category: LatestArticlesLinks_allDataArticle_nodes_category,
+  category: TopArticlesLinks_allDataArticle_nodes_category,
 };
 
-export type LatestArticlesLinks_allDataArticle = {
+export type TopArticlesLinks_allDataArticle = {
   __typename: "DataArticleConnection",
-  nodes: Array<LatestArticlesLinks_allDataArticle_nodes>,
+  nodes: Array<TopArticlesLinks_allDataArticle_nodes>,
 };
 
-export type LatestArticlesLinks = {
-  allDataArticle: LatestArticlesLinks_allDataArticle
+export type TopArticlesLinks = {
+  allDataArticle: TopArticlesLinks_allDataArticle
 };/* @flow */
 /* eslint-disable */
 // This file was automatically generated and should not be edited.

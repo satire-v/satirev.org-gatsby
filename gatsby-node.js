@@ -1,21 +1,70 @@
-exports.createSchemaCustomization = ({ actions }) => {
+const { google } = require("googleapis");
+
+const key = require("./satirev-gatsby.jwt.json");
+
+exports.createSchemaCustomization = async ({ actions, schema }) => {
+  const scopes = "https://www.googleapis.com/auth/analytics.readonly";
+  const jwt = new google.auth.JWT(
+    key.client_email,
+    null,
+    key.private_key,
+    scopes
+  );
+  const viewId = 69975916;
+  await jwt.authorize();
+  const result = await google.analytics("v3").data.ga.get({
+    auth: jwt,
+    ids: `ga:${viewId}`,
+    "start-date": "7daysAgo",
+    "end-date": "today",
+    dimensions: "ga:pagePath",
+    metrics: "ga:pageviews",
+    sort: "-ga:pageviews",
+  });
+  const colHeaders = result.data.columnHeaders.map(obj => obj.name);
+  const pagePathIndex = colHeaders.indexOf("ga:pagePath");
+  const pageViewsIndex = colHeaders.indexOf("ga:pageviews");
+  const pageMap = {};
+  result.data.rows.forEach(row => {
+    pageMap[row[pagePathIndex]] = row[pageViewsIndex];
+  });
   const { createTypes } = actions;
-  const typeDefs = `
-    type DataArticle implements Node {
-      title: String!
-      slug: String!
-      category: DataCategory!
-      body: String!
-     
-    }
-    type DataFileData {
-      full_url: String!
-    }
-    type DataCategory implements Node {
+  const typeDefs = [
+    `type DataFileData {
+        full_url: String!
+    }`,
+    `type DataCategory implements Node {
       name: String!
       slug: String!
-    }
-  `;
+    }`,
+    schema.buildObjectType({
+      name: "DataArticle",
+      fields: {
+        title: "String!",
+        slug: "String!",
+        category: "DataCategory!",
+        body: "String!",
+        page_views_past_week: {
+          type: "Int",
+          resolve: (source, args, context, info) => {
+            const pageViews =
+              parseInt(
+                pageMap[
+                  // eslint-disable-next-line no-underscore-dangle
+                  `/${source.__gatsby_resolved.category.slug}/${source.slug}`
+                ],
+                10
+              ) || 0;
+            const legacyViews =
+              parseInt(pageMap[`/${source.legacy_slug}`], 10) || 0;
+            return pageViews + legacyViews;
+          },
+        },
+      },
+      interfaces: ["Node"],
+    }),
+  ];
+
   createTypes(typeDefs);
 };
 
@@ -87,7 +136,7 @@ exports.createPages = async function({ actions, graphql }) {
   });
 };
 
-exports.createResolvers = ({ createResolvers }) => {
+exports.createResolvers = async ({ createResolvers }) => {
   createResolvers({
     DataArticle: {
       created_on: {

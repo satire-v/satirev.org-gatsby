@@ -3,12 +3,15 @@
 import { type ArticleLink, processArticleLinkQuery } from "@queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
-import { type LatestArticlesLinks } from "./graphql/LatestArticlesLinks";
+import { type TopArticlesLinks } from "./graphql/TopArticlesLinks";
 
-const latestArticlesLinks = (): Array<ArticleLink> => {
-  const data: LatestArticlesLinks = useStaticQuery(graphql`
-    query LatestArticlesLinks {
-      allDataArticle(limit: 5, sort: { fields: modified_on, order: DESC }) {
+const topArticlesLinks = (): Array<ArticleLink> => {
+  const data: TopArticlesLinks = useStaticQuery(graphql`
+    query TopArticlesLinks {
+      allDataArticle(
+        limit: 5
+        sort: { fields: page_views_past_week, order: DESC }
+      ) {
         nodes {
           ...ArticleLinkFragment
         }
@@ -22,4 +25,4 @@ const latestArticlesLinks = (): Array<ArticleLink> => {
   return articles;
 };
 
-export default latestArticlesLinks;
+export default topArticlesLinks;

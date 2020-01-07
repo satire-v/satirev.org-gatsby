@@ -63,7 +63,9 @@ function ArticleVCard(props: Props): React.Node {
             <ImageFluid fluid={props.article.imgFluid} />
           </CardMedia>
           <CardContent>
-            <Typography variant={titleTag}>{props.article.title}</Typography>
+            <Typography variant={titleTag} gutterBottom={props.isFeatured}>
+              {props.article.title}
+            </Typography>
             {hasExcerpt ? (
               <Typography variant="body2" component="p">
                 {props.article.shortExcerpt}
