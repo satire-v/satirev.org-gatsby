@@ -13,7 +13,7 @@ type Props = {
 const gridRoot = css`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: ${theme.spacing(2)}px;
+  grid-gap: ${theme.spacing(1)}px;
 `;
 
 function ArticleVCardGrid(props: Props): React.Node {

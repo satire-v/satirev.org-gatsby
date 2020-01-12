@@ -54,6 +54,14 @@ const theme = createMuiTheme({
       xl: 1400,
     },
   },
+  props: {
+    MuiCard: {
+      elevation: 0,
+    },
+    MuiButtonBase: {
+      disableRipple: true,
+    },
+  },
   overrides: {
     MuiCssBaseline: {
       "@global": {

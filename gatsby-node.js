@@ -46,7 +46,7 @@ exports.createSchemaCustomization = async ({ actions, schema }) => {
         body: "String!",
         page_views_past_week: {
           type: "Int",
-          resolve: (source, args, context, info) => {
+          resolve: source => {
             const pageViews =
               parseInt(
                 pageMap[
