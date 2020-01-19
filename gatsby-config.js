@@ -66,7 +66,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-directus-cms",
+      resolve: "@directus/gatsby-source-directus",
       options: {
         url: "http://api.satirev.org",
         project: "satire-v",
