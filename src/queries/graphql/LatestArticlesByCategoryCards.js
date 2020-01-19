@@ -20,12 +20,12 @@ export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_im
 export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile_childImageSharp_fluid = {
   __typename: "ImageSharpFluid",
   base64: ?string,
-  aspectRatio: ?number,
-  src: ?string,
-  srcSet: ?string,
+  aspectRatio: number,
+  src: string,
+  srcSet: string,
   srcWebp: ?string,
   srcSetWebp: ?string,
-  sizes: ?string,
+  sizes: string,
 };
 
 export type LatestArticlesByCategoryCards_allDataArticle_group_nodes_featured_image_localFile_childImageSharp = {

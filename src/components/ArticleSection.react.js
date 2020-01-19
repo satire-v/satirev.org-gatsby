@@ -28,6 +28,9 @@ const bodyText = css`
     margin-block-end: 1em;
     margin-block-start: 1em;
   }
+  & img {
+    max-width: 100%;
+  }
 `;
 
 const articleRoot = css`

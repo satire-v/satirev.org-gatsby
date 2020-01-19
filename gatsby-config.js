@@ -12,6 +12,17 @@ module.exports = {
     author: `Satire V`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      options: {
+        analyzerPort: 3000,
+        production: true,
+        analyzerMode: "disabled",
+        generateStatsFile: true,
+      },
+    },
+    `gatsby-plugin-preact`,
+    "gatsby-plugin-netlify-cache",
     "gatsby-plugin-flow",
     {
       resolve: `gatsby-plugin-material-ui`,

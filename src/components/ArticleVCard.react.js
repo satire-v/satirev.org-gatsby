@@ -41,7 +41,7 @@ function ArticleVCard(props: Props): React.Node {
   `;
 
   return (
-    <Card css={cardRoot} variant="outlined" component="article">
+    <Card css={cardRoot} component="article">
       {hasHeader ? (
         <CardHeader
           css={css`

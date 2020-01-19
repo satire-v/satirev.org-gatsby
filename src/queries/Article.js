@@ -9,8 +9,6 @@ import {
 import { type ArticleFullFragment } from "./graphql/ArticleFullFragment";
 import { type ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
 
-const cheerio = require("cheerio");
-
 export type ArticleLink = {|
   id: string,
   slug: string,
@@ -85,21 +83,7 @@ const EXCERPT_WORD_LIMIT = 40;
 export const processArticleCardQuery = (
   article: ArticleCardFragment
 ): ArticleCard => {
-  let fullExcerpt = article.excerpt ?? "";
-  if (fullExcerpt === "") {
-    const $ = cheerio.load(article.body);
-    const texts = $("p, div");
-    texts.toArray().every(el => {
-      if (cheerio.text($(el)).match(/by/gi)) {
-        $(el).remove();
-      }
-      if (!/^\s+$/.test(cheerio.text($(el)))) {
-        fullExcerpt = cheerio.text($(el));
-        return false;
-      }
-      return true;
-    });
-  }
+  const fullExcerpt = article.excerpt ?? "";
   let shortExcerpt = fullExcerpt;
   if (fullExcerpt.split(" ").length > EXCERPT_WORD_LIMIT) {
     shortExcerpt = `${fullExcerpt

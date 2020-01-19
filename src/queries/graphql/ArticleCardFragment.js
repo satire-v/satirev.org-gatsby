@@ -20,12 +20,12 @@ export type ArticleCardFragment_featured_image_data = {
 export type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid = {
   __typename: "ImageSharpFluid",
   base64: ?string,
-  aspectRatio: ?number,
-  src: ?string,
-  srcSet: ?string,
+  aspectRatio: number,
+  src: string,
+  srcSet: string,
   srcWebp: ?string,
   srcSetWebp: ?string,
-  sizes: ?string,
+  sizes: string,
 };
 
 export type ArticleCardFragment_featured_image_localFile_childImageSharp = {

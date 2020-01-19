@@ -56,7 +56,7 @@ const theme = createMuiTheme({
   },
   props: {
     MuiCard: {
-      elevation: 0,
+      elevation: 2,
     },
     MuiButtonBase: {
       disableRipple: true,
@@ -94,7 +94,7 @@ const theme = createMuiTheme({
     h4: {
       // Article Card Title
       fontFamily: serif,
-      fontSize: "1rem",
+      fontSize: "1.1rem",
       lineHeight: 1.1,
       // letterSpacing: "-0.00833em",
       fontWeight: 400,
@@ -131,5 +131,5 @@ const theme = createMuiTheme({
 
 export default responsiveFontSizes(theme, {
   factor: 2,
-  variants: ["h1", "h2", "h5"],
+  variants: ["h5"],
 });
