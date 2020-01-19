@@ -1,8 +1,10 @@
 const { google } = require("googleapis");
 
-const key =
-  require("./satirev-gatsby.jwt.json") ||
-  JSON.parse(process.env.GOOGLE_API_KEY);
+try {
+  const key = require("./satirev-gatsby.jwt.json");
+} catch {
+  const key = JSON.parse(process.env.GOOGLE_API_KEY);
+}
 
 exports.createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";
