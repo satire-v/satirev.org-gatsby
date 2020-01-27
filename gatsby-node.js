@@ -2,7 +2,6 @@ const { google } = require("googleapis");
 require("dotenv").config();
 
 const key = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
-console.log(key);
 
 module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";

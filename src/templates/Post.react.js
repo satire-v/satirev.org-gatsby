@@ -10,7 +10,7 @@ import ArticleSection from "@components/ArticleSection";
 import ArticleVCardGrid from "@components/ArticleVCardGrid.react";
 import Columns from "@layouts/Columns";
 import latestArticlesByCategoryCards from "@queries/LatestArticlesByCategoryCards";
-import latestArticlesLinks from "@queries/latestArticlesLinks";
+import latestArticlesLinks from "@queries/LatestArticlesLinks";
 
 // TODO: make a generic column number layout
 

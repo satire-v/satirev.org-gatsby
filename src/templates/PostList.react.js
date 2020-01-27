@@ -9,7 +9,7 @@ import ArticleListBox from "@components/ArticleListBox";
 import ArticleListFull from "@components/ArticleListFull";
 import Columns from "@layouts/Columns";
 import Pagination from "@components/Pagination";
-import latestArticlesLinks from "@queries/latestArticlesLinks";
+import latestArticlesLinks from "@queries/LatestArticlesLinks";
 // TODO: make a generic column number layout
 
 type Props = {
