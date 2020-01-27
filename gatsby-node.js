@@ -6,7 +6,7 @@ module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const jwt = new google.auth.JWT(
     process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    process.env.GOOGLE_PRIVATE_KEY,
+    `${process.env.GOOGLE_PRIVATE_KEY}`,
     scopes
   );
   const viewId = 69975916;
