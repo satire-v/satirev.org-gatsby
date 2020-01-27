@@ -1,14 +1,15 @@
 const { google } = require("googleapis");
 require("dotenv").config();
 
-console.log(unescape(process.env.GOOGLE_PRIVATE_KEY));
+const key = process.env.GOOGLE_PRIVATE_KEY.replace("\\n", "\n");
+console.log(key);
 
 module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";
   const jwt = new google.auth.JWT(
     process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    `${process.env.GOOGLE_PRIVATE_KEY}`,
+    key,
     scopes
   );
   const viewId = 69975916;
