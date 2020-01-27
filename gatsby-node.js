@@ -1,6 +1,8 @@
 const { google } = require("googleapis");
 require("dotenv").config();
 
+console.log(process.env.GOOGLE_PRIVATE_KEY);
+
 module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";
   const jwt = new google.auth.JWT(
