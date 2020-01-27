@@ -17,8 +17,7 @@ module.exports = {
       options: {
         analyzerPort: 3000,
         production: true,
-        analyzerMode: "disabled",
-        generateStatsFile: true,
+        disable: true,
       },
     },
     `gatsby-plugin-preact`,

@@ -21510,17 +21510,7 @@
               "defaultValue": null
             },
             {
-              "name": "analyzerMode",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "generateStatsFile",
+              "name": "disabled",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -22391,19 +22381,7 @@
               "deprecationReason": null
             },
             {
-              "name": "analyzerMode",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "generateStatsFile",
+              "name": "disabled",
               "description": null,
               "args": [],
               "type": {
@@ -23842,13 +23820,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginOptions___analyzerMode",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pluginOptions___generateStatsFile",
+              "name": "pluginOptions___disabled",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -25889,13 +25861,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginCreator___pluginOptions___analyzerMode",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pluginCreator___pluginOptions___generateStatsFile",
+              "name": "pluginCreator___pluginOptions___disabled",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

@@ -2,7 +2,7 @@ const { google } = require("googleapis");
 
 const key = require("./satirev-gatsby.jwt.json");
 
-exports.createSchemaCustomization = async ({ actions, schema }) => {
+module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";
   const jwt = new google.auth.JWT(
     key.client_email,
@@ -68,8 +68,7 @@ exports.createSchemaCustomization = async ({ actions, schema }) => {
   createTypes(typeDefs);
 };
 
-// eslint-disable-next-line func-names
-exports.createPages = async function({ actions, graphql }) {
+module.exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
       allDataArticle {
@@ -136,7 +135,7 @@ exports.createPages = async function({ actions, graphql }) {
   });
 };
 
-exports.createResolvers = async ({ createResolvers }) => {
+module.exports.createResolvers = async ({ createResolvers }) => {
   createResolvers({
     DataArticle: {
       created_on: {
