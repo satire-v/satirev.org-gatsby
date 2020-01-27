@@ -1,13 +1,12 @@
 const { google } = require("googleapis");
-
-const key = require("./satirev-gatsby.jwt.json");
+require("dotenv").config();
 
 module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";
   const jwt = new google.auth.JWT(
-    key.client_email,
+    process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    key.private_key,
+    process.env.GOOGLE_PRIVATE_KEY,
     scopes
   );
   const viewId = 69975916;

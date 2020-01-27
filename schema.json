@@ -21510,7 +21510,7 @@
               "defaultValue": null
             },
             {
-              "name": "disabled",
+              "name": "disable",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -22381,7 +22381,7 @@
               "deprecationReason": null
             },
             {
-              "name": "disabled",
+              "name": "disable",
               "description": null,
               "args": [],
               "type": {
@@ -23820,7 +23820,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginOptions___disabled",
+              "name": "pluginOptions___disable",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -25861,7 +25861,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginCreator___pluginOptions___disabled",
+              "name": "pluginCreator___pluginOptions___disable",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
