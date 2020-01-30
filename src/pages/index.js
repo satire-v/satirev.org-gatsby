@@ -33,6 +33,8 @@ export default (): React.Node => (
           <a
             className="twitter-timeline"
             data-height="600"
+            data-width="400"
+            data-dnt="true"
             href="https://twitter.com/therealsatirev?ref_src=twsrc%5Etfw"
           >
             Tweets by Satire V
