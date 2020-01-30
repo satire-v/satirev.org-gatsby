@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { type ArticleCardFragment } from "@queryTypes/ArticleCardFragment";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
 import { graphql } from "gatsby";
 import { processArticleCardQuery } from "@queries/Article";
 import ArticleListBox from "@components/ArticleListBox";
@@ -31,11 +30,13 @@ const PageTemplate = (props: Props): React.Node => (
     </>
     <>
       <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
-      <TwitterTimelineEmbed
-        sourceType="profile"
-        screenName="therealsatirev"
-        options={{ height: 600 }}
-      />
+      <a
+        className="twitter-timeline"
+        data-height="600"
+        href="https://twitter.com/therealsatirev?ref_src=twsrc%5Etfw"
+      >
+        Tweets by Satire V
+      </a>
     </>
   </Columns>
 );

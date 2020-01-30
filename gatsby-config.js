@@ -23,6 +23,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-preact`,
+    `gatsby-plugin-twitter`,
     "gatsby-plugin-netlify-cache",
     "gatsby-plugin-flow",
     {

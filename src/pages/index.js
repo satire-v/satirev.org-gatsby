@@ -1,7 +1,6 @@
 // @flow
 
 import * as React from "react";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
 import ArticleListBox from "@components/ArticleListBox";
 import ArticleVCardGrid from "@components/ArticleVCardGrid.react";
 import BreakingNewsBar from "@components/BreakingNewsBar";
@@ -24,12 +23,20 @@ export default (): React.Node => (
       </>
       <>
         {/* TODO: make skeleton/placeholder actually do that, not makeshift */}
-        <div style={{ height: 600, background: theme.palette.grey["300"] }}>
-          <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="therealsatirev"
-            options={{ height: 600 }}
-          />
+        <div
+          style={{
+            height: 600,
+            background: theme.palette.grey["300"],
+            borderRadius: "6px",
+          }}
+        >
+          <a
+            className="twitter-timeline"
+            data-height="600"
+            href="https://twitter.com/therealsatirev?ref_src=twsrc%5Etfw"
+          >
+            Tweets by Satire V
+          </a>
         </div>
       </>
     </Columns>
