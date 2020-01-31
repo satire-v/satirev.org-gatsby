@@ -5,7 +5,7 @@ import { Paper } from "@material-ui/core";
 import { css } from "@emotion/core";
 import Button from "@common/Button";
 import anime from "animejs/lib/anime.es";
-import logo from "@img/logo.png";
+import logo from "@img/logoSmall.webp";
 import theme, { titleFont } from "@styles/theme";
 
 const BASELINE = 40;
