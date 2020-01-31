@@ -1,5 +1,4 @@
 // @flow
-import "#assets/fonts/cardinal/stylesheet.css";
 import * as React from "react";
 import { CssBaseline } from "@material-ui/core";
 import { Global } from "@emotion/core";

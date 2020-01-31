@@ -31,6 +31,7 @@ export default (): React.Node => (
           }}
         >
           <a
+            rel="preload"
             className="twitter-timeline"
             data-height="600"
             data-width="400"

@@ -21,6 +21,7 @@ module.file_ext=.js
 module.file_ext=.jsx
 module.file_ext=.json
 module.file_ext=.react.js
+module.file_ext=.webp
 
 esproposal.optional_chaining=enable
 
