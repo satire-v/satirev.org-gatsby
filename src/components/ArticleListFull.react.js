@@ -1,10 +1,10 @@
 // @flow
 import * as React from "react";
-import { type ArticleCard } from "@queries/Article";
+import { type ArticleCard } from "#queries/Article";
 import { List, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
-import ArticleListItem from "@components/ArticleListItem";
-import theme from "@styles/theme";
+import ArticleListItem from "#components/ArticleListItem";
+import theme from "#styles/theme";
 
 type Props = {
   articles: Array<ArticleCard>,

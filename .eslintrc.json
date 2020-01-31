@@ -42,7 +42,7 @@
         "allowTaggedTemplates": true
       }
     ],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".react.js"] }],
     "consistent-return": ["error"],
     "filenames/match-regex": ["error", "^[a-zA-Z-0-9\\.]+$", true],
     "no-console": "warn",
@@ -64,7 +64,8 @@
     "no-unused-vars": "warn",
     "import/order": ["warn", { "newlines-between": "always" }],
     "import/no-unresolved": "off",
-    "sort-imports-es6-autofix/sort-imports-es6": "warn"
+    "sort-imports-es6-autofix/sort-imports-es6": "warn",
+    "import/extensions": ["error", "never"]
   },
   "overrides": [
     {
@@ -91,6 +92,6 @@
   "settings": {
     "react": {
       "version": "16.4.2"
-    }
+    },
   }
 }

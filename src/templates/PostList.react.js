@@ -1,14 +1,14 @@
 // @flow
 
 import * as React from "react";
-import { type ArticleCardFragment } from "@queryTypes/ArticleCardFragment";
+import { type ArticleCardFragment } from "#queryTypes/ArticleCardFragment";
 import { graphql } from "gatsby";
-import { processArticleCardQuery } from "@queries/Article";
-import ArticleListBox from "@components/ArticleListBox";
-import ArticleListFull from "@components/ArticleListFull";
-import Columns from "@layouts/Columns";
-import Pagination from "@components/Pagination";
-import latestArticlesLinks from "@queries/LatestArticlesLinks";
+import { processArticleCardQuery } from "#queries/Article";
+import ArticleListBox from "#components/ArticleListBox";
+import ArticleListFull from "#components/ArticleListFull";
+import Columns from "#layouts/Columns";
+import Pagination from "#components/Pagination";
+import latestArticlesLinks from "#queries/LatestArticlesLinks";
 // TODO: make a generic column number layout
 
 type Props = {

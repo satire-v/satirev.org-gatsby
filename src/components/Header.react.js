@@ -3,10 +3,10 @@ import * as React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import { Paper } from "@material-ui/core";
 import { css } from "@emotion/core";
-import Button from "@common/Button";
+import Button from "#common/Button";
 import anime from "animejs/lib/anime.es";
-import logo from "@img/logoSmall.webp";
-import theme, { titleFont } from "@styles/theme";
+import logo from "#img/logoSmall.webp";
+import theme, { titleFont } from "#styles/theme";
 
 const BASELINE = 40;
 

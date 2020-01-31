@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { type ArticleCard } from "@queries/Article";
+import { type ArticleCard } from "#queries/Article";
 import {
   Card,
   CardActionArea,
@@ -10,9 +10,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { css } from "@emotion/core";
-import ImageFluid from "@common/ImageFluid";
-import Link from "@common/Link";
-import theme from "@styles/theme";
+import ImageFluid from "#common/ImageFluid";
+import Link from "#common/Link";
+import theme from "#styles/theme";
 
 type Props = {|
   article: ArticleCard,

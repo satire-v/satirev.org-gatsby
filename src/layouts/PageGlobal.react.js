@@ -1,12 +1,12 @@
 // @flow
-import "@assets/fonts/cardinal/stylesheet.css";
+import "#assets/fonts/cardinal/stylesheet.css";
 import * as React from "react";
 import { CssBaseline } from "@material-ui/core";
 import { Global } from "@emotion/core";
 import { ThemeProvider } from "@material-ui/core/styles";
-import Footer from "@components/Footer";
-import Header from "@components/Header";
-import theme, { global } from "@styles/theme";
+import Footer from "#components/Footer";
+import Header from "#components/Header";
+import theme, { global } from "#styles/theme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 type Props = {

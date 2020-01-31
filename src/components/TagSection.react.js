@@ -3,7 +3,7 @@ import * as React from "react";
 import { Chip } from "@material-ui/core";
 import { LocalOffer } from "@material-ui/icons";
 import { css } from "@emotion/core";
-import theme from "@styles/theme";
+import theme from "#styles/theme";
 
 type Props = {
   tags: Array<string>,

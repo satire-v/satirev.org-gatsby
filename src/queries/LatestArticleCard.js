@@ -1,5 +1,5 @@
 // @flow
-import { type ArticleCard, processArticleCardQuery } from "@queries/Article";
+import { type ArticleCard, processArticleCardQuery } from "#queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
 import { type LatestArticleCard } from "./graphql/LatestArticleCard";

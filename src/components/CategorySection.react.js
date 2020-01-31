@@ -3,7 +3,7 @@ import * as React from "react";
 import { LabelImportant } from "@material-ui/icons";
 import { Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
-import theme from "@styles/theme";
+import theme from "#styles/theme";
 
 type Props = {
   category: string,

@@ -4,9 +4,9 @@ import { ButtonGroup } from "@material-ui/core";
 import { NavigateBefore, NavigateNext } from "@material-ui/icons";
 import { css } from "@emotion/core";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import Button from "@common/Button";
-import Fab from "@common/Fab";
-import theme from "@styles/theme";
+import Button from "#common/Button";
+import Fab from "#common/Fab";
+import theme from "#styles/theme";
 
 type Props = {
   pageContext: any, // TODO real typing i guess

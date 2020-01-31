@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Container } from "@material-ui/core";
 import { css } from "@emotion/core";
-import theme from "@styles/theme";
+import theme from "#styles/theme";
 
 const containerRoot = css`
   margin-top: ${theme.spacing(3)}px;

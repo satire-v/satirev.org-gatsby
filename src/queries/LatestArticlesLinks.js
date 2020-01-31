@@ -1,6 +1,6 @@
 // @flow
 
-import { type ArticleLink, processArticleLinkQuery } from "@queries/Article";
+import { type ArticleLink, processArticleLinkQuery } from "#queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
 import { type LatestArticlesLinks } from "./graphql/LatestArticlesLinks";

@@ -1,15 +1,15 @@
 // @flow
 
 import * as React from "react";
-import { type ArticleFullFragment } from "@queryTypes/ArticleFullFragment";
+import { type ArticleFullFragment } from "#queryTypes/ArticleFullFragment";
 import { graphql } from "gatsby";
-import { processArticleQuery } from "@queries/Article";
-import ArticleListBox from "@components/ArticleListBox";
-import ArticleSection from "@components/ArticleSection";
-import ArticleVCardGrid from "@components/ArticleVCardGrid.react";
-import Columns from "@layouts/Columns";
-import latestArticlesByCategoryCards from "@queries/LatestArticlesByCategoryCards";
-import latestArticlesLinks from "@queries/LatestArticlesLinks";
+import { processArticleQuery } from "#queries/Article";
+import ArticleListBox from "#components/ArticleListBox";
+import ArticleSection from "#components/ArticleSection";
+import ArticleVCardGrid from "#components/ArticleVCardGrid.react";
+import Columns from "#layouts/Columns";
+import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
+import latestArticlesLinks from "#queries/LatestArticlesLinks";
 
 // TODO: make a generic column number layout
 

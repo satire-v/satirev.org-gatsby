@@ -1,7 +1,7 @@
 // @flow
 import * as React from "react";
-import ArticleVCard from "@components/ArticleVCard";
-import LatestArticleCard from "@queries/LatestArticleCard";
+import ArticleVCard from "#components/ArticleVCard";
+import LatestArticleCard from "#queries/LatestArticleCard";
 
 function MainRecent(): React.Node {
   const article = LatestArticleCard();

@@ -2,7 +2,7 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
-import theme from "@styles/theme";
+import theme from "#styles/theme";
 
 const PADDING_HORIZONTAL = 16;
 const MARGIN_HORIZONTAL = 4;

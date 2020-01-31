@@ -1,7 +1,7 @@
 // @flow
 import * as React from "react";
 import { css } from "@emotion/core";
-import theme from "@styles/theme";
+import theme from "#styles/theme";
 
 const footerRoot = css`
   height: ${theme.spacing(10)}px;
