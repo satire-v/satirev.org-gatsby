@@ -7,6 +7,7 @@ import Footer from "#components/Footer";
 import Header from "#components/Header";
 import theme, { global } from "#styles/theme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Helmet } from "react-helmet";
 
 type Props = {
   children?: React.Node,
@@ -21,6 +22,10 @@ function Page(props: Props) {
     <ThemeProvider theme={responsiveTheme}>
       <CssBaseline>
         <Global styles={global} />
+        <Helmet>
+          <link rel="preconnect" href="https://platform.twitter.com" />
+          <link rel="preconnect" href="https://pbs.twimg.com" />
+        </Helmet>
         <Header />
         {props.children}
         <Footer />

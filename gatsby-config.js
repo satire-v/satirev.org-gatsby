@@ -18,6 +18,7 @@ const plugins = [
   },
   `gatsby-plugin-preact`,
   "gatsby-plugin-netlify-cache",
+  `gatsby-plugin-react-helmet`,
   "gatsby-plugin-flow",
   {
     resolve: `gatsby-plugin-material-ui`,
