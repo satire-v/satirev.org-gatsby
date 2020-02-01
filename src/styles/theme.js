@@ -30,7 +30,7 @@ const sansSerif = [
   '"Segoe UI Symbol"',
 ].join(",");
 const serif = [
-  // "Merriweather",
+  "Merriweather",
   "Georgia",
   "serif",
   '"Apple Color Emoji"',

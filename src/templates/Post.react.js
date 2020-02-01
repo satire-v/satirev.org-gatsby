@@ -28,7 +28,7 @@ const PageTemplate = (props: Props): React.Node => (
       <a
         className="twitter-timeline"
         data-height="600"
-        href="https://twitter.com/therealsatirev?ref_src=twsrc%5Etfw"
+        href="https://twitter.com/therealsatirev"
       >
         Tweets by Satire V
       </a>

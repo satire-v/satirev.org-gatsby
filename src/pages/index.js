@@ -31,12 +31,9 @@ export default (): React.Node => (
           }}
         >
           <a
-            rel="preload"
             className="twitter-timeline"
             data-height="600"
-            data-width="400"
-            data-dnt="true"
-            href="https://twitter.com/therealsatirev?ref_src=twsrc%5Etfw"
+            href="https://twitter.com/therealsatirev"
           >
             Tweets by Satire V
           </a>
