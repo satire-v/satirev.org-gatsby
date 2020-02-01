@@ -9,7 +9,7 @@ const injectTwitterScript = () => {
     var s = document.createElement(`script`);
 
     s.type = `text/javascript`;
-    s.defer = true;
+    s.async = true;
     s.innerText = jsCode;
     document.getElementsByTagName(`head`)[0].appendChild(s);
   }
@@ -21,7 +21,7 @@ const injectTwitterScript = () => {
       if (d.getElementById(id)) return t;
       js = d.createElement(s);
       js.id = id;
-      js.defer = true;
+      js.async = true;
       js.src = "https://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       t._e = [];
