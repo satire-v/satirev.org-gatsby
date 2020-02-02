@@ -10,6 +10,7 @@ import ArticleVCardGrid from "#components/ArticleVCardGrid.react";
 import Columns from "#layouts/Columns";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
+import TwitterTimeline from "#common/TwitterTimeline";
 
 // TODO: make a generic column number layout
 
@@ -25,13 +26,7 @@ const PageTemplate = (props: Props): React.Node => (
     </>
     <>
       <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
-      <a
-        className="twitter-timeline"
-        data-height="600"
-        href="https://twitter.com/therealsatirev"
-      >
-        Tweets by Satire V
-      </a>
+      <TwitterTimeline />
     </>
   </Columns>
 );

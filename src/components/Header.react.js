@@ -7,6 +7,7 @@ import Button from "#common/Button";
 import anime from "animejs/lib/anime.es";
 import logo from "#img/logoSmall.webp";
 import theme, { titleFont } from "#styles/theme";
+import Img from "gatsby-image";
 
 const BASELINE = 40;
 

@@ -9,16 +9,9 @@ import theme, { global } from "#styles/theme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Helmet } from "react-helmet";
 
-import fonts from "#assets/fonts";
-
 type Props = {
   children?: React.Node,
 };
-
-fonts.cssFiles.forEach(e => {
-  //$FlowFixMe
-  require(`#assets/fonts/${e}`);
-});
 
 function Page(props: Props) {
   const responsiveTheme = {
@@ -34,18 +27,115 @@ function Page(props: Props) {
           <title>Satire V</title>
           <link rel="preconnect" href="https://platform.twitter.com" />
           <link rel="preconnect" href="https://pbs.twimg.com" />
-          {fonts.fontFiles.map((file, i) => {
-            return (
-              <link
-                key={i}
-                rel="preload"
-                as="font"
-                type={`font/${file.split(".").pop()}`}
-                crossOrigin="anonymous"
-                href={`${file}`}
-              />
-            );
-          })}
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/cardinal/cardinal.woff2"}
+          />
+
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/crimson-text/crimson-text-latin-400.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/crimson-text/crimson-text-latin-400italic.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/crimson-text/crimson-text-latin-700.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/crimson-text/crimson-text-latin-700italic.woff2"}
+          />
+
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/lato/lato-latin-300.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/lato/lato-latin-300italic.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/lato/lato-latin-400.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/lato/lato-latin-400italic.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/lato/lato-latin-700.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/lato/lato-latin-700italic.woff2"}
+          />
+
+          {/* <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/merriweather/merriweather-latin-300.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/merriweather/merriweather-latin-300italic.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/merriweather/merriweather-latin-700.woff2"}
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href={"/fonts/merriweather/merriweather-latin-700italic.woff2"}
+          /> */}
+
           <link
             rel="apple-touch-icon"
             sizes="180x180"

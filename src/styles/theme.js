@@ -10,7 +10,16 @@ const colors = {
 
 const titleFont = "Cardinal, Georgia, serif";
 
+import cardinal from "#styles/fontSheets/cardinal";
+import crimsonText from "#styles/fontSheets/crimson-text";
+import lato from "#styles/fontSheets/lato";
+// import merriweather from "#styles/fontSheets/merriweather";
+
 const global = css`
+  ${cardinal}
+  ${crimsonText}
+  ${lato}
+  ${"" /* ${merriweather} */}
   body {
     & a {
       color: inherit;
@@ -30,7 +39,7 @@ const sansSerif = [
   '"Segoe UI Symbol"',
 ].join(",");
 const serif = [
-  "Merriweather",
+  "Crimson Text",
   "Georgia",
   "serif",
   '"Apple Color Emoji"',
@@ -107,6 +116,9 @@ const theme = createMuiTheme({
       fontSize: "1rem",
       fontWeight: 700,
       textTransform: "uppercase",
+    },
+    button: {
+      fontWeight: 400,
     },
     body1: {
       fontFamily: serif,

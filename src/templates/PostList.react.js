@@ -9,7 +9,7 @@ import ArticleListFull from "#components/ArticleListFull";
 import Columns from "#layouts/Columns";
 import Pagination from "#components/Pagination";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
-// TODO: make a generic column number layout
+import TwitterTimeline from "#common/TwitterTimeline";
 
 type Props = {
   data: { allDataArticle: { nodes: Array<ArticleCardFragment> } },
@@ -30,13 +30,7 @@ const PageTemplate = (props: Props): React.Node => (
     </>
     <>
       <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
-      <a
-        className="twitter-timeline"
-        data-height="600"
-        href="https://twitter.com/therealsatirev"
-      >
-        Tweets by Satire V
-      </a>
+      <TwitterTimeline />
     </>
   </Columns>
 );

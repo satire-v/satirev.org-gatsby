@@ -16,12 +16,12 @@ const plugins = [
       disable: true,
     },
   },
-  `gatsby-plugin-preact`,
+  "gatsby-plugin-preact",
   "gatsby-plugin-netlify-cache",
-  `gatsby-plugin-react-helmet`,
+  "gatsby-plugin-react-helmet",
   "gatsby-plugin-flow",
   {
-    resolve: `gatsby-plugin-material-ui`,
+    resolve: "gatsby-plugin-material-ui",
     options: {
       stylesProvider: {
         injectFirst: true,
@@ -47,6 +47,12 @@ const plugins = [
       typePrefix: "data",
     },
   },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `${__dirname}/src/assets/img/`,
+    },
+  },
   "gatsby-plugin-sharp",
   "gatsby-transformer-sharp",
   {
@@ -66,6 +72,7 @@ const plugins = [
       },
     },
   },
+  "gatsby-plugin-netlify",
 ];
 
 if (process.env.NODE_ENV !== "production") {
@@ -88,9 +95,9 @@ if (process.env.NODE_ENV !== "production") {
 
 module.exports = {
   siteMetadata: {
-    title: `Satire V`,
-    description: `Holding a Mirror Up to Truth`,
-    author: `Satire V`,
+    title: "Satire V",
+    description: "Holding a Mirror Up to Truth",
+    author: "Satire V",
   },
   plugins: plugins,
 };

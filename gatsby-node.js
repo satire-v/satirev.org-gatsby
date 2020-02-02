@@ -33,17 +33,22 @@ module.exports.createSchemaCustomization = async ({ actions, schema }) => {
   const typeDefs = [
     `type DataFileData {
         full_url: String!
-    }`,
-    `type DataCategory implements Node {
-      name: String!
+    }
+    type DataCategory implements Node @infer {
       slug: String!
+      name: String!
     }`,
     schema.buildObjectType({
       name: "DataArticle",
       fields: {
         title: "String!",
         slug: "String!",
-        category: "DataCategory!",
+        category: {
+          type: "DataCategory!",
+          extensions: {
+            link: { from: "category___NODE" },
+          },
+        },
         body: "String!",
         page_views_past_week: {
           type: "Int",

@@ -11,7 +11,7 @@ function requireAll(r) {
 }
 
 module.exports = {
-  fontFiles: requireAll(require.context("./", true, /\.(woff|woff2|ttf)$/)),
+  fontFiles: requireAll(require.context("./", true, /\.(woff2)$/)),
   cssFiles: require
     .context("./", true, /\.css$/)
     .keys()
