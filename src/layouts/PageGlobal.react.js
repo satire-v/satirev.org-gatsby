@@ -27,7 +27,7 @@ function Page(props: Props) {
           <title>Satire V</title>
           <link rel="preconnect" href="https://platform.twitter.com" />
           <link rel="preconnect" href="https://pbs.twimg.com" />
-          <link
+          {/* <link
             rel="preload"
             as="font"
             crossOrigin="anonymous"
@@ -105,7 +105,7 @@ function Page(props: Props) {
             crossOrigin="anonymous"
             type="font/woff2"
             href={"/fonts/lato/lato-latin-700italic.woff2"}
-          />
+          /> */}
 
           {/* <link
             rel="preload"
