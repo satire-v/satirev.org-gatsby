@@ -2,12 +2,13 @@
 import * as React from "react";
 import { CssBaseline } from "@material-ui/core";
 import { Global } from "@emotion/core";
+import { Helmet } from "react-helmet";
 import { ThemeProvider } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 import Footer from "#components/Footer";
 import Header from "#components/Header";
 import theme, { global } from "#styles/theme";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { Helmet } from "react-helmet";
 
 type Props = {
   children?: React.Node,
@@ -27,113 +28,113 @@ function Page(props: Props) {
           <title>Satire V</title>
           <link rel="preconnect" href="https://platform.twitter.com" />
           <link rel="preconnect" href="https://pbs.twimg.com" />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/cardinal/cardinal.woff2"
+          />
+
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/crimson-text/crimson-text-latin-400.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/crimson-text/crimson-text-latin-400italic.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/crimson-text/crimson-text-latin-700.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/crimson-text/crimson-text-latin-700italic.woff2"
+          />
+
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/lato/lato-latin-300.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/lato/lato-latin-300italic.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/lato/lato-latin-400.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/lato/lato-latin-400italic.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/lato/lato-latin-700.woff2"
+          />
+          <link
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+            href="/fonts/lato/lato-latin-700italic.woff2"
+          />
+
           {/* <link
             rel="preload"
             as="font"
             crossOrigin="anonymous"
             type="font/woff2"
-            href={"/fonts/cardinal/cardinal.woff2"}
-          />
-
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/crimson-text/crimson-text-latin-400.woff2"}
+            href="/fonts/merriweather/merriweather-latin-300.woff2"
           />
           <link
             rel="preload"
             as="font"
             crossOrigin="anonymous"
             type="font/woff2"
-            href={"/fonts/crimson-text/crimson-text-latin-400italic.woff2"}
+            href="/fonts/merriweather/merriweather-latin-300italic.woff2"
           />
           <link
             rel="preload"
             as="font"
             crossOrigin="anonymous"
             type="font/woff2"
-            href={"/fonts/crimson-text/crimson-text-latin-700.woff2"}
+            href="/fonts/merriweather/merriweather-latin-700.woff2"
           />
           <link
             rel="preload"
             as="font"
             crossOrigin="anonymous"
             type="font/woff2"
-            href={"/fonts/crimson-text/crimson-text-latin-700italic.woff2"}
-          />
-
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/lato/lato-latin-300.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/lato/lato-latin-300italic.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/lato/lato-latin-400.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/lato/lato-latin-400italic.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/lato/lato-latin-700.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/lato/lato-latin-700italic.woff2"}
-          /> */}
-
-          {/* <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/merriweather/merriweather-latin-300.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/merriweather/merriweather-latin-300italic.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/merriweather/merriweather-latin-700.woff2"}
-          />
-          <link
-            rel="preload"
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-            href={"/fonts/merriweather/merriweather-latin-700italic.woff2"}
+            href="/fonts/merriweather/merriweather-latin-700italic.woff2"
           /> */}
 
           <link

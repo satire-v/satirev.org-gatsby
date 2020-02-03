@@ -6,7 +6,7 @@
 // GraphQL query operation: HeaderQuery
 // ====================================================
 
-export type HeaderQuery_logo_childImageSharp_fixed = {
+export type HeaderQuery_file_childImageSharp_fixed = {
   __typename: "ImageSharpFixed",
   base64: ?string,
   width: number,
@@ -17,18 +17,18 @@ export type HeaderQuery_logo_childImageSharp_fixed = {
   srcSetWebp: ?string,
 };
 
-export type HeaderQuery_logo_childImageSharp = {
+export type HeaderQuery_file_childImageSharp = {
   __typename: "ImageSharp",
-  fixed: ?HeaderQuery_logo_childImageSharp_fixed,
+  fixed: ?HeaderQuery_file_childImageSharp_fixed,
 };
 
-export type HeaderQuery_logo = {
+export type HeaderQuery_file = {
   __typename: "File",
-  childImageSharp: ?HeaderQuery_logo_childImageSharp,
+  childImageSharp: ?HeaderQuery_file_childImageSharp,
 };
 
 export type HeaderQuery = {
-  logo: ?HeaderQuery_logo
+  file: ?HeaderQuery_file
 };/* @flow */
 /* eslint-disable */
 // This file was automatically generated and should not be edited.

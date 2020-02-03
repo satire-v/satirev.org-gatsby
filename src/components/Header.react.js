@@ -3,23 +3,19 @@ import * as React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import { Paper } from "@material-ui/core";
 import { css } from "@emotion/core";
-import Button from "#common/Button";
-import anime from "animejs/lib/anime.es";
-import logo from "#img/logoSmall.webp";
-import theme, { titleFont } from "#styles/theme";
 import Img from "gatsby-image";
+import Navbar from "#components/Navbar";
+import anime from "animejs/lib/anime.es";
+import theme, { titleFont } from "#styles/theme";
+import type { HeaderQuery } from "./graphql/HeaderQuery";
 
 const BASELINE = 40;
-
 const logoSize = BASELINE * 1.5; // get this better responsive
 
-const baseColor = "white";
-const accentColor = theme.palette.primary.main;
-
 const headerRootStyle = css`
-  background: ${baseColor};
-  color: ${accentColor};
-  border-top: 24px ${accentColor} solid;
+  background: white;
+  color: ${theme.palette.primary.main};
+  border-top: 24px ${theme.palette.primary.main} solid;
   padding: 10px;
 `;
 
@@ -152,88 +148,21 @@ const gridStyle = css`
   grid-gap: 12px;
 `;
 
-const PADDING_HORIZONTAL = 16;
-const MARGIN_HORIZONTAL = 4;
-const FONT_SIZE = "16px";
-const MARGIN_OF_ERROR = "40px";
+function Header(): React.Node {
+  const [tl, setTl] = React.useState(null);
 
-const buttonHoverStyle = {
-  background: accentColor,
-  color: theme.palette.primary.contrastText,
-};
-
-const buttonStyle = css`
-  margin: 0 ${MARGIN_HORIZONTAL}px;
-  background: none;
-  color: ${accentColor};
-  &:hover {
-    ${css(buttonHoverStyle)}
-  }
-`;
-
-function Navbar(): React.Node {
-  const { allDataCategory } = useStaticQuery(graphql`
-    query NavQuery {
-      allDataCategory {
-        nodes {
-          name
-          slug
-          id
+  const logo = useStaticQuery(graphql`
+    query HeaderQuery {
+      file(relativePath: { eq: "logo.png" }) {
+        childImageSharp {
+          fixed(height: 60) {
+            ...GatsbyImageSharpFixed_withWebp
+          }
         }
       }
     }
   `);
 
-  function reducer(total, node) {
-    let counter = 0;
-    node.name.split("").forEach(el => {
-      if (el.match(/(?![i])[a-z0-9]/gi)) {
-        counter += 1;
-      } else {
-        counter += 0.4;
-      }
-    });
-    return total + counter;
-  }
-
-  const letterCount = allDataCategory.nodes.reduce(reducer, 0);
-  const marginLength =
-    +allDataCategory.nodes.length *
-    ((MARGIN_HORIZONTAL + PADDING_HORIZONTAL) * 2);
-
-  const navRootStyle = css`
-    background: ${baseColor};
-    text-align: center;
-    white-space: nowrap;
-    @media (max-width: calc(
-      ${marginLength}px + (205px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
-    + ${MARGIN_OF_ERROR})) {
-      grid-column: span 3; /* this is just for the header....might want to idk, factor out */
-    }
-  `;
-
-  return (
-    <nav css={navRootStyle}>
-      {allDataCategory.nodes.map(node => (
-        <Button
-          to={`/${node.slug}`}
-          key={node.id}
-          variant="contained"
-          color="primary"
-          css={buttonStyle}
-          activeStyle={buttonHoverStyle}
-          partiallyActive
-          disableElevation
-        >
-          {node.name}
-        </Button>
-      ))}
-    </nav>
-  );
-}
-
-function Header(): React.Node {
-  const [tl, setTl] = React.useState(null);
   React.useEffect(() => {
     const timeline = anime.timeline({
       autoplay: false,
@@ -253,13 +182,18 @@ function Header(): React.Node {
       });
     setTl(timeline);
   }, []);
+
   return (
     <Paper>
       <header css={headerRootStyle}>
         <div css={gridStyle}>
           <div css={titleWrapper}>
             <div css={clickable} onClick={tl?.restart}>
-              <img alt="Satire V logo" src={logo} css={logoStyle} />
+              <Img
+                alt="Satire V logo"
+                fixed={logo.file.childImageSharp.fixed}
+                css={logoStyle}
+              />
             </div>
             <Link css={clickable} to="/">
               <div css={titleStyle}>Satire V</div>
@@ -274,7 +208,11 @@ function Header(): React.Node {
             className="mirroredContainer"
           >
             <div>
-              <img alt="Satire V logo" src={logo} css={logoStyle} />
+              <Img
+                alt="Satire V logo"
+                fixed={logo.file.childImageSharp.fixed}
+                css={logoStyle}
+              />
             </div>
 
             <div>

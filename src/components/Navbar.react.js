@@ -2,6 +2,8 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
+
+import Button from "#common/Button";
 import theme from "#styles/theme";
 
 const PADDING_HORIZONTAL = 16;
@@ -9,27 +11,27 @@ const MARGIN_HORIZONTAL = 4;
 const FONT_SIZE = "16px";
 const MARGIN_OF_ERROR = "40px";
 
+const buttonHoverStyle = {
+  background: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+};
+
 const buttonStyle = css`
-  display: inline-block;
-  padding: 8px ${PADDING_HORIZONTAL}px;
   margin: 0 ${MARGIN_HORIZONTAL}px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
+  background: none;
   color: ${theme.palette.primary.main};
-  font-size: ${FONT_SIZE};
   &:hover {
-    color: white;
-    background: ${theme.palette.primary.main};
+    ${css(buttonHoverStyle)}
   }
 `;
 
 function Navbar(): React.Node {
   const { allDataCategory } = useStaticQuery(graphql`
-    query NavBarQuery {
+    query NavQuery {
       allDataCategory {
         nodes {
           name
+          slug
           id
         }
       }
@@ -67,9 +69,18 @@ function Navbar(): React.Node {
   return (
     <nav css={navRootStyle}>
       {allDataCategory.nodes.map(node => (
-        <div key={node.id} css={buttonStyle}>
+        <Button
+          to={`/${node.slug}`}
+          key={node.id}
+          variant="contained"
+          color="primary"
+          css={buttonStyle}
+          activeStyle={buttonHoverStyle}
+          partiallyActive
+          disableElevation
+        >
           {node.name}
-        </div>
+        </Button>
       ))}
     </nav>
   );
