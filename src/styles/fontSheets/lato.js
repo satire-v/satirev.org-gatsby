@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+
 export default css`
   /* lato-100normal - latin */
   @font-face {

@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+
 export default css`
   @font-face {
     font-family: "Cardinal";

@@ -1,8 +1,7 @@
 // @flow
 import * as React from "react";
-import { css } from "@emotion/core";
+
 import theme from "#styles/theme";
-import { Card, CardContent } from "@material-ui/core";
 
 function TwitterTimeline(): React.Node {
   return (
@@ -12,6 +11,7 @@ function TwitterTimeline(): React.Node {
         background: theme.palette.grey["300"],
         padding: theme.spacing(2),
       }}
+      data-dnt="true"
       className="twitter-timeline"
       data-height="600"
       href="https://twitter.com/therealsatirev"
