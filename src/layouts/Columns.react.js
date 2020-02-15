@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Container } from "@material-ui/core";
 import { css } from "@emotion/core";
+
 import theme from "#styles/theme";
 
 const containerRoot = css`
@@ -80,12 +81,15 @@ type Props = {
 };
 
 export default (props: Props): React.Node => {
-  const total = React.Children.count(props.children);
+  const total = props.children.length;
   return (
     <Container css={containerRoot} maxWidth="xl">
       <div css={gridRoot}>
-        {React.Children.map(props.children, (child, i) => (
-          <div className={`column col-${(i + 1).toString()}-of-${total}`}>
+        {props.children.map((child, i) => (
+          <div
+            key={i}
+            className={`column col-${(i + 1).toString()}-of-${total}`}
+          >
             {child}
           </div>
         ))}
