@@ -1,8 +1,9 @@
 // @flow
 import * as React from "react";
-import { type ArticleCard } from "#queries/Article";
 import { List, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
+
+import { type ArticleCard } from "#queries/Article";
 import ArticleListItem from "#components/ArticleListItem";
 import theme from "#styles/theme";
 

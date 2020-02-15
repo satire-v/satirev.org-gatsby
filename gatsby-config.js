@@ -99,5 +99,5 @@ module.exports = {
     description: "Holding a Mirror Up to Truth",
     author: "Satire V",
   },
-  plugins: plugins,
+  plugins,
 };
