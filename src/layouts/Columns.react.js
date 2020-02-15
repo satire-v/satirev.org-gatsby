@@ -81,15 +81,12 @@ type Props = {
 };
 
 export default (props: Props): React.Node => {
-  const total = props.children.length;
+  const total = React.Children.count(props.children);
   return (
     <Container css={containerRoot} maxWidth="xl">
       <div css={gridRoot}>
-        {props.children.map((child, i) => (
-          <div
-            key={i}
-            className={`column col-${(i + 1).toString()}-of-${total}`}
-          >
+        {React.Children.map(props.children, (child, i) => (
+          <div className={`column col-${(i + 1).toString()}-of-${total}`}>
             {child}
           </div>
         ))}
