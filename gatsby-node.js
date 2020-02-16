@@ -79,7 +79,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
     query {
       allDataArticle {
         nodes {
-          dataId
+          id
           legacy_slug
           slug
           category {
@@ -112,7 +112,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
     actions.createPage({
       path: slug,
       component: require.resolve(`./src/templates/Post.react.js`),
-      context: { dataId: node.dataId },
+      context: { id: node.id },
     });
   });
 

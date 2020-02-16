@@ -1,18 +1,17 @@
 // @flow
 
 import * as React from "react";
-import { type ArticleFullFragment } from "#queryTypes/ArticleFullFragment";
 import { graphql } from "gatsby";
+
+import { type ArticleFullFragment } from "#queryTypes/ArticleFullFragment";
 import { processArticleQuery } from "#queries/Article";
 import ArticleListBox from "#components/ArticleListBox";
 import ArticleSection from "#components/ArticleSection";
-import ArticleVCardGrid from "#components/ArticleVCardGrid.react";
+import ArticleVCardGrid from "#components/ArticleVCardGrid";
 import Columns from "#layouts/Columns";
+import TwitterTimeline from "#common/TwitterTimeline";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
-import TwitterTimeline from "#common/TwitterTimeline";
-
-// TODO: make a generic column number layout
 
 type Props = {
   data: { dataArticle: ArticleFullFragment },
@@ -32,8 +31,8 @@ const PageTemplate = (props: Props): React.Node => (
 );
 
 export const query = graphql`
-  query FullArticle($dataId: Int!) {
-    dataArticle(dataId: { eq: $dataId }) {
+  query FullArticle($id: String) {
+    dataArticle(id: { eq: $id }) {
       ...ArticleFullFragment
     }
   }
