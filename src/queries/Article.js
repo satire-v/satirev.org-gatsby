@@ -69,7 +69,7 @@ export const articleCardFragment = graphql`
             maxWidth: 960
             maxHeight: 540
             fit: CONTAIN
-            background: "rgba(0,0,0,0)"
+            srcSetBreakpoints: [240, 480]
           ) {
             ...GatsbyImageSharpFluid_withWebp
           }

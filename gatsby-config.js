@@ -17,7 +17,6 @@ const plugins = [
     },
   },
   "gatsby-plugin-preact",
-  "gatsby-plugin-netlify-cache",
   "gatsby-plugin-react-helmet",
   "gatsby-plugin-flow",
   {
@@ -53,7 +52,7 @@ const plugins = [
       path: `${__dirname}/src/assets/img/`,
     },
   },
-  "gatsby-plugin-sharp",
+  { resolve: "gatsby-plugin-sharp", options: {} },
   "gatsby-transformer-sharp",
   {
     resolve: "gatsby-plugin-alias-imports",
@@ -76,21 +75,24 @@ const plugins = [
 ];
 
 if (process.env.NODE_ENV !== "production") {
-  plugins.push({
-    resolve: "gatsby-plugin-codegen",
-    options: {
-      addTypename: true,
-      target: "flow",
-      output: "graphql",
-      includes: [
-        "./src/**/*.js",
-        "./node_modules/gatsby-source-directus-cms/src/*.js",
-        "./node_modules/gatsby-transformer-sharp/src/*.js",
-        "./node_modules/gatsby-image/src/*.js",
-        // "./node_modules/gatsby-*/**/*.js" Direct includes prefered, because of performance reasons
-      ],
+  plugins.push(
+    {
+      resolve: "gatsby-plugin-codegen",
+      options: {
+        addTypename: true,
+        target: "flow",
+        output: "graphql",
+        includes: [
+          "./src/**/*.js",
+          "./node_modules/gatsby-source-directus-cms/src/*.js",
+          "./node_modules/gatsby-transformer-sharp/src/*.js",
+          "./node_modules/gatsby-image/src/*.js",
+          // "./node_modules/gatsby-*/**/*.js" Direct includes prefered, because of performance reasons
+        ],
+      },
     },
-  });
+    "gatsby-plugin-netlify-cache"
+  );
 }
 
 module.exports = {
