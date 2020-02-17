@@ -1,12 +1,13 @@
 // @flow
 import * as React from "react";
-import { ButtonGroup } from "@material-ui/core";
 import { NavigateBefore, NavigateNext } from "@material-ui/icons";
-import { css } from "@emotion/core";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import Button from "#common/Button";
-import Fab from "#common/Fab";
+import { ButtonGroup } from "@material-ui/core";
+import { css } from "@emotion/core";
+
 import theme from "#styles/theme";
+import Fab from "#common/Fab";
+import Button from "#common/Button";
 
 type Props = {
   pageContext: any, // TODO real typing i guess

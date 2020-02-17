@@ -1,10 +1,10 @@
 // @flow
 import * as React from "react";
-import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
+import { css } from "@emotion/core";
 
-import Button from "#common/Button";
 import theme from "#styles/theme";
+import Button from "#common/Button";
 
 const PADDING_HORIZONTAL = 16;
 const MARGIN_HORIZONTAL = 4;

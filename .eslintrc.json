@@ -8,7 +8,7 @@
     "prettier/flowtype",
     "prettier/react"
   ],
-  "plugins": ["flowtype", "react-hooks", "prettier", "react", "filenames", "sort-imports-es6-autofix"],
+  "plugins": ["flowtype", "react-hooks", "prettier", "react", "filenames"],
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",
@@ -62,9 +62,8 @@
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
     "no-unused-vars": "warn",
-    "import/order": ["warn", { "newlines-between": "always" }],
+    "import/order": ["warn", { "newlines-between": "always", "alphabetize": {"order": "desc", "caseInsensitive": true}}],
     "import/no-unresolved": "off",
-    "sort-imports-es6-autofix/sort-imports-es6": "warn",
     "import/extensions": ["error", "never"]
   },
   "overrides": [

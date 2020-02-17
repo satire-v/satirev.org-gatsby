@@ -1,9 +1,10 @@
 // @flow
 import * as React from "react";
 import { css } from "@emotion/core";
-import ArticleVCard from "#components/ArticleVCard";
+
 import theme from "#styles/theme";
 import type { ArticleCard } from "#queries/Article";
+import ArticleVCard from "#components/ArticleVCard";
 
 type Props = {
   articles: Array<ArticleCard>,

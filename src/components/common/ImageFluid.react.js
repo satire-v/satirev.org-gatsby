@@ -1,8 +1,8 @@
 // @flow
-import * as React from "react";
-import { css } from "@emotion/core";
-import Img from "gatsby-image";
 import analyze from "rgbaster";
+import * as React from "react";
+import Img from "gatsby-image";
+import { css } from "@emotion/core";
 
 import {
   type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase

@@ -36,7 +36,7 @@ const plugins = [
   {
     resolve: "@directus/gatsby-source-directus",
     options: {
-      url: "http://api.satirev.org",
+      url: "http://api.satirev.org/",
       project: "satire-v",
       auth: {
         token: "letmeinyoubitch",

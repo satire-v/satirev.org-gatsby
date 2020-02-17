@@ -1,12 +1,13 @@
 // @flow
 import * as React from "react";
-import { type ArticleFull } from "#queries/Article";
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
+
+import theme from "#styles/theme";
+import { type ArticleFull } from "#queries/Article";
+import TagSection from "#components/TagSection";
 import CategorySection from "#components/CategorySection";
 import ImageFluid from "#common/ImageFluid";
-import TagSection from "#components/TagSection";
-import theme from "#styles/theme";
 
 type Props = {
   article: ArticleFull,

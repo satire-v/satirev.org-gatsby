@@ -10,9 +10,10 @@ import {
   Typography,
 } from "@material-ui/core";
 import { css } from "@emotion/core";
-import Link from "#common/Link";
+
 import theme from "#styles/theme";
 import type { ArticleLink } from "#queries/Article";
+import Link from "#common/Link";
 
 type Props = { articles: Array<ArticleLink>, title: string };
 

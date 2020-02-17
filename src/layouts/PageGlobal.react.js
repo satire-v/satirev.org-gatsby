@@ -1,14 +1,14 @@
 // @flow
+import { Helmet } from "react-helmet";
 import * as React from "react";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 import { Global } from "@emotion/core";
-import { Helmet } from "react-helmet";
-import { ThemeProvider } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import Footer from "#components/Footer";
-import Header from "#components/Header";
 import theme, { global } from "#styles/theme";
+import Header from "#components/Header";
+import Footer from "#components/Footer";
 
 type Props = {
   children?: React.Node,

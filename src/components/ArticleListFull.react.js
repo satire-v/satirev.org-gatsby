@@ -3,9 +3,9 @@ import * as React from "react";
 import { List, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
 
+import theme from "#styles/theme";
 import { type ArticleCard } from "#queries/Article";
 import ArticleListItem from "#components/ArticleListItem";
-import theme from "#styles/theme";
 
 type Props = {
   articles: Array<ArticleCard>,

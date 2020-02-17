@@ -2,12 +2,12 @@
 // @flow
 import { graphql } from "gatsby";
 
+import { type ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
+import { type ArticleFullFragment } from "./graphql/ArticleFullFragment";
 import {
   type ArticleCardFragment,
   type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
 } from "./graphql/ArticleCardFragment";
-import { type ArticleFullFragment } from "./graphql/ArticleFullFragment";
-import { type ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
 
 export type ArticleLink = {|
   id: string,

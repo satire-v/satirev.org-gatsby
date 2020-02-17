@@ -1,8 +1,9 @@
 // @flow
 import * as React from "react";
-import { Chip } from "@material-ui/core";
 import { LocalOffer } from "@material-ui/icons";
+import { Chip } from "@material-ui/core";
 import { css } from "@emotion/core";
+
 import theme from "#styles/theme";
 
 type Props = {

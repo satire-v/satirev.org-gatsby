@@ -1,9 +1,9 @@
 // @flow
-
-import { type ArticleLink, processArticleLinkQuery } from "#queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
 import { type TopArticlesLinks } from "./graphql/TopArticlesLinks";
+
+import { type ArticleLink, processArticleLinkQuery } from "#queries/Article";
 
 const topArticlesLinks = (): Array<ArticleLink> => {
   const data: TopArticlesLinks = useStaticQuery(graphql`

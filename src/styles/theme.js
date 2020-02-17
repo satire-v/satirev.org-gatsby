@@ -1,7 +1,11 @@
 // @flow
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { css } from "@emotion/core";
 import { red, yellow } from "@material-ui/core/colors";
+import { css } from "@emotion/core";
+
+import lato from "#styles/fontSheets/lato";
+import crimsonText from "#styles/fontSheets/crimson-text";
+import cardinal from "#styles/fontSheets/cardinal";
 
 const colors = {
   crimson: "#A51C30",
@@ -9,10 +13,6 @@ const colors = {
 };
 
 const titleFont = "Cardinal, Georgia, serif";
-
-import cardinal from "#styles/fontSheets/cardinal";
-import crimsonText from "#styles/fontSheets/crimson-text";
-import lato from "#styles/fontSheets/lato";
 // import merriweather from "#styles/fontSheets/merriweather";
 
 const global = css`

@@ -1,13 +1,13 @@
 // @flow
 import * as React from "react";
+import Img from "gatsby-image";
 import { Link, graphql, useStaticQuery } from "gatsby";
+import anime from "animejs/lib/anime.es";
 import { Paper } from "@material-ui/core";
 import { css } from "@emotion/core";
-import Img from "gatsby-image";
-import anime from "animejs/lib/anime.es";
 
-import Navbar from "#components/Navbar";
 import theme, { titleFont } from "#styles/theme";
+import Navbar from "#components/Navbar";
 
 const BASELINE = 40;
 const logoSize = BASELINE * 1.5; // get this better responsive

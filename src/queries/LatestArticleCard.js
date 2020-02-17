@@ -1,8 +1,9 @@
 // @flow
-import { type ArticleCard, processArticleCardQuery } from "#queries/Article";
 import { graphql, useStaticQuery } from "gatsby";
 
 import { type LatestArticleCard } from "./graphql/LatestArticleCard";
+
+import { type ArticleCard, processArticleCardQuery } from "#queries/Article";
 
 const latestArticleCard = (): ArticleCard => {
   const data: LatestArticleCard = useStaticQuery(graphql`

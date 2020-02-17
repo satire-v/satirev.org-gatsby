@@ -1,13 +1,14 @@
 // @flow
 import * as React from "react";
-import { type ArticleCard } from "#queries/Article";
 import { CardContent, CardMedia, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
-import CategorySection from "#components/CategorySection";
-import ImageFluid from "#common/ImageFluid";
-import Link from "#common/Link";
-import TagSection from "#components/TagSection";
+
 import theme from "#styles/theme";
+import { type ArticleCard } from "#queries/Article";
+import TagSection from "#components/TagSection";
+import CategorySection from "#components/CategorySection";
+import Link from "#common/Link";
+import ImageFluid from "#common/ImageFluid";
 
 type Props = {
   article: ArticleCard,

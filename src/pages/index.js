@@ -1,15 +1,16 @@
 // @flow
 
 import * as React from "react";
-import ArticleListBox from "#components/ArticleListBox";
-import ArticleVCardGrid from "#components/ArticleVCardGrid.react";
-import BreakingNewsBar from "#components/BreakingNewsBar";
-import Columns from "#layouts/Columns";
-import MainRecent from "#components/MainRecent";
-import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
+
 import theme from "#styles/theme";
 import topArticlesLinks from "#queries/TopArticlesLinks";
-import TwitterTimeline from "#common/TwitterTimeline.react";
+import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
+import Columns from "#layouts/Columns";
+import MainRecent from "#components/MainRecent";
+import BreakingNewsBar from "#components/BreakingNewsBar";
+import ArticleVCardGrid from "#components/ArticleVCardGrid";
+import ArticleListBox from "#components/ArticleListBox";
+import TwitterTimeline from "#common/TwitterTimeline";
 
 export default (): React.Node => (
   <>
