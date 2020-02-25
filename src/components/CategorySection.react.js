@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { LabelImportant } from "@material-ui/icons";
+import LabelImportant  from "@material-ui/icons/LabelImportant";
 import { Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
 

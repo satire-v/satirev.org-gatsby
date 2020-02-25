@@ -67,7 +67,7 @@ export type FullArticle = {
 };
 
 export type FullArticleVariables = {
-  dataId: number
+  id?: ?string
 };/* @flow */
 /* eslint-disable */
 // This file was automatically generated and should not be edited.

@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { LocalOffer } from "@material-ui/icons";
+import LocalOffer  from "@material-ui/icons/LocalOffer";
 import { Chip } from "@material-ui/core";
 import { css } from "@emotion/core";
 

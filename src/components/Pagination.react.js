@@ -1,6 +1,7 @@
 // @flow
 import * as React from "react";
-import { NavigateBefore, NavigateNext } from "@material-ui/icons";
+import NavigateBefore from "@material-ui/icons/NavigateBefore";
+import NavigateNext from "@material-ui/icons/NavigateNExt";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { ButtonGroup } from "@material-ui/core";
 import { css } from "@emotion/core";

@@ -3,5 +3,12 @@
   "semi": true,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "parser": "babel-flow"
+  "overrides": [
+    {
+      "files": "*.js",
+      "options": {
+        "parser": "babel-flow"
+      }
+    }
+  ]
 }

@@ -2,7 +2,6 @@
 
 import * as React from "react";
 
-import theme from "#styles/theme";
 import topArticlesLinks from "#queries/TopArticlesLinks";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
 import Columns from "#layouts/Columns";
