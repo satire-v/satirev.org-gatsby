@@ -1,0 +1,126 @@
+@import url("./fontSheets/lato.css");
+@import url("./fontSheets/crimson-text.css");
+@import url("./fontSheets/cardinal.css");
+
+/* @import url("styles/fontSheets/merriweather.css"); */
+
+:root {
+  --title-font: Cardinal, Georgia, serif;
+
+  --sans-serif: Lato, Lucida Sans Unicode, sans-serif;
+  --serif: "Crimson Text", Georgia, serif;
+
+  /* Theme colors */
+  --crimson: #a51c30;
+  --crimson-dark: #731321;
+  --crimson-light: #b74959;
+  --goldLeaf: #d09d2f;
+  --goldLeaf-dark: #916d20;
+  --goldLeaf-light: #d9b058;
+
+  --error: #d50000;
+  --warning: #ffeb3b;
+
+  --hover-background: rgba(0, 0, 0, 0.04);
+  --disabled: rgba(0, 0, 0, 0.26);
+  --disabled-background: rgba(0, 0, 0, 0.12);
+
+  /* Visual aesthetic */
+  --border-radius: 2px;
+  --spacing: 8px;
+
+  /* Transitions */
+  --transition-duration-short: 250s;
+  --transition-duration-standard: 300s;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  * {
+    border-radius: var(--border-radius);
+  }
+
+  /* Font defaults */
+  --font-color-primary: rgba(0, 0, 0, 0.87);
+  --font-color-secondary: rgba(0, 0, 0, 0.54);
+  --font-color-disabled: rgba(0, 0, 0, 0.38);
+
+  color: var(--font-color-secondary);
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: var(--serif);
+  line-height: 1.5;
+
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+
+  /* Typography settings */
+  h1 {
+    /*  Section Title */
+    font-weight: 300;
+    font-size: 4rem;
+    font-family: var(--sans-serif);
+    line-height: 1.167;
+  }
+  h2 {
+    /*  Article Title */
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  h3 {
+    /* Featured Article Card Title */
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 0.95;
+  }
+  h4 {
+    /* Article Card Title */
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.1;
+  }
+  h5 {
+    /* Default for card headers */
+    font-weight: 400;
+    font-size: 1.5rem;
+    font-family: var(--sans-serif);
+    line-height: 1.334;
+  }
+  h6 {
+    /* Breaking news header */
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--sans-serif);
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+  button {
+    font-weight: 400;
+    font-size: 0.875rem;
+    font-family: var(--sans-serif);
+    line-height: 1.75;
+    text-transform: uppercase;
+  }
+  .body1 {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .body2 {
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  .subtitle1 {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .caption {
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-family: var(--sans-serif);
+  }
+}

@@ -1,0 +1,12 @@
+
+@font-face {
+  font-weight: normal;
+  font-family: "Cardinal";
+  font-style: normal;
+  src: local("Cardinal"),
+    url("/fonts/cardinal/cardinal.woff2") format("woff2"),
+    url("/fonts/cardinal/cardinal.woff") format("woff"),
+    url("/fonts/cardinal/cardinal.ttf") format("ttf");
+  font-display: swap;
+}
+

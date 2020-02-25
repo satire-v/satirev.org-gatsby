@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 2,
+  "bashBeautify.tabSize": 2,
+  "prettier.useTabs": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.prettier": true,
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": false
+  },
+  "stylelint.autoFixOnSave": true
+}
