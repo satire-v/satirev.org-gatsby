@@ -13,20 +13,20 @@ const plugins = [
     options: {
       analyzerPort: 3000,
       production: true,
-      disable: true,
+      disable: false,
     },
   },
   "gatsby-plugin-preact",
   "gatsby-plugin-react-helmet",
   "gatsby-plugin-flow",
-  {
-    resolve: "gatsby-plugin-material-ui",
-    options: {
-      stylesProvider: {
-        injectFirst: true,
-      },
-    },
-  },
+  // {
+  //   resolve: "gatsby-plugin-material-ui",
+  //   options: {
+  //     stylesProvider: {
+  //       injectFirst: true,
+  //     },
+  //   },
+  // },
   {
     resolve: "gatsby-plugin-emotion",
     options: {
