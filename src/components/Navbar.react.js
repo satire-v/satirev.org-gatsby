@@ -3,7 +3,6 @@ import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
 
-import theme from "#styles/theme";
 import Button from "#common/Button";
 
 const PADDING_HORIZONTAL = 16;
@@ -11,19 +10,17 @@ const MARGIN_HORIZONTAL = 4;
 const FONT_SIZE = "16px";
 const MARGIN_OF_ERROR = "40px";
 
-const buttonHoverStyle = {
-  background: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
-};
-
-const buttonStyle = css`
-  margin: 0 ${MARGIN_HORIZONTAL}px;
-  background: none;
-  color: ${theme.palette.primary.main};
-  &:hover {
-    ${css(buttonHoverStyle)}
-  }
-`;
+function reducer(total, node) {
+  let counter = 0;
+  node.name.split("").forEach(el => {
+    if (el.match(/(?![i])[a-z0-9]/gi)) {
+      counter += 1;
+    } else {
+      counter += 0.4;
+    }
+  });
+  return total + counter;
+}
 
 function Navbar(): React.Node {
   const { allDataCategory } = useStaticQuery(graphql`
@@ -38,18 +35,7 @@ function Navbar(): React.Node {
     }
   `);
 
-  function reducer(total, node) {
-    let counter = 0;
-    node.name.split("").forEach(el => {
-      if (el.match(/(?![i])[a-z0-9]/gi)) {
-        counter += 1;
-      } else {
-        counter += 0.4;
-      }
-    });
-    return total + counter;
-  }
-
+  // TODO: this is dumb. we should be responsive without calcing the size
   const letterCount = allDataCategory.nodes.reduce(reducer, 0);
   const marginLength =
     +allDataCategory.nodes.length *
@@ -62,7 +48,11 @@ function Navbar(): React.Node {
     @media (max-width: calc(
       ${marginLength}px + (205px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
     + ${MARGIN_OF_ERROR})) {
-      grid-column: span 3; /* this is just for the header....might want to idk, factor out */
+      grid-column: span 3; /* see header */
+    }
+
+    & .nav-button {
+      margin: 0 ${MARGIN_HORIZONTAL}px;
     }
   `;
 
@@ -72,12 +62,8 @@ function Navbar(): React.Node {
         <Button
           to={`/${node.slug}`}
           key={node.id}
-          variant="contained"
-          color="primary"
-          css={buttonStyle}
-          activeStyle={buttonHoverStyle}
+          className="nav-button"
           partiallyActive
-          disableElevation
         >
           {node.name}
         </Button>

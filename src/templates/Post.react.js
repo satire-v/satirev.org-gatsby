@@ -8,9 +8,9 @@ import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
 import { processArticleQuery } from "#queries/Article";
 import Columns from "#layouts/Columns";
-import ArticleVCardGrid from "#components/ArticleVCardGrid";
-import ArticleSection from "#components/ArticleSection";
-import ArticleListBox from "#components/ArticleListBox";
+import ArticleVCardGrid from "#components/article/ArticleVCardGrid";
+import ArticleSection from "#components/article/ArticleSection";
+import ArticleListBox from "#components/article/ArticleListBox";
 import TwitterTimeline from "#common/TwitterTimeline";
 
 type Props = {

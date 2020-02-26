@@ -3,9 +3,9 @@ import * as React from "react";
 import { List, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
 
-import theme from "#styles/theme";
+import ArticleListItem from "./ArticleListItem";
+
 import { type ArticleCard } from "#queries/Article";
-import ArticleListItem from "#components/ArticleListItem";
 
 type Props = {
   articles: Array<ArticleCard>,
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const titleRoot = css`
-  border-bottom: 1px solid ${theme.palette.grey["500"]};
+  border-bottom: 1px solid var(--grey-500);
 `;
 
 function ArticleListFull(props: Props): React.Node {

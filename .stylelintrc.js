@@ -14,7 +14,6 @@ module.exports = {
   rules: {
     "custom-property-empty-line-before": null,
     "selector-max-compound-selectors": null,
-    "property-no-vendor-prefix": null,
     "order/properties-order": [[], { severity: "warning" }],
     "plugin/rational-order": [
       true,

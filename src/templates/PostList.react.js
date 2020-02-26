@@ -8,8 +8,8 @@ import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import { processArticleCardQuery } from "#queries/Article";
 import Columns from "#layouts/Columns";
 import Pagination from "#components/Pagination";
-import ArticleListFull from "#components/ArticleListFull";
-import ArticleListBox from "#components/ArticleListBox";
+import ArticleListFull from "#components/article/ArticleListFull";
+import ArticleListBox from "#components/article/ArticleListBox";
 import TwitterTimeline from "#common/TwitterTimeline";
 
 type Props = {

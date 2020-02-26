@@ -1,21 +1,21 @@
 // @flow
+
 import * as React from "react";
 import { Link as GatsbyLink } from "gatsby";
-import { Button as MuiButton } from "@material-ui/core";
 import { css } from "@emotion/core";
+
 import buttonBase from "#styles/buttonBase.css";
 
 const root = css`
   ${buttonBase}
-
   /* Normal buttons */
-  .button {
+  &.button {
     min-width: 64px;
     padding: 6px 16px;
   }
 
   /* Floating Action Button (round) */
-  .fab {
+  &.fab {
     width: 56px;
     min-width: 0;
     height: 56px;
@@ -47,24 +47,59 @@ const root = css`
     text-decoration: none;
     background-color: var(--crimson-dark);
   }
+
+  &.size-small {
+    padding: 4px 10px;
+    font-size: calc(13rem / 16);
+  }
+  &.size-large {
+    padding: 8px 22px;
+    font-size: calc(15rem / 16);
+  }
+
+  &.outlined {
+    &.size-small {
+      padding: 3px 9px;
+    }
+    &.size-large {
+      padding: 7px 21px;
+    }
+    padding: 5px 15px;
+    color: var(--crimson);
+    border: 1px solid var(--crimson-light);
+    &.disabled {
+      border: 1px solid var(--disabled);
+    }
+    &:hover,
+    &:active {
+      background-color: var(--crimson-light);
+      border: 1px solid var(--crimson);
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
 `;
 
 type Props = {
   children: ?React.Node,
-  disabled?: Boolean,
-  type?: "button" | "fab",
-  css: any,
-  ...
+  disabled: boolean,
+  type: "button" | "fab",
+  size: "small" | "default" | "large",
 };
 
 function Button(props: Props): React.Node {
-  const { children, disabled, type, css, ...rest } = props;
+  const { children, disabled, type, size, ...rest } = props;
   return (
     <GatsbyLink
       {...rest}
       component="button"
       activeClass="active"
-      className={{ disabled: disabled === true, type }}
+      className={{
+        [`size-${size}`]: size !== "default",
+        disabled,
+        type: !!type,
+      }}
       css={root}
     >
       {children}
@@ -74,6 +109,8 @@ function Button(props: Props): React.Node {
 
 Button.defaultProps = {
   type: "button",
+  size: "default",
+  disabled: false,
 };
 
 export default Button;

@@ -7,8 +7,8 @@ import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCard
 import Columns from "#layouts/Columns";
 import MainRecent from "#components/MainRecent";
 import BreakingNewsBar from "#components/BreakingNewsBar";
-import ArticleVCardGrid from "#components/ArticleVCardGrid";
-import ArticleListBox from "#components/ArticleListBox";
+import ArticleVCardGrid from "#components/article/ArticleVCardGrid";
+import ArticleListBox from "#components/article/ArticleListBox";
 import TwitterTimeline from "#common/TwitterTimeline";
 
 export default (): React.Node => (

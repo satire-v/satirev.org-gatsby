@@ -16,8 +16,6 @@ outline: 0;
 cursor: pointer;
 transition-duration: var(--transition-duration-short);
 transition-property: background-color box-shadow border;
--moz-appearance: none;
--webkit-appearance: none;
 user-select: none;
 -webkit-tap-highlight-color: transparent;
 &::-moz-focus-inner {

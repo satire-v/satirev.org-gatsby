@@ -1,29 +1,27 @@
 // @flow
 import * as React from "react";
 import { css } from "@emotion/core";
-import buttonBase from "#styles/buttonBase.css";
 
-//   CardContent,
-//   CardMedia,
+import buttonBase from "#styles/buttonBase.css";
 
 type Props = {
   children: ?React.Node,
 };
 
-type CardProps = {
-  ...Props,
+type ComponentProps = {
   component: React.ElementType,
 };
 
-Card.defaultProps = {
-  component: "div",
-};
+type CardProps = Props & ComponentProps;
 
 const card = css`
   overflow: hidden;
   color: var(--font-color-primary);
   background-color: #fff;
   border-radius: var(--border-radius);
+  &.outlined {
+    border: 1px solid var(--disabled-background);
+  }
 `;
 
 function Card(props: CardProps): React.Node {
@@ -34,6 +32,10 @@ function Card(props: CardProps): React.Node {
     </component>
   );
 }
+
+Card.defaultProps = {
+  component: "div",
+};
 
 const cardActionArea = css`
   ${buttonBase}
@@ -58,23 +60,27 @@ const cardHeader = css`
   display: flex;
   align-items: center;
   padding: 16px;
-  .title {
+  & .title {
     flex: 1 1 auto;
   }
 `;
 
 type HeaderProps = {
   title: string,
-};
+} & ComponentProps;
 
 function CardHeader(props: HeaderProps): React.Node {
-  const { title, ...rest } = props;
+  const { title, component, ...rest } = props;
   return (
     <div {...rest} css={cardHeader}>
-      <h6 className="title">{title}</h6>
+      <component className="title">{title}</component>
     </div>
   );
 }
+
+CardHeader.defaultProps = {
+  component: "h6",
+};
 
 const cardContent = css`
   &:last-child {
@@ -96,10 +102,10 @@ const cardMedia = css`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  media {
+  & media {
     width: 100%;
   }
-  img {
+  & img {
     object-fit: cover;
   }
 `;

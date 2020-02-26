@@ -60,7 +60,7 @@ const plugins = [
       extensions: [".js", ".jsx", ".react.js"],
       alias: {
         "#styles": "src/styles",
-        "#utils": "src/utils",
+        "#animations": "src/animations",
         "#common": "src/components/common",
         "#components": "src/components",
         "#layouts": "src/layouts",

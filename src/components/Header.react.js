@@ -2,77 +2,64 @@
 import * as React from "react";
 import Img from "gatsby-image";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import anime from "animejs/lib/anime.es";
-import { Paper } from "@material-ui/core";
 import { css } from "@emotion/core";
 
-import theme, { titleFont } from "#styles/theme";
 import Navbar from "#components/Navbar";
+import timeline from "#animations/mirrorHeader";
 
 const BASELINE = 40;
-const logoSize = BASELINE * 1.5; // get this better responsive
 
-const headerRootStyle = css`
-  background: white;
-  color: ${theme.palette.primary.main};
-  border-top: 24px ${theme.palette.primary.main} solid;
+const headerRoot = css`
+  --baseline-font-size: ${BASELINE};
+  --logo-size: calc(var(--baseline-font-size) * 1.5);
   padding: 10px;
-`;
+  color: var(--crimson);
+  background: white;
+  border-top: 24px var(--crimson) solid;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
-const logoStyle = css`
-  height: ${logoSize}px;
-  width: auto;
-  display: inline-block;
-  vertical-align: bottom;
-`;
-
-const titleWrapper = css`
-  text-align: start;
-  display: inline-block;
-  white-space: nowrap;
-  & > div,
-  & > a {
+  & .logo-style {
     display: inline-block;
+    width: auto;
+    height: var(--logo-size);
+    vertical-align: bottom;
   }
-  flex: 1 1 auto;
-  order: 0;
-  align-self: center;
-`;
 
-const titleStyle = css`
-  font-size: ${BASELINE}px;
-  line-height: normal;
-  font-family: ${titleFont};
-`;
+  & .title-wrapper {
+    display: inline-block;
+    flex: 1 1 auto;
+    align-self: center;
+    order: 0;
+    white-space: nowrap;
+    text-align: start;
+    & > div,
+    & > a {
+      display: inline-block;
+    }
+  }
 
-const subtitleStyle = css`
-  text-indent: 1em;
-  margin-top: -1.2em;
-  font-size: ${BASELINE * 0.25}px;
-`;
+  & .title-style {
+    font-size: 40px;
+    font-family: var(--title-font);
+    line-height: normal;
+  }
 
-const clickable = css`
-  cursor: pointer;
-  height: 100%;
-`;
+  & .subtitle-style {
+    margin-top: -1.2em;
+    font-size: calc(var(--baseline-font-size) * 0.25);
+    text-indent: 1em;
+  }
 
-const FADE_IN_DUR = 2000;
-const VERITAS_START_DELAY = 4000;
-const VERITAS_START_TS = FADE_IN_DUR + VERITAS_START_DELAY;
-const FLIP_DUR = 2500;
-const FLIP_DELAY = 200;
-const VERITAS_START_TO_FLIP_S_START_DUR = 6 * FLIP_DELAY;
-const FLIP_S_START_TS = VERITAS_START_TS + VERITAS_START_TO_FLIP_S_START_DUR;
-const END_DELAY = 1250;
-const FADE_S_DUR = 10;
-const FLIP_EASING = "cubicBezier(.75,.25,.25,.75)";
+  & .clickable {
+    height: 100%;
+    cursor: pointer;
+  }
 
-const mirroredContainer = css`
-  &.mirroredContainer {
+  & .mirrored-container {
     grid-column-end: -1;
     transform: scaleX(-1);
     opacity: 0;
-    ${titleWrapper}
     mask-image: linear-gradient(
       to left,
       rgba(255, 255, 255, 1),
@@ -80,17 +67,17 @@ const mirroredContainer = css`
       rgba(255, 255, 255, 0.05)
     );
     span {
-      transform-style: preserve-3d;
       display: inline-block;
+      transform-style: preserve-3d;
       &.space {
         white-space: pre-wrap;
       }
       &.scale {
+        max-height: var(--baselint-font-size);
         transform-origin: bottom right;
-        max-height: ${BASELINE}px;
         &.uppercase {
-          opacity: 1;
           margin-right: -0.4em;
+          opacity: 1;
         }
         &.lowercase {
           opacity: 1;
@@ -98,54 +85,13 @@ const mirroredContainer = css`
       }
     }
   }
-`;
-
-const fadeIn = {
-  targets: `.mirroredContainer`,
-  opacity: [0, 1],
-  duration: FADE_IN_DUR,
-};
-
-const moveV = {
-  targets: `.mirroredContainer span.vMover`,
-  translateX: [0, "-.4em"],
-  duration: FLIP_DUR, // so will finish as V finished flipping
-  easing: FLIP_EASING,
-};
-
-const flipLetters = {
-  targets: `.mirroredContainer span:not(.space):not(.scale):not(.vMover)`,
-  scaleX: -1,
-  delay(el, i, l) {
-    let fIndex = l - 1 - i;
-    if (fIndex === l - 1) {
-      fIndex -= 1;
-    }
-    return fIndex * FLIP_DELAY;
-  },
-  duration: FLIP_DUR,
-  direction: "reverse",
-  easing: FLIP_EASING,
-};
-
-const fadeOutUppercaseS = {
-  targets: `.mirroredContainer span.uppercase.scale`,
-  opacity: [1, 0],
-  duration: FADE_S_DUR,
-};
-
-const fadeInLowercaseS = {
-  targets: `.mirroredContainer span.lowercase.scale`,
-  opacity: [0, 1],
-  duration: FADE_S_DUR,
-};
-
-const gridStyle = css`
-  display: grid;
-  grid-template-columns: repeat(3, minmax(min-content, max-content));
-  align-items: end;
-  grid-auto-flow: row dense;
-  grid-gap: 12px;
+  & .grid-root {
+    display: grid;
+    grid-auto-flow: row dense;
+    grid-gap: 12px;
+    grid-template-columns: repeat(3, minmax(min-content, max-content));
+    align-items: end;
+  }
 `;
 
 function Header(): React.Node {
@@ -164,83 +110,64 @@ function Header(): React.Node {
   `);
 
   React.useEffect(() => {
-    const timeline = anime.timeline({
-      autoplay: false,
-      direction: "alternate",
-      easing: "linear",
-    });
-    timeline
-      .add(fadeIn)
-      .add(moveV, VERITAS_START_TS)
-      .add(flipLetters, VERITAS_START_TS)
-      .add(fadeOutUppercaseS, FLIP_S_START_TS + FLIP_DUR / 2 - FADE_S_DUR)
-      .add(fadeInLowercaseS, FLIP_S_START_TS + FLIP_DUR / 2)
-      .add({
-        targets: `.mirroredContainer`,
-        opacity: [1, 1],
-        endDelay: END_DELAY,
-      });
     setTl(timeline);
   }, []);
 
   return (
-    <Paper>
-      <header css={headerRootStyle}>
-        <div css={gridStyle}>
-          <div css={titleWrapper}>
-            <div css={clickable} onClick={tl?.restart}>
-              <Img
-                alt="Satire V logo"
-                fixed={logo.file.childImageSharp.fixed}
-                css={logoStyle}
-              />
-            </div>
-            <Link css={clickable} to="/">
-              <div css={titleStyle}>Satire V</div>
-              <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-            </Link>
+    <header css={headerRoot}>
+      <div className="grid-root">
+        <div className="title-wrapper">
+          <div className="clickable" onClick={tl?.restart}>
+            <Img
+              alt="Satire V logo"
+              fixed={logo.file.childImageSharp.fixed}
+              className="logo-style"
+            />
           </div>
-
-          <div
-            align="center"
-            justify="center"
-            css={mirroredContainer}
-            className="mirroredContainer"
-          >
-            <div>
-              <Img
-                alt="Satire V logo"
-                fixed={logo.file.childImageSharp.fixed}
-                css={logoStyle}
-              />
-            </div>
-
-            <div>
-              <div css={titleStyle}>
-                <span className="uppercase s scale">
-                  <span className="uppercase s flip">S</span>
-                </span>
-                <span className="lowercase s scale">
-                  <span className="lowercase s flip">s</span>
-                </span>
-                <span>a</span>
-                <span>t</span>
-                <span>i</span>
-                <span>r</span>
-                <span>e</span>
-                <span className="space"> </span>
-                <span className="vMover">
-                  <span>V</span>
-                </span>
-              </div>
-              <div css={subtitleStyle}>Holding a Mirror Up to Truth</div>
-            </div>
-          </div>
-
-          <Navbar />
+          <Link className="clickable" to="/">
+            <div className="title-style">Satire V</div>
+            <div className="subtitle-style">Holding a Mirror Up to Truth</div>
+          </Link>
         </div>
-      </header>
-    </Paper>
+
+        <div
+          align="center"
+          justify="center"
+          className="mirrored-container title-wrapper"
+        >
+          <div>
+            <Img
+              alt="Satire V logo"
+              fixed={logo.file.childImageSharp.fixed}
+              className="logo-style"
+            />
+          </div>
+
+          <div>
+            <div className="title-style">
+              <span className="uppercase s scale">
+                <span className="uppercase s flip">S</span>
+              </span>
+              <span className="lowercase s scale">
+                <span className="lowercase s flip">s</span>
+              </span>
+              <span>a</span>
+              <span>t</span>
+              <span>i</span>
+              <span>r</span>
+              <span>e</span>
+              <span className="space"> </span>
+              <span className="vMover">
+                <span>V</span>
+              </span>
+            </div>
+            <div className="subtitle-style">Holding a Mirror Up to Truth</div>
+          </div>
+        </div>
+
+        <Navbar />
+      </div>
+    </header>
   );
 }
 

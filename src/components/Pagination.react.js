@@ -1,30 +1,26 @@
 // @flow
 import * as React from "react";
-import NavigateBefore from "@material-ui/icons/NavigateBefore";
-import NavigateNext from "@material-ui/icons/NavigateNExt";
-import { fade } from "@material-ui/core/styles/colorManipulator";
 import { ButtonGroup } from "@material-ui/core";
 import { css } from "@emotion/core";
 
-import theme from "#styles/theme";
-import Fab from "#common/Fab";
 import Button from "#common/Button";
+import SvgIcon from "#assets/SvgIcon";
 
 type Props = {
   pageContext: any, // TODO real typing i guess
   path: string,
 };
 
-const navRoot = css`
+const paginationRoot = css`
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
   align-items: center;
-`;
 
-const fabRoot = css`
-  margin: ${theme.spacing(2)}px;
+  .pagination-arrows {
+    margin: calc(2 * var(--spacing));
+  }
 `;
 
 function Pagination(props: Props): React.Node {
@@ -45,11 +41,9 @@ function Pagination(props: Props): React.Node {
         disableElevation
         partiallyActive
         activeStyle={{
-          border: `1px solid ${theme.palette.primary.main}`,
-          backgroundColor: fade(
-            theme.palette.primary.main,
-            theme.palette.action.hoverOpacity
-          ),
+          border: `1px solid var(--crimson)`,
+          backgroundColor: "var(--crimson)",
+          filter: "brightness(10%)",
         }}
         to={`/${props.pageContext.categorySlug}/${i}`}
       >
@@ -59,41 +53,43 @@ function Pagination(props: Props): React.Node {
   }
   if (start !== 1) {
     buttons.unshift(
-      <Button key="more-before" to="/" disableElevation disabled>
+      <Button key="more-before" to="/" disabled>
         ...
       </Button>
     );
   }
   if (end !== numPages) {
     buttons.push(
-      <Button key="more-after" to="/" disableElevation disabled>
+      <Button key="more-after" to="/" disabled>
         ...
       </Button>
     );
   }
 
   return (
-    <div css={navRoot}>
+    <div css={paginationRoot}>
       {!isFirst && (
-        <Fab
-          css={fabRoot}
+        <Button
+          type="fab"
+          className="pagination-arrows"
           to={`/${props.pageContext.categorySlug}/${prevPage}`}
           rel="prev"
         >
-          <NavigateBefore />
-        </Fab>
+          <SvgIcon icon="navigateBefore" />
+        </Button>
       )}
       <ButtonGroup size="small" variant="outlined" color="primary">
         {buttons}
       </ButtonGroup>
       {!isLast && (
-        <Fab
-          css={fabRoot}
+        <Button
+          type="fab"
+          className="pagination-arrows"
           to={`/${props.pageContext.categorySlug}/${nextPage}`}
           rel="next"
         >
-          <NavigateNext />
-        </Fab>
+          <SvgIcon icon="navigateNext" />
+        </Button>
       )}
     </div>
   );

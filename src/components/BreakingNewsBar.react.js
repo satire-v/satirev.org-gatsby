@@ -1,40 +1,34 @@
 // @flow
 import * as React from "react";
-import { useTheme } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
 
-function BreakingNewsBar(): React.Node {
-  const theme = useTheme();
+const root = css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0px 0px calc(3 * var(--spacing));
+  padding: 6px min(10%, 80px);
+  border-top: 1px solid var(--grey-300);
+  border-bottom: 1px solid var(--grey-300);
 
-  const breakingBarRootStyle = css`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    border-bottom: 1px solid ${theme.palette.grey["300"]};
-    border-top: 1px solid ${theme.palette.grey["300"]};
-    margin: 0px 0px ${theme.spacing(3)}px;
-    padding: 6px min(10%, 80px);
-  `;
-
-  const breakingTitleStyle = css`
+  & .breaking-news-title {
     padding-right: 1em;
-    border-right: 1px solid ${theme.palette.grey["400"]};
-  `;
+    border-right: 1px solid var(--grey-400)};
+  }
 
-  const breakingItemStyle = css`
+  & .breaking-news-item {
     padding-left: 1em;
-  `;
+  }
+`;
 
+function BreakingNewsBar(): React.Node {
   return (
-    <div css={breakingBarRootStyle}>
-      <Typography css={breakingTitleStyle} variant="h6" grow={0}>
+    <div css={root}>
+      <div className="breaking-news-title h6" variant="h6">
         Breaking
-      </Typography>
-      <Typography css={breakingItemStyle} color="textSecondary" variant="h6">
-        Placeholder
-      </Typography>
+      </div>
+      <div className="breaking-news-item secondary-text h6">Placeholder</div>
     </div>
   );
 }

@@ -2,19 +2,20 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import theme from "#styles/theme";
+import ArticleVCard from "./ArticleVCard";
+
 import type { ArticleCard } from "#queries/Article";
-import ArticleVCard from "#components/ArticleVCard";
 
 type Props = {
   articles: Array<ArticleCard>,
   gridDirection: "horizontal" | "vertical",
+  // TODO: this is to accomodate a list of article cards...tbd
 };
 
 const gridRoot = css`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: ${theme.spacing(1)}px;
+  grid-gap: calc(1 * var(--spacing));
 `;
 
 function ArticleVCardGrid(props: Props): React.Node {

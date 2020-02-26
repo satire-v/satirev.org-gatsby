@@ -2,7 +2,7 @@
 import * as React from "react";
 
 import LatestArticleCard from "#queries/LatestArticleCard";
-import ArticleVCard from "#components/ArticleVCard";
+import ArticleVCard from "#components/article/ArticleVCard";
 
 function MainRecent(): React.Node {
   const article = LatestArticleCard();
