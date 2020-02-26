@@ -5,18 +5,22 @@
 /* @import url("styles/fontSheets/merriweather.css"); */
 
 :root {
-  --title-font: Cardinal, Georgia, serif;
+  --title-font: cardinal, georgia, serif;
 
-  --sans-serif: Lato, Lucida Sans Unicode, sans-serif;
-  --serif: "Crimson Text", Georgia, serif;
+  --sans-serif: lato, lucida sans unicode, sans-serif;
+  --serif: "Crimson Text", georgia, serif;
 
   /* Theme colors */
+  --crimson-light: #b74959;
   --crimson: #a51c30;
   --crimson-dark: #731321;
-  --crimson-light: #b74959;
+
+  --goldLeaf-light: #d9b058;
   --goldLeaf: #d09d2f;
   --goldLeaf-dark: #916d20;
-  --goldLeaf-light: #d9b058;
+
+  --grey-300: #e0e0e0;
+  --grey-400: #bdbdbd;
 
   --error: #d50000;
   --warning: #ffeb3b;
@@ -51,7 +55,6 @@
   font-size: 1rem;
   font-family: var(--serif);
   line-height: 1.5;
-
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
 
@@ -122,5 +125,10 @@
     font-weight: 700;
     font-size: 0.9rem;
     font-family: var(--sans-serif);
+  }
+
+  /* Typography utility classes */
+  .gutterBottom {
+    margin-bottom: 0.35em;
   }
 }

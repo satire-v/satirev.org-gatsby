@@ -1,0 +1,6 @@
+:root {
+  overflow: hidden;
+  color: var(--font-color-primary);
+  background-color: #fff;
+  border-radius: var(--border-radius);
+}

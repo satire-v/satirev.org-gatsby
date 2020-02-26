@@ -11,14 +11,13 @@ import {
 } from "@material-ui/core";
 import { css } from "@emotion/core";
 
-import theme from "#styles/theme";
 import type { ArticleLink } from "#queries/Article";
 import Link from "#common/Link";
 
 type Props = { articles: Array<ArticleLink>, title: string };
 
 const cardHeader = css`
-  background: ${theme.palette.grey["300"]};
+  background: var(--grey-300);
 `;
 
 const cardContent = css`

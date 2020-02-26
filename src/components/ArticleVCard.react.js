@@ -6,11 +6,9 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  Typography,
-} from "@material-ui/core";
+} from "#common/Card";
 import { css } from "@emotion/core";
 
-import theme from "#styles/theme";
 import { type ArticleCard } from "#queries/Article";
 import Link from "#common/Link";
 import ImageFluid from "#common/ImageFluid";
@@ -46,14 +44,13 @@ function ArticleVCard(props: Props): React.Node {
       {hasHeader ? (
         <CardHeader
           css={css`
-            padding: ${theme.spacing(1)}px ${theme.spacing(2)}px;
-            color: ${theme.palette.primary.main};
+            padding: calc(1 * var(--spacing)) calc(2 * var(--spacing));
+            color: var(--crimson);
           `}
-          titleTypographyProps={{ variant: "h6" }}
           title={props.article.category}
         />
       ) : null}
-      <CardActionArea component="div" css={cardActionArea}>
+      <CardActionArea css={cardActionArea}>
         <Link
           to={props.article.slug}
           css={css`
@@ -64,13 +61,9 @@ function ArticleVCard(props: Props): React.Node {
             <ImageFluid fluid={props.article.imgFluid} />
           </CardMedia>
           <CardContent>
-            <Typography variant={titleTag} gutterBottom={props.isFeatured}>
-              {props.article.title}
-            </Typography>
+            <titleTag>{props.article.title}</titleTag>
             {hasExcerpt ? (
-              <Typography variant="body2" component="p">
-                {props.article.shortExcerpt}
-              </Typography>
+              <p className="body2 excerpt">{props.article.shortExcerpt}</p>
             ) : null}
           </CardContent>
         </Link>

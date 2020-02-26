@@ -4,9 +4,12 @@
   "prettier.useTabs": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.prettier": true,
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": false
+    "source.fixAll.all": true
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": false
+    }
   },
   "stylelint.autoFixOnSave": true
 }

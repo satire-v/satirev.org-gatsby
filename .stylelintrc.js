@@ -1,24 +1,28 @@
 module.exports = {
-  processors: [
-    [
-      "stylelint-processor-styled-components",
-      {
-        moduleName: "@emotion/core",
-        importName: "css",
-        strict: true,
-        ignoreFiles: [],
-        parserPlugins: ["jsx"],
-      },
-    ],
-  ],
   extends: [
-    "stylelint-config-standard",
+    "stylelint-config-recommended",
     "stylelint-config-styled-components",
+    "stylelint-order",
+    "stylelint-config-rational-order",
     "stylelint-config-prettier",
   ],
-  plugins: ["stylelint-order"],
+  plugins: [
+    "stylelint-prettier",
+    "stylelint-order",
+    "stylelint-config-rational-order/plugin",
+  ],
   rules: {
     "custom-property-empty-line-before": null,
     "selector-max-compound-selectors": null,
+    "property-no-vendor-prefix": null,
+    "order/properties-order": [[], { severity: "warning" }],
+    "plugin/rational-order": [
+      true,
+      {
+        "border-in-box-model": false,
+        "empty-line-between-groups": false,
+        severity: "warning",
+      },
+    ],
   },
 };

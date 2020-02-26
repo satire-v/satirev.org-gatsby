@@ -1,15 +1,13 @@
 // @flow
 import * as React from "react";
 
-import theme from "#styles/theme";
-
 function TwitterTimeline(): React.Node {
   return (
     <a
       style={{
         height: 600,
-        background: theme.palette.grey["300"],
-        padding: theme.spacing(2),
+        background: "var(--grey-300)",
+        padding: "calc(2 * var(--spacing))",
       }}
       data-dnt="true"
       className="twitter-timeline"
