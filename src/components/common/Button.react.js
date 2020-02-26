@@ -2,12 +2,10 @@
 
 import * as React from "react";
 import { Link as GatsbyLink } from "gatsby";
+import { cx } from "emotion";
 import { css } from "@emotion/core";
 
-import buttonBase from "#styles/buttonBase.css";
-
 const root = css`
-  ${buttonBase}
   /* Normal buttons */
   &.button {
     min-width: 64px;
@@ -33,7 +31,7 @@ const root = css`
     text-decoration: none;
     background-color: var(--disabled-background);
   }
-  &:hover {
+  &&:hover {
     color: #fff;
     text-decoration: none;
     background-color: var(--crimson);
@@ -93,13 +91,15 @@ function Button(props: Props): React.Node {
   return (
     <GatsbyLink
       {...rest}
-      component="button"
-      activeClass="active"
-      className={{
+      activeClassName="active"
+      partiallyActive
+      className={cx({
         [`size-${size}`]: size !== "default",
         disabled,
-        type: !!type,
-      }}
+        [`${type}`]: type,
+        "button-base": true,
+        "button-text": true,
+      })}
       css={root}
     >
       {children}

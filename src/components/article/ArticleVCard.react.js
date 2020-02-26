@@ -38,12 +38,12 @@ type Props = {|
 function ArticleVCard(props: Props): React.Node {
   let hasExcerpt = false;
   let hasHeader = true;
-  let titleTag = "h4";
+  let TitleTag = "h4";
 
   if (props.isFeatured) {
     hasExcerpt = true;
     hasHeader = false;
-    titleTag = "h3";
+    TitleTag = "h3";
   }
 
   return (
@@ -53,11 +53,11 @@ function ArticleVCard(props: Props): React.Node {
       ) : null}
       <CardActionArea className="action-area">
         <Link to={props.article.slug} className="link">
-          <CardMedia title={props.article.title}>
+          <CardMedia>
             <ImageFluid fluid={props.article.imgFluid} />
           </CardMedia>
           <CardContent>
-            <titleTag>{props.article.title}</titleTag>
+            <TitleTag>{props.article.title}</TitleTag>
             {hasExcerpt ? (
               <p className="body2">{props.article.shortExcerpt}</p>
             ) : null}

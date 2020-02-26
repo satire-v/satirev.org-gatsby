@@ -11,15 +11,16 @@ const list = css`
 
 type Props = {
   children: ?React.Node,
-  component: React.ElementType,
+  component: string | React.ComponentType<any>,
 };
 
 function List(props: Props): React.Node {
   const { children, component, ...rest } = props;
+  const Component = component;
   return (
-    <component {...rest} css={list}>
+    <Component {...rest} css={list}>
       {children}
-    </component>
+    </Component>
   );
 }
 
@@ -34,18 +35,18 @@ const listItem = css`
   justify-content: flex-start;
   box-sizing: border-box;
   width: 100%;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 16px;
   text-align: left;
   text-decoration: none;
 `;
 
 function ListItem(props: Props): React.Node {
   const { children, component, ...rest } = props;
+  const Component = component;
   return (
-    <component {...rest} css={listItem}>
+    <Component {...rest} css={listItem}>
       {children}
-    </component>
+    </Component>
   );
 }
 

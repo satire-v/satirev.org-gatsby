@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
-import { ButtonGroup } from "@material-ui/core";
 import { css } from "@emotion/core";
 
+import ButtonGroup from "#common/ButtonGroup";
 import Button from "#common/Button";
 import SvgIcon from "#assets/SvgIcon";
 
@@ -21,6 +21,12 @@ const paginationRoot = css`
   .pagination-arrows {
     margin: calc(2 * var(--spacing));
   }
+
+  .pagination-number-active {
+    border: 1px solid var(--crimson-dark);
+    background-color: var(--crimson);
+    filter: brightness(10%);
+  }
 `;
 
 function Pagination(props: Props): React.Node {
@@ -38,13 +44,8 @@ function Pagination(props: Props): React.Node {
     buttons.push(
       <Button
         key={i}
-        disableElevation
         partiallyActive
-        activeStyle={{
-          border: `1px solid var(--crimson)`,
-          backgroundColor: "var(--crimson)",
-          filter: "brightness(10%)",
-        }}
+        activeClassName="pagination-number-active"
         to={`/${props.pageContext.categorySlug}/${i}`}
       >
         {i}

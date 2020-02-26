@@ -12263,7 +12263,7 @@
               "defaultValue": null
             },
             {
-              "name": "_utils",
+              "name": "_animations",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -13424,7 +13424,7 @@
               "deprecationReason": null
             },
             {
-              "name": "_utils",
+              "name": "_animations",
               "description": null,
               "args": [],
               "type": {
@@ -14882,7 +14882,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginCreator___pluginOptions___alias____utils",
+              "name": "pluginCreator___pluginOptions___alias____animations",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -26011,7 +26011,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginOptions___alias____utils",
+              "name": "pluginOptions___alias____animations",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

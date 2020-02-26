@@ -5,7 +5,7 @@ import { css } from "@emotion/core";
 import ArticleTagSection from "./ArticleTagSection";
 import ArticleCategorySection from "./ArticleCategorySection";
 
-import breakpoints from "#styles/breakpoints.json";
+import breakpoints from "#styles/breakpoints";
 import { type ArticleFull } from "#queries/Article";
 import ImageFluid from "#common/ImageFluid";
 import { Card, CardContent, CardMedia } from "#common/Card";

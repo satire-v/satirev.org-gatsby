@@ -3,7 +3,7 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import breakpoints from "#styles/breakpoints.json";
+import breakpoints from "#styles/breakpoints";
 
 const root = css`
   box-sizing: border-box;

@@ -24,7 +24,7 @@ type Props = {
 function Link(props: Props): React.Node {
   const { children, ...rest } = props;
   return (
-    <GatsbyLink {...rest} activeStyle="active" css={root} underline="none">
+    <GatsbyLink {...rest} activeClassName="active" css={root} underline="none">
       {children}
     </GatsbyLink>
   );

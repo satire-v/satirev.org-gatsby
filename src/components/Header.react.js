@@ -5,7 +5,7 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
 
 import Navbar from "#components/Navbar";
-import timeline from "#animations/mirrorHeader";
+import timelineFn from "#animations/mirrorHeader";
 
 const BASELINE = 40;
 
@@ -110,6 +110,7 @@ function Header(): React.Node {
   `);
 
   React.useEffect(() => {
+    const timeline = timelineFn();
     setTl(timeline);
   }, []);
 

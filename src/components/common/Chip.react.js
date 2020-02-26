@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { cx } from "emotion";
 import { css } from "@emotion/core";
 
 const root = css`
@@ -36,17 +37,21 @@ const root = css`
 `;
 
 type Props = {
-  small?: boolean,
+  small: boolean,
   label: string,
 };
 
 function Chip(props: Props): React.Node {
   const { small, label, ...rest } = props;
   return (
-    <div {...rest} css={root} className={{ "size-small": small === true }}>
+    <div {...rest} css={root} className={cx({ "size-small": small })}>
       <span className="label">{label}</span>
     </div>
   );
 }
+
+Chip.defaultProps = {
+  small: false,
+};
 
 export default Chip;

@@ -7,7 +7,7 @@ export const wrapPageElement = ({ element }) => <Page>{element}</Page>;
 
 const injectTwitterScript = () => {
   function addJS(jsCode) {
-    var s = document.createElement(`script`);
+    const s = document.createElement(`script`);
 
     s.type = `text/javascript`;
     s.async = true;

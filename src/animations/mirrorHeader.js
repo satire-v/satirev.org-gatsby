@@ -52,21 +52,24 @@ const fadeInLowercaseS = {
   duration: FADE_S_DUR,
 };
 
-const timeline = anime.timeline({
-  autoplay: false,
-  direction: "alternate",
-  easing: "linear",
-});
-timeline
-  .add(fadeIn)
-  .add(moveV, VERITAS_START_TS)
-  .add(flipLetters, VERITAS_START_TS)
-  .add(fadeOutUppercaseS, FLIP_S_START_TS + FLIP_DUR / 2 - FADE_S_DUR)
-  .add(fadeInLowercaseS, FLIP_S_START_TS + FLIP_DUR / 2)
-  .add({
-    targets: `.mirroredContainer`,
-    opacity: [1, 1],
-    endDelay: END_DELAY,
+const timelineFn = () => {
+  const timeline = anime.timeline({
+    autoplay: false,
+    direction: "alternate",
+    easing: "linear",
   });
+  timeline
+    .add(fadeIn)
+    .add(moveV, VERITAS_START_TS)
+    .add(flipLetters, VERITAS_START_TS)
+    .add(fadeOutUppercaseS, FLIP_S_START_TS + FLIP_DUR / 2 - FADE_S_DUR)
+    .add(fadeInLowercaseS, FLIP_S_START_TS + FLIP_DUR / 2)
+    .add({
+      targets: `.mirrored-container`,
+      opacity: [1, 1],
+      endDelay: END_DELAY,
+    });
+  return timeline;
+};
 
-export default timeline;
+export default timelineFn;

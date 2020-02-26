@@ -1,18 +1,21 @@
 // @flow
 import * as React from "react";
+import { cx } from "emotion";
 import { css } from "@emotion/core";
 
-import buttonBase from "#styles/buttonBase.css";
-
 type Props = {
+  className?: string,
+};
+
+type ChildrenProps = {
   children: ?React.Node,
 };
 
 type ComponentProps = {
-  component: React.ElementType,
+  component: string | React.ComponentType<any>,
 };
 
-type CardProps = Props & ComponentProps;
+type CardProps = { outlined: boolean } & Props & ChildrenProps & ComponentProps;
 
 const card = css`
   overflow: hidden;
@@ -25,20 +28,21 @@ const card = css`
 `;
 
 function Card(props: CardProps): React.Node {
-  const { children, component, ...rest } = props;
+  const { children, component, outlined, className, ...rest } = props;
+  const Component = component;
   return (
-    <component {...rest} css={card}>
+    <Component {...rest} css={card} className={cx({ outlined }, className)}>
       {props.children}
-    </component>
+    </Component>
   );
 }
 
 Card.defaultProps = {
   component: "div",
+  outlined: true,
 };
 
 const cardActionArea = css`
-  ${buttonBase}
   display: block;
   text-align: inherit;
   width: 100%;
@@ -47,10 +51,16 @@ const cardActionArea = css`
   }
 `;
 
-function CardActionArea(props: Props): React.Node {
-  const { children, ...rest } = props;
+type ActionAreaProps = Props & ChildrenProps;
+
+function CardActionArea(props: ActionAreaProps): React.Node {
+  const { children, className, ...rest } = props;
   return (
-    <div {...rest} css={cardActionArea}>
+    <div
+      {...rest}
+      css={cardActionArea}
+      className={`button-base ${className ?? ""}`}
+    >
       {children}
     </div>
   );
@@ -60,20 +70,22 @@ const cardHeader = css`
   display: flex;
   align-items: center;
   padding: 16px;
-  & .title {
+  & .card-title {
     flex: 1 1 auto;
   }
 `;
 
 type HeaderProps = {
   title: string,
-} & ComponentProps;
+} & Props &
+  ComponentProps;
 
 function CardHeader(props: HeaderProps): React.Node {
-  const { title, component, ...rest } = props;
+  const { title, component, className, ...rest } = props;
+  const Component = component;
   return (
     <div {...rest} css={cardHeader}>
-      <component className="title">{title}</component>
+      <Component className={`card-title ${className ?? ""}`}>{title}</Component>
     </div>
   );
 }
@@ -83,15 +95,18 @@ CardHeader.defaultProps = {
 };
 
 const cardContent = css`
+  padding: 16px;
   &:last-child {
-    padding-bottom: 24;
+    padding-bottom: 24px;
   }
 `;
 
-function CardContent(props: Props): React.Node {
-  const { children, ...rest } = props;
+type ContentProps = Props & ChildrenProps;
+
+function CardContent(props: ContentProps): React.Node {
+  const { children, className, ...rest } = props;
   return (
-    <div {...rest} css={cardContent}>
+    <div {...rest} css={cardContent} className={className}>
       {children}
     </div>
   );
@@ -110,10 +125,12 @@ const cardMedia = css`
   }
 `;
 
-function CardMedia(props: Props): React.Node {
-  const { children, ...rest } = props;
+type MediaProps = Props & ChildrenProps;
+
+function CardMedia(props: MediaProps): React.Node {
+  const { children, className, ...rest } = props;
   return (
-    <div {...rest} css={cardMedia}>
+    <div {...rest} css={cardMedia} className={className}>
       {children}
     </div>
   );

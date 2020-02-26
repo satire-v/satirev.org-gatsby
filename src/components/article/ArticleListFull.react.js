@@ -1,11 +1,11 @@
 // @flow
 import * as React from "react";
-import { List, Typography } from "@material-ui/core";
 import { css } from "@emotion/core";
 
 import ArticleListItem from "./ArticleListItem";
 
 import { type ArticleCard } from "#queries/Article";
+import List from "#common/List";
 
 type Props = {
   articles: Array<ArticleCard>,
@@ -19,9 +19,7 @@ const titleRoot = css`
 function ArticleListFull(props: Props): React.Node {
   return (
     <div>
-      <Typography css={titleRoot} variant="h1">
-        {props.title}
-      </Typography>
+      <h1 css={titleRoot}>{props.title}</h1>
       <List>
         {props.articles.map(article => (
           <ArticleListItem key={article.id} article={article} />
