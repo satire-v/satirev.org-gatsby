@@ -84,8 +84,8 @@ function CardHeader(props: HeaderProps): React.Node {
   const { title, component, className, ...rest } = props;
   const Component = component;
   return (
-    <div {...rest} css={cardHeader}>
-      <Component className={`card-title ${className ?? ""}`}>{title}</Component>
+    <div {...rest} css={cardHeader} className={`${className ?? ""}`}>
+      <Component className="card-title">{title}</Component>
     </div>
   );
 }

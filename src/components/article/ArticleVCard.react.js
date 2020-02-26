@@ -16,6 +16,7 @@ import {
 const cardRoot = css`
   display: flex;
   flex-direction: column;
+  box-sizing: inherit;
   min-width: 160px;
   & .header {
     padding: calc(1 * var(--spacing)) calc(2 * var(--spacing));
@@ -57,7 +58,7 @@ function ArticleVCard(props: Props): React.Node {
             <ImageFluid fluid={props.article.imgFluid} />
           </CardMedia>
           <CardContent>
-            <TitleTag>{props.article.title}</TitleTag>
+            <TitleTag className="gutter-bottom">{props.article.title}</TitleTag>
             {hasExcerpt ? (
               <p className="body2">{props.article.shortExcerpt}</p>
             ) : null}

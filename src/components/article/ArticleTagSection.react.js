@@ -20,7 +20,7 @@ type Props = {
 function TagSection(props: Props): React.Node {
   return (
     <div css={root}>
-      <SvgIcon fontSize="large" icon="tag" />
+      <SvgIcon size="large" icon="tag" />
       {props.tags.map((tag, i) => (
         <Chip key={i.toString()} label={tag} />
       ))}

@@ -19,11 +19,6 @@ const root = css`
     padding-left: calc(3 * var(--spacing));
   }
 
-  @media (min-width: ${breakpoints.md}px) {
-    padding-right: calc(4 * var(--spacing));
-    padding-left: calc(4 * var(--spacing));
-  }
-
   @media (min-width: ${breakpoints.xl}px) {
     max-width: ${breakpoints.xl}px;
   }

@@ -6,15 +6,29 @@
 /* @import url("styles/fontSheets/merriweather.css"); */
 html,
 body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+body {
+  font-size: 0.9rem;
+  background-color: #fafafa;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 :root {
   --title-font: cardinal, georgia, serif;
 
-  --sans-serif: lato, lucida sans unicode, sans-serif;
-  --serif: "Crimson Text", georgia, serif;
+  --sans-serif: Lato, Lucida Sans Unicode, sans-serif;
+  --serif: "Crimson Text", Georgia, serif;
 
   /* Theme colors */
   --crimson-light: #b74959;
@@ -50,30 +64,19 @@ body {
   --font-color-secondary: rgba(0, 0, 0, 0.54);
   --font-color-disabled: rgba(0, 0, 0, 0.38);
 
-  color: var(--font-color-secondary);
+  color: var(--font-color-primary);
   font-weight: 400;
-  font-size: 1rem;
   font-family: var(--serif);
-  line-height: 1.5;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: auto;
+  line-height: 1.3;
 }
 
-:root a,
-:root a:visited,
-:root a:hover,
-:root a:focus,
-:root a:active {
+body a {
   color: inherit;
   text-decoration: none !important;
 }
 
 :root * {
   border-radius: var(--border-radius);
-}
-
-body {
-  background-color: #fafafa;
 }
 
 /* Typography settings */
@@ -167,10 +170,22 @@ h6,
   font-size: 1rem;
   line-height: 1.75;
 }
+:root .subtitle2 {
+  font-weight: 500;
+  font-size: 0.875rem;
+  font-family: var(--sans-serif);
+  line-height: 1.57;
+}
 :root .caption {
   font-weight: 700;
   font-size: 0.9rem;
   font-family: var(--sans-serif);
+}
+:root .chip-text {
+  font-weight: 400;
+  font-size: 0.8125rem;
+  font-family: var(--sans-serif);
+  line-height: 1.3;
 }
 
 /* Typography utility classes */

@@ -21,7 +21,7 @@ const root = css`
 function CategorySection(props: Props): React.Node {
   return (
     <div css={root}>
-      <SvgIcon size="large" icon="labelArrow" />
+      <SvgIcon size="large" icon="labelArrow" color="primary" />
       <h6 className="category-text">{props.category}</h6>
     </div>
   );

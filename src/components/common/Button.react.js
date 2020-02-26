@@ -6,6 +6,7 @@ import { cx } from "emotion";
 import { css } from "@emotion/core";
 
 const root = css`
+  color: var(--crimson);
   /* Normal buttons */
   &.button {
     min-width: 64px;
@@ -40,7 +41,7 @@ const root = css`
     }
   }
   &:active,
-  &.active {
+  &&.active {
     color: #fff;
     text-decoration: none;
     background-color: var(--crimson-dark);
@@ -84,22 +85,26 @@ type Props = {
   disabled: boolean,
   type: "button" | "fab",
   size: "small" | "default" | "large",
+  className?: string,
 };
 
 function Button(props: Props): React.Node {
-  const { children, disabled, type, size, ...rest } = props;
+  const { children, disabled, type, size, className, ...rest } = props;
   return (
     <GatsbyLink
       {...rest}
       activeClassName="active"
       partiallyActive
-      className={cx({
-        [`size-${size}`]: size !== "default",
-        disabled,
-        [`${type}`]: type,
-        "button-base": true,
-        "button-text": true,
-      })}
+      className={cx(
+        {
+          [`size-${size}`]: size !== "default",
+          disabled,
+          [`${type}`]: type,
+          "button-base": true,
+          "button-text": true,
+        },
+        className
+      )}
       css={root}
     >
       {children}

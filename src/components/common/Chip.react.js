@@ -45,7 +45,7 @@ function Chip(props: Props): React.Node {
   const { small, label, ...rest } = props;
   return (
     <div {...rest} css={root} className={cx({ "size-small": small })}>
-      <span className="label">{label}</span>
+      <span className="label chip-text">{label}</span>
     </div>
   );
 }

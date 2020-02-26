@@ -2,22 +2,23 @@
 import * as React from "react";
 import Img from "gatsby-image";
 import { Link, graphql, useStaticQuery } from "gatsby";
+import anime from "animejs/lib/anime.es";
 import { css } from "@emotion/core";
 
 import Navbar from "#components/Navbar";
-import timelineFn from "#animations/mirrorHeader";
+import timelineInit from "#animations/mirrorHeader";
 
 const BASELINE = 40;
 
 const headerRoot = css`
-  --baseline-font-size: ${BASELINE};
+  --baseline-font-size: ${BASELINE}px;
   --logo-size: calc(var(--baseline-font-size) * 1.5);
   padding: 10px;
   color: var(--crimson);
   background: white;
   border-top: 24px var(--crimson) solid;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   & .logo-style {
     display: inline-block;
@@ -110,7 +111,12 @@ function Header(): React.Node {
   `);
 
   React.useEffect(() => {
-    const timeline = timelineFn();
+    const timeline = anime.timeline({
+      autoplay: false,
+      direction: "alternate",
+      easing: "linear",
+    });
+    timelineInit(timeline);
     setTl(timeline);
   }, []);
 

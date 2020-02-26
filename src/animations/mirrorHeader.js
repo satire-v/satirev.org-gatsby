@@ -1,6 +1,4 @@
 // @flow
-import anime from "animejs/lib/anime.es";
-
 const FADE_IN_DUR = 2000;
 const VERITAS_START_DELAY = 4000;
 const VERITAS_START_TS = FADE_IN_DUR + VERITAS_START_DELAY;
@@ -13,20 +11,20 @@ const FADE_S_DUR = 10;
 const FLIP_EASING = "cubicBezier(.75,.25,.25,.75)";
 
 const fadeIn = {
-  targets: `.mirroredContainer`,
+  targets: `.mirrored-container`,
   opacity: [0, 1],
   duration: FADE_IN_DUR,
 };
 
 const moveV = {
-  targets: `.mirroredContainer span.vMover`,
+  targets: `.mirrored-container span.vMover`,
   translateX: [0, "-.4em"],
   duration: FLIP_DUR, // so will finish as V finished flipping
   easing: FLIP_EASING,
 };
 
 const flipLetters = {
-  targets: `.mirroredContainer span:not(.space):not(.scale):not(.vMover)`,
+  targets: `.mirrored-container span:not(.space):not(.scale):not(.vMover)`,
   scaleX: -1,
   delay(el, i, l) {
     let fIndex = l - 1 - i;
@@ -41,23 +39,18 @@ const flipLetters = {
 };
 
 const fadeOutUppercaseS = {
-  targets: `.mirroredContainer span.uppercase.scale`,
+  targets: `.mirrored-container span.uppercase.scale`,
   opacity: [1, 0],
   duration: FADE_S_DUR,
 };
 
 const fadeInLowercaseS = {
-  targets: `.mirroredContainer span.lowercase.scale`,
+  targets: `.mirrored-container span.lowercase.scale`,
   opacity: [0, 1],
   duration: FADE_S_DUR,
 };
 
-const timelineFn = () => {
-  const timeline = anime.timeline({
-    autoplay: false,
-    direction: "alternate",
-    easing: "linear",
-  });
+const timelineInit = (timeline: any) =>
   timeline
     .add(fadeIn)
     .add(moveV, VERITAS_START_TS)
@@ -69,7 +62,5 @@ const timelineFn = () => {
       opacity: [1, 1],
       endDelay: END_DELAY,
     });
-  return timeline;
-};
 
-export default timelineFn;
+export default timelineInit;

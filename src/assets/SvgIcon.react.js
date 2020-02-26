@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { cx } from "emotion";
 import { css } from "@emotion/core";
 
 const root = css`
@@ -28,14 +29,17 @@ const root = css`
   &.color-disabled {
     color: var(--disabled);
   }
+  &.color-default {
+    color: var(--font-color-primary);
+  }
   &.font-size-inherit {
-    fontsize: inherit;
+    font-size: inherit;
   }
   &.font-size-small {
-    fontsize: calc(20rem / 16);
+    font-size: calc(20rem / 16);
   }
   &.font-size-large {
-    fontsize: calc(35rem / 16);
+    font-size: calc(35rem / 16);
   }
 `;
 
@@ -52,7 +56,7 @@ const icons = {
 
 type Props = {
   size: "small" | "large" | "inherit",
-  color: "primary" | "secondary" | "disabled" | "error" | "warning",
+  color: "primary" | "secondary" | "disabled" | "error" | "warning" | "default",
   icon: $Keys<typeof icons>,
 };
 
@@ -60,14 +64,18 @@ function SvgIcon(props: Props): React.Node {
   const { icon, size, color } = props;
 
   return (
-    <svg css={root} className={(`color-${color}`, `font-size-${size}`)}>
-      {icon}
+    <svg
+      viewBox="0 0 24 24"
+      css={root}
+      className={cx(`color-${color}`, `font-size-${size}`)}
+    >
+      {icons[icon]}
     </svg>
   );
 }
 
 SvgIcon.defaultProps = {
-  color: "primary",
+  color: "default",
   size: "inherit",
 };
 

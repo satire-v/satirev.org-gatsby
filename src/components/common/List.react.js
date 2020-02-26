@@ -5,7 +5,7 @@ import { css } from "@emotion/core";
 const list = css`
   position: relative;
   margin: 0;
-  padding: 0;
+  padding: 8px 0px;
   list-style: none;
 `;
 
