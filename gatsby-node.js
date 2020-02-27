@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 const { google } = require("googleapis");
 require("dotenv").config();
 
@@ -111,7 +112,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
     });
     actions.createPage({
       path: slug,
-      component: require.resolve(`./src/templates/Post.react.js`),
+      component: require.resolve(`./src/templates/Post.react.tsx`),
       context: { id: node.id },
     });
   });
@@ -127,7 +128,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
           i === 0
             ? `/${category.fieldValue}`
             : `/${category.fieldValue}/${i + 1}`,
-        component: require.resolve("./src/templates/PostList.react.js"),
+        component: require.resolve("./src/templates/PostList.react.tsx"),
         context: {
           category: category.nodes[0].category.name,
           categorySlug: category.fieldValue,

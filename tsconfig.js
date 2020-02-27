@@ -10,7 +10,6 @@ module.exports = {
     isolatedModules: true,
     esModuleInterop: true,
     noUnusedLocals: false,
-    allowJs: true,
   },
   exclude: ["node_modules", "public", ".cache"],
 };

@@ -7,6 +7,7 @@
 require("dotenv").config();
 
 const plugins = [
+  "gatsby-plugin-typescript",
   {
     resolve: "gatsby-plugin-webpack-bundle-analyzer",
     options: {
@@ -55,7 +56,16 @@ const plugins = [
   {
     resolve: "gatsby-plugin-alias-imports",
     options: {
-      extensions: [".js", ".jsx", ".react.js", ".ts", ".tsx"],
+      extensions: [
+        ".js",
+        ".jsx",
+        ".react.js",
+        ".react.jsx",
+        ".ts",
+        ".tsx",
+        ".react.ts",
+        ".react.tsx",
+      ],
       alias: {
         "#styles": "src/styles",
         "#animations": "src/animations",
@@ -74,18 +84,26 @@ const plugins = [
 
 if (process.env.NODE_ENV !== "production") {
   plugins.push(
+    // {
+    //   resolve: "gatsby-plugin-codegen",
+    //   options: {
+    //     output: "graphql",
+    //     includes: [
+    //       "./src/**/*.ts",
+    //       "./src/**/*.tsx",
+    //       "./node_modules/gatsby-source-directus-cms/src/*.js",
+    //       "./node_modules/gatsby-transformer-sharp/src/*.js",
+    //       "./node_modules/gatsby-image/src/*.js",
+    //       // "./node_modules/gatsby-*/**/*.js" Direct includes prefered, because of performance reasons
+    //     ],
+    //   },
+    // },
     {
-      resolve: "gatsby-plugin-codegen",
+      resolve: "gatsby-plugin-typegen",
       options: {
-        output: "graphql",
-        includes: [
-          "./src/**/*.ts",
-          "./src/**/*.tsx",
-          "./node_modules/gatsby-source-directus-cms/src/*.js",
-          "./node_modules/gatsby-transformer-sharp/src/*.js",
-          "./node_modules/gatsby-image/src/*.js",
-          // "./node_modules/gatsby-*/**/*.js" Direct includes prefered, because of performance reasons
-        ],
+        emitSchema: {
+          "src/__generated__/gatsby-introspection.json": true,
+        },
       },
     },
     "gatsby-plugin-netlify-cache"

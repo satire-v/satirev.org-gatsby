@@ -6,10 +6,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.all": true
   },
-  "[javascriptreact]": {
+  "[typescriptreact, typescript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.stylelint": false
     }
   },
-  "stylelint.autoFixOnSave": true
+  "stylelint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
 }

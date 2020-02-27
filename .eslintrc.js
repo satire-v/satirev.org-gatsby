@@ -1,18 +1,18 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
+  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   extends: [
     "airbnb",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/react",
     "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
   ],
   plugins: [
     "@typescript-eslint",
+    "react",
     "react-hooks",
     "prettier",
-    "react",
+    "graphql",
     "filenames",
   ],
   parserOptions: {
@@ -20,6 +20,11 @@ module.exports = {
     sourceType: "module",
     ecmaFeatures: {
       jsx: true,
+    },
+  },
+  settings: {
+    react: {
+      version: "detect",
     },
   },
   env: {
@@ -37,6 +42,14 @@ module.exports = {
     __ASSET_PREFIX__: true,
   },
   rules: {
+    "graphql/template-strings": [
+      "error",
+      {
+        env: "relay",
+        tagName: "graphql",
+        schemaJsonFilepath: "./src/__generated__gatsby-introspection.json",
+      },
+    ],
     "arrow-body-style": [
       "error",
       "as-needed",
@@ -58,8 +71,8 @@ module.exports = {
           ".react.jsx",
           ".ts",
           ".tsx",
-          "react.ts",
-          "react.tsx",
+          ".react.ts",
+          ".react.tsx",
         ],
       },
     ],
@@ -98,6 +111,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["*.js", "*.jsx"],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off", //
+      },
+    },
+    {
       files: [
         "packages/**/gatsby-browser.js",
         "packages/gatsby/cache-dir/**/*",
@@ -118,9 +137,4 @@ module.exports = {
       },
     },
   ],
-  settings: {
-    react: {
-      version: "16.4.2",
-    },
-  },
 };
