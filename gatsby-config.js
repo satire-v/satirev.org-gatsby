@@ -3,7 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-// @flow
 
 require("dotenv").config();
 
@@ -18,7 +17,6 @@ const plugins = [
   },
   "gatsby-plugin-preact",
   "gatsby-plugin-react-helmet",
-  "gatsby-plugin-flow",
   // {
   //   resolve: "gatsby-plugin-material-ui",
   //   options: {
@@ -57,7 +55,7 @@ const plugins = [
   {
     resolve: "gatsby-plugin-alias-imports",
     options: {
-      extensions: [".js", ".jsx", ".react.js"],
+      extensions: [".js", ".jsx", ".react.js", ".ts", ".tsx"],
       alias: {
         "#styles": "src/styles",
         "#animations": "src/animations",
@@ -79,11 +77,10 @@ if (process.env.NODE_ENV !== "production") {
     {
       resolve: "gatsby-plugin-codegen",
       options: {
-        addTypename: true,
-        target: "flow",
         output: "graphql",
         includes: [
-          "./src/**/*.js",
+          "./src/**/*.ts",
+          "./src/**/*.tsx",
           "./node_modules/gatsby-source-directus-cms/src/*.js",
           "./node_modules/gatsby-transformer-sharp/src/*.js",
           "./node_modules/gatsby-image/src/*.js",

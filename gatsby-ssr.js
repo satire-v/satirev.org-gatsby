@@ -1,5 +1,3 @@
-// @flow
-
 const React = require("react");
 
 // The .default has something to do with export nonsense, idk
