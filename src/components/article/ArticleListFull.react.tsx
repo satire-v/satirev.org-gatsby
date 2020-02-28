@@ -1,10 +1,10 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import ArticleListItem from "./ArticleListItem";
+import ArticleListItem from "./ArticleListItem.react";
 
 import { ArticleCard } from "#queries/Article";
-import List from "#common/List";
+import List from "#common/List.react";
 
 type Props = {
   articles: Array<ArticleCard>;

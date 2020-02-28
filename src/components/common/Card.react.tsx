@@ -1,17 +1,17 @@
-import * as React from "react";
+import React from "react";
 import { cx } from "emotion";
 import { css } from "@emotion/core";
 
 type Props = {
-  className?: string,
+  className?: string;
 };
 
 type ChildrenProps = {
-  children: ?JSX.Element,
+  children?: JSX.Element[] | JSX.Element;
 };
 
 type ComponentProps = {
-  component: string | React.ComponentType<any>,
+  component: string | React.ComponentType<any>;
 };
 
 type CardProps = { outlined: boolean } & Props & ChildrenProps & ComponentProps;
@@ -75,7 +75,7 @@ const cardHeader = css`
 `;
 
 type HeaderProps = {
-  title: string,
+  title: string;
 } & Props &
   ComponentProps;
 

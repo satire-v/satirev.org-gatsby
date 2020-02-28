@@ -23,7 +23,7 @@ type Props = {
 };
 
 function ImageFluid(props: Props): JSX.Element {
-  const [background, setBackground] = React.useState(null);
+  const [background, setBackground] = React.useState("");
   const { fluid, ...rest } = props;
 
   React.useEffect(() => {

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { cx } from "emotion";
 import { css } from "@emotion/core";
 

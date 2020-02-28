@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Link as GatsbyLink } from "gatsby";
 import { cx } from "emotion";
 import { css } from "@emotion/core";
@@ -79,28 +79,28 @@ const root = css`
 `;
 
 type Props = {
-  children: ?JSX.Element,
-  disabled: boolean,
-  type: "button" | "fab",
-  size: "small" | "default" | "large",
-  className?: string,
+  children?: JSX.Element;
+  disabled: boolean;
+  type: "button" | "fab";
+  size: "small" | "default" | "large";
+  className?: string;
+  to: string;
 };
 
 function Button(props: Props): JSX.Element {
-  const { children, disabled, type, size, className, ...rest } = props;
+  const { children, disabled, type, size, className, to, ...rest } = props;
   return (
     <GatsbyLink
       {...rest}
+      to={to}
       activeClassName="active"
       partiallyActive
       className={cx(
-        {
-          [`size-${size}`]: size !== "default",
-          disabled,
-          [`${type}`]: type,
-          "button-base": true,
-          "button-text": true,
-        },
+        `${type}`,
+        { [`size-${size}`]: size !== "default" },
+        { disabled },
+        { "button-base": true },
+        { "button-text": true },
         className
       )}
       css={root}

@@ -114,6 +114,7 @@ module.exports = {
     ],
     "import/no-unresolved": ["error", { commonjs: true }],
     "import/extensions": ["error", "never", { css: "always" }],
+    "import/no-named-as-default": "off",
   },
   overrides: [
     {

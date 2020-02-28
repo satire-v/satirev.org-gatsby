@@ -20,6 +20,7 @@ module.exports = {
     ),
     baseUrl: "./",
     allowJs: true,
+    typeRoots: ["./types", "./node_modules/@types"],
   },
-  exclude: ["node_modules", "**/node_modules/*", "public", ".cache"],
+  exclude: ["node_modules", "**/node_modules/*", "public", ".cache", "types"],
 };

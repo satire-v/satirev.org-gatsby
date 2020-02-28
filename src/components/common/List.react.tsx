@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { css } from "@emotion/core";
 
 const list = css`
@@ -9,8 +9,8 @@ const list = css`
 `;
 
 type Props = {
-  children: ?JSX.Element,
-  component: string | React.ComponentType<any>,
+  children?: JSX.Element[] | JSX.Element;
+  component: string | React.ComponentType<any>;
 };
 
 function List(props: Props): JSX.Element {

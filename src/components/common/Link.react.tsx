@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Link as GatsbyLink } from "gatsby";
 import { css } from "@emotion/core";
 
@@ -17,13 +17,14 @@ const root = css`
 `;
 
 type Props = {
-  children: ?JSX.Element,
+  children?: JSX.Element[] | JSX.Element;
+  to: string;
 };
 
 function Link(props: Props): JSX.Element {
-  const { children, ...rest } = props;
+  const { children, to, ...rest } = props;
   return (
-    <GatsbyLink {...rest} activeClassName="active" css={root} underline="none">
+    <GatsbyLink {...rest} to="to" activeClassName="active" css={root}>
       {children}
     </GatsbyLink>
   );

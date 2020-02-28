@@ -24,7 +24,7 @@ const root = css`
       padding-left: calc(2 * var(--spacing));
 
       & .image-root {
-        width: 180px;
+        min-width: 180px;
       }
     }
   }
