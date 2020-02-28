@@ -17,7 +17,7 @@ const gridRoot = css`
   grid-gap: calc(1 * var(--spacing));
 `;
 
-function ArticleVCardGrid(props: Props): React.Node {
+function ArticleVCardGrid(props: Props): JSX.Element {
   return (
     <div css={gridRoot}>
       {props.articles.map(article => (

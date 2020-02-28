@@ -17,10 +17,10 @@ const root = css`
 `;
 
 type Props = {
-  children: ?React.Node,
+  children: ?JSX.Element,
 };
 
-function Link(props: Props): React.Node {
+function Link(props: Props): JSX.Element {
   const { children, ...rest } = props;
   return (
     <GatsbyLink {...rest} activeClassName="active" css={root} underline="none">

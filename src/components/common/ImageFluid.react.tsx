@@ -1,11 +1,9 @@
 import analyze from "rgbaster";
-import * as React from "react";
+import React from "react";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
 
-import {
-  type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase
-} from "#queryTypes/ArticleCardFragment";
+// import { ArticleCardFragment_featured_image_localFile_childImageSharp_fluid  } from "#queryTypes/ArticleCardFragment"; // eslint-disable-line camelcase
 
 const genWhites = (() => {
   const whites = [];
@@ -21,10 +19,10 @@ const genWhites = (() => {
 
 type Props = {
   // eslint-disable-next-line camelcase
-  fluid: ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
+  fluid: any; // ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
 };
 
-function ImageFluid(props: Props): React.Node {
+function ImageFluid(props: Props): JSX.Element {
   const [background, setBackground] = React.useState(null);
   const { fluid, ...rest } = props;
 

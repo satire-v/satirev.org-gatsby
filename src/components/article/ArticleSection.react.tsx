@@ -1,13 +1,13 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import ArticleTagSection from "./ArticleTagSection";
-import ArticleCategorySection from "./ArticleCategorySection";
+import ArticleTagSection from "./ArticleTagSection.react";
+import ArticleCategorySection from "./ArticleCategorySection.react";
 
 import breakpoints from "#styles/breakpoints";
 import { ArticleFull } from "#queries/Article";
-import ImageFluid from "#common/ImageFluid";
-import { Card, CardContent, CardMedia } from "#common/Card";
+import ImageFluid from "#common/ImageFluid.react";
+import { Card, CardContent, CardMedia } from "#common/Card.react";
 
 type Props = {
   article: ArticleFull;
@@ -39,7 +39,7 @@ const root = css`
   }
 `;
 
-function ArticleSection(props: Props): React.Node {
+function ArticleSection(props: Props): React.ReactNode {
   const { article } = props;
   return (
     <article css={root}>

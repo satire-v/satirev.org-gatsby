@@ -1,18 +1,13 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import ArticleTagSection from "./ArticleTagSection";
-import ArticleCategorySection from "./ArticleCategorySection";
+import ArticleTagSection from "./ArticleTagSection.react";
+import ArticleCategorySection from "./ArticleCategorySection.react";
 
 import { ArticleCard } from "#queries/Article";
-import Link from "#common/Link";
-import ImageFluid from "#common/ImageFluid";
-import { CardContent, CardMedia } from "#common/Card";
-
-type Props = {
-  article: ArticleCard;
-  hasCategory: boolean;
-};
+import Link from "#common/Link.react";
+import ImageFluid from "#common/ImageFluid.react";
+import { CardContent, CardMedia } from "#common/Card.react";
 
 const root = css`
   padding-left: 0;
@@ -35,7 +30,12 @@ const root = css`
   }
 `;
 
-function ArticleListItem(props: Props): React.Node {
+type Props = {
+  article: ArticleCard;
+  hasCategory: boolean;
+};
+
+function ArticleListItem(props: Props): JSX.Element {
   const { article } = props;
   return (
     <CardContent css={root}>

@@ -7,7 +7,7 @@ const root = css`
   background: var(--crimson);
 `;
 
-function Footer(): React.Node {
+function Footer(): JSX.Element {
   return <footer css={root} />;
 }
 

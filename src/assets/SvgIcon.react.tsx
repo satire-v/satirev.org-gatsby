@@ -53,15 +53,17 @@ const icons = {
   navigateBefore: <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />,
 };
 
-type Props = {
+interface Props {
   size: "small" | "large" | "inherit";
   color: "primary" | "secondary" | "disabled" | "error" | "warning" | "default";
   icon: keyof typeof icons;
-};
+}
 
-function SvgIcon(props: Props): React.ReactNode {
-  const { icon, size, color } = props;
-
+function SvgIcon({
+  size = "inherit",
+  color = "default",
+  icon,
+}: Props): JSX.Element {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -72,10 +74,5 @@ function SvgIcon(props: Props): React.ReactNode {
     </svg>
   );
 }
-
-SvgIcon.defaultProps = {
-  color: "default",
-  size: "inherit",
-};
 
 export default SvgIcon;

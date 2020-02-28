@@ -21,7 +21,7 @@ function reducer(total, node) {
   return total + counter;
 }
 
-function Navbar(): React.Node {
+function Navbar(): JSX.Element {
   const { allDataCategory } = useStaticQuery(graphql`
     query NavQuery {
       allDataCategory {

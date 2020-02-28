@@ -7,7 +7,7 @@ import Footer from "#components/Footer";
 import "#styles/theme.css";
 
 type Props = {
-  children?: React.Node,
+  children?: JSX.Element;
 };
 
 function Page(props: Props) {

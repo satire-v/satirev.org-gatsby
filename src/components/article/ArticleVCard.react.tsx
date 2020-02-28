@@ -35,7 +35,7 @@ type Props = {|
   isFeatured: boolean,
 |};
 
-function ArticleVCard(props: Props): React.Node {
+function ArticleVCard(props: Props): JSX.Element {
   let hasExcerpt = false;
   let hasHeader = true;
   let TitleTag = "h4";

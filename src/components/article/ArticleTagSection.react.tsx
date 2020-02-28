@@ -13,10 +13,10 @@ const root = css`
 `;
 
 type Props = {
-  tags: Array<string>,
+  tags: Array<string>;
 };
 
-function TagSection(props: Props): React.Node {
+function TagSection(props: Props): JSX.Element {
   return (
     <div css={root}>
       <SvgIcon size="large" icon="tag" />

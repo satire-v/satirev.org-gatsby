@@ -79,14 +79,14 @@ const root = css`
 `;
 
 type Props = {
-  children: ?React.Node,
+  children: ?JSX.Element,
   disabled: boolean,
   type: "button" | "fab",
   size: "small" | "default" | "large",
   className?: string,
 };
 
-function Button(props: Props): React.Node {
+function Button(props: Props): JSX.Element {
   const { children, disabled, type, size, className, ...rest } = props;
   return (
     <GatsbyLink

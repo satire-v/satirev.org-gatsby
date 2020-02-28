@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function TwitterTimeline(): React.Node {
+function TwitterTimeline(): JSX.Element {
   return (
     <a
       style={{

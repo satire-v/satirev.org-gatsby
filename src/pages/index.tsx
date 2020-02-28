@@ -9,7 +9,7 @@ import ArticleVCardGrid from "#components/article/ArticleVCardGrid";
 import ArticleListBox from "#components/article/ArticleListBox";
 import TwitterTimeline from "#common/TwitterTimeline";
 
-export default (): React.Node => (
+export default (): JSX.Element => (
   <>
     <BreakingNewsBar />
     <Columns>

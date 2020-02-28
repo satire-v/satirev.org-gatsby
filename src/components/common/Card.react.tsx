@@ -7,7 +7,7 @@ type Props = {
 };
 
 type ChildrenProps = {
-  children: ?React.Node,
+  children: ?JSX.Element,
 };
 
 type ComponentProps = {
@@ -26,7 +26,7 @@ const card = css`
   }
 `;
 
-function Card(props: CardProps): React.Node {
+function Card(props: CardProps): JSX.Element {
   const { children, component, outlined, className, ...rest } = props;
   const Component = component;
   return (
@@ -52,7 +52,7 @@ const cardActionArea = css`
 
 type ActionAreaProps = Props & ChildrenProps;
 
-function CardActionArea(props: ActionAreaProps): React.Node {
+function CardActionArea(props: ActionAreaProps): JSX.Element {
   const { children, className, ...rest } = props;
   return (
     <div
@@ -79,7 +79,7 @@ type HeaderProps = {
 } & Props &
   ComponentProps;
 
-function CardHeader(props: HeaderProps): React.Node {
+function CardHeader(props: HeaderProps): JSX.Element {
   const { title, component, className, ...rest } = props;
   const Component = component;
   return (
@@ -102,7 +102,7 @@ const cardContent = css`
 
 type ContentProps = Props & ChildrenProps;
 
-function CardContent(props: ContentProps): React.Node {
+function CardContent(props: ContentProps): JSX.Element {
   const { children, className, ...rest } = props;
   return (
     <div {...rest} css={cardContent} className={className}>
@@ -126,7 +126,7 @@ const cardMedia = css`
 
 type MediaProps = Props & ChildrenProps;
 
-function CardMedia(props: MediaProps): React.Node {
+function CardMedia(props: MediaProps): JSX.Element {
   const { children, className, ...rest } = props;
   return (
     <div {...rest} css={cardMedia} className={className}>

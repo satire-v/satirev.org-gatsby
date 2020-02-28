@@ -21,7 +21,7 @@ const root = css`
   }
 `;
 
-function BreakingNewsBar(): React.Node {
+function BreakingNewsBar(): JSX.Element {
   return (
     <div css={root}>
       <div className="breaking-news-title h6" variant="h6">

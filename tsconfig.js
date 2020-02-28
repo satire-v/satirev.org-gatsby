@@ -5,7 +5,7 @@ module.exports = {
   compilerOptions: {
     module: "commonjs",
     target: "esnext",
-    jsx: "preserve",
+    jsx: "react",
     lib: ["dom", "esnext"],
     strict: true,
     noEmit: true,

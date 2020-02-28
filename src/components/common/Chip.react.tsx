@@ -36,11 +36,11 @@ const root = css`
 `;
 
 type Props = {
-  small: boolean,
-  label: string,
+  small: boolean;
+  label: string;
 };
 
-function Chip(props: Props): React.Node {
+function Chip(props: Props): JSX.Element {
   const { small, label, ...rest } = props;
   return (
     <div {...rest} css={root} className={cx({ "size-small": small })}>

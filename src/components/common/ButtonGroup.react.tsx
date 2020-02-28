@@ -16,13 +16,13 @@ const root = css`
 `;
 
 type Props = {
-  children: ?React.Node,
+  children: ?JSX.Element,
   disabled: boolean,
   size: "small" | "default",
   variant: "outlined" | "contained",
 };
 
-function ButtonGroup(props: Props): React.Node {
+function ButtonGroup(props: Props): JSX.Element {
   const { children, disabled, size, variant } = props;
   return (
     <div css={root}>

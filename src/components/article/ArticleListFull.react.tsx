@@ -15,7 +15,7 @@ const titleRoot = css`
   border-bottom: 1px solid var(--grey-500);
 `;
 
-function ArticleListFull(props: Props): React.Node {
+function ArticleListFull(props: Props): JSX.Element {
   return (
     <div>
       <h1 css={titleRoot}>{props.title}</h1>

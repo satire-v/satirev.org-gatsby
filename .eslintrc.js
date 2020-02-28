@@ -82,7 +82,7 @@ module.exports = {
         extensions: extensions,
       },
     ],
-    "no-unused-vars": "off", // for typescript
+    "no-unused-vars": "warn", // for typescript
     "consistent-return": ["error"],
     "filenames/match-regex": ["error", "^[a-zA-Z-0-9\\.]+$", true],
     "no-console": "warn",
@@ -119,6 +119,7 @@ module.exports = {
     {
       files: ["*.js", "*.jsx"],
       rules: {
+        "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/explicit-function-return-type": "off", //
       },
     },

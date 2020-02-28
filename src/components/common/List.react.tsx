@@ -9,11 +9,11 @@ const list = css`
 `;
 
 type Props = {
-  children: ?React.Node,
+  children: ?JSX.Element,
   component: string | React.ComponentType<any>,
 };
 
-function List(props: Props): React.Node {
+function List(props: Props): JSX.Element {
   const { children, component, ...rest } = props;
   const Component = component;
   return (
@@ -39,7 +39,7 @@ const listItem = css`
   text-decoration: none;
 `;
 
-function ListItem(props: Props): React.Node {
+function ListItem(props: Props): JSX.Element {
   const { children, component, ...rest } = props;
   const Component = component;
   return (

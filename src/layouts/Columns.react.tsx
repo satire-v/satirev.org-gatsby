@@ -89,10 +89,10 @@ const root = css`
 type Props = {
   children:
     | [React.Element<any>, React.Element<any>]
-    | [React.Element<any>, React.Element<any>, React.Element<any>],
+    | [React.Element<any>, React.Element<any>, React.Element<any>];
 };
 
-export default (props: Props): React.Node => {
+export default (props: Props): JSX.Element => {
   const total = React.Children.count(props.children);
   return (
     <div css={root}>

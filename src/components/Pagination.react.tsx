@@ -11,7 +11,6 @@ type Props = {
 };
 
 const paginationRoot = css`
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,7 +28,7 @@ const paginationRoot = css`
   }
 `;
 
-function Pagination(props: Props): React.Node {
+function Pagination(props: Props): JSX.Element {
   const { currentPage, numPages } = props.pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;

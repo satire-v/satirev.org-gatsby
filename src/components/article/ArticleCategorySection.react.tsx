@@ -1,11 +1,7 @@
-import React, { FC } from "react";
+import React from "react";
 import { css } from "@emotion/core";
 
 import SvgIcon from "#assets/SvgIcon.react";
-
-type Props = {
-  category: string;
-};
 
 const root = css`
   display: flex;
@@ -17,11 +13,15 @@ const root = css`
   }
 `;
 
-function CategorySection(props: Props): React.ReactNode {
+interface Props {
+  category: string;
+}
+
+function CategorySection({ category }: Props): JSX.Element {
   return (
     <div css={root}>
       <SvgIcon size="large" icon="labelArrow" color="primary" />
-      <h6 className="category-text">{props.category}</h6>
+      <h6 className="category-text">{category}</h6>
     </div>
   );
 }

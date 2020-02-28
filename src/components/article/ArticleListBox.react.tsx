@@ -2,9 +2,9 @@ import * as React from "react";
 import { css } from "@emotion/core";
 
 import { ArticleLink } from "#queries/Article";
-import { List, ListItem } from "#common/List";
-import Link from "#common/Link";
-import { Card, CardContent, CardHeader } from "#common/Card";
+import { List, ListItem } from "#common/List.react";
+import Link from "#common/Link.react";
+import { Card, CardContent, CardHeader } from "#common/Card.react";
 
 type Props = { articles: Array<ArticleLink>; title: string };
 
@@ -42,7 +42,7 @@ const root = css`
   }
 `;
 
-function ArticleList(props: Props): React.Node {
+function ArticleList(props: Props): JSX.Element {
   return (
     <Card css={root}>
       <CardHeader title={props.title} component="h5" className="header" />

@@ -94,7 +94,7 @@ const headerRoot = css`
   }
 `;
 
-function Header(): React.Node {
+function Header(): JSX.Element {
   const [tl, setTl] = React.useState(null);
 
   const logo = useStaticQuery(graphql`
