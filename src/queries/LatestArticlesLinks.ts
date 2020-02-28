@@ -1,11 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-import { type LatestArticlesLinks } from "./graphql/LatestArticlesLinks";
+// import { LatestArticlesLinks } from "./graphql/LatestArticlesLinks";
 
-import { type ArticleLink, processArticleLinkQuery } from "#queries/Article";
+import { ArticleLink, processArticleLinkQuery } from "#queries/Article";
 
 const latestArticlesLinks = (): Array<ArticleLink> => {
-  const data: LatestArticlesLinks = useStaticQuery(graphql`
+  // LatestArticlesLinks
+  const data: any = useStaticQuery(graphql`
     query LatestArticlesLinks {
       allDataArticle(limit: 5, sort: { fields: modified_on, order: DESC }) {
         nodes {

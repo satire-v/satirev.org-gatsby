@@ -1,11 +1,14 @@
+const { extensions, aliases } = require("./alias.config.js");
+
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   extends: [
     "airbnb",
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    "prettier/react",
   ],
   plugins: [
     "@typescript-eslint",
@@ -21,11 +24,29 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    // project: "./tsconfig.js",
   },
   settings: {
     react: {
-      version: "detect",
+      version: "16.13.0",
     },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx", ".react.ts", ".react.tsx"],
+    },
+    "import/extensions": extensions,
+    "import/resolver": {
+      "eslint-import-resolver-custom-alias": {
+        alias: aliases,
+        extensions,
+      },
+      // node: {
+      //   extensions: extensions,
+      //   moduleDirectory: ["node_modules"],
+      // },
+    },
+    // "import/parsers": {
+    //   "@typescript-eslint/parser": [".ts", ".tsx", ".react.ts", ".react.tsx"],
+    // },
   },
   env: {
     browser: true,
@@ -42,14 +63,14 @@ module.exports = {
     __ASSET_PREFIX__: true,
   },
   rules: {
-    "graphql/template-strings": [
-      "error",
-      {
-        env: "relay",
-        tagName: "graphql",
-        schemaJsonFilepath: "./src/__generated__gatsby-introspection.json",
-      },
-    ],
+    // "graphql/template-strings": [
+    //   "error",
+    //   {
+    //     env: "relay",
+    //     tagName: "graphql",
+    //     schemaJsonFilepath: "./src/__generated__gatsby-introspection.json",
+    //   },
+    // ],
     "arrow-body-style": [
       "error",
       "as-needed",
@@ -64,18 +85,10 @@ module.exports = {
     "react/jsx-filename-extension": [
       1,
       {
-        extensions: [
-          ".js",
-          ".jsx",
-          ".react.js",
-          ".react.jsx",
-          ".ts",
-          ".tsx",
-          ".react.ts",
-          ".react.tsx",
-        ],
+        extensions: extensions,
       },
     ],
+    "no-unused-vars": "off", // for typescript
     "consistent-return": ["error"],
     "filenames/match-regex": ["error", "^[a-zA-Z-0-9\\.]+$", true],
     "no-console": "warn",
@@ -98,7 +111,6 @@ module.exports = {
     "jsx-a11y/no-static-element-interactions": "off",
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
-    "no-unused-vars": "warn",
     "import/order": [
       "warn",
       {
@@ -106,7 +118,7 @@ module.exports = {
         alphabetize: { order: "desc", caseInsensitive: true },
       },
     ],
-    "import/no-unresolved": "off",
+    "import/no-unresolved": ["error", { commonjs: true }],
     "import/extensions": ["error", "never", { css: "always" }],
   },
   overrides: [

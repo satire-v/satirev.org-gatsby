@@ -1,11 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-import { type TopArticlesLinks } from "./graphql/TopArticlesLinks";
+// import { TopArticlesLinks } from "./graphql/TopArticlesLinks";
 
-import { type ArticleLink, processArticleLinkQuery } from "#queries/Article";
+import { ArticleLink, processArticleLinkQuery } from "#queries/Article";
 
 const topArticlesLinks = (): Array<ArticleLink> => {
-  const data: TopArticlesLinks = useStaticQuery(graphql`
+  // TopArticlesLinks
+  const data: any = useStaticQuery(graphql`
     query TopArticlesLinks {
       allDataArticle(
         limit: 5

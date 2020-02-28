@@ -1,11 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-import { type LatestArticlesByCategoryCards } from "./graphql/LatestArticlesByCategoryCards";
+// import { LatestArticlesByCategoryCards } from "./graphql/LatestArticlesByCategoryCards";
 
-import { type ArticleCard, processArticleCardQuery } from "#queries/Article";
+import { ArticleCard, processArticleCardQuery } from "#queries/Article";
 
 const latestArticlesByCategoryCards = (): Array<ArticleCard> => {
-  const data: LatestArticlesByCategoryCards = useStaticQuery(graphql`
+  // LatestArticlesByCategoryCards
+  const data: any = useStaticQuery(graphql`
     query LatestArticlesByCategoryCards {
       allDataArticle(sort: { fields: created_on, order: DESC }) {
         group(field: category___dataId, limit: 1) {

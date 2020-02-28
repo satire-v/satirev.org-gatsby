@@ -1,7 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 
-import { type ArticleCardFragment } from "#queryTypes/ArticleCardFragment";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import { processArticleCardQuery } from "#queries/Article";
 import Columns from "#layouts/Columns";
@@ -11,9 +10,9 @@ import ArticleListBox from "#components/article/ArticleListBox";
 import TwitterTimeline from "#common/TwitterTimeline";
 
 type Props = {
-  data: { allDataArticle: { nodes: Array<ArticleCardFragment> } },
-  pageContext: any,
-  path: string,
+  data: { allDataArticle: { nodes: Array<ArticleCardFragment> } };
+  pageContext: any;
+  path: string;
 };
 
 const PageTemplate = (props: Props): React.Node => (

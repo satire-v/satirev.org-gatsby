@@ -2,19 +2,17 @@
 
 import { graphql } from "gatsby";
 
-import { type ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
-import { type ArticleFullFragment } from "./graphql/ArticleFullFragment";
-import {
-  type ArticleCardFragment,
-  type ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
-} from "./graphql/ArticleCardFragment";
+// import {  ArticleLinkFragment } from "./graphql/ArticleLinkFragment";
+// import {  ArticleFullFragment } from "./graphql/ArticleFullFragment";
+// import {ArticleCardFragment,ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
+// } from "./graphql/ArticleCardFragment";
 
-export type ArticleLink = {|
-  id: string,
-  slug: string,
-  title: string,
-  category: string,
-|};
+export interface ArticleLink {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+}
 
 export const articleLinkFragment = graphql`
   fragment ArticleLinkFragment on DataArticle {
@@ -29,7 +27,7 @@ export const articleLinkFragment = graphql`
 `;
 
 export const processArticleLinkQuery = (
-  article: ArticleLinkFragment
+  article: any // ArticleLinkFragment
 ): ArticleLink => {
   return {
     id: article.id,
@@ -39,17 +37,16 @@ export const processArticleLinkQuery = (
   };
 };
 
-export type ArticleCard = {|
-  ...ArticleLink,
-  fullExcerpt: string,
-  shortExcerpt: string,
-  imgUrl: ?string,
-  imgTitle: ?string,
-  imgFluid: ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid, // eslint-disable-line camelcase
-  published: string,
-  tags: Array<string>,
-  category: string,
-|};
+export interface ArticleCard extends ArticleLink {
+  fullExcerpt: string;
+  shortExcerpt: string;
+  imgUrl: null | string;
+  imgTitle: null | string;
+  imgFluid: null | any; // ArticleCardFragment_featured_image_localFile_childImageSharp_fluid; // eslint-disable-line camelcase
+  published: string;
+  tags: Array<string>;
+  category: string;
+}
 
 export const articleCardFragment = graphql`
   fragment ArticleCardFragment on DataArticle {
@@ -81,7 +78,7 @@ export const articleCardFragment = graphql`
 
 const EXCERPT_WORD_LIMIT = 40;
 export const processArticleCardQuery = (
-  article: ArticleCardFragment
+  article: any // ArticleCardFragment
 ): ArticleCard => {
   const fullExcerpt = article.excerpt ?? "";
   let shortExcerpt = fullExcerpt;
@@ -121,17 +118,16 @@ export const articleFullFragment = graphql`
   }
 `;
 
-export type ArticleFull = {|
-  ...ArticleCard,
-  body: string,
-  published: string,
-  year: string,
-  imageCaption: ?string,
-  legacySlug: ?string,
-|};
+export interface ArticleFull extends ArticleCard {
+  body: string;
+  published: string;
+  year: string;
+  imageCaption: null | string;
+  legacySlug: null | string;
+}
 
 export const processArticleQuery = (
-  article: ArticleFullFragment
+  article: any // ArticleFullFragment
 ): ArticleFull => {
   const articleCardObj = processArticleCardQuery(article);
   return {
