@@ -1,17 +1,18 @@
-import * as React from "react";
+import React from "react";
 import { cx } from "emotion";
 import { css } from "@emotion/core";
 
 const root = css`
-  user-select: none;
+
+  display: inline-block;
+  flex-shrink: 0;
   width: 1em;
   height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  flex-shrink: 0;
   font-size: calc(24rem / 16);
-  transition-property: fill;
   transition-duration: var(--transition-duration-shorter);
+  transition-property: fill;
+  user-select: none;
+  fill: currentColor;
 
   &.color-primary {
     color: var(--crimson);
@@ -54,12 +55,12 @@ const icons = {
 };
 
 type Props = {
-  size: "small" | "large" | "inherit",
-  color: "primary" | "secondary" | "disabled" | "error" | "warning" | "default",
-  icon: $Keys<typeof icons>,
+  size: "small" | "large" | "inherit";
+  color: "primary" | "secondary" | "disabled" | "error" | "warning" | "default";
+  icon: keyof typeof icons;
 };
 
-function SvgIcon(props: Props): React.Node {
+function SvgIcon(props: Props): React.ReactNode {
   const { icon, size, color } = props;
 
   return (

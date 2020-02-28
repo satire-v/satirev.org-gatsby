@@ -3,11 +3,11 @@ import { css } from "@emotion/core";
 
 import ArticleVCard from "./ArticleVCard";
 
-import type { ArticleCard } from "#queries/Article";
+import { ArticleCard } from "#queries/Article";
 
 type Props = {
-  articles: Array<ArticleCard>,
-  gridDirection: "horizontal" | "vertical",
+  articles: Array<ArticleCard>;
+  gridDirection: "horizontal" | "vertical";
   // TODO: this is to accomodate a list of article cards...tbd
 };
 

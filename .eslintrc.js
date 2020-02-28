@@ -1,8 +1,9 @@
-const { extensions, aliases } = require("./alias.config.js");
+const { extensions, aliases } = require("./alias.config");
 
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   extends: [
+    "eslint:recommended",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
@@ -13,6 +14,7 @@ module.exports = {
   plugins: [
     "@typescript-eslint",
     "react",
+    "import",
     "react-hooks",
     "prettier",
     "graphql",
@@ -24,29 +26,21 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    // project: "./tsconfig.js",
   },
   settings: {
     react: {
-      version: "16.13.0",
-    },
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx", ".react.ts", ".react.tsx"],
+      version: "detect",
     },
     "import/extensions": extensions,
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
     "import/resolver": {
       "eslint-import-resolver-custom-alias": {
         alias: aliases,
         extensions,
       },
-      // node: {
-      //   extensions: extensions,
-      //   moduleDirectory: ["node_modules"],
-      // },
     },
-    // "import/parsers": {
-    //   "@typescript-eslint/parser": [".ts", ".tsx", ".react.ts", ".react.tsx"],
-    // },
   },
   env: {
     browser: true,
@@ -125,7 +119,7 @@ module.exports = {
     {
       files: ["*.js", "*.jsx"],
       rules: {
-        "@typescript-eslint/no-var-requires": "off", //
+        "@typescript-eslint/explicit-function-return-type": "off", //
       },
     },
     {

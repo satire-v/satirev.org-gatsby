@@ -1,12 +1,12 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import type { ArticleLink } from "#queries/Article";
+import { ArticleLink } from "#queries/Article";
 import { List, ListItem } from "#common/List";
 import Link from "#common/Link";
 import { Card, CardContent, CardHeader } from "#common/Card";
 
-type Props = { articles: Array<ArticleLink>, title: string };
+type Props = { articles: Array<ArticleLink>; title: string };
 
 const root = css`
   height: fit-content;

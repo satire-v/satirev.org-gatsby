@@ -4,14 +4,14 @@ import { css } from "@emotion/core";
 import ArticleTagSection from "./ArticleTagSection";
 import ArticleCategorySection from "./ArticleCategorySection";
 
-import { type ArticleCard } from "#queries/Article";
+import { ArticleCard } from "#queries/Article";
 import Link from "#common/Link";
 import ImageFluid from "#common/ImageFluid";
 import { CardContent, CardMedia } from "#common/Card";
 
 type Props = {
-  article: ArticleCard,
-  hasCategory: boolean,
+  article: ArticleCard;
+  hasCategory: boolean;
 };
 
 const root = css`

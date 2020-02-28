@@ -3,12 +3,12 @@ import { css } from "@emotion/core";
 
 import ArticleListItem from "./ArticleListItem";
 
-import { type ArticleCard } from "#queries/Article";
+import { ArticleCard } from "#queries/Article";
 import List from "#common/List";
 
 type Props = {
-  articles: Array<ArticleCard>,
-  title: string,
+  articles: Array<ArticleCard>;
+  title: string;
 };
 
 const titleRoot = css`

@@ -27,8 +27,8 @@ body {
 :root {
   --title-font: cardinal, georgia, serif;
 
-  --sans-serif: Lato, Lucida Sans Unicode, sans-serif;
-  --serif: "Crimson Text", Georgia, serif;
+  --sans-serif: lato, lucida sans unicode, sans-serif;
+  --serif: "Crimson Text", georgia, serif;
 
   /* Theme colors */
   --crimson-light: #b74959;
@@ -195,4 +195,5 @@ h6,
 
 :root .secondary-text {
   color: var(--font-color-secondary);
+}
 }

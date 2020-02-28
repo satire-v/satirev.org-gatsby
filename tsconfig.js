@@ -1,4 +1,4 @@
-// tsconfig.json
+// tsconfig.js
 const { aliases } = require("./alias.config");
 
 module.exports = {
@@ -13,12 +13,13 @@ module.exports = {
     esModuleInterop: true,
     noUnusedLocals: true,
     moduleResolution: "node",
-    allowSyntheticDefaultImports: false,
+    allowSyntheticDefaultImports: true,
     strictNullChecks: true,
     paths: Object.fromEntries(
-      Object.entries(aliases).map(([k, v]) => [`${k}/*`, [`./${v}/*`]])
+      Object.entries(aliases).map(([k, v]) => [`${k}/*`, [`${v}/*`]])
     ),
-    baseUrl: ".",
+    baseUrl: "./",
+    allowJs: true,
   },
   exclude: ["node_modules", "**/node_modules/*", "public", ".cache"],
 };

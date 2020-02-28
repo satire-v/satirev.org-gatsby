@@ -2,15 +2,16 @@
   "editor.tabSize": 2,
   "bashBeautify.tabSize": 2,
   "prettier.useTabs": true,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.all": true
-  },
-  "[typescriptreact, typescript]": {
+  "[typescriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": false
+      "source.fixAll.stylelint": false,
+    }
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": false,
     }
   },
   "eslint.alwaysShowStatus": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

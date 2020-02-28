@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { google } from "googleapis";
-import { GatsbyNode, CreateSchemaCustomizationArgs } from "gatsby";
 
 require("dotenv").config();
 
 const key = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
 
-const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async ({
-  actions,
-  schema,
-}: CreateSchemaCustomizationArgs) => {
+const createSchemaCustomization = async ({ actions, schema }) => {
   const scopes = "https://www.googleapis.com/auth/analytics.readonly";
   const jwt = new google.auth.JWT(
     process.env.GOOGLE_CLIENT_EMAIL,
@@ -82,7 +78,7 @@ const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async
 
 module.exports.createSchemaCustomization = createSchemaCustomization;
 
-const createPages: GatsbyNode["createPages"] = async ({ actions, graphql }) => {
+const createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
       allDataArticle {
@@ -151,9 +147,7 @@ const createPages: GatsbyNode["createPages"] = async ({ actions, graphql }) => {
 
 module.exports.createPages = createPages;
 
-const createResolversFn: GatsbyNode["createResolvers"] = async ({
-  createResolvers,
-}) => {
+const createResolversFn = async ({ createResolvers }) => {
   createResolvers({
     DataArticle: {
       created_on: {

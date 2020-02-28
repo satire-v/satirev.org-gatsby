@@ -1,3 +1,5 @@
+import { AnimeTimelineInstance } from "animejs";
+
 const FADE_IN_DUR = 2000;
 const VERITAS_START_DELAY = 4000;
 const VERITAS_START_TS = FADE_IN_DUR + VERITAS_START_DELAY;
@@ -49,7 +51,7 @@ const fadeInLowercaseS = {
   duration: FADE_S_DUR,
 };
 
-const timelineInit = (timeline: any) =>
+const timelineInit = (timeline: AnimeTimelineInstance): AnimeTimelineInstance =>
   timeline
     .add(fadeIn)
     .add(moveV, VERITAS_START_TS)

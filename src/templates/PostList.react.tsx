@@ -1,21 +1,22 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
 
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import { processArticleCardQuery } from "#queries/Article";
-import Columns from "#layouts/Columns";
-import Pagination from "#components/Pagination";
-import ArticleListFull from "#components/article/ArticleListFull";
-import ArticleListBox from "#components/article/ArticleListBox";
-import TwitterTimeline from "#common/TwitterTimeline";
+import Columns from "#layouts/Columns.react";
+import Pagination from "#components/Pagination.react";
+import ArticleListFull from "#components/article/ArticleListFull.react";
+import ArticleListBox from "#components/article/ArticleListBox.react";
+import TwitterTimeline from "#common/TwitterTimeline.react";
 
+//  ArticleCardFragment
 type Props = {
-  data: { allDataArticle: { nodes: Array<ArticleCardFragment> } };
+  data: { allDataArticle: { nodes: Array<any> } };
   pageContext: any;
   path: string;
 };
 
-const PageTemplate = (props: Props): React.Node => (
+const PageTemplate = (props: Props): React.ReactNode => (
   <Columns>
     <>
       <ArticleListFull

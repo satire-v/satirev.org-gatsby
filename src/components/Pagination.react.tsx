@@ -3,27 +3,28 @@ import { css } from "@emotion/core";
 
 import ButtonGroup from "#common/ButtonGroup";
 import Button from "#common/Button";
-import SvgIcon from "#assets/SvgIcon";
+import SvgIcon from "#assets/SvgIcon.react";
 
 type Props = {
-  pageContext: any, // TODO real typing i guess
-  path: string,
+  pageContext: any; // TODO real typing i guess
+  path: string;
 };
 
 const paginationRoot = css`
+
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 
   .pagination-arrows {
     margin: calc(2 * var(--spacing));
   }
 
   .pagination-number-active {
-    border: 1px solid var(--crimson-dark);
     background-color: var(--crimson);
+    border: 1px solid var(--crimson-dark);
     filter: brightness(10%);
   }
 `;

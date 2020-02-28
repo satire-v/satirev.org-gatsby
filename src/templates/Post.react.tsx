@@ -1,21 +1,22 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
 
-import { type ArticleFullFragment } from "#queryTypes/ArticleFullFragment";
+// import { ArticleFullFragment } from "#queryTypes/ArticleFullFragment";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
 import { processArticleQuery } from "#queries/Article";
-import Columns from "#layouts/Columns";
-import ArticleVCardGrid from "#components/article/ArticleVCardGrid";
-import ArticleSection from "#components/article/ArticleSection";
-import ArticleListBox from "#components/article/ArticleListBox";
-import TwitterTimeline from "#common/TwitterTimeline";
+import Columns from "#layouts/Columns.react";
+import ArticleVCardGrid from "#components/article/ArticleVCardGrid.react";
+import ArticleSection from "#components/article/ArticleSection.react";
+import ArticleListBox from "#components/article/ArticleListBox.react";
+import TwitterTimeline from "#common/TwitterTimeline.react";
 
+// ArticleFullFragment
 type Props = {
-  data: { dataArticle: ArticleFullFragment },
+  data: { dataArticle: any };
 };
 
-const PageTemplate = (props: Props): React.Node => (
+const PageTemplate = (props: Props): React.ReactNode => (
   <Columns>
     <>
       <ArticleSection article={processArticleQuery(props.data.dataArticle)} />

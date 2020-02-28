@@ -1,7 +1,7 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import { type ArticleCard } from "#queries/Article";
+import {  ArticleCard } from "#queries/Article";
 import Link from "#common/Link";
 import ImageFluid from "#common/ImageFluid";
 import {
