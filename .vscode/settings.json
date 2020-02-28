@@ -4,14 +4,13 @@
   "prettier.useTabs": true,
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": false,
+      "source.fixAll.stylelint": true
     }
   },
   "[typescript]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": false,
+      "source.fixAll.stylelint": true
     }
   },
-  "eslint.alwaysShowStatus": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

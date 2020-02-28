@@ -3,7 +3,6 @@ import { cx } from "emotion";
 import { css } from "@emotion/core";
 
 const root = css`
-
   display: inline-block;
   flex-shrink: 0;
   width: 1em;

@@ -13,8 +13,7 @@
   ],
   "rules": {
     "custom-property-empty-line-before": null,
-    "declaration-empty-line-before": [
-      "always", {"except": ["after-comment", "after-declaration", "first-nested"]}],
+    "declaration-empty-line-before": ["never"],
     "selector-max-compound-selectors": null,
     "order/properties-order": [[], { "severity": "warning" }],
     "plugin/rational-order": [
