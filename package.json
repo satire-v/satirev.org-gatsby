@@ -16,7 +16,8 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "generate": "graphql-codegen",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql --extensions js jsx"
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --extensions js jsx",
+    "tsjson": "tsconfig.js --no-watch"
   },
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
@@ -96,6 +97,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-prettier": "^1.1.2",
+    "tsconfig.js": "^1.1.0",
     "typeface-crimson-text": "0.0.72",
     "typeface-lato": "0.0.75",
     "typeface-merriweather": "0.0.72",

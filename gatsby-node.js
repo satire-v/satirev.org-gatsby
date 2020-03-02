@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { google } from "googleapis";
+const { google } = require("googleapis");
 
 require("dotenv").config();
 

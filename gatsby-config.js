@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-import { aliases, extensions } from "./alias.config";
+const { aliases, extensions } = require("./alias.config");
 
 require("dotenv").config();
 
 const plugins = [
+  { resolve: "gatsby-plugin-typescript" },
   {
     resolve: "gatsby-plugin-webpack-bundle-analyzer",
     options: {

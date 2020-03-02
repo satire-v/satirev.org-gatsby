@@ -28,5 +28,5 @@ module.exports = {
       },
     ],
   },
-  exclude: ["node_modules", "**/node_modules/*", "public", ".cache", "types"],
+  exclude: ["node_modules", "public", ".cache", "types"],
 };

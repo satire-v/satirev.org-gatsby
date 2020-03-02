@@ -1,1 +1,32 @@
-{"compilerOptions":{"module":"commonjs","target":"esnext","jsx":"react","lib":["dom","esnext"],"strict":true,"noEmit":true,"isolatedModules":true,"esModuleInterop":true,"noUnusedLocals":true,"moduleResolution":"node","allowSyntheticDefaultImports":true,"strictNullChecks":true,"paths":{"#styles/*":["src/styles/*"],"#animations/*":["src/animations/*"],"#common/*":["src/components/common/*"],"#components/*":["src/components/*"],"#layouts/*":["src/layouts/*"],"#img/*":["src/assets/img/*"],"#assets/*":["src/assets/*"],"#queries/*":["src/queries/*"],"#queryTypes/*":["src/queries/graphql/*"]},"baseUrl":"./","allowJs":true,"typeRoots":["./types","./node_modules/@types"],"plugins":[{"name":"typescript-styled-plugin","validate":false}]},"exclude":["node_modules","**/node_modules/*","public",".cache","types"]}
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "react",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "paths": {
+      "#styles/*": ["src/styles/*"],
+      "#animations/*": ["src/animations/*"],
+      "#common/*": ["src/components/common/*"],
+      "#components/*": ["src/components/*"],
+      "#layouts/*": ["src/layouts/*"],
+      "#img/*": ["src/assets/img/*"],
+      "#assets/*": ["src/assets/*"],
+      "#queries/*": ["src/queries/*"],
+      "#queryTypes/*": ["src/queries/graphql/*"]
+    },
+    "baseUrl": "./",
+    "allowJs": true,
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "plugins": [{ "name": "typescript-styled-plugin", "validate": false }]
+  },
+  "exclude": ["node_modules", "**/node_modules/*", "public", ".cache", "types"]
+}
