@@ -2,16 +2,17 @@ import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
 
-import Button from "#common/Button";
+import Button from "#common/Button.react";
 
 const PADDING_HORIZONTAL = 16;
 const MARGIN_HORIZONTAL = 4;
 const FONT_SIZE = "16px";
 const MARGIN_OF_ERROR = "40px";
 
-function reducer(total, node) {
+// TODO: type category nodes here
+function reducer(total: number, node: any): number {
   let counter = 0;
-  node.name.split("").forEach(el => {
+  node.name.split("").forEach((el: string) => {
     if (el.match(/(?![i])[a-z0-9]/gi)) {
       counter += 1;
     } else {
@@ -41,11 +42,10 @@ function Navbar(): JSX.Element {
     ((MARGIN_HORIZONTAL + PADDING_HORIZONTAL) * 2);
 
   const navRootStyle = css`
-    background: white;
-    text-align: center;
     white-space: nowrap;
-    @media (max-width: calc(
-      ${marginLength}px + (205px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
+    text-align: center;
+    background: white;
+    @media (max-width: calc(${marginLength}px + (205px * 2) + (${letterCount} * ${FONT_SIZE} * 2 / 3)
     + ${MARGIN_OF_ERROR})) {
       grid-column: span 3; /* see header */
     }
@@ -57,7 +57,7 @@ function Navbar(): JSX.Element {
 
   return (
     <nav css={navRootStyle}>
-      {allDataCategory.nodes.map(node => (
+      {allDataCategory.nodes.map((node: any) => (
         <Button
           to={`/${node.slug}`}
           key={node.id}

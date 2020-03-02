@@ -86,11 +86,11 @@ const root = css`
   }
 `;
 
-type Props = {
+interface Props {
   children:
-    | [React.Element<any>, React.Element<any>]
-    | [React.Element<any>, React.Element<any>, React.Element<any>];
-};
+    | [JSX.Element, JSX.Element]
+    | [JSX.Element, JSX.Element, JSX.Element];
+}
 
 export default (props: Props): JSX.Element => {
   const total = React.Children.count(props.children);

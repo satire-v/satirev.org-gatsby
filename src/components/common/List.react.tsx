@@ -8,12 +8,17 @@ const list = css`
   list-style: none;
 `;
 
-interface Props extends WithChildren, WithNativeComponent {}
+interface Props extends StyledWrapper, WithNativeComponent {}
 
-function List({ children, component = "ul", ...rest }: Props): JSX.Element {
+function List({
+  children,
+  component = "ul",
+  className,
+  ...rest
+}: Props): JSX.Element {
   const Component = component;
   return (
-    <Component {...rest} css={list}>
+    <Component {...rest} className={className} css={list}>
       {children}
     </Component>
   );

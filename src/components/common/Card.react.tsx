@@ -13,7 +13,7 @@ const card = css`
 `;
 
 interface CardProps extends WithNativeComponent, StyledWrapper {
-  outlined: boolean;
+  outlined?: boolean;
 }
 
 function Card({
@@ -33,8 +33,8 @@ function Card({
 
 const cardActionArea = css`
   display: block;
-  text-align: inherit;
   width: 100%;
+  text-align: inherit;
   &:hover {
     filter: brightness(80%);
   }
@@ -104,14 +104,18 @@ function CardContent({
 
 const cardMedia = css`
   display: block;
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  & media {
-    width: 100%;
-  }
-  & img {
-    object-fit: cover;
+  background-size: cover;
+  & {
+    img,
+    picture,
+    video {
+      width: 100%;
+    }
+    img {
+      object-fit: cover;
+    }
   }
 `;
 

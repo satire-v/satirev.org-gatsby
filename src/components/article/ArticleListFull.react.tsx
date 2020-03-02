@@ -6,21 +6,21 @@ import ArticleListItem from "./ArticleListItem.react";
 import { ArticleCard } from "#queries/Article";
 import List from "#common/List.react";
 
-type Props = {
-  articles: Array<ArticleCard>;
-  title: string;
-};
-
 const titleRoot = css`
   border-bottom: 1px solid var(--grey-500);
 `;
 
-function ArticleListFull(props: Props): JSX.Element {
+interface Props {
+  articles: Array<ArticleCard>;
+  title: string;
+}
+
+function ArticleListFull({ articles, title }: Props): JSX.Element {
   return (
     <div>
-      <h1 css={titleRoot}>{props.title}</h1>
+      <h1 css={titleRoot}>{title}</h1>
       <List>
-        {props.articles.map(article => (
+        {articles.map(article => (
           <ArticleListItem key={article.id} article={article} />
         ))}
       </List>

@@ -1,16 +1,12 @@
 import { Helmet } from "react-helmet";
 import * as React from "react";
 
-import Header from "#components/Header";
-import Footer from "#components/Footer";
+import Header from "#components/Header.react";
+import Footer from "#components/Footer.react";
 
 import "#styles/theme.css";
 
-type Props = {
-  children?: JSX.Element;
-};
-
-function Page(props: Props) {
+function Page({ children }: WithChildren): JSX.Element {
   return (
     <>
       <Helmet>
@@ -149,7 +145,7 @@ function Page(props: Props) {
         <meta name="theme-color" content="#ffffff" />
       </Helmet>
       <Header />
-      {props.children}
+      {children}
       <Footer />
     </>
   );

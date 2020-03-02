@@ -1,34 +1,33 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import ArticleVCard from "./ArticleVCard";
+import ArticleVCard from "./ArticleVCard.react";
 
 import { ArticleCard } from "#queries/Article";
 
+const gridRoot = css`
+  display: grid;
+  grid-gap: calc(1 * var(--spacing));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+`;
+
 type Props = {
   articles: Array<ArticleCard>;
-  gridDirection: "horizontal" | "vertical";
+  gridDirection?: "horizontal" | "vertical";
   // TODO: this is to accomodate a list of article cards...tbd
 };
 
-const gridRoot = css`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: calc(1 * var(--spacing));
-`;
-
-function ArticleVCardGrid(props: Props): JSX.Element {
+function ArticleVCardGrid({
+  articles,
+  gridDirection = "horizontal",
+}: Props): JSX.Element {
   return (
     <div css={gridRoot}>
-      {props.articles.map(article => (
+      {articles.map(article => (
         <ArticleVCard key={article.id} article={article} />
       ))}
     </div>
   );
 }
-
-ArticleVCardGrid.defaultProps = {
-  gridDirection: "horizontal",
-};
 
 export default ArticleVCardGrid;

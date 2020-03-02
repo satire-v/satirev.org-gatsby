@@ -5,6 +5,7 @@ import { css } from "@emotion/core";
 
 const root = css`
   color: var(--crimson);
+
   /* Normal buttons */
   &.button {
     min-width: 64px;
@@ -79,11 +80,12 @@ const root = css`
 `;
 
 export interface ButtonProps extends StyledWrapper {
-  disabled: boolean;
-  type: "button" | "fab";
-  size: "small" | "default" | "large";
-  variant: "contained" | "outlined";
-  to: string;
+  disabled?: boolean;
+  type?: "button" | "fab";
+  size?: "small" | "default" | "large";
+  variant?: "contained" | "outlined";
+  to?: string;
+  [x: string]: any;
 }
 
 function Button({
@@ -93,7 +95,7 @@ function Button({
   type = "button",
   size = "default",
   variant = "contained",
-  to,
+  to = "",
   ...rest
 }: ButtonProps): JSX.Element {
   return (

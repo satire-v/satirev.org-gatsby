@@ -1,9 +1,9 @@
 interface WithChildren {
-  children?: JSX.Element[] | JSX.Element;
+  children?: (JSX.Element | null)[] | (JSX.Element | string | null);
 }
 
 interface WithNativeComponent {
-  component: keyof JSX.IntrinsicElements;
+  component?: keyof JSX.IntrinsicElements;
 }
 // & React.HTMLAttributes<HTMLOrSVGElement>;
 

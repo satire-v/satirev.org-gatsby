@@ -16,13 +16,19 @@ const root = css`
   }
 `;
 
-interface Props extends WithChildren {
+interface Props extends StyledWrapper {
   to: string;
 }
 
-function Link({ children, to, ...rest }: Props): JSX.Element {
+function Link({ children, className, to, ...rest }: Props): JSX.Element {
   return (
-    <GatsbyLink {...rest} to={to} activeClassName="active" css={root}>
+    <GatsbyLink
+      {...rest}
+      to={to}
+      className={className}
+      activeClassName="active"
+      css={root}
+    >
       {children}
     </GatsbyLink>
   );

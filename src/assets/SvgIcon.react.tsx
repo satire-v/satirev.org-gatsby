@@ -54,8 +54,14 @@ const icons = {
 };
 
 interface Props {
-  size: "small" | "large" | "inherit";
-  color: "primary" | "secondary" | "disabled" | "error" | "warning" | "default";
+  size?: "small" | "large" | "inherit";
+  color?:
+    | "primary"
+    | "secondary"
+    | "disabled"
+    | "error"
+    | "warning"
+    | "default";
   icon: keyof typeof icons;
 }
 

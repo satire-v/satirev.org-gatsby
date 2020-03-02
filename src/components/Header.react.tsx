@@ -1,10 +1,10 @@
 import * as React from "react";
 import Img from "gatsby-image";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import anime from "animejs/lib/anime.es";
+import anime, { AnimeTimelineInstance } from "animejs";
 import { css } from "@emotion/core";
 
-import Navbar from "#components/Navbar";
+import Navbar from "#components/Navbar.react";
 import timelineInit from "#animations/mirrorHeader";
 
 const BASELINE = 40;
@@ -16,8 +16,8 @@ const headerRoot = css`
   color: var(--crimson);
   background: white;
   border-top: 24px var(--crimson) solid;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
   & .logo-style {
     display: inline-block;
@@ -95,7 +95,7 @@ const headerRoot = css`
 `;
 
 function Header(): JSX.Element {
-  const [tl, setTl] = React.useState(null);
+  const [tl, setTl] = React.useState<AnimeTimelineInstance | null>(null);
 
   const logo = useStaticQuery(graphql`
     query HeaderQuery {
@@ -136,11 +136,7 @@ function Header(): JSX.Element {
           </Link>
         </div>
 
-        <div
-          align="center"
-          justify="center"
-          className="mirrored-container title-wrapper"
-        >
+        <div className="mirrored-container title-wrapper">
           <div>
             <Img
               alt="Satire V logo"

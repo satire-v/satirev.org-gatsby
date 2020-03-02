@@ -18,10 +18,11 @@ const root = css`
 `;
 
 interface Props extends WithClassName {
-  disabled: boolean;
-  size: "small" | "default";
-  variant: "outlined" | "contained";
+  disabled?: boolean;
+  size?: "small" | "default";
+  variant?: "outlined" | "contained";
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+  [x: string]: any;
 }
 
 function ButtonGroup({

@@ -1,16 +1,16 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import {  ArticleCard } from "#queries/Article";
-import Link from "#common/Link";
-import ImageFluid from "#common/ImageFluid";
+import { ArticleCard } from "#queries/Article";
+import Link from "#common/Link.react";
+import ImageFluid from "#common/ImageFluid.react";
 import {
   Card,
   CardActionArea,
   CardContent,
   CardHeader,
   CardMedia,
-} from "#common/Card";
+} from "#common/Card.react";
 
 const cardRoot = css`
   display: flex;
@@ -30,17 +30,17 @@ const cardRoot = css`
   }
 `;
 
-type Props = {|
-  article: ArticleCard,
-  isFeatured: boolean,
-|};
+interface Props {
+  article: ArticleCard;
+  isFeatured?: boolean;
+}
 
-function ArticleVCard(props: Props): JSX.Element {
+function ArticleVCard({ article, isFeatured = false }: Props): JSX.Element {
   let hasExcerpt = false;
   let hasHeader = true;
-  let TitleTag = "h4";
+  let TitleTag: keyof JSX.IntrinsicElements = "h4";
 
-  if (props.isFeatured) {
+  if (isFeatured) {
     hasExcerpt = true;
     hasHeader = false;
     TitleTag = "h3";
@@ -49,17 +49,17 @@ function ArticleVCard(props: Props): JSX.Element {
   return (
     <Card css={cardRoot} component="article">
       {hasHeader ? (
-        <CardHeader className="header" title={props.article.category} />
+        <CardHeader className="header" title={article.category} />
       ) : null}
       <CardActionArea className="action-area">
-        <Link to={props.article.slug} className="link">
+        <Link to={article.slug} className="link">
           <CardMedia>
-            <ImageFluid fluid={props.article.imgFluid} />
+            <ImageFluid fluid={article.imgFluid} />
           </CardMedia>
           <CardContent>
-            <TitleTag className="gutter-bottom">{props.article.title}</TitleTag>
+            <TitleTag className="gutter-bottom">{article.title}</TitleTag>
             {hasExcerpt ? (
-              <p className="body2">{props.article.shortExcerpt}</p>
+              <p className="body2">{article.shortExcerpt}</p>
             ) : null}
           </CardContent>
         </Link>
@@ -67,9 +67,5 @@ function ArticleVCard(props: Props): JSX.Element {
     </Card>
   );
 }
-
-ArticleVCard.defaultProps = {
-  isFeatured: false,
-};
 
 export default ArticleVCard;

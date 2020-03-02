@@ -36,7 +36,7 @@ const root = css`
 `;
 
 interface Props {
-  small: boolean;
+  small?: boolean;
   label: string;
 }
 

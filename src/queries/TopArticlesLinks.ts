@@ -18,8 +18,9 @@ const topArticlesLinks = (): Array<ArticleLink> => {
       }
     }
   `);
+  // TODO: type
   const articles: Array<ArticleLink> = [];
-  data.allDataArticle.nodes.forEach(article => {
+  data.allDataArticle.nodes.forEach((article: any) => {
     articles.push(processArticleLinkQuery(article));
   });
   return articles;

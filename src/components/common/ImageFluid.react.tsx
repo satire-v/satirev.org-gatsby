@@ -17,12 +17,13 @@ const genWhites = ((): string[] => {
   return whites;
 })();
 
-interface Props {
+interface Props extends WithClassName {
   // eslint-disable-next-line camelcase
   fluid: any; // ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
+  [x: string]: any;
 }
 
-function ImageFluid({ fluid, ...rest }: Props): JSX.Element {
+function ImageFluid({ fluid, className, ...rest }: Props): JSX.Element {
   const [background, setBackground] = React.useState("");
 
   React.useEffect(() => {
@@ -43,6 +44,7 @@ function ImageFluid({ fluid, ...rest }: Props): JSX.Element {
       css={css`
         background: ${background};
       `}
+      className={className}
       fluid={fluid}
     />
   );

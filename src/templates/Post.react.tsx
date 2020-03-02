@@ -12,14 +12,14 @@ import ArticleListBox from "#components/article/ArticleListBox.react";
 import TwitterTimeline from "#common/TwitterTimeline.react";
 
 // ArticleFullFragment
-type Props = {
+interface Props {
   data: { dataArticle: any };
-};
+}
 
-const PageTemplate = (props: Props): JSX.Element => (
+const PageTemplate = ({ data }: Props): JSX.Element => (
   <Columns>
     <>
-      <ArticleSection article={processArticleQuery(props.data.dataArticle)} />
+      <ArticleSection article={processArticleQuery(data.dataArticle)} />
       <ArticleVCardGrid articles={latestArticlesByCategoryCards()} />
     </>
     <>

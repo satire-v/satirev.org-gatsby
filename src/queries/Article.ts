@@ -99,8 +99,8 @@ export const processArticleCardQuery = (
     tags:
       (article.tags &&
         article.tags
-          .filter(Boolean)
-          .filter(val => val != null || val !== "")) ??
+          .filter(Boolean) // TODO: what????
+          .filter((val: any) => val != null && val !== "")) ??
       [],
     category: article.category.name,
   };

@@ -1,14 +1,9 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
-import ButtonGroup from "#common/ButtonGroup";
-import Button from "#common/Button";
+import ButtonGroup from "#common/ButtonGroup.react";
+import Button from "#common/Button.react";
 import SvgIcon from "#assets/SvgIcon.react";
-
-type Props = {
-  pageContext: any; // TODO real typing i guess
-  path: string;
-};
 
 const paginationRoot = css`
   display: flex;
@@ -28,8 +23,20 @@ const paginationRoot = css`
   }
 `;
 
-function Pagination(props: Props): JSX.Element {
-  const { currentPage, numPages } = props.pageContext;
+// TOOD: move to gatsby node
+export interface PaginationPageContext {
+  currentPage: number;
+  numPages: number;
+  categorySlug: string;
+  category: string;
+}
+
+interface Props {
+  pageContext: PaginationPageContext; // TODO real typing i guess
+}
+
+function Pagination({ pageContext }: Props): JSX.Element {
+  const { currentPage, numPages } = pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
   const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString();
@@ -45,9 +52,9 @@ function Pagination(props: Props): JSX.Element {
         key={i}
         partiallyActive
         activeClassName="pagination-number-active"
-        to={`/${props.pageContext.categorySlug}/${i}`}
+        to={`/${pageContext.categorySlug}/${i}`}
       >
-        {i}
+        {i.toString()}
       </Button>
     );
   }
@@ -72,7 +79,7 @@ function Pagination(props: Props): JSX.Element {
         <Button
           type="fab"
           className="pagination-arrows"
-          to={`/${props.pageContext.categorySlug}/${prevPage}`}
+          to={`/${pageContext.categorySlug}/${prevPage}`}
           rel="prev"
         >
           <SvgIcon icon="navigateBefore" />
@@ -85,7 +92,7 @@ function Pagination(props: Props): JSX.Element {
         <Button
           type="fab"
           className="pagination-arrows"
-          to={`/${props.pageContext.categorySlug}/${nextPage}`}
+          to={`/${pageContext.categorySlug}/${nextPage}`}
           rel="next"
         >
           <SvgIcon icon="navigateNext" />

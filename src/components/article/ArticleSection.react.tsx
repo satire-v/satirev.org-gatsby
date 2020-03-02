@@ -9,10 +9,6 @@ import { ArticleFull } from "#queries/Article";
 import ImageFluid from "#common/ImageFluid.react";
 import { Card, CardContent, CardMedia } from "#common/Card.react";
 
-type Props = {
-  article: ArticleFull;
-};
-
 const root = css`
   padding-right: calc(6 * var(--spacing));
   padding-left: calc(6 * var(--spacing));
@@ -39,8 +35,11 @@ const root = css`
   }
 `;
 
-function ArticleSection(props: Props): JSX.Element {
-  const { article } = props;
+type Props = {
+  article: ArticleFull;
+};
+
+function ArticleSection({ article }: Props): JSX.Element {
   return (
     <article css={root}>
       <h2>{article.title}</h2>
@@ -49,8 +48,8 @@ function ArticleSection(props: Props): JSX.Element {
       </div>
       <div>
         <Card className="image-card-root">
-          <CardMedia title={article.imgTitle}>
-            <ImageFluid fluid={article.imgFluid} />
+          <CardMedia>
+            <ImageFluid fluid={article.imgFluid} title={article.imgTitle} />
           </CardMedia>
           <CardContent>
             <div className="caption">{article.imageCaption}</div>

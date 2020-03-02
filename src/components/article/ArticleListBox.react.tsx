@@ -6,8 +6,6 @@ import { List, ListItem } from "#common/List.react";
 import Link from "#common/Link.react";
 import { Card, CardContent, CardHeader } from "#common/Card.react";
 
-type Props = { articles: Array<ArticleLink>; title: string };
-
 const root = css`
   height: fit-content;
 
@@ -42,13 +40,18 @@ const root = css`
   }
 `;
 
-function ArticleList(props: Props): JSX.Element {
+interface Props {
+  articles: Array<ArticleLink>;
+  title: string;
+}
+
+function ArticleList({ articles, title }: Props): JSX.Element {
   return (
     <Card css={root}>
-      <CardHeader title={props.title} component="h5" className="header" />
+      <CardHeader title={title} component="h5" className="header" />
       <CardContent className="card-content">
         <List component="ol" className="list-root">
-          {props.articles.map(article => (
+          {articles.map(article => (
             <ListItem key={article.id} className="list-item">
               <h5 className="body2 list-item-category secondary-text">
                 {article.category}

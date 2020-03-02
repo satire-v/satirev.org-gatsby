@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import LatestArticleCard from "#queries/LatestArticleCard";
-import ArticleVCard from "#components/article/ArticleVCard";
+import ArticleVCard from "#components/article/ArticleVCard.react";
 
 function MainRecent(): JSX.Element {
   const article = LatestArticleCard();

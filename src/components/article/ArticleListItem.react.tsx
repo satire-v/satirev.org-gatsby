@@ -10,8 +10,8 @@ import ImageFluid from "#common/ImageFluid.react";
 import { CardContent, CardMedia } from "#common/Card.react";
 
 const root = css`
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 
   & .card-content {
     display: flex;
@@ -30,13 +30,12 @@ const root = css`
   }
 `;
 
-type Props = {
+interface Props {
   article: ArticleCard;
-  hasCategory: boolean;
-};
+  hasCategory?: boolean;
+}
 
-function ArticleListItem(props: Props): JSX.Element {
-  const { article } = props;
+function ArticleListItem({ article, hasCategory = false }: Props): JSX.Element {
   return (
     <CardContent css={root}>
       <div className="card-content">
@@ -53,16 +52,12 @@ function ArticleListItem(props: Props): JSX.Element {
           <ImageFluid className="image-root" fluid={article.imgFluid} />
         </CardMedia>
       </div>
-      {props.hasCategory ? (
+      {hasCategory ? (
         <ArticleCategorySection category={article.category} />
       ) : null}
       <ArticleTagSection tags={article.tags} />
     </CardContent>
   );
 }
-
-ArticleListItem.defaultProps = {
-  hasCategory: false,
-};
 
 export default ArticleListItem;

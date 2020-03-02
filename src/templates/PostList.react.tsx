@@ -4,28 +4,29 @@ import { graphql } from "gatsby";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import { processArticleCardQuery } from "#queries/Article";
 import Columns from "#layouts/Columns.react";
-import Pagination from "#components/Pagination.react";
+import Pagination, {
+  PaginationPageContext,
+} from "#components/Pagination.react";
 import ArticleListFull from "#components/article/ArticleListFull.react";
 import ArticleListBox from "#components/article/ArticleListBox.react";
 import TwitterTimeline from "#common/TwitterTimeline.react";
 
 //  ArticleCardFragment
-type Props = {
+interface Props {
   data: { allDataArticle: { nodes: Array<any> } };
-  pageContext: any;
-  path: string;
-};
+  pageContext: PaginationPageContext;
+}
 
-const PageTemplate = (props: Props): JSX.Element => (
+const PageTemplate = ({ data, pageContext }: Props): JSX.Element => (
   <Columns>
     <>
       <ArticleListFull
-        articles={props.data.allDataArticle.nodes.map(n =>
+        articles={data.allDataArticle.nodes.map(n =>
           processArticleCardQuery(n)
         )}
-        title={props.pageContext.category}
+        title={pageContext.category}
       />
-      <Pagination pageContext={props.pageContext} path={props.path} />
+      <Pagination pageContext={pageContext} />
     </>
     <>
       <ArticleListBox title="Latest" articles={latestArticlesLinks()} />
