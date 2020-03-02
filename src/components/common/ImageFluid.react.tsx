@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import analyze from "rgbaster";
 import React from "react";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
 
-// import { ArticleCardFragment_featured_image_localFile_childImageSharp_fluid  } from "#queryTypes/ArticleCardFragment"; // eslint-disable-line camelcase
+import { Maybe, GatsbyImageSharpFluid_withWebpFragment } from "#graphql";
 
 const genWhites = ((): string[] => {
   const whites = [];
@@ -19,7 +20,7 @@ const genWhites = ((): string[] => {
 
 interface Props extends WithClassName {
   // eslint-disable-next-line camelcase
-  fluid: any; // ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
+  fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment>;
   [x: string]: any;
 }
 
@@ -28,7 +29,7 @@ function ImageFluid({ fluid, className, ...rest }: Props): JSX.Element {
 
   React.useEffect(() => {
     async function getBackgroundColor(): Promise<void> {
-      const result = await analyze(fluid?.base64, {
+      const result = await analyze(fluid?.base64 ?? "", {
         ignore: genWhites,
         scale: 0.2,
       });

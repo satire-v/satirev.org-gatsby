@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import latestArticlesLinks from "#queries/LatestArticlesLinks";
 import { processArticleCardQuery } from "#queries/Article";
 import Columns from "#layouts/Columns.react";
+import { ArticleCardFragment } from "#graphql";
 import Pagination, {
   PaginationPageContext,
 } from "#components/Pagination.react";
@@ -11,9 +12,8 @@ import ArticleListFull from "#components/article/ArticleListFull.react";
 import ArticleListBox from "#components/article/ArticleListBox.react";
 import TwitterTimeline from "#common/TwitterTimeline.react";
 
-//  ArticleCardFragment
 interface Props {
-  data: { allDataArticle: { nodes: Array<any> } };
+  data: { allDataArticle: { nodes: Array<ArticleCardFragment> } };
   pageContext: PaginationPageContext;
 }
 
@@ -43,7 +43,7 @@ export const query = graphql`
       filter: { category: { name: { eq: $category } } }
     ) {
       nodes {
-        ...ArticleCardFragment
+        ...ArticleCard
       }
     }
   }

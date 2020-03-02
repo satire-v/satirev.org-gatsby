@@ -151,7 +151,7 @@ const createResolversFn = async ({ createResolvers }) => {
   createResolvers({
     DataArticle: {
       created_on: {
-        type: `Date!`,
+        type: `String!`,
         resolve: async (source, args, context, info) => {
           const dateString = `${source.created_on.replace(" ", "T")}Z`;
           return info.originalResolver(

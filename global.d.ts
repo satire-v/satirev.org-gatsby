@@ -12,3 +12,7 @@ interface WithClassName {
 }
 
 interface StyledWrapper extends WithClassName, WithChildren {}
+
+type Mutable<T> = {
+  -readonly [K in keyof T]: Mutable<T[K]>;
+};

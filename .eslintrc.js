@@ -57,14 +57,14 @@ module.exports = {
     __ASSET_PREFIX__: true,
   },
   rules: {
-    // "graphql/template-strings": [
-    //   "error",
-    //   {
-    //     env: "relay",
-    //     tagName: "graphql",
-    //     schemaJsonFilepath: "./src/__generated__gatsby-introspection.json",
-    //   },
-    // ],
+    "graphql/template-strings": [
+      "error",
+      {
+        env: "relay",
+        tagName: "graphql",
+        schemaJsonFilepath: "./src/__generated__/gatsby-introspection.json",
+      },
+    ],
     "arrow-body-style": [
       "error",
       "as-needed",

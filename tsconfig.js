@@ -1,5 +1,5 @@
 // tsconfig.js
-const { aliases } = require("./alias.config");
+const { folderAliases, fileAliases } = require("./alias.config");
 
 module.exports = {
   compilerOptions: {
@@ -15,8 +15,12 @@ module.exports = {
     moduleResolution: "node",
     allowSyntheticDefaultImports: true,
     strictNullChecks: true,
-    paths: Object.fromEntries(
-      Object.entries(aliases).map(([k, v]) => [`${k}/*`, [`${v}/*`]])
+    paths: Object.assign(
+      Object.fromEntries(
+        Object.entries(folderAliases)
+          .map(([k, v]) => [`${k}/*`, [`${v}/*`]])
+          .concat(Object.entries(fileAliases).map(([k, v]) => [k, [v]]))
+      )
     ),
     baseUrl: "./",
     allowJs: true,

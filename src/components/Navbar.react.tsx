@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
 
+import { NavQueryQuery } from "#graphql";
 import Button from "#common/Button.react";
 
 const PADDING_HORIZONTAL = 16;
@@ -10,7 +11,10 @@ const FONT_SIZE = "16px";
 const MARGIN_OF_ERROR = "40px";
 
 // TODO: type category nodes here
-function reducer(total: number, node: any): number {
+function reducer(
+  total: number,
+  node: NavQueryQuery["allDataCategory"]["nodes"][0]
+): number {
   let counter = 0;
   node.name.split("").forEach((el: string) => {
     if (el.match(/(?![i])[a-z0-9]/gi)) {
@@ -23,7 +27,7 @@ function reducer(total: number, node: any): number {
 }
 
 function Navbar(): JSX.Element {
-  const { allDataCategory } = useStaticQuery(graphql`
+  const { allDataCategory }: NavQueryQuery = useStaticQuery(graphql`
     query NavQuery {
       allDataCategory {
         nodes {
@@ -57,7 +61,7 @@ function Navbar(): JSX.Element {
 
   return (
     <nav css={navRootStyle}>
-      {allDataCategory.nodes.map((node: any) => (
+      {allDataCategory.nodes.map(node => (
         <Button
           to={`/${node.slug}`}
           key={node.id}

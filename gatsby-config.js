@@ -10,7 +10,7 @@ const plugins = [
     options: {
       analyzerPort: 3000,
       production: true,
-      disable: false,
+      disable: true,
     },
   },
   "gatsby-plugin-preact",
@@ -62,30 +62,15 @@ const plugins = [
 ];
 
 if (process.env.NODE_ENV !== "production") {
-  plugins.push(
-    // {
-    //   resolve: "gatsby-plugin-codegen",
-    //   options: {
-    //     output: "graphql",
-    //     includes: [
-    //       "./src/**/*.ts",
-    //       "./src/**/*.tsx",
-    //       "./node_modules/@directus/gatsby-source-directus/src/*.js",
-    //       "./node_modules/gatsby-transformer-sharp/src/*.js",
-    //       "./node_modules/gatsby-image/src/*.js",
-    //       // "./node_modules/gatsby-*/**/*.js" Direct includes prefered, because of performance reasons
-    //     ],
-    //   },
-    // },
-    {
-      resolve: "gatsby-plugin-typegen",
-      options: {
-        emitSchema: {
-          "src/__generated__/gatsby-introspection.json": true,
-        },
+  plugins.push({
+    resolve: "gatsby-plugin-typegen",
+    options: {
+      outputPath: `src/__generated__/gatsby-types.ts`,
+      emitSchema: {
+        "src/__generated__/gatsby-introspection.json": true,
       },
-    }
-  );
+    },
+  });
 }
 module.exports = {
   siteMetadata: {

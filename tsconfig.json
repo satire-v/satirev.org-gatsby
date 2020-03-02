@@ -21,12 +21,12 @@
       "#img/*": ["src/assets/img/*"],
       "#assets/*": ["src/assets/*"],
       "#queries/*": ["src/queries/*"],
-      "#queryTypes/*": ["src/queries/graphql/*"]
+      "#graphql": ["src/__generated__/gatsby-types"]
     },
     "baseUrl": "./",
     "allowJs": true,
     "typeRoots": ["./types", "./node_modules/@types"],
     "plugins": [{ "name": "typescript-styled-plugin", "validate": false }]
   },
-  "exclude": ["node_modules", "**/node_modules/*", "public", ".cache", "types"]
+  "exclude": ["node_modules", "public", ".cache", "types"]
 }

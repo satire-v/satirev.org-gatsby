@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# gatsby files
+.cache/
+public
+
+# Mac files
+.DS_Store
+
+#VSCode stuff
+.vscode/
+
+#Generated
+__generated__/*
