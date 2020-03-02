@@ -5,7 +5,7 @@ import { css } from "@emotion/core";
 
 // import { ArticleCardFragment_featured_image_localFile_childImageSharp_fluid  } from "#queryTypes/ArticleCardFragment"; // eslint-disable-line camelcase
 
-const genWhites = (() => {
+const genWhites = ((): string[] => {
   const whites = [];
   for (let i = 250; i < 256; i += 1) {
     for (let j = 250; j < 256; j += 1) {
@@ -17,17 +17,16 @@ const genWhites = (() => {
   return whites;
 })();
 
-type Props = {
+interface Props {
   // eslint-disable-next-line camelcase
   fluid: any; // ?ArticleCardFragment_featured_image_localFile_childImageSharp_fluid,
-};
+}
 
-function ImageFluid(props: Props): JSX.Element {
+function ImageFluid({ fluid, ...rest }: Props): JSX.Element {
   const [background, setBackground] = React.useState("");
-  const { fluid, ...rest } = props;
 
   React.useEffect(() => {
-    async function getBackgroundColor() {
+    async function getBackgroundColor(): Promise<void> {
       const result = await analyze(fluid?.base64, {
         ignore: genWhites,
         scale: 0.2,

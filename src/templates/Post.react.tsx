@@ -16,7 +16,7 @@ type Props = {
   data: { dataArticle: any };
 };
 
-const PageTemplate = (props: Props): React.ReactNode => (
+const PageTemplate = (props: Props): JSX.Element => (
   <Columns>
     <>
       <ArticleSection article={processArticleQuery(props.data.dataArticle)} />

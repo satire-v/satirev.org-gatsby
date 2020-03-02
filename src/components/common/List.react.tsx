@@ -4,17 +4,13 @@ import { css } from "@emotion/core";
 const list = css`
   position: relative;
   margin: 0;
-  padding: 8px 0px;
+  padding: 8px 0;
   list-style: none;
 `;
 
-type Props = {
-  children?: JSX.Element[] | JSX.Element;
-  component: string | React.ComponentType<any>;
-};
+interface Props extends WithChildren, WithNativeComponent {}
 
-function List(props: Props): JSX.Element {
-  const { children, component, ...rest } = props;
+function List({ children, component = "ul", ...rest }: Props): JSX.Element {
   const Component = component;
   return (
     <Component {...rest} css={list}>
@@ -22,10 +18,6 @@ function List(props: Props): JSX.Element {
     </Component>
   );
 }
-
-List.defaultProps = {
-  component: "ul",
-};
 
 const listItem = css`
   position: relative;
@@ -39,8 +31,7 @@ const listItem = css`
   text-decoration: none;
 `;
 
-function ListItem(props: Props): JSX.Element {
-  const { children, component, ...rest } = props;
+function ListItem({ children, component = "li", ...rest }: Props): JSX.Element {
   const Component = component;
   return (
     <Component {...rest} css={listItem}>
@@ -48,10 +39,6 @@ function ListItem(props: Props): JSX.Element {
     </Component>
   );
 }
-
-ListItem.defaultProps = {
-  component: "li",
-};
 
 export { List, ListItem };
 export default List;

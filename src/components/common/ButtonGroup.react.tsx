@@ -1,50 +1,52 @@
 import * as React from "react";
 import { css } from "@emotion/core";
 
+import { ButtonProps } from "./Button.react";
+
 const root = css`
   display: inline-flex;
   border-radius: var(--border-radius);
   &:not(:first-child) {
-    marginleft: -1px;
+    margin-left: -1px;
   }
   &:not(:last-child) {
-    borderrightcolor: transparent;
+    border-right-color: transparent;
   }
   &:hover: {
     bordercolor: var(--crimson);
   }
 `;
 
-type Props = {
-  children: ?JSX.Element,
-  disabled: boolean,
-  size: "small" | "default",
-  variant: "outlined" | "contained",
-};
+interface Props extends WithClassName {
+  disabled: boolean;
+  size: "small" | "default";
+  variant: "outlined" | "contained";
+  children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+}
 
-function ButtonGroup(props: Props): JSX.Element {
-  const { children, disabled, size, variant } = props;
+function ButtonGroup({
+  children,
+  className,
+  disabled = false,
+  size = "default",
+  variant = "contained",
+}: Props): JSX.Element {
   return (
     <div css={root}>
       {React.Children.map(children, child => {
-        if (!React.isValidElement(child)) {
-          return null;
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            className: `${child.props.className ?? null} ${className ?? null}`,
+            disabled: child.props.disabled || disabled,
+            size: child.props.size || size,
+            variant: child.props.variant || variant,
+            ...child.props,
+          });
         }
-        return React.cloneElement(child, {
-          className: child.props.className,
-          disabled: child.props.disabled || disabled,
-          size: child.props.size || size,
-          variant: child.props.variant || variant,
-        });
+        return null;
       })}
     </div>
   );
 }
-
-ButtonGroup.defaultProps = {
-  variant: "contained",
-  size: "default",
-  disabled: false,
-};
 
 export default ButtonGroup;

@@ -2,20 +2,6 @@ import React from "react";
 import { cx } from "emotion";
 import { css } from "@emotion/core";
 
-type Props = {
-  className?: string;
-};
-
-type ChildrenProps = {
-  children?: JSX.Element[] | JSX.Element;
-};
-
-type ComponentProps = {
-  component: string | React.ComponentType<any>;
-};
-
-type CardProps = { outlined: boolean } & Props & ChildrenProps & ComponentProps;
-
 const card = css`
   overflow: hidden;
   color: var(--font-color-primary);
@@ -26,20 +12,24 @@ const card = css`
   }
 `;
 
-function Card(props: CardProps): JSX.Element {
-  const { children, component, outlined, className, ...rest } = props;
+interface CardProps extends WithNativeComponent, StyledWrapper {
+  outlined: boolean;
+}
+
+function Card({
+  children,
+  component = "div",
+  className,
+  outlined = true,
+  ...rest
+}: CardProps): JSX.Element {
   const Component = component;
   return (
     <Component {...rest} css={card} className={cx({ outlined }, className)}>
-      {props.children}
+      {children}
     </Component>
   );
 }
-
-Card.defaultProps = {
-  component: "div",
-  outlined: true,
-};
 
 const cardActionArea = css`
   display: block;
@@ -50,10 +40,11 @@ const cardActionArea = css`
   }
 `;
 
-type ActionAreaProps = Props & ChildrenProps;
-
-function CardActionArea(props: ActionAreaProps): JSX.Element {
-  const { children, className, ...rest } = props;
+function CardActionArea({
+  children,
+  className,
+  ...rest
+}: StyledWrapper): JSX.Element {
   return (
     <div
       {...rest}
@@ -74,13 +65,16 @@ const cardHeader = css`
   }
 `;
 
-type HeaderProps = {
+interface HeaderProps extends WithNativeComponent, WithClassName {
   title: string;
-} & Props &
-  ComponentProps;
+}
 
-function CardHeader(props: HeaderProps): JSX.Element {
-  const { title, component, className, ...rest } = props;
+function CardHeader({
+  component = "h6",
+  className,
+  title,
+  ...rest
+}: HeaderProps): JSX.Element {
   const Component = component;
   return (
     <div {...rest} css={cardHeader} className={`${className ?? ""}`}>
@@ -89,10 +83,6 @@ function CardHeader(props: HeaderProps): JSX.Element {
   );
 }
 
-CardHeader.defaultProps = {
-  component: "h6",
-};
-
 const cardContent = css`
   padding: 16px;
   &:last-child {
@@ -100,10 +90,11 @@ const cardContent = css`
   }
 `;
 
-type ContentProps = Props & ChildrenProps;
-
-function CardContent(props: ContentProps): JSX.Element {
-  const { children, className, ...rest } = props;
+function CardContent({
+  children,
+  className,
+  ...rest
+}: StyledWrapper): JSX.Element {
   return (
     <div {...rest} css={cardContent} className={className}>
       {children}
@@ -124,10 +115,11 @@ const cardMedia = css`
   }
 `;
 
-type MediaProps = Props & ChildrenProps;
-
-function CardMedia(props: MediaProps): JSX.Element {
-  const { children, className, ...rest } = props;
+function CardMedia({
+  children,
+  className,
+  ...rest
+}: StyledWrapper): JSX.Element {
   return (
     <div {...rest} css={cardMedia} className={className}>
       {children}

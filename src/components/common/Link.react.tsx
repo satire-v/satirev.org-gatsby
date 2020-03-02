@@ -16,15 +16,13 @@ const root = css`
   }
 `;
 
-type Props = {
-  children?: JSX.Element[] | JSX.Element;
+interface Props extends WithChildren {
   to: string;
-};
+}
 
-function Link(props: Props): JSX.Element {
-  const { children, to, ...rest } = props;
+function Link({ children, to, ...rest }: Props): JSX.Element {
   return (
-    <GatsbyLink {...rest} to="to" activeClassName="active" css={root}>
+    <GatsbyLink {...rest} to={to} activeClassName="active" css={root}>
       {children}
     </GatsbyLink>
   );

@@ -16,7 +16,7 @@ type Props = {
   path: string;
 };
 
-const PageTemplate = (props: Props): React.ReactNode => (
+const PageTemplate = (props: Props): JSX.Element => (
   <Columns>
     <>
       <ArticleListFull

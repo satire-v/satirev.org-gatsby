@@ -21,6 +21,12 @@ module.exports = {
     baseUrl: "./",
     allowJs: true,
     typeRoots: ["./types", "./node_modules/@types"],
+    plugins: [
+      {
+        name: "typescript-styled-plugin",
+        validate: false,
+      },
+    ],
   },
   exclude: ["node_modules", "**/node_modules/*", "public", ".cache", "types"],
 };

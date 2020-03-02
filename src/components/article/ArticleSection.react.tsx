@@ -39,7 +39,7 @@ const root = css`
   }
 `;
 
-function ArticleSection(props: Props): React.ReactNode {
+function ArticleSection(props: Props): JSX.Element {
   const { article } = props;
   return (
     <article css={root}>

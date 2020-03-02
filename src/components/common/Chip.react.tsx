@@ -35,22 +35,17 @@ const root = css`
   }
 `;
 
-type Props = {
+interface Props {
   small: boolean;
   label: string;
-};
+}
 
-function Chip(props: Props): JSX.Element {
-  const { small, label, ...rest } = props;
+function Chip({ small = false, label, ...rest }: Props): JSX.Element {
   return (
     <div {...rest} css={root} className={cx({ "size-small": small })}>
       <span className="label chip-text">{label}</span>
     </div>
   );
 }
-
-Chip.defaultProps = {
-  small: false,
-};
 
 export default Chip;

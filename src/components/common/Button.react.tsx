@@ -78,17 +78,24 @@ const root = css`
   }
 `;
 
-type Props = {
-  children?: JSX.Element;
+export interface ButtonProps extends StyledWrapper {
   disabled: boolean;
   type: "button" | "fab";
   size: "small" | "default" | "large";
-  className?: string;
+  variant: "contained" | "outlined";
   to: string;
-};
+}
 
-function Button(props: Props): JSX.Element {
-  const { children, disabled, type, size, className, to, ...rest } = props;
+function Button({
+  children,
+  className,
+  disabled = false,
+  type = "button",
+  size = "default",
+  variant = "contained",
+  to,
+  ...rest
+}: ButtonProps): JSX.Element {
   return (
     <GatsbyLink
       {...rest}
@@ -99,6 +106,7 @@ function Button(props: Props): JSX.Element {
         `${type}`,
         { [`size-${size}`]: size !== "default" },
         { disabled },
+        { outlined: variant === "outlined" },
         { "button-base": true },
         { "button-text": true },
         className
@@ -109,11 +117,5 @@ function Button(props: Props): JSX.Element {
     </GatsbyLink>
   );
 }
-
-Button.defaultProps = {
-  type: "button",
-  size: "default",
-  disabled: false,
-};
 
 export default Button;
