@@ -10,6 +10,7 @@ const root = css`
   padding: 6px min(10%, 80px);
   border-top: 1px solid var(--grey-300);
   border-bottom: 1px solid var(--grey-300);
+  cursor: default;
 
   & {
     .breaking-news-title {
@@ -29,8 +30,7 @@ function BreakingNewsBar(): JSX.Element {
   return (
     <div css={root}>
       <h6 className="breaking-news-title h6">Breaking</h6>
-      <div className="breaking-news-item secondary-text h6">Placeholder</div>
-      <div className="spacer"/>
+      <div className="breaking-news-item secondary-text h6">and entering</div>
     </div>
   );
 }

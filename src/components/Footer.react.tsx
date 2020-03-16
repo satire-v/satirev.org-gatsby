@@ -8,7 +8,13 @@ const root = css`
 `;
 
 function Footer(): JSX.Element {
-  return <footer css={root} />;
+  return (
+      <footer css={root}>
+        <div class="row">
+            <div class="button">hello</div>
+        </div>
+      </footer>
+  )
 }
 
 export default Footer;
