@@ -28,9 +28,11 @@ const createSchemaCustomization = async ({ actions, schema }) => {
   const pagePathIndex = colHeaders.indexOf("ga:pagePath");
   const pageViewsIndex = colHeaders.indexOf("ga:pageviews");
   const pageMap = {};
-  result.data.rows.forEach(row => {
-    pageMap[row[pagePathIndex]] = row[pageViewsIndex];
-  });
+  if (result.data.rows) {
+    result.data.rows.forEach(row => {
+      pageMap[row[pagePathIndex]] = row[pageViewsIndex];
+    });
+  }
   const { createTypes } = actions;
   const typeDefs = [
     `type DataFileData {
