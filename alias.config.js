@@ -15,13 +15,4 @@ const fileAliases = {
 module.exports.folderAliases = folderAliases;
 module.exports.fileAliases = fileAliases;
 module.exports.aliases = { ...folderAliases, ...fileAliases };
-module.exports.extensions = [
-  ".ts",
-  ".tsx",
-  ".js",
-  ".jsx",
-  ".react.js",
-  ".react.jsx",
-  ".react.ts",
-  ".react.tsx",
-];
+module.exports.extensions = [".ts", ".tsx", ".js", ".jsx"];
