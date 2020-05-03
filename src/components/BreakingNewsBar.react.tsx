@@ -19,6 +19,9 @@ const root = css`
     .breaking-news-item {
       padding-left: 1em;
     }
+    .spacer {
+      flex: 10;
+    }
   }
 `;
 
@@ -27,6 +30,7 @@ function BreakingNewsBar(): JSX.Element {
     <div css={root}>
       <h6 className="breaking-news-title h6">Breaking</h6>
       <div className="breaking-news-item secondary-text h6">Placeholder</div>
+      <div className="spacer"/>
     </div>
   );
 }

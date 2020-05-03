@@ -166,7 +166,6 @@ function Header(): JSX.Element {
             <div className="subtitle-style">Holding a Mirror Up to Truth</div>
           </div>
         </div>
-
         <Navbar />
       </div>
     </header>
