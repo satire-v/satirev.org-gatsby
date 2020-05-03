@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "@reach/router";
 import { css } from "@emotion/core";
 import SvgIcon from "#assets/SvgIcon.react";
 
@@ -16,7 +17,7 @@ const root = css`
       position: relative;
       width: 29px;
       right: 29.5px;
-      top: 0.5px;
+      top: 6px;
       height: 28.5px;
       cursor: pointer;
     }
@@ -32,8 +33,7 @@ class NavSearchbar extends React.Component {
   }
 
   search = (e) => {
-    console.log(this.state.text);
-    this.setState({text: ""});
+    navigate("/search/", {state: {text: this.state.text}}).then(() => {this.setState({text:""})});
   }
 
   render() {
@@ -52,7 +52,7 @@ class NavSearchbar extends React.Component {
           className="input-bar"
         />
         <div className="searchButton" onClick={this.search}>
-          <SvgIcon size="small" icon="labelArrow" color="" />
+          <SvgIcon size="small" icon="search" color="" />
         </div>
       </div>
     );

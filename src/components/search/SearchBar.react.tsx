@@ -16,6 +16,13 @@ const root = css`
       border-bottom-left-radius: 5px;
       background: var(--grey-300);
       border-right: 1px solid var(--grey-500);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .offset {
+      align-self: center;
+      transform: translateY(3px);
     }
     .input-bar {
       -webkit-appearance: none;
@@ -42,8 +49,6 @@ const root = css`
     }
     .search-button:hover {
       background: black;
-      font-size: 19pt;
-      margin-top: -1px;
     }
   }
 `;
@@ -57,8 +62,11 @@ class SearchBar extends React.Component {
   }
 
   search = (e) => {
-    console.log(this.state.text);
     this.setState({text: ""});
+  }
+
+  updateSearch = (text) => {
+    this.setState({text: text});
   }
 
   render() {
@@ -67,7 +75,9 @@ class SearchBar extends React.Component {
         css={root}
       >
         <div className="search-icon">
-          <SvgIcon size="large" icon="labelArrow" color="" />
+          <div className="offset">
+            <SvgIcon className="offset" size="large" icon="search" color="" />
+          </div>
         </div>
         <input
           value={this.state.text}
