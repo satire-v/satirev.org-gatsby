@@ -4,7 +4,9 @@ import { ArticleCard, processArticleCardQuery } from "#queries/Article";
 import { LatestArticlesByCategoryCardsQuery } from "#graphql";
 
 const latestArticlesByCategoryCards = (): Array<ArticleCard> => {
-  const data: Mutable<LatestArticlesByCategoryCardsQuery> = useStaticQuery(graphql`
+  const data: Mutable<LatestArticlesByCategoryCardsQuery> = useStaticQuery<
+    LatestArticlesByCategoryCardsQuery
+  >(graphql`
     query LatestArticlesByCategoryCards {
       allDataArticle(sort: { fields: created_on, order: DESC }) {
         group(field: category___dataId, limit: 1) {

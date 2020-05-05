@@ -21,10 +21,20 @@ const genWhites = ((): string[] => {
 interface Props extends WithClassName {
   // eslint-disable-next-line camelcase
   fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment>;
+  url?: string;
+  ext?: string;
+  title?: string;
   [x: string]: any;
 }
 
-function ImageFluid({ fluid, className, ...rest }: Props): JSX.Element {
+function ImageFluid({
+  fluid,
+  url,
+  ext,
+  title,
+  className,
+  ...rest
+}: Props): JSX.Element {
   const [background, setBackground] = React.useState("");
 
   React.useEffect(() => {
@@ -38,7 +48,9 @@ function ImageFluid({ fluid, className, ...rest }: Props): JSX.Element {
     getBackgroundColor();
   }, []);
 
-  return (
+  return ext === "gif" ? (
+    <img src={url} alt={title} />
+  ) : (
     <Img
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}

@@ -54,7 +54,12 @@ function ArticleVCard({ article, isFeatured = false }: Props): JSX.Element {
       <CardActionArea className="action-area">
         <Link to={article.slug} className="link">
           <CardMedia>
-            <ImageFluid fluid={article.imgFluid} />
+            <ImageFluid
+              fluid={article.imgFluid}
+              url={article.imgUrl}
+              ext={article.imgExt}
+              title={article.imgTitle}
+            />
           </CardMedia>
           <CardContent>
             <TitleTag className="gutter-bottom">{article.title}</TitleTag>

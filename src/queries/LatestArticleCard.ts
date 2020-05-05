@@ -4,7 +4,9 @@ import { ArticleCard, processArticleCardQuery } from "#queries/Article";
 import { LatestArticleCardQuery } from "#graphql";
 
 const latestArticleCard = (): ArticleCard => {
-  const data: LatestArticleCardQuery = useStaticQuery(graphql`
+  const data: LatestArticleCardQuery = useStaticQuery<
+    LatestArticleCardQuery
+  >(graphql`
     query LatestArticleCard {
       allDataArticle(limit: 1, sort: { fields: modified_on, order: DESC }) {
         nodes {

@@ -3660,21 +3660,6 @@ export type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-export type NavQueryQueryVariables = {};
-
-
-export type NavQueryQuery = { readonly allDataCategory: { readonly nodes: ReadonlyArray<Pick<DataCategory, 'name' | 'slug' | 'id'>> } };
-
-export type HeaderQueryQueryVariables = {};
-
-
-export type HeaderQueryQuery = { readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
-
-export type LatestArticleCardQueryVariables = {};
-
-
-export type LatestArticleCardQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
-
 export type ArticleLinkFragment = (
   Pick<DataArticle, 'id' | 'slug' | 'title'>
   & { readonly category: Pick<DataCategory, 'name' | 'slug'> }
@@ -3685,7 +3670,10 @@ export type ArticleCardFragment = (
   & { published: DataArticle['created_on'] }
   & { readonly featured_image: Maybe<(
     Pick<DataFile, 'title'>
-    & { readonly data: Maybe<Pick<DataFileData, 'full_url'>>, readonly localFile: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }> }
+    & { readonly data: Maybe<Pick<DataFileData, 'full_url'>>, readonly localFile: Maybe<(
+      Pick<File, 'extension'>
+      & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }
+    )> }
   )> }
   & ArticleLinkFragment
 );
@@ -3696,24 +3684,22 @@ export type ArticleFullFragment = (
   & ArticleCardFragment
 );
 
-export type TopArticlesLinksQueryVariables = {};
+export type HeaderQueryQueryVariables = {};
 
 
-export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+export type HeaderQueryQuery = { readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+
+export type NavQueryQueryVariables = {};
+
+
+export type NavQueryQuery = { readonly allDataCategory: { readonly nodes: ReadonlyArray<Pick<DataCategory, 'name' | 'slug' | 'id'>> } };
+
+export type LatestArticleCardQueryVariables = {};
+
+
+export type LatestArticleCardQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
 
 export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type FullArticleQueryVariables = {
-  id: Maybe<Scalars['String']>;
-};
-
-
-export type FullArticleQuery = { readonly dataArticle: Maybe<ArticleFullFragment> };
-
-export type LatestArticlesLinksQueryVariables = {};
-
-
-export type LatestArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
 
 export type LatestArticlesByCategoryCardsQueryVariables = {};
 
@@ -3722,6 +3708,32 @@ export type LatestArticlesByCategoryCardsQuery = { readonly allDataArticle: { re
       Pick<DataArticleGroupConnection, 'fieldValue'>
       & { readonly nodes: ReadonlyArray<ArticleCardFragment> }
     )> } };
+
+export type LatestArticlesLinksQueryVariables = {};
+
+
+export type LatestArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+
+export type FullArticleQueryVariables = {
+  id: Maybe<Scalars['String']>;
+};
+
+
+export type FullArticleQuery = { readonly dataArticle: Maybe<ArticleFullFragment> };
+
+export type TopArticlesLinksQueryVariables = {};
+
+
+export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+
+export type ArticleListQueryVariables = {
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  category: Scalars['String'];
+};
+
+
+export type ArticleListQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3768,15 +3780,6 @@ export type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSi
 export type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 export type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type ArticleListQueryVariables = {
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  category: Scalars['String'];
-};
-
-
-export type ArticleListQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
 
 export type PagesQueryQueryVariables = {};
 

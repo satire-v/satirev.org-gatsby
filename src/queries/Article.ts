@@ -45,6 +45,7 @@ export interface ArticleCard extends ArticleLink {
   fullExcerpt: string;
   shortExcerpt: string;
   imgUrl: Maybe<string>;
+  imgExt: Maybe<string>;
   imgTitle: Maybe<string>;
   imgFluid: Maybe<GatsbyImageSharpFluid_withWebpFragment>;
   published: string;
@@ -65,6 +66,7 @@ export const articleCardFragment = graphql`
         full_url
       }
       localFile {
+        extension
         childImageSharp {
           fluid(
             maxWidth: 960
@@ -97,6 +99,7 @@ export const processArticleCardQuery = (
     fullExcerpt,
     shortExcerpt,
     imgUrl: article?.featured_image?.data?.full_url,
+    imgExt: article?.featured_image?.localFile?.extension,
     imgTitle: article?.featured_image?.title,
     imgFluid: article.featured_image?.localFile?.childImageSharp?.fluid,
     published: article.published.toString(),
