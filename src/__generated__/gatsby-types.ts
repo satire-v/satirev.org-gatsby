@@ -356,6 +356,7 @@ export enum DataArticleFieldsEnum {
   featured_image___data___full_url = 'featured_image.data.full_url',
   featured_image___data___url = 'featured_image.data.url',
   featured_image___data___thumbnails = 'featured_image.data.thumbnails',
+  featured_image___data___thumbnails___key = 'featured_image.data.thumbnails.key',
   featured_image___data___thumbnails___url = 'featured_image.data.thumbnails.url',
   featured_image___data___thumbnails___relative_url = 'featured_image.data.thumbnails.relative_url',
   featured_image___data___thumbnails___dimension = 'featured_image.data.thumbnails.dimension',
@@ -714,6 +715,7 @@ export type DataFileDataFilterInput = {
 };
 
 export type DataFileDataThumbnails = {
+  readonly key: Maybe<Scalars['String']>;
   readonly url: Maybe<Scalars['String']>;
   readonly relative_url: Maybe<Scalars['String']>;
   readonly dimension: Maybe<Scalars['String']>;
@@ -722,6 +724,7 @@ export type DataFileDataThumbnails = {
 };
 
 export type DataFileDataThumbnailsFilterInput = {
+  readonly key: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly relative_url: Maybe<StringQueryOperatorInput>;
   readonly dimension: Maybe<StringQueryOperatorInput>;
@@ -846,6 +849,7 @@ export enum DataFileFieldsEnum {
   data___full_url = 'data.full_url',
   data___url = 'data.url',
   data___thumbnails = 'data.thumbnails',
+  data___thumbnails___key = 'data.thumbnails.key',
   data___thumbnails___url = 'data.thumbnails.url',
   data___thumbnails___relative_url = 'data.thumbnails.relative_url',
   data___thumbnails___dimension = 'data.thumbnails.dimension',
@@ -3724,8 +3728,6 @@ export type LatestArticleCardQueryVariables = {};
 
 export type LatestArticleCardQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
 
-export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
 export type LatestArticlesByCategoryCardsQueryVariables = {};
 
 
@@ -3743,6 +3745,8 @@ export type TopArticlesLinksQueryVariables = {};
 
 
 export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+
+export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
 export type FullArticleQueryVariables = {
   id: Maybe<Scalars['String']>;
@@ -3810,19 +3814,3 @@ export type PagesQueryQueryVariables = {};
 
 
 export type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-export type LatestArticlesByCategoryCardsQueryVariables = {};
-
-
-export type LatestArticlesByCategoryCardsQuery = { readonly allDataArticle: { readonly group: ReadonlyArray<(
-      Pick<DataArticleGroupConnection, 'fieldValue'>
-      & { readonly nodes: ReadonlyArray<ArticleCardFragment> }
-    )> } };
-
-export type LatestArticlesByCategoryCardsQueryVariables = {};
-
-
-export type LatestArticlesByCategoryCardsQuery = { readonly allDataArticle: { readonly group: ReadonlyArray<(
-      Pick<DataArticleGroupConnection, 'fieldValue'>
-      & { readonly nodes: ReadonlyArray<ArticleCardFragment> }
-    )> } };
