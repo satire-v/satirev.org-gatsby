@@ -4,6 +4,7 @@ import SvgIcon from "#assets/SvgIcon.react";
 import SearchBar from "#components/search/SearchBar.react";
 import SearchResult from "#components/search/SearchResult.react";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
+import NewSearchBar from "#components/search/NewSearch";
 
 const root = css`
   color: var(--font-color-primary);
@@ -66,6 +67,7 @@ function SearchSection(props): JSX.Element {
     <div
       css={root}
     >
+      <NewSearchBar />
       <SearchBar ref={searchRef}/>
       <div>
         <div className="meta-results">
