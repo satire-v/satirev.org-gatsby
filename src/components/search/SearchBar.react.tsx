@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
 import SvgIcon from "#assets/SvgIcon.react";
+import { connectSearchBox } from 'react-instantsearch-dom';
 
 const root = css`
   color: var(--font-color-primary);
@@ -53,48 +54,25 @@ const root = css`
   }
 `;
 
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-    };
-  }
-
-  search = (e) => {
-    this.setState({text: ""});
-  }
-
-  updateSearch = (text) => {
-    this.setState({text: text});
-  }
-
-  render() {
-    return (
-      <div
-        css={root}
-      >
-        <div className="search-icon">
-          <div className="offset">
-            <SvgIcon className="offset" size="large" icon="search" color="" />
-          </div>
-        </div>
-        <input
-          value={this.state.text}
-          onChange={event => {this.setState({text: event.target.value})}}
-          onKeyPress={event => {
-            if (event.key === 'Enter') {
-              this.search();
-            }
-          }}
-          className="input-bar"
-        />
-        <div className="search-button">
-          Search
+const SearchBox = ({ currentRefinement, refine, onKeyUp }) => (
+    <form noValidate action="" role="search" css={root}>
+      <div className="search-icon">
+        <div className="offset">
+          <SvgIcon className="offset" size="large" icon="search" color="" />
         </div>
       </div>
-    );
-  }
-}
+      <input
+        type="search"
+        value={currentRefinement}
+        onChange={(event) => refine(event.currentTarget.value)}
+        onKeyUp={onKeyUp}
+        placeholder="Search"
+        className="input-bar"
+      />
+      <div className="search-button">
+        Search
+      </div>
+    </form>
+);
 
-export default SearchBar;
+export const CustomSearchBox = connectSearchBox(SearchBox);

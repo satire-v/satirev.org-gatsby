@@ -6,6 +6,16 @@ import SearchResult from "#components/search/SearchResult.react";
 import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
 import NewSearchBar from "#components/search/NewSearch";
 
+import algoliasearch from 'algoliasearch/lite';
+import { 
+  InstantSearch, 
+  SearchBox, 
+  Hits, 
+  Configure 
+ } from 'react-instantsearch-dom';
+import { CustomHits } from './SearchPreview';
+import { CustomSearchBox } from './SearchBar.react';
+
 const root = css`
   color: var(--font-color-primary);
   display: flex;
@@ -38,10 +48,78 @@ const root = css`
       height: 1px;
       background-color: var(--grey-300);
     }
+    .input-empty {
+      display: none;
+    }
   }
 `;
 
-function SearchSection(props): JSX.Element {
+class SearchSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      advanced: false,
+      isToggledOn: false,
+      hasInput: false,
+      refresh: false
+    }
+    this.searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
+  }
+
+  renderMeta = () => {
+    if (this.state.advanced) {
+      var advancedIcon = <SvgIcon size="large" icon="dropup" />;
+      var advancedOptions = (
+        <div> OPTIONS </div>
+      );
+    } else {
+      advancedIcon = <SvgIcon size="large" icon="dropdown" />;
+      advancedOptions = "";
+    }
+
+    return (
+      <div>
+        <div className="meta-results">
+          <p className="results-text"><strong>6</strong> results found</p>
+          <div className="options" onClick={() => {this.setState({advanced:!this.state.advanced})}}>
+            <p><strong>Advanced</strong></p>
+            {advancedIcon}
+          </div>
+        </div>
+        {advancedOptions}
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div css={root}>
+        <InstantSearch
+          searchClient={this.searchClient}
+          indexName="Articles"
+        >
+          <Configure hitsPerPage={5} />
+          <CustomSearchBox
+            submit={<></>}
+            reset={<></>}
+            onKeyUp={(event) => {
+              this.setState({
+                hasInput: event.currentTarget.value !== '',
+              });
+            }}
+          />
+          {this.renderMeta()}
+          <div className="grey-line" />
+          <div className={!this.state.hasInput ? 'input-empty' : 'input-value'}>
+            <CustomHits hitComponent={Hits} />
+          </div>
+        </InstantSearch>
+      </div>
+    );
+  }
+}
+
+/*function SearchSection(props): JSX.Element {
   const searchRef = useRef();
   const [results, setResults] = useState(latestArticlesByCategoryCards());
   const [advanced, setAdvanced] = useState(false);
@@ -83,6 +161,6 @@ function SearchSection(props): JSX.Element {
       {items}
     </div>
   );
-}
+}*/
 
 export default SearchSection;
