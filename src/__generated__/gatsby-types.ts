@@ -3727,6 +3727,8 @@ export type ArticleFullFragment = (
   & ArticleCardFragment
 );
 
+export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
 export type LatestArticleCardQueryVariables = {};
 
 
@@ -3749,8 +3751,6 @@ export type TopArticlesLinksQueryVariables = {};
 
 
 export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
-
-export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
 export type FullArticleQueryVariables = {
   id: Maybe<Scalars['String']>;
@@ -3820,3 +3820,10 @@ export type PagesQueryQueryVariables = {};
 
 
 export type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
+export type SpecificArticleCardQueryVariables = {
+  specificId: Maybe<Scalars['String']>;
+};
+
+
+export type SpecificArticleCardQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };

@@ -33,9 +33,10 @@ const root = css`
 interface Props {
   article: ArticleCard;
   hasCategory?: boolean;
+  hasImage?: boolean;
 }
 
-function ArticleListItem({ article, hasCategory = false }: Props): JSX.Element {
+function ArticleListItem({ article, hasCategory = false, hasImage = true }: Props): JSX.Element {
   return (
     <CardContent css={root}>
       <div className="card-content">
@@ -48,9 +49,11 @@ function ArticleListItem({ article, hasCategory = false }: Props): JSX.Element {
           </div>
           <p className="body2">{article.fullExcerpt}</p>
         </div>
-        <CardMedia className="card-media">
-          <ImageFluid className="image-root" fluid={article.imgFluid} />
-        </CardMedia>
+        {hasImage ? (
+          <CardMedia className="card-media">
+            <ImageFluid className="image-root" fluid={article.imgFluid} />
+          </CardMedia>
+        ) : null}
       </div>
       {hasCategory ? (
         <ArticleCategorySection category={article.category} />

@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { aliases, extensions } = require("./alias.config");
+//const searchQueries = require("./src/utils/algolia.tsx");
 
 require("dotenv").config();
 
@@ -59,6 +60,16 @@ const plugins = [
   },
   "gatsby-plugin-netlify",
   "gatsby-plugin-netlify-cache",
+  /*{
+    resolve: "gatsby-plugin-algolia",
+    options: {
+      appId: process.env.GATSBY_ALGOLIA_APP_ID,
+      apiKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
+      indexName: "testarticles",
+      searchQueries,
+      chunkSize: 10000,
+    }
+  }*/
 ];
 
 if (process.env.NODE_ENV !== "production") {
