@@ -13300,14 +13300,7 @@ postcss-html@^0.36.0:
   dependencies:
     htmlparser2 "^3.10.0"
 
-postcss-jsx@^0.36.0:
-  version "0.36.4"
-  resolved "https://registry.yarnpkg.com/postcss-jsx/-/postcss-jsx-0.36.4.tgz#37a68f300a39e5748d547f19a747b3257240bd50"
-  integrity sha512-jwO/7qWUvYuWYnpOb0+4bIIgJt7003pgU3P6nETBLaOyBXuTD55ho21xnals5nBrlpTIFodyd3/jBi6UO3dHvA==
-  dependencies:
-    "@babel/core" ">=7.2.2"
-
-"postcss-jsx@github:jacobrienstra/postcss-css-in-js#patch-1":
+postcss-jsx@^0.36.0, "postcss-jsx@github:jacobrienstra/postcss-css-in-js#patch-1":
   version "0.36.4"
   resolved "https://codeload.github.com/jacobrienstra/postcss-css-in-js/tar.gz/23077fe36e15a51b98b724de57e45e3376368de3"
   dependencies:
