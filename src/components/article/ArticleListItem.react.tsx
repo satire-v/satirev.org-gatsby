@@ -34,11 +34,18 @@ interface Props {
   article: ArticleCard;
   hasCategory?: boolean;
   hasImage?: boolean;
+  containerStyle?: object;
 }
 
-function ArticleListItem({ article, hasCategory = false, hasImage = true }: Props): JSX.Element {
+function ArticleListItem({
+  article,
+  hasCategory = false,
+  hasImage = true,
+  containerStyle = {},
+}: Props): JSX.Element {
+  console.log(containerStyle);
   return (
-    <CardContent css={root}>
+    <CardContent css={root} style={containerStyle}>
       <div className="card-content">
         <div>
           <Link to={article.slug}>

@@ -10,7 +10,8 @@ const Hits = ({ hits }) => (
   <ul>
     {hits.map(hit => (
       <ArticleListItem
-        style={{ height: 100 }}
+        key={hit._snippetResult.content.value}
+        containerStyle={{ height: 250 }}
         article={{ ...hit, fullExcerpt: hit._snippetResult.content.value }}
         hasImage={false}
       />

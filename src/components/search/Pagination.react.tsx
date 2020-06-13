@@ -20,7 +20,7 @@ const root = css`
       justify-content: center;
       align-items: center;
       height: 100%;
-      background: var(--crimson-light);
+      background-color: var(--crimson-light);
       transition: all 0.2s ease;
       border-radius: 0;
       border: 0.1px solid var(--crimson);
@@ -59,7 +59,7 @@ const Pagination = ({ currentRefinement, nbPages, refine, createURL }) => {
             refine(1);
           }}
         >
-          <p className={currentRefinement === 1 ? "selected" : ""}>1</p>
+          <p>1</p>
         </div>
         {new Array(nbPages - 1).fill(null).map((_, index) => {
           const page = index + 2;
@@ -86,7 +86,7 @@ const Pagination = ({ currentRefinement, nbPages, refine, createURL }) => {
   }
 
   const begin = Math.min(
-    nbPages - MAX_SHOWN,
+    nbPages - MAX_SHOWN + 1,
     Math.max(2, currentRefinement - Math.floor(MAX_SHOWN / 2) + 1)
   );
   return (
@@ -100,7 +100,7 @@ const Pagination = ({ currentRefinement, nbPages, refine, createURL }) => {
           refine(1);
         }}
       >
-        <p className={currentRefinement === 1 ? "selected" : ""}>1</p>
+        <p>1</p>
       </div>
       {new Array(MAX_SHOWN).fill(null).map((_, index) => {
         const page = index + begin;
