@@ -1,32 +1,30 @@
-import React, {useState, useEffect, useRef} from "react";
+import {
+  InstantSearch,
+  Pagination,
+  Hits,
+  Configure,
+} from "react-instantsearch-dom";
+import React, { useState, useEffect, useRef, createRef } from "react";
+import algoliasearch from "algoliasearch/lite";
 import { css } from "@emotion/core";
-import SvgIcon from "#assets/SvgIcon.react";
-import SearchBar from "#components/search/SearchBar.react";
-import SearchResult from "#components/search/SearchResult.react";
-import latestArticlesByCategoryCards from "#queries/LatestArticlesByCategoryCards";
-import NewSearchBar from "#components/search/NewSearch";
 
-import algoliasearch from 'algoliasearch/lite';
-import { 
-  InstantSearch, 
-  SearchBox, 
-  Hits, 
-  Configure 
- } from 'react-instantsearch-dom';
-import { CustomHits } from './SearchPreview';
-import { CustomSearchBox } from './SearchBar.react';
+import { CustomHits } from "./SearchPreview";
+import { CustomSearchBox } from "./SearchBar.react";
+import { CustomPagination } from "./Pagination.react";
+
+import SvgIcon from "#assets/SvgIcon.react";
 
 const root = css`
   color: var(--font-color-primary);
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  &{
+  & {
     .meta-results {
       display: flex;
       flex-direction: row;
       font-size: 14pt;
-      &{
+      & {
         .results-text {
           flex: 1;
         }
@@ -54,24 +52,43 @@ const root = css`
   }
 `;
 
-class SearchSection extends React.Component {
-  constructor(props) {
+interface Props {
+  initialSearch: string;
+}
+
+interface State {
+  advanced: boolean;
+  isToggledOn: boolean;
+  hasInput: false;
+  refresh: false;
+}
+
+class SearchSection extends React.Component<Props, State> {
+  private searchClient = algoliasearch(
+    process.env.GATSBY_ALGOLIA_APP_ID || "",
+    process.env.GATSBY_ALGOLIA_SEARCH_KEY || ""
+  );
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       advanced: false,
       isToggledOn: false,
       hasInput: false,
-      refresh: false
+      refresh: false,
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.initialSearch) {
+      this.setState({ hasInput: true });
     }
-    this.searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
   }
 
   renderMeta = () => {
     if (this.state.advanced) {
       var advancedIcon = <SvgIcon size="large" icon="dropup" />;
-      var advancedOptions = (
-        <div> OPTIONS </div>
-      );
+      var advancedOptions = <div> OPTIONS </div>;
     } else {
       advancedIcon = <SvgIcon size="large" icon="dropdown" />;
       advancedOptions = "";
@@ -80,87 +97,49 @@ class SearchSection extends React.Component {
     return (
       <div>
         <div className="meta-results">
-          <p className="results-text"><strong>6</strong> results found</p>
-          <div className="options" onClick={() => {this.setState({advanced:!this.state.advanced})}}>
-            <p><strong>Advanced</strong></p>
+          <p className="results-text">
+            <strong>6</strong> results found
+          </p>
+          <div
+            className="options"
+            onClick={() => {
+              this.setState({ advanced: !this.state.advanced });
+            }}
+          >
+            <p>
+              <strong>Advanced</strong>
+            </p>
             {advancedIcon}
           </div>
         </div>
         {advancedOptions}
       </div>
     );
-  }
+  };
 
   render() {
     return (
       <div css={root}>
-        <InstantSearch
-          searchClient={this.searchClient}
-          indexName="Articles"
-        >
+        <InstantSearch searchClient={this.searchClient} indexName="Articles">
           <Configure hitsPerPage={5} />
           <CustomSearchBox
-            submit={<></>}
-            reset={<></>}
-            onKeyUp={(event) => {
+            onKeyUp={event => {
               this.setState({
-                hasInput: event.currentTarget.value !== '',
+                hasInput: event.currentTarget.value !== "",
               });
             }}
+            defaultRefinement={this.props.initialSearch}
           />
           {this.renderMeta()}
           <div className="grey-line" />
-          <div className={!this.state.hasInput ? 'input-empty' : 'input-value'}>
+          <div className={this.state.hasInput ? "input-value" : "input-value"}>
             <CustomHits hitComponent={Hits} />
           </div>
+          <CustomPagination />
         </InstantSearch>
       </div>
     );
   }
 }
-
-/*function SearchSection(props): JSX.Element {
-  const searchRef = useRef();
-  const [results, setResults] = useState(latestArticlesByCategoryCards());
-  const [advanced, setAdvanced] = useState(false);
-  const items = [];
-  for (const [ix, val] of results.entries()) {
-    items.push(<SearchResult article={val} />);
-  }
-  if (advanced) {
-    var advancedIcon = <SvgIcon size="large" icon="dropup" />;
-    var advancedOptions = (
-      <div> OPTIONS </div>
-    );
-  } else {
-    advancedIcon = <SvgIcon size="large" icon="dropdown" />;
-    advancedOptions = "";
-  }
-
-  useEffect(() => {
-    searchRef.current.updateSearch(props.initialSearch);
-  });
-
-  return (
-    <div
-      css={root}
-    >
-      <NewSearchBar />
-      <SearchBar ref={searchRef}/>
-      <div>
-        <div className="meta-results">
-          <p className="results-text"><strong>{results.length}</strong> results found</p>
-          <div className="options" onClick={() => {setAdvanced(!advanced)}}>
-            <p><strong>Advanced</strong></p>
-            {advancedIcon}
-          </div>
-        </div>
-        {advancedOptions}
-      </div>
-      <div className="grey-line" />
-      {items}
-    </div>
-  );
-}*/
 
 export default SearchSection;

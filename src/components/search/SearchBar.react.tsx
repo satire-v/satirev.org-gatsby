@@ -1,7 +1,8 @@
+import { connectSearchBox } from "react-instantsearch-dom";
 import React from "react";
 import { css } from "@emotion/core";
+
 import SvgIcon from "#assets/SvgIcon.react";
-import { connectSearchBox } from 'react-instantsearch-dom';
 
 const root = css`
   color: var(--font-color-primary);
@@ -11,7 +12,7 @@ const root = css`
   border-radius: 6px;
   overflow: hidden;
   width: 100%;
-  &{
+  & {
     .search-icon {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
@@ -55,24 +56,22 @@ const root = css`
 `;
 
 const SearchBox = ({ currentRefinement, refine, onKeyUp }) => (
-    <form noValidate action="" role="search" css={root}>
-      <div className="search-icon">
-        <div className="offset">
-          <SvgIcon className="offset" size="large" icon="search" color="" />
-        </div>
+  <form noValidate action="" role="search" css={root}>
+    <div className="search-icon">
+      <div className="offset">
+        <SvgIcon className="offset" size="large" icon="search" color="" />
       </div>
-      <input
-        type="search"
-        value={currentRefinement}
-        onChange={(event) => refine(event.currentTarget.value)}
-        onKeyUp={onKeyUp}
-        placeholder="Search"
-        className="input-bar"
-      />
-      <div className="search-button">
-        Search
-      </div>
-    </form>
+    </div>
+    <input
+      type="search"
+      value={currentRefinement}
+      onChange={event => refine(event.currentTarget.value)}
+      onKeyUp={onKeyUp}
+      placeholder="Search"
+      className="input-bar"
+    />
+    <div className="search-button">Search</div>
+  </form>
 );
 
 export const CustomSearchBox = connectSearchBox(SearchBox);
