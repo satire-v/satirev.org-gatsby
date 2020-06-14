@@ -256,19 +256,7 @@ export enum DataArticleFieldsEnum {
   featured_image___filename_disk = 'featured_image.filename_disk',
   featured_image___title = 'featured_image.title',
   featured_image___type = 'featured_image.type',
-  featured_image___uploaded_by___id = 'featured_image.uploaded_by.id',
-  featured_image___uploaded_by___status = 'featured_image.uploaded_by.status',
-  featured_image___uploaded_by___first_name = 'featured_image.uploaded_by.first_name',
-  featured_image___uploaded_by___last_name = 'featured_image.uploaded_by.last_name',
-  featured_image___uploaded_by___email = 'featured_image.uploaded_by.email',
-  featured_image___uploaded_by___token = 'featured_image.uploaded_by.token',
-  featured_image___uploaded_by___timezone = 'featured_image.uploaded_by.timezone',
-  featured_image___uploaded_by___locale = 'featured_image.uploaded_by.locale',
-  featured_image___uploaded_by___email_notifications = 'featured_image.uploaded_by.email_notifications',
-  featured_image___uploaded_by___last_access_on = 'featured_image.uploaded_by.last_access_on',
-  featured_image___uploaded_by___last_page = 'featured_image.uploaded_by.last_page',
-  featured_image___uploaded_by___theme = 'featured_image.uploaded_by.theme',
-  featured_image___uploaded_by___role = 'featured_image.uploaded_by.role',
+  featured_image___uploaded_by = 'featured_image.uploaded_by',
   featured_image___uploaded_on = 'featured_image.uploaded_on',
   featured_image___charset = 'featured_image.charset',
   featured_image___filesize = 'featured_image.filesize',
@@ -283,6 +271,7 @@ export enum DataArticleFieldsEnum {
   featured_image___filename_download = 'featured_image.filename_download',
   featured_image___data___full_url = 'featured_image.data.full_url',
   featured_image___data___url = 'featured_image.data.url',
+  featured_image___data___asset_url = 'featured_image.data.asset_url',
   featured_image___data___thumbnails = 'featured_image.data.thumbnails',
   featured_image___data___thumbnails___key = 'featured_image.data.thumbnails.key',
   featured_image___data___thumbnails___url = 'featured_image.data.thumbnails.url',
@@ -670,7 +659,7 @@ export type DataFile = Node & {
   readonly filename_disk: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
   readonly type: Maybe<Scalars['String']>;
-  readonly uploaded_by: Maybe<DataFileUploaded_by>;
+  readonly uploaded_by: Maybe<Scalars['Int']>;
   readonly uploaded_on: Maybe<Scalars['Date']>;
   readonly charset: Maybe<Scalars['String']>;
   readonly filesize: Maybe<Scalars['Int']>;
@@ -720,12 +709,14 @@ export type DataFileConnection_groupArgs = {
 export type DataFileData = {
   readonly full_url: Scalars['String'];
   readonly url: Maybe<Scalars['String']>;
+  readonly asset_url: Maybe<Scalars['String']>;
   readonly thumbnails: Maybe<ReadonlyArray<Maybe<DataFileDataThumbnails>>>;
 };
 
 export type DataFileDataFilterInput = {
   readonly full_url: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
+  readonly asset_url: Maybe<StringQueryOperatorInput>;
   readonly thumbnails: Maybe<DataFileDataThumbnailsFilterListInput>;
 };
 
@@ -848,19 +839,7 @@ export enum DataFileFieldsEnum {
   filename_disk = 'filename_disk',
   title = 'title',
   type = 'type',
-  uploaded_by___id = 'uploaded_by.id',
-  uploaded_by___status = 'uploaded_by.status',
-  uploaded_by___first_name = 'uploaded_by.first_name',
-  uploaded_by___last_name = 'uploaded_by.last_name',
-  uploaded_by___email = 'uploaded_by.email',
-  uploaded_by___token = 'uploaded_by.token',
-  uploaded_by___timezone = 'uploaded_by.timezone',
-  uploaded_by___locale = 'uploaded_by.locale',
-  uploaded_by___email_notifications = 'uploaded_by.email_notifications',
-  uploaded_by___last_access_on = 'uploaded_by.last_access_on',
-  uploaded_by___last_page = 'uploaded_by.last_page',
-  uploaded_by___theme = 'uploaded_by.theme',
-  uploaded_by___role = 'uploaded_by.role',
+  uploaded_by = 'uploaded_by',
   uploaded_on = 'uploaded_on',
   charset = 'charset',
   filesize = 'filesize',
@@ -875,6 +854,7 @@ export enum DataFileFieldsEnum {
   filename_download = 'filename_download',
   data___full_url = 'data.full_url',
   data___url = 'data.url',
+  data___asset_url = 'data.asset_url',
   data___thumbnails = 'data.thumbnails',
   data___thumbnails___key = 'data.thumbnails.key',
   data___thumbnails___url = 'data.thumbnails.url',
@@ -1034,7 +1014,7 @@ export type DataFileFilterInput = {
   readonly filename_disk: Maybe<StringQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly type: Maybe<StringQueryOperatorInput>;
-  readonly uploaded_by: Maybe<DataFileUploaded_byFilterInput>;
+  readonly uploaded_by: Maybe<IntQueryOperatorInput>;
   readonly uploaded_on: Maybe<DateQueryOperatorInput>;
   readonly charset: Maybe<StringQueryOperatorInput>;
   readonly filesize: Maybe<IntQueryOperatorInput>;
@@ -1064,46 +1044,6 @@ export type DataFileGroupConnection = {
 export type DataFileSortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<DataFileFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
-};
-
-export type DataFileUploaded_by = {
-  readonly id: Maybe<Scalars['Int']>;
-  readonly status: Maybe<Scalars['String']>;
-  readonly first_name: Maybe<Scalars['String']>;
-  readonly last_name: Maybe<Scalars['String']>;
-  readonly email: Maybe<Scalars['String']>;
-  readonly token: Maybe<Scalars['String']>;
-  readonly timezone: Maybe<Scalars['String']>;
-  readonly locale: Maybe<Scalars['String']>;
-  readonly email_notifications: Maybe<Scalars['Boolean']>;
-  readonly last_access_on: Maybe<Scalars['Date']>;
-  readonly last_page: Maybe<Scalars['String']>;
-  readonly theme: Maybe<Scalars['String']>;
-  readonly role: Maybe<Scalars['Int']>;
-};
-
-
-export type DataFileUploaded_by_last_access_onArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
-};
-
-export type DataFileUploaded_byFilterInput = {
-  readonly id: Maybe<IntQueryOperatorInput>;
-  readonly status: Maybe<StringQueryOperatorInput>;
-  readonly first_name: Maybe<StringQueryOperatorInput>;
-  readonly last_name: Maybe<StringQueryOperatorInput>;
-  readonly email: Maybe<StringQueryOperatorInput>;
-  readonly token: Maybe<StringQueryOperatorInput>;
-  readonly timezone: Maybe<StringQueryOperatorInput>;
-  readonly locale: Maybe<StringQueryOperatorInput>;
-  readonly email_notifications: Maybe<BooleanQueryOperatorInput>;
-  readonly last_access_on: Maybe<DateQueryOperatorInput>;
-  readonly last_page: Maybe<StringQueryOperatorInput>;
-  readonly theme: Maybe<StringQueryOperatorInput>;
-  readonly role: Maybe<IntQueryOperatorInput>;
 };
 
 
@@ -2676,7 +2616,7 @@ export type Query_dataFileArgs = {
   filename_disk: Maybe<StringQueryOperatorInput>;
   title: Maybe<StringQueryOperatorInput>;
   type: Maybe<StringQueryOperatorInput>;
-  uploaded_by: Maybe<DataFileUploaded_byFilterInput>;
+  uploaded_by: Maybe<IntQueryOperatorInput>;
   uploaded_on: Maybe<DateQueryOperatorInput>;
   charset: Maybe<StringQueryOperatorInput>;
   filesize: Maybe<IntQueryOperatorInput>;
@@ -3728,28 +3668,20 @@ export type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-export type HeaderQueryQueryVariables = {};
-
-
-export type HeaderQueryQuery = { readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
-
 export type NavQueryQueryVariables = {};
 
 
 export type NavQueryQuery = { readonly allDataCategory: { readonly nodes: ReadonlyArray<Pick<DataCategory, 'name' | 'slug' | 'id'>> } };
 
+export type HeaderQueryQueryVariables = {};
+
+
+export type HeaderQueryQuery = { readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+
 export type LatestArticleCardQueryVariables = {};
 
 
 export type LatestArticleCardQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
-
-export type LatestArticlesByCategoryCardsQueryVariables = {};
-
-
-export type LatestArticlesByCategoryCardsQuery = { readonly allDataArticle: { readonly group: ReadonlyArray<(
-      Pick<DataArticleGroupConnection, 'fieldValue'>
-      & { readonly nodes: ReadonlyArray<ArticleCardFragment> }
-    )> } };
 
 export type ArticleLinkFragment = (
   Pick<DataArticle, 'id' | 'slug' | 'title'>
@@ -3780,6 +3712,19 @@ export type TopArticlesLinksQueryVariables = {};
 
 export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
 
+export type LatestArticlesByCategoryCardsQueryVariables = {};
+
+
+export type LatestArticlesByCategoryCardsQuery = { readonly allDataArticle: { readonly group: ReadonlyArray<(
+      Pick<DataArticleGroupConnection, 'fieldValue'>
+      & { readonly nodes: ReadonlyArray<ArticleCardFragment> }
+    )> } };
+
+export type LatestArticlesLinksQueryVariables = {};
+
+
+export type LatestArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+
 export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
 export type FullArticleQueryVariables = {
@@ -3788,11 +3733,6 @@ export type FullArticleQueryVariables = {
 
 
 export type FullArticleQuery = { readonly dataArticle: Maybe<ArticleFullFragment> };
-
-export type LatestArticlesLinksQueryVariables = {};
-
-
-export type LatestArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
 
 export type ArticleListQueryVariables = {
   limit: Scalars['Int'];

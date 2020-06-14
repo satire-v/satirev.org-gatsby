@@ -40,6 +40,7 @@ const plugins = [
       targetStatuses: null,
       downloadFiles: true,
       typePrefix: "data",
+      usePartial: true,
     },
   },
   {
