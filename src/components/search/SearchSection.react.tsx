@@ -59,8 +59,8 @@ interface Props {
 interface State {
   advanced: boolean;
   isToggledOn: boolean;
-  hasInput: false;
-  refresh: false;
+  hasInput: boolean;
+  refresh: boolean;
 }
 
 class SearchSection extends React.Component<Props, State> {
@@ -120,7 +120,10 @@ class SearchSection extends React.Component<Props, State> {
   render() {
     return (
       <div css={root}>
-        <InstantSearch searchClient={this.searchClient} indexName="Articles">
+        <InstantSearch
+          searchClient={this.searchClient}
+          indexName="TestArticles"
+        >
           <Configure hitsPerPage={5} />
           <CustomSearchBox
             onKeyUp={event => {
@@ -135,7 +138,16 @@ class SearchSection extends React.Component<Props, State> {
           <div className={this.state.hasInput ? "input-value" : "input-value"}>
             <CustomHits hitComponent={Hits} />
           </div>
-          <CustomPagination />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CustomPagination />
+          </div>
         </InstantSearch>
       </div>
     );

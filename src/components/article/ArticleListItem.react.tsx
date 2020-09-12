@@ -43,30 +43,31 @@ function ArticleListItem({
   hasImage = true,
   containerStyle = {},
 }: Props): JSX.Element {
-  console.log(containerStyle);
   return (
-    <CardContent css={root} style={containerStyle}>
-      <div className="card-content">
-        <div>
-          <Link to={article.slug}>
-            <h3>{article.title}</h3>
-          </Link>
-          <div className="gutter-bottom subtitle2 secondary-text">
-            {article.published}
+    <div style={containerStyle}>
+      <CardContent css={root}>
+        <div className="card-content">
+          <div>
+            <Link to={article.slug}>
+              <h3>{article.title}</h3>
+            </Link>
+            <div className="gutter-bottom subtitle2 secondary-text">
+              {article.published}
+            </div>
+            <p className="body2">{article.fullExcerpt}</p>
           </div>
-          <p className="body2">{article.fullExcerpt}</p>
+          {hasImage ? (
+            <CardMedia className="card-media">
+              <ImageFluid className="image-root" fluid={article.imgFluid} />
+            </CardMedia>
+          ) : null}
         </div>
-        {hasImage ? (
-          <CardMedia className="card-media">
-            <ImageFluid className="image-root" fluid={article.imgFluid} />
-          </CardMedia>
+        {hasCategory ? (
+          <ArticleCategorySection category={article.category} />
         ) : null}
-      </div>
-      {hasCategory ? (
-        <ArticleCategorySection category={article.category} />
-      ) : null}
-      <ArticleTagSection tags={article.tags} />
-    </CardContent>
+        <ArticleTagSection tags={article.tags} />
+      </CardContent>
+    </div>
   );
 }
 

@@ -1,16 +1,17 @@
 import React from "react";
 import { css } from "@emotion/core";
-import SvgIcon from "#assets/SvgIcon.react";
+
 import Link from "#common/Link.react";
 import ImageFluid from "#common/ImageFluid.react";
 import Chip from "#common/Chip.react";
+import SvgIcon from "#assets/SvgIcon.react";
 
 const root = css`
   color: var(--font-color-primary);
   display: flex;
   flex-direction: row;
   border-radius: 3px;
-  &{
+  & {
     .link {
       flex: 1;
       display: flex;
@@ -37,7 +38,7 @@ const root = css`
       flex: 3;
       padding-left: 10px;
       padding-bottom: 5px;
-      &{
+      & {
         h1 {
           font-size: 20pt;
         }
@@ -57,14 +58,19 @@ const root = css`
   }
 `;
 
-function SearchResult({ article }: Props): JSX.Element {
+function SearchResult({ article }): JSX.Element {
   return (
     <div css={root}>
       <Link to={article.slug} className="link">
         <ImageFluid className="teaser-image" fluid={article.imgFluid} />
         <div className="text-info">
-          <h1><strong>{article.title}</strong></h1>
-          <h3><SvgIcon size="small" icon="labelArrow" color="primary" />{article.category} - <i>{article.published}</i></h3>
+          <h1>
+            <strong>{article.title}</strong>
+          </h1>
+          <h3>
+            <SvgIcon size="small" icon="labelArrow" color="primary" />
+            {article.category} - <i>{article.published}</i>
+          </h3>
           <p>{article.shortExcerpt}</p>
           <div className="tags">
             <SvgIcon size="small" icon="tag" color="primary" />
@@ -73,7 +79,7 @@ function SearchResult({ article }: Props): JSX.Element {
             ))}
           </div>
         </div>
-        <div class="bottom-line" />
+        <div className="bottom-line" />
       </Link>
     </div>
   );

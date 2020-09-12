@@ -3,15 +3,16 @@ import React from "react";
 import { css } from "@emotion/core";
 
 const root = css`
-  color: var(--font-color-primary);
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: 1px solid var(--crimson);
   border-radius: 6px;
-  width: 100%;
-  height: 60px;
+  margin-top: 30px;
+  width: 70%;
+  height: 40px;
   overflow: hidden;
   & {
     .page-button {
