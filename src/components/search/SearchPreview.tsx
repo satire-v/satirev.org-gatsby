@@ -7,7 +7,6 @@ import ArticleListItem from "#components/article/ArticleListItem.react";
 
 // hide hits until there is some text in the searchbox
 const Hits = ({ hits }) => {
-  console.log(hits);
   return (
     <ul>
       {hits.map(hit => (

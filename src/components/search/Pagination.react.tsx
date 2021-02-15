@@ -10,9 +10,9 @@ const root = css`
   align-items: center;
   border: 1px solid var(--crimson);
   border-radius: 6px;
-  margin-top: 30px;
+  margin-top: var(--spacing);
   width: 70%;
-  height: 40px;
+  height: calc(4 * var(--spacing));
   overflow: hidden;
   & {
     .page-button {
@@ -31,13 +31,13 @@ const root = css`
       background-color: var(--crimson-dark);
     }
     p {
-      font-size: 24px;
+      font-size: 18px;
     }
     .selected {
       background-color: var(--crimson);
       & {
         p {
-          font-size: 30px;
+          font-size: 24px;
           font-weight: bold;
         }
       }

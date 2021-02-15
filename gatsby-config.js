@@ -12,8 +12,6 @@ require("@babel/register")({
 const searchQueries = require("./src/utils/algolia.tsx").default;
 const { aliases, extensions } = require("./alias.config");
 
-console.log(searchQueries);
-
 require("dotenv").config();
 
 const plugins = [

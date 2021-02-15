@@ -25,7 +25,7 @@ body {
 }
 
 :root {
-  --title-font: cardinal, georgia, serif;
+  --title-font: "Crimson Text", georgia, serif;
 
   --sans-serif: lato, lucida sans unicode, sans-serif;
   --serif: "Crimson Text", georgia, serif;

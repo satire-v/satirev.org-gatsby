@@ -1,6 +1,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import { css } from "@emotion/core";
+
 import SvgIcon from "#assets/SvgIcon.react";
 
 const root = css`
@@ -8,7 +9,7 @@ const root = css`
   display: flex;
   flex-direction: row;
   text-decoration: none;
-  &{
+  & {
     .input-bar {
       width: 250px;
       height: 30px;
@@ -32,20 +33,22 @@ class NavSearchbar extends React.Component {
     };
   }
 
-  search = (e) => {
-    navigate("/search/", {state: {text: this.state.text}}).then(() => {this.setState({text:""})});
-  }
+  search = e => {
+    navigate("/search/", { state: { text: this.state.text } }).then(() => {
+      this.setState({ text: "" });
+    });
+  };
 
   render() {
     return (
-      <div
-        css={root}
-      >
+      <div css={root}>
         <input
           value={this.state.text}
-          onChange={event => {this.setState({text: event.target.value})}}
+          onChange={event => {
+            this.setState({ text: event.target.value });
+          }}
           onKeyPress={event => {
-            if (event.key === 'Enter') {
+            if (event.key === "Enter") {
               this.search();
             }
           }}

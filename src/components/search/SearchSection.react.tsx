@@ -19,6 +19,7 @@ const root = css`
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  margin-bottom: calc(6 * var(--spacing));
   & {
     .meta-results {
       display: flex;
@@ -79,19 +80,18 @@ class SearchSection extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (this.props.initialSearch) {
       this.setState({ hasInput: true });
     }
   }
 
-  renderMeta = () => {
-    if (this.state.advanced) {
-      var advancedIcon = <SvgIcon size="large" icon="dropup" />;
-      var advancedOptions = <div> OPTIONS </div>;
-    } else {
+  renderMeta = (): JSX.Element => {
+    let advancedIcon = <SvgIcon size="large" icon="dropup" />;
+    let advancedOptions = <div> OPTIONS </div>;
+    if (!this.state.advanced) {
       advancedIcon = <SvgIcon size="large" icon="dropdown" />;
-      advancedOptions = "";
+      advancedOptions = <></>;
     }
 
     return (
@@ -102,7 +102,7 @@ class SearchSection extends React.Component<Props, State> {
           </p>
           <div
             className="options"
-            onClick={() => {
+            onClick={(): void => {
               this.setState({ advanced: !this.state.advanced });
             }}
           >
@@ -117,7 +117,7 @@ class SearchSection extends React.Component<Props, State> {
     );
   };
 
-  render() {
+  render(): JSX.Element {
     return (
       <div css={root}>
         <InstantSearch

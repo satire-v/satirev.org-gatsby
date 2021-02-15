@@ -72,11 +72,13 @@ function Navbar(): JSX.Element {
           {node.name}
         </Button>
       ))}
-      <div style={{
-        position: 'absolute',
-        top: '60px',
-        right: '3%',
-      }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "40px",
+          right: "3%",
+        }}
+      >
         <NavSearchBar />
       </div>
     </nav>
