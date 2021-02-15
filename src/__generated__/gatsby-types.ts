@@ -44,6 +44,7 @@ export type DataArticle = Node & {
   readonly featured_image_caption: Maybe<Scalars['String']>;
   readonly legacy_slug: Maybe<Scalars['String']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly authors: Maybe<ReadonlyArray<Maybe<DataAuthor>>>;
   readonly featured_image: Maybe<DataFile>;
   readonly dataId: Maybe<Scalars['Int']>;
   readonly id: Scalars['ID'];
@@ -214,6 +215,50 @@ export enum DataArticleFieldsEnum {
   featured_image_caption = 'featured_image_caption',
   legacy_slug = 'legacy_slug',
   tags = 'tags',
+  authors = 'authors',
+  authors___id = 'authors.id',
+  authors___parent___id = 'authors.parent.id',
+  authors___parent___parent___id = 'authors.parent.parent.id',
+  authors___parent___parent___children = 'authors.parent.parent.children',
+  authors___parent___children = 'authors.parent.children',
+  authors___parent___children___id = 'authors.parent.children.id',
+  authors___parent___children___children = 'authors.parent.children.children',
+  authors___parent___internal___content = 'authors.parent.internal.content',
+  authors___parent___internal___contentDigest = 'authors.parent.internal.contentDigest',
+  authors___parent___internal___description = 'authors.parent.internal.description',
+  authors___parent___internal___fieldOwners = 'authors.parent.internal.fieldOwners',
+  authors___parent___internal___ignoreType = 'authors.parent.internal.ignoreType',
+  authors___parent___internal___mediaType = 'authors.parent.internal.mediaType',
+  authors___parent___internal___owner = 'authors.parent.internal.owner',
+  authors___parent___internal___type = 'authors.parent.internal.type',
+  authors___children = 'authors.children',
+  authors___children___id = 'authors.children.id',
+  authors___children___parent___id = 'authors.children.parent.id',
+  authors___children___parent___children = 'authors.children.parent.children',
+  authors___children___children = 'authors.children.children',
+  authors___children___children___id = 'authors.children.children.id',
+  authors___children___children___children = 'authors.children.children.children',
+  authors___children___internal___content = 'authors.children.internal.content',
+  authors___children___internal___contentDigest = 'authors.children.internal.contentDigest',
+  authors___children___internal___description = 'authors.children.internal.description',
+  authors___children___internal___fieldOwners = 'authors.children.internal.fieldOwners',
+  authors___children___internal___ignoreType = 'authors.children.internal.ignoreType',
+  authors___children___internal___mediaType = 'authors.children.internal.mediaType',
+  authors___children___internal___owner = 'authors.children.internal.owner',
+  authors___children___internal___type = 'authors.children.internal.type',
+  authors___internal___content = 'authors.internal.content',
+  authors___internal___contentDigest = 'authors.internal.contentDigest',
+  authors___internal___description = 'authors.internal.description',
+  authors___internal___fieldOwners = 'authors.internal.fieldOwners',
+  authors___internal___ignoreType = 'authors.internal.ignoreType',
+  authors___internal___mediaType = 'authors.internal.mediaType',
+  authors___internal___owner = 'authors.internal.owner',
+  authors___internal___type = 'authors.internal.type',
+  authors___status = 'authors.status',
+  authors___created_on = 'authors.created_on',
+  authors___modified_on = 'authors.modified_on',
+  authors___name = 'authors.name',
+  authors___dataId = 'authors.dataId',
   featured_image___id = 'featured_image.id',
   featured_image___parent___id = 'featured_image.parent.id',
   featured_image___parent___parent___id = 'featured_image.parent.parent.id',
@@ -271,7 +316,9 @@ export enum DataArticleFieldsEnum {
   featured_image___filename_download = 'featured_image.filename_download',
   featured_image___data___full_url = 'featured_image.data.full_url',
   featured_image___data___url = 'featured_image.data.url',
+  featured_image___data___asset_url = 'featured_image.data.asset_url',
   featured_image___data___thumbnails = 'featured_image.data.thumbnails',
+  featured_image___data___thumbnails___key = 'featured_image.data.thumbnails.key',
   featured_image___data___thumbnails___url = 'featured_image.data.thumbnails.url',
   featured_image___data___thumbnails___relative_url = 'featured_image.data.thumbnails.relative_url',
   featured_image___data___thumbnails___dimension = 'featured_image.data.thumbnails.dimension',
@@ -433,6 +480,7 @@ export type DataArticleFilterInput = {
   readonly featured_image_caption: Maybe<StringQueryOperatorInput>;
   readonly legacy_slug: Maybe<StringQueryOperatorInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly authors: Maybe<DataAuthorFilterListInput>;
   readonly featured_image: Maybe<DataFileFilterInput>;
   readonly dataId: Maybe<IntQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -492,6 +540,185 @@ export type DataArticleModified_byFilterInput = {
 
 export type DataArticleSortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<DataArticleFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+export type DataAuthor = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly status: Maybe<Scalars['String']>;
+  readonly created_on: Maybe<Scalars['Date']>;
+  readonly modified_on: Maybe<Scalars['Date']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly dataId: Maybe<Scalars['Int']>;
+};
+
+
+export type DataAuthor_created_onArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+export type DataAuthor_modified_onArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+export type DataAuthorConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<DataAuthorEdge>;
+  readonly nodes: ReadonlyArray<DataAuthor>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly group: ReadonlyArray<DataAuthorGroupConnection>;
+};
+
+
+export type DataAuthorConnection_distinctArgs = {
+  field: DataAuthorFieldsEnum;
+};
+
+
+export type DataAuthorConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: DataAuthorFieldsEnum;
+};
+
+export type DataAuthorEdge = {
+  readonly next: Maybe<DataAuthor>;
+  readonly node: DataAuthor;
+  readonly previous: Maybe<DataAuthor>;
+};
+
+export enum DataAuthorFieldsEnum {
+  id = 'id',
+  parent___id = 'parent.id',
+  parent___parent___id = 'parent.parent.id',
+  parent___parent___parent___id = 'parent.parent.parent.id',
+  parent___parent___parent___children = 'parent.parent.parent.children',
+  parent___parent___children = 'parent.parent.children',
+  parent___parent___children___id = 'parent.parent.children.id',
+  parent___parent___children___children = 'parent.parent.children.children',
+  parent___parent___internal___content = 'parent.parent.internal.content',
+  parent___parent___internal___contentDigest = 'parent.parent.internal.contentDigest',
+  parent___parent___internal___description = 'parent.parent.internal.description',
+  parent___parent___internal___fieldOwners = 'parent.parent.internal.fieldOwners',
+  parent___parent___internal___ignoreType = 'parent.parent.internal.ignoreType',
+  parent___parent___internal___mediaType = 'parent.parent.internal.mediaType',
+  parent___parent___internal___owner = 'parent.parent.internal.owner',
+  parent___parent___internal___type = 'parent.parent.internal.type',
+  parent___children = 'parent.children',
+  parent___children___id = 'parent.children.id',
+  parent___children___parent___id = 'parent.children.parent.id',
+  parent___children___parent___children = 'parent.children.parent.children',
+  parent___children___children = 'parent.children.children',
+  parent___children___children___id = 'parent.children.children.id',
+  parent___children___children___children = 'parent.children.children.children',
+  parent___children___internal___content = 'parent.children.internal.content',
+  parent___children___internal___contentDigest = 'parent.children.internal.contentDigest',
+  parent___children___internal___description = 'parent.children.internal.description',
+  parent___children___internal___fieldOwners = 'parent.children.internal.fieldOwners',
+  parent___children___internal___ignoreType = 'parent.children.internal.ignoreType',
+  parent___children___internal___mediaType = 'parent.children.internal.mediaType',
+  parent___children___internal___owner = 'parent.children.internal.owner',
+  parent___children___internal___type = 'parent.children.internal.type',
+  parent___internal___content = 'parent.internal.content',
+  parent___internal___contentDigest = 'parent.internal.contentDigest',
+  parent___internal___description = 'parent.internal.description',
+  parent___internal___fieldOwners = 'parent.internal.fieldOwners',
+  parent___internal___ignoreType = 'parent.internal.ignoreType',
+  parent___internal___mediaType = 'parent.internal.mediaType',
+  parent___internal___owner = 'parent.internal.owner',
+  parent___internal___type = 'parent.internal.type',
+  children = 'children',
+  children___id = 'children.id',
+  children___parent___id = 'children.parent.id',
+  children___parent___parent___id = 'children.parent.parent.id',
+  children___parent___parent___children = 'children.parent.parent.children',
+  children___parent___children = 'children.parent.children',
+  children___parent___children___id = 'children.parent.children.id',
+  children___parent___children___children = 'children.parent.children.children',
+  children___parent___internal___content = 'children.parent.internal.content',
+  children___parent___internal___contentDigest = 'children.parent.internal.contentDigest',
+  children___parent___internal___description = 'children.parent.internal.description',
+  children___parent___internal___fieldOwners = 'children.parent.internal.fieldOwners',
+  children___parent___internal___ignoreType = 'children.parent.internal.ignoreType',
+  children___parent___internal___mediaType = 'children.parent.internal.mediaType',
+  children___parent___internal___owner = 'children.parent.internal.owner',
+  children___parent___internal___type = 'children.parent.internal.type',
+  children___children = 'children.children',
+  children___children___id = 'children.children.id',
+  children___children___parent___id = 'children.children.parent.id',
+  children___children___parent___children = 'children.children.parent.children',
+  children___children___children = 'children.children.children',
+  children___children___children___id = 'children.children.children.id',
+  children___children___children___children = 'children.children.children.children',
+  children___children___internal___content = 'children.children.internal.content',
+  children___children___internal___contentDigest = 'children.children.internal.contentDigest',
+  children___children___internal___description = 'children.children.internal.description',
+  children___children___internal___fieldOwners = 'children.children.internal.fieldOwners',
+  children___children___internal___ignoreType = 'children.children.internal.ignoreType',
+  children___children___internal___mediaType = 'children.children.internal.mediaType',
+  children___children___internal___owner = 'children.children.internal.owner',
+  children___children___internal___type = 'children.children.internal.type',
+  children___internal___content = 'children.internal.content',
+  children___internal___contentDigest = 'children.internal.contentDigest',
+  children___internal___description = 'children.internal.description',
+  children___internal___fieldOwners = 'children.internal.fieldOwners',
+  children___internal___ignoreType = 'children.internal.ignoreType',
+  children___internal___mediaType = 'children.internal.mediaType',
+  children___internal___owner = 'children.internal.owner',
+  children___internal___type = 'children.internal.type',
+  internal___content = 'internal.content',
+  internal___contentDigest = 'internal.contentDigest',
+  internal___description = 'internal.description',
+  internal___fieldOwners = 'internal.fieldOwners',
+  internal___ignoreType = 'internal.ignoreType',
+  internal___mediaType = 'internal.mediaType',
+  internal___owner = 'internal.owner',
+  internal___type = 'internal.type',
+  status = 'status',
+  created_on = 'created_on',
+  modified_on = 'modified_on',
+  name = 'name',
+  dataId = 'dataId'
+}
+
+export type DataAuthorFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly status: Maybe<StringQueryOperatorInput>;
+  readonly created_on: Maybe<DateQueryOperatorInput>;
+  readonly modified_on: Maybe<DateQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly dataId: Maybe<IntQueryOperatorInput>;
+};
+
+export type DataAuthorFilterListInput = {
+  readonly elemMatch: Maybe<DataAuthorFilterInput>;
+};
+
+export type DataAuthorGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<DataAuthorEdge>;
+  readonly nodes: ReadonlyArray<DataAuthor>;
+  readonly pageInfo: PageInfo;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+export type DataAuthorSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<DataAuthorFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
@@ -707,16 +934,19 @@ export type DataFileConnection_groupArgs = {
 export type DataFileData = {
   readonly full_url: Scalars['String'];
   readonly url: Maybe<Scalars['String']>;
+  readonly asset_url: Maybe<Scalars['String']>;
   readonly thumbnails: Maybe<ReadonlyArray<Maybe<DataFileDataThumbnails>>>;
 };
 
 export type DataFileDataFilterInput = {
   readonly full_url: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
+  readonly asset_url: Maybe<StringQueryOperatorInput>;
   readonly thumbnails: Maybe<DataFileDataThumbnailsFilterListInput>;
 };
 
 export type DataFileDataThumbnails = {
+  readonly key: Maybe<Scalars['String']>;
   readonly url: Maybe<Scalars['String']>;
   readonly relative_url: Maybe<Scalars['String']>;
   readonly dimension: Maybe<Scalars['String']>;
@@ -725,6 +955,7 @@ export type DataFileDataThumbnails = {
 };
 
 export type DataFileDataThumbnailsFilterInput = {
+  readonly key: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly relative_url: Maybe<StringQueryOperatorInput>;
   readonly dimension: Maybe<StringQueryOperatorInput>;
@@ -848,7 +1079,9 @@ export enum DataFileFieldsEnum {
   filename_download = 'filename_download',
   data___full_url = 'data.full_url',
   data___url = 'data.url',
+  data___asset_url = 'data.asset_url',
   data___thumbnails = 'data.thumbnails',
+  data___thumbnails___key = 'data.thumbnails.key',
   data___thumbnails___url = 'data.thumbnails.url',
   data___thumbnails___relative_url = 'data.thumbnails.relative_url',
   data___thumbnails___dimension = 'data.thumbnails.dimension',
@@ -2151,8 +2384,8 @@ export type ImageSharpFluid = {
   readonly sizes: Scalars['String'];
   readonly originalImg: Maybe<Scalars['String']>;
   readonly originalName: Maybe<Scalars['String']>;
-  readonly presentationWidth: Maybe<Scalars['Int']>;
-  readonly presentationHeight: Maybe<Scalars['Int']>;
+  readonly presentationWidth: Scalars['Int'];
+  readonly presentationHeight: Scalars['Int'];
 };
 
 export type ImageSharpFluidFilterInput = {
@@ -2246,8 +2479,8 @@ export type ImageSharpSizes = {
   readonly sizes: Scalars['String'];
   readonly originalImg: Maybe<Scalars['String']>;
   readonly originalName: Maybe<Scalars['String']>;
-  readonly presentationWidth: Maybe<Scalars['Int']>;
-  readonly presentationHeight: Maybe<Scalars['Int']>;
+  readonly presentationWidth: Scalars['Int'];
+  readonly presentationHeight: Scalars['Int'];
 };
 
 export type ImageSharpSizesFilterInput = {
@@ -2330,6 +2563,7 @@ export type PageInfo = {
   readonly itemCount: Scalars['Int'];
   readonly pageCount: Scalars['Int'];
   readonly perPage: Maybe<Scalars['Int']>;
+  readonly totalCount: Scalars['Int'];
 };
 
 export type Potrace = {
@@ -2370,6 +2604,8 @@ export type Query = {
   readonly allDataArticle: DataArticleConnection;
   readonly dataFile: Maybe<DataFile>;
   readonly allDataFile: DataFileConnection;
+  readonly dataAuthor: Maybe<DataAuthor>;
+  readonly allDataAuthor: DataAuthorConnection;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
   readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly sitePlugin: Maybe<SitePlugin>;
@@ -2507,7 +2743,7 @@ export type Query_allSitePageArgs = {
 export type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
+  port: Maybe<DateQueryOperatorInput>;
   host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -2582,6 +2818,7 @@ export type Query_dataArticleArgs = {
   featured_image_caption: Maybe<StringQueryOperatorInput>;
   legacy_slug: Maybe<StringQueryOperatorInput>;
   tags: Maybe<StringQueryOperatorInput>;
+  authors: Maybe<DataAuthorFilterListInput>;
   featured_image: Maybe<DataFileFilterInput>;
   dataId: Maybe<IntQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -2635,6 +2872,27 @@ export type Query_allDataFileArgs = {
 };
 
 
+export type Query_dataAuthorArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  status: Maybe<StringQueryOperatorInput>;
+  created_on: Maybe<DateQueryOperatorInput>;
+  modified_on: Maybe<DateQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  dataId: Maybe<IntQueryOperatorInput>;
+};
+
+
+export type Query_allDataAuthorArgs = {
+  filter: Maybe<DataAuthorFilterInput>;
+  sort: Maybe<DataAuthorSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
 export type Query_siteBuildMetadataArgs = {
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -2679,7 +2937,7 @@ export type Query_allSitePluginArgs = {
 export type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
+  readonly port: Maybe<Scalars['Date']>;
   readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
@@ -2691,6 +2949,14 @@ export type Site = Node & {
 
 
 export type Site_buildTimeArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+export type Site_portArgs = {
   formatString: Maybe<Scalars['String']>;
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
@@ -2979,7 +3245,7 @@ export enum SiteFieldsEnum {
 export type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
+  readonly port: Maybe<DateQueryOperatorInput>;
   readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -3223,6 +3489,13 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___alias____assets = 'pluginCreator.pluginOptions.alias._assets',
   pluginCreator___pluginOptions___alias____queries = 'pluginCreator.pluginOptions.alias._queries',
   pluginCreator___pluginOptions___alias____graphql = 'pluginCreator.pluginOptions.alias._graphql',
+  pluginCreator___pluginOptions___appId = 'pluginCreator.pluginOptions.appId',
+  pluginCreator___pluginOptions___apiKey = 'pluginCreator.pluginOptions.apiKey',
+  pluginCreator___pluginOptions___indexName = 'pluginCreator.pluginOptions.indexName',
+  pluginCreator___pluginOptions___queries = 'pluginCreator.pluginOptions.queries',
+  pluginCreator___pluginOptions___queries___query = 'pluginCreator.pluginOptions.queries.query',
+  pluginCreator___pluginOptions___queries___indexName = 'pluginCreator.pluginOptions.queries.indexName',
+  pluginCreator___pluginOptions___chunkSize = 'pluginCreator.pluginOptions.chunkSize',
   pluginCreator___pluginOptions___outputPath = 'pluginCreator.pluginOptions.outputPath',
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_introspection_json = 'pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_introspection_json',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator.pluginOptions.pathCheck',
@@ -3433,6 +3706,13 @@ export enum SitePluginFieldsEnum {
   pluginOptions___alias____assets = 'pluginOptions.alias._assets',
   pluginOptions___alias____queries = 'pluginOptions.alias._queries',
   pluginOptions___alias____graphql = 'pluginOptions.alias._graphql',
+  pluginOptions___appId = 'pluginOptions.appId',
+  pluginOptions___apiKey = 'pluginOptions.apiKey',
+  pluginOptions___indexName = 'pluginOptions.indexName',
+  pluginOptions___queries = 'pluginOptions.queries',
+  pluginOptions___queries___query = 'pluginOptions.queries.query',
+  pluginOptions___queries___indexName = 'pluginOptions.queries.indexName',
+  pluginOptions___chunkSize = 'pluginOptions.chunkSize',
   pluginOptions___outputPath = 'pluginOptions.outputPath',
   pluginOptions___emitSchema___src___generated___gatsby_introspection_json = 'pluginOptions.emitSchema.src___generated___gatsby_introspection_json',
   pluginOptions___pathCheck = 'pluginOptions.pathCheck',
@@ -3561,6 +3841,11 @@ export type SitePluginPluginOptions = {
   readonly path: Maybe<Scalars['String']>;
   readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly alias: Maybe<SitePluginPluginOptionsAlias>;
+  readonly appId: Maybe<Scalars['String']>;
+  readonly apiKey: Maybe<Scalars['String']>;
+  readonly indexName: Maybe<Scalars['String']>;
+  readonly queries: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsQueries>>>;
+  readonly chunkSize: Maybe<Scalars['Int']>;
   readonly outputPath: Maybe<Scalars['String']>;
   readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchema>;
   readonly pathCheck: Maybe<Scalars['Boolean']>;
@@ -3619,9 +3904,28 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly path: Maybe<StringQueryOperatorInput>;
   readonly extensions: Maybe<StringQueryOperatorInput>;
   readonly alias: Maybe<SitePluginPluginOptionsAliasFilterInput>;
+  readonly appId: Maybe<StringQueryOperatorInput>;
+  readonly apiKey: Maybe<StringQueryOperatorInput>;
+  readonly indexName: Maybe<StringQueryOperatorInput>;
+  readonly queries: Maybe<SitePluginPluginOptionsQueriesFilterListInput>;
+  readonly chunkSize: Maybe<IntQueryOperatorInput>;
   readonly outputPath: Maybe<StringQueryOperatorInput>;
   readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchemaFilterInput>;
   readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsQueries = {
+  readonly query: Maybe<Scalars['String']>;
+  readonly indexName: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsQueriesFilterInput = {
+  readonly query: Maybe<StringQueryOperatorInput>;
+  readonly indexName: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsQueriesFilterListInput = {
+  readonly elemMatch: Maybe<SitePluginPluginOptionsQueriesFilterInput>;
 };
 
 export type SitePluginSortInput = {
@@ -3660,6 +3964,11 @@ export type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
+export type HeaderQueryQueryVariables = {};
+
+
+export type HeaderQueryQuery = { readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+
 export type ArticleLinkFragment = (
   Pick<DataArticle, 'id' | 'slug' | 'title'>
   & { readonly category: Pick<DataCategory, 'name' | 'slug'> }
@@ -3684,11 +3993,6 @@ export type ArticleFullFragment = (
   & ArticleCardFragment
 );
 
-export type HeaderQueryQueryVariables = {};
-
-
-export type HeaderQueryQuery = { readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
-
 export type NavQueryQueryVariables = {};
 
 
@@ -3699,7 +4003,10 @@ export type LatestArticleCardQueryVariables = {};
 
 export type LatestArticleCardQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleCardFragment> } };
 
-export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+export type LatestArticlesLinksQueryVariables = {};
+
+
+export type LatestArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
 
 export type LatestArticlesByCategoryCardsQueryVariables = {};
 
@@ -3709,10 +4016,12 @@ export type LatestArticlesByCategoryCardsQuery = { readonly allDataArticle: { re
       & { readonly nodes: ReadonlyArray<ArticleCardFragment> }
     )> } };
 
-export type LatestArticlesLinksQueryVariables = {};
+export type TopArticlesLinksQueryVariables = {};
 
 
-export type LatestArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
+
+export type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
 export type FullArticleQueryVariables = {
   id: Maybe<Scalars['String']>;
@@ -3720,11 +4029,6 @@ export type FullArticleQueryVariables = {
 
 
 export type FullArticleQuery = { readonly dataArticle: Maybe<ArticleFullFragment> };
-
-export type TopArticlesLinksQueryVariables = {};
-
-
-export type TopArticlesLinksQuery = { readonly allDataArticle: { readonly nodes: ReadonlyArray<ArticleLinkFragment> } };
 
 export type ArticleListQueryVariables = {
   limit: Scalars['Int'];
@@ -3748,6 +4052,8 @@ export type GatsbyImageSharpFixed_noBase64Fragment = Pick<ImageSharpFixed, 'widt
 export type GatsbyImageSharpFixed_withWebp_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
 
 export type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+export type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
 
 export type GatsbyImageSharpFluid_tracedSVGFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
@@ -3780,8 +4086,3 @@ export type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSi
 export type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 export type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type PagesQueryQueryVariables = {};
-
-
-export type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };

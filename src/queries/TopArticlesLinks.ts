@@ -9,7 +9,6 @@ const topArticlesLinks = (): Array<ArticleLink> => {
     query TopArticlesLinks {
       allDataArticle(
         limit: 5
-        sort: { fields: page_views_past_week, order: DESC }
       ) {
         nodes {
           ...ArticleLink

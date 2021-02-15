@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
 
 import { NavQueryQuery } from "#graphql";
+import NavSearchBar from "#components/search/NavSearchBar.react";
 import Button from "#common/Button.react";
 
 const PADDING_HORIZONTAL = 16;
@@ -71,6 +72,15 @@ function Navbar(): JSX.Element {
           {node.name}
         </Button>
       ))}
+      <div
+        style={{
+          position: "absolute",
+          top: "40px",
+          right: "3%",
+        }}
+      >
+        <NavSearchBar />
+      </div>
     </nav>
   );
 }

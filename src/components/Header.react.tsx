@@ -15,7 +15,6 @@ const headerRoot = css`
   padding: 10px;
   color: var(--crimson);
   background: white;
-  border-top: 24px var(--crimson) solid;
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
     0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
@@ -42,6 +41,7 @@ const headerRoot = css`
   & .title-style {
     font-size: 40px;
     font-family: var(--title-font);
+    font-weight: 500;
     line-height: normal;
   }
 
@@ -99,7 +99,7 @@ function Header(): JSX.Element {
 
   const logo = useStaticQuery(graphql`
     query HeaderQuery {
-      file(relativePath: { eq: "logo.png" }) {
+      file(relativePath: { eq: "logo2.png" }) {
         childImageSharp {
           fixed(height: 60) {
             ...GatsbyImageSharpFixed_withWebp
@@ -131,7 +131,7 @@ function Header(): JSX.Element {
             />
           </div>
           <Link className="clickable" to="/">
-            <div className="title-style">Satire V</div>
+            <div className="title-style">SATIRE V</div>
             <div className="subtitle-style">Holding a Mirror Up to Truth</div>
           </Link>
         </div>
@@ -166,7 +166,6 @@ function Header(): JSX.Element {
             <div className="subtitle-style">Holding a Mirror Up to Truth</div>
           </div>
         </div>
-
         <Navbar />
       </div>
     </header>

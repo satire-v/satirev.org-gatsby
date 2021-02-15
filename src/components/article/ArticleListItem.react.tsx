@@ -33,30 +33,41 @@ const root = css`
 interface Props {
   article: ArticleCard;
   hasCategory?: boolean;
+  hasImage?: boolean;
+  containerStyle?: object;
 }
 
-function ArticleListItem({ article, hasCategory = false }: Props): JSX.Element {
+function ArticleListItem({
+  article,
+  hasCategory = false,
+  hasImage = true,
+  containerStyle = {},
+}: Props): JSX.Element {
   return (
-    <CardContent css={root}>
-      <div className="card-content">
-        <div>
-          <Link to={article.slug}>
-            <h3>{article.title}</h3>
-          </Link>
-          <div className="gutter-bottom subtitle2 secondary-text">
-            {article.published}
+    <div style={containerStyle}>
+      <CardContent css={root}>
+        <div className="card-content">
+          <div>
+            <Link to={article.slug}>
+              <h3>{article.title}</h3>
+            </Link>
+            <div className="gutter-bottom subtitle2 secondary-text">
+              {article.published}
+            </div>
+            <p className="body2">{article.fullExcerpt}</p>
           </div>
-          <p className="body2">{article.fullExcerpt}</p>
+          {hasImage ? (
+            <CardMedia className="card-media">
+              <ImageFluid className="image-root" fluid={article.imgFluid} />
+            </CardMedia>
+          ) : null}
         </div>
-        <CardMedia className="card-media">
-          <ImageFluid className="image-root" fluid={article.imgFluid} />
-        </CardMedia>
-      </div>
-      {hasCategory ? (
-        <ArticleCategorySection category={article.category} />
-      ) : null}
-      <ArticleTagSection tags={article.tags} />
-    </CardContent>
+        {hasCategory ? (
+          <ArticleCategorySection category={article.category} />
+        ) : null}
+        <ArticleTagSection tags={article.tags} />
+      </CardContent>
+    </div>
   );
 }
 
